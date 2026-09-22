@@ -69,6 +69,14 @@ bash scripts/play_stairs_control.sh /absolute/path/to/model.pt
 ### Setup Steps
 
 1. 将本仓库克隆到 Isaac Lab 目录之外，进入仓库根目录。
+
+   ```bash
+   git clone https://github.com/lessonllab/legged_lab_v3.git
+   cd legged_lab_v3
+   ```
+
+   当前仓库为私有仓库，需要仓库访问权限。
+
 2. 下载 Git LFS 资源：
 
    ```bash
