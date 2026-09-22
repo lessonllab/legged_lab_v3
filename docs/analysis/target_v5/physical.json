@@ -1,0 +1,65 @@
+{
+  "task": "LeggedLab-Isaac-AMP-Depth-Target-G1-v1",
+  "device": "cuda:0",
+  "num_envs": 6,
+  "observation_shapes": {
+    "policy": [
+      6,
+      495
+    ],
+    "critic": [
+      6,
+      600
+    ],
+    "depth": [
+      6,
+      8,
+      18,
+      32
+    ],
+    "disc": [
+      6,
+      10,
+      67
+    ],
+    "disc_demo": [
+      6,
+      10,
+      67
+    ]
+  },
+  "terrain_columns": [
+    "pyramid_stairs",
+    "pyramid_stairs_inv",
+    "boxes",
+    "random_rough",
+    "hf_pyramid_slope",
+    "hf_pyramid_slope_inv"
+  ],
+  "standing_resets": [
+    {
+      "max_joint_position_offset_rad": 0.1488674432039261,
+      "max_root_xy_offset_m": 0.09362363815307617,
+      "max_root_velocity_component": 0.199424609541893
+    },
+    {
+      "max_joint_position_offset_rad": 0.1483239233493805,
+      "max_root_xy_offset_m": 0.03979897499084473,
+      "max_root_velocity_component": 0.1987878978252411
+    },
+    {
+      "max_joint_position_offset_rad": 0.14954999089241028,
+      "max_root_xy_offset_m": 0.0774679183959961,
+      "max_root_velocity_component": 0.17704375088214874
+    }
+  ],
+  "reference_joint_temporal_delta_max_rad": 0.17498824000358582,
+  "partial_reset_preserves_other_commands_and_metrics": true,
+  "learnable_std_parameters": [
+    "log_std_param"
+  ],
+  "initial_action_std": 0.5,
+  "finite_steps": 50,
+  "terminations_during_zero_action_check": 0,
+  "scope": "Configuration, simulated reset state and finite interfaces; not trained gait performance."
+}

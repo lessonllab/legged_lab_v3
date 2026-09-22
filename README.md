@@ -1,12 +1,10 @@
-# 🤖 Legged Lab
+# Legged Lab: G1 Visual Locomotion
 
-[![IsaacSim](https://img.shields.io/badge/IsaacSim-6.0.0-silver.svg)](https://docs.isaacsim.omniverse.nvidia.com/index.html)
-[![Isaac Lab](https://img.shields.io/badge/IsaacLab-3.0.0-silver)](https://isaac-sim.github.io/IsaacLab/main/index.html)
-[![Python](https://img.shields.io/badge/python-3.12-blue.svg)](https://docs.python.org/3/whatsnew/3.12.html)
-[![Linux platform](https://img.shields.io/badge/platform-linux--64-orange.svg)](https://releases.ubuntu.com/20.04/)
-[![Windows platform](https://img.shields.io/badge/platform-windows--64-orange.svg)](https://www.microsoft.com/en-us/)
-[![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://pre-commit.com/)
-[![License](https://img.shields.io/badge/license-MIT-yellow.svg)](https://opensource.org/license/mit)
+![Isaac Sim](https://img.shields.io/badge/Isaac_Sim-6.0-silver)
+![Isaac Lab](https://img.shields.io/badge/Isaac_Lab-3.0-silver)
+![Python](https://img.shields.io/badge/Python-3.12-blue)
+![RSL-RL](https://img.shields.io/badge/RSL--RL-5.4.1-blue)
+![Platform](https://img.shields.io/badge/Platform-Linux-orange)
 
 ## Table of Contents
 
@@ -14,417 +12,205 @@
 - [Demo](#demo)
 - [News & Updates](#news-updates)
 - [Installation](#installation)
-  - [Prerequisites](#prerequisites)
-  - [Setup Steps](#setup-steps)
-  - [Docker Usage (Dockerfile + Bash Scripts)](#docker-usage)
 - [Usage](#usage)
-  - [Prepare Motion Data](#prepare-motion-data)
-  - [Training & Play](#training-and-play)
 - [Roadmap](#roadmap)
-- [Citation](#citation)
 - [Acknowledgement](#acknowledgement)
 
 <a id="overview"></a>
-## 📖 Overview
+## Overview
 
-This repository is an extension for legged robot reinforcement learning based on Isaac Lab, which allows to develop in an isolated environment, outside of the core Isaac Lab repository. The RL algorithm is based on the upstream [RSL-RL library](https://github.com/leggedrobotics/rsl_rl) (`rsl-rl-lib >= 5.0.1`); the AMP algorithm is implemented as an **external module** inside this project (`legged_lab/rsl_rl/amp`), so no forked/patched `rsl_rl` is required.
+面向 **Unitree G1 EDU 29 自由度机器人**的深度视觉运动控制研究项目，由 **ljc** 基于 [Legged Lab](https://github.com/zitongbai/legged_lab) 扩展。项目独立于 Isaac Lab 开发，使用 PPO 和 AMP 动作先验学习平地、楼梯与崎岖地形运动。
 
 **Key Features:**
 
-- `DeepMimic` for humanoid robots, including Unitree G1.
-- `AMP` Adversarial Motion Priors (AMP) for humanoid robots, including Unitree G1. We suggest retargeting the human motion data by [GMR](https://github.com/YanjieZe/GMR).
+- 深度视觉与本体状态融合：8 帧深度历史，支持延迟和机器人自身遮挡。
+- PPO/AMP：本地 AMP 实现基于 RSL-RL 5.4.1，当前主线保留 30 段参考动作，风格奖励系数 0.25。
+- Foothold v12：落脚支撑、踩边与碰撞约束、低速跨阶和转向训练。
+- 混合地形与自适应课程：固定 17 级楼梯，上下楼独立晋降级，阶高配置覆盖 8–30 cm。
+- PhysX + Viser：浏览器播放、点击目标、调整地形和观察策略深度输入。
+- MuJoCo sim2sim：机器人参数、观测与地形对齐，以及固定路线验证。
+- 保留上游 DeepMimic、动画重放和速度控制任务，供研究及历史模型使用。
 
 <a id="demo"></a>
 ## Demo
 
-* Adversarial Motion Priors for Unitree G1:
+准备好本地检查点后启动交互演示：
 
-https://github.com/user-attachments/assets/ed84a8a3-f349-44ac-9cfd-2baab2265a25
+```bash
+bash scripts/play_stairs_control.sh /absolute/path/to/model.pt
+```
+
+打开 [Viser](http://127.0.0.1:8082/) 查看机器人、地形和深度输入。参考动作重放和 MuJoCo 演示见下文。
+
+**验证范围：**50100 检查点已记录在 MuJoCo 中完成 12 cm、17 级固定路线的 30 秒测试；停走重启和任意场景尚未保证稳定。最新 62900 尚未完成独立固定条件评估，课程晋级不等于通过率验证。详见 [sim2sim 说明](docs/sim2sim_mujoco.md)与[检查点对比](docs/analysis/checkpoint_comparison_20260917.md)。仓库不附带训练检查点。
 
 <a id="news-updates"></a>
-## 🔥 News & Updates
+## News & Updates
 
-- 2026/07/11: AMP now walks on **rough terrain**: swapped the foot-catching height-field tiles for smooth Perlin ports (ported from [InstinctLab](https://github.com/project-instinct/instinctlab/)), and added a third-person follow camera (`--follow_cam`) to the Kit play viewport.
-- 2026/07/01: Migrated to **Isaac Lab v3.0.0** and **rsl-rl-lib 5.4.1**. AMP is now an **external algorithm module** (`legged_lab/rsl_rl/amp`) selected via `class_name`, so no forked `rsl_rl` is needed.
-- 2026/02/09: Add Dockerfile + bash script workflow, including host path requirement for local `rsl_rl`.
-- 2025/12/16: Test in Isaac Lab 2.3.1 and RSL-RL 3.2.0.
-- 2025/12/05: Use git lfs to store large files, including motion data and robot models.
-- 2025/11/23: Add Symmetry data augmentation in AMP training.
-- 2025/11/22: New implementation of AMP.
-- 2025/11/19: Add DeepMimic for G1.
-- 2025/10/14: Update to support rsl_rl v3.1.1. Only walking in flat terrain is supported now.
-- 2025/08/24: Support using more steps observations and motion data in AMP training.
-- 2025/08/22: Compatible with Isaac Lab 2.2.0.
-- 2025/08/21: Add support for retargeting human motion data by [GMR](https://github.com/YanjieZe/GMR).
+- **2026/09/22**：按上游 README 结构整理安装、使用、路线图与发布范围说明。
+- **2026/09/17**：Foothold v12 加入低速跨阶、转向接触和块状地形训练，阶高上限扩展至 30 cm。训练手动停止，最后保存检查点为 62900。
+- **2026/09/16**：完成 MuJoCo 机器人与视觉输入对齐，记录固定 12 cm 楼梯路线验证。
+- **2026/09**：扩展深度历史、混合地形课程、脚底支撑检测及 Viser 交互播放。
+
+详细证据见 [文档索引](docs/README.md)。本机路径、模型保留记录和完整操作说明保留在 [2026-09-17 工作流](docs/local_workflow_20260917.md)。
 
 <a id="installation"></a>
-## ⚙️ Installation
+## Installation
 
-<a id="prerequisites"></a>
 ### Prerequisites
 
-- **Isaac Lab**: Ensure you have installed Isaac Lab `v3.0.0`. Follow the [official guide](https://isaac-sim.github.io/IsaacLab/main/source/setup/installation/index.html).
-- **Git LFS**: Required for downloading large model files.
+- Linux、NVIDIA GPU（Isaac Lab 训练）。
+- 已安装并配置的 Isaac Sim 6.0 / Isaac Lab 3.0、Python 3.12 环境。
+- Git LFS，用于机器人 USD 与参考动作资源。
+- RSL-RL 5.4.1，按下文隔离安装。
 
-<a id="setup-steps"></a>
+这些版本来自本项目本机运行环境。Isaac Lab 安装见其[官方文档](https://isaac-sim.github.io/IsaacLab/main/source/setup/installation/index.html)。旧 Docker 工具已归档；本版本使用本地环境，不沿用上游旧版 RSL-RL AMP 分支的安装命令。
+
 ### Setup Steps
 
-1.  **Clone the Repository**
-    Clone this repository *outside* your existing `IsaacLab` directory to maintain isolation.
+1. 将本仓库克隆到 Isaac Lab 目录之外，进入仓库根目录。
+2. 下载 Git LFS 资源：
 
-    ```bash
-    # Option 1: HTTPS
-    git clone https://github.com/zitongbai/legged_lab
+   ```bash
+   git lfs install
+   git lfs pull
+   ```
 
-    # Option 2: SSH
-    git clone git@github.com:zitongbai/legged_lab.git
+3. 激活已经配置好的 Isaac Lab Python 环境，然后安装：
 
-    cd legged_lab
-    ```
+   ```bash
+   export ISAACLAB_PYTHON="$(command -v python)"
+   "$ISAACLAB_PYTHON" -m pip install -e source/legged_lab
+   "$ISAACLAB_PYTHON" -m pip install --no-deps \
+     --target .runtime/rsl_rl_5_4_1 'rsl-rl-lib==5.4.1'
+   ```
 
-2.  **Pull Git LFS Assets**
-    Install and initialize `git-lfs` on your machine (one-time), then pull large assets (USD models and motion data) for this repository.
+   隔离库其余依赖沿用 Isaac Lab 环境；这不是空 Python 环境的一键安装命令。后续通过 `scripts/run_with_rsl5.sh` 设置导入路径。运行所需的 `.runtime/` 不应删除。
 
-    ```bash
-    git lfs install
-    git lfs pull
-    ```
-
-3.  **Install the Package**
-    Use the Python interpreter associated with your Isaac Lab installation.
-
-    ```bash
-    python -m pip install -e source/legged_lab
-    ```
-
-4.  **Install RSL-RL (Upstream)**
-    This project uses the upstream `rsl-rl-lib` (no fork required). Isaac Lab v3.0.0
-    ships with a compatible version, but AMP is developed against `5.4.1`:
-
-    ```bash
-    python -m pip install "rsl-rl-lib>=5.0.1"
-    ```
-
-    The AMP algorithm lives inside this project at `source/legged_lab/legged_lab/rsl_rl/amp`
-    and is selected at runtime via the config's `class_name`
-    (`legged_lab.rsl_rl.amp.ppo_amp:PPOAMP`) — no patching of `rsl_rl` is needed.
-
-<a id="docker-usage"></a>
-### Docker Usage (Dockerfile + Bash Scripts)
-
-> **Note:** The Docker workflow below still targets Isaac Lab 2.3.1 and mounts a
-> local forked `rsl_rl`. Since AMP is now an in-project external module and this
-> code targets Isaac Lab v3.0.0, the Docker files (`docker/.env.base`,
-> `docker/run.sh`) need updating to the v3 base image and to drop the `rsl_rl`
-> mount. Until then, prefer the direct (non-Docker) install steps above.
-
-If you use the provided Docker workflow, the container will mount local source code and install packages automatically at startup.
-
-#### Host directory requirement for `rsl_rl`
-
-By default, `docker/.env.base` expects `rsl_rl` to be placed next to `legged_lab`:
-
-```text
-.../lab_dev/
-├── legged_lab/
-└── rsl_rl/
-```
-
-If your `rsl_rl` is somewhere else, update `RSL_RL_PATH` in `docker/.env.base`.
-
-By default, Isaac Sim caches, logs, data, and documents use the official Docker directory layout under `~/docker/isaac-sim`.
-
-#### Build image
-
-```bash
-bash docker/build.sh
-```
-
-#### Start container
-
-```bash
-# xhost +
-bash docker/run.sh
-```
-
-At startup, the container will:
-- overwrite `.vscode/settings.json` with the container's built-in VS Code settings
-- install mounted `rsl_rl` in editable mode (`/workspace/rsl_rl`)
-- install mounted `legged_lab` in editable mode (`/workspace/legged_lab/source/legged_lab`)
-
-#### Enter container
-
-```bash
-bash docker/enter.sh
-```
-
-Default working directory is `/workspace/legged_lab`.
-
-#### Stop / remove container
-
-```bash
-bash docker/stop.sh
-```
-
-#### Rebuild image after Dockerfile changes
-
-```bash
-bash docker/stop.sh
-bash docker/build.sh
-bash docker/run.sh
-```
+4. 可选：准备 MuJoCo 外部仓库，版本和场景补丁见[发布范围说明](docs/repository_release.md)。
 
 <a id="usage"></a>
-## 🚀 Usage
+## Usage
 
-<a id="prepare-motion-data"></a>
 ### 1. Prepare Motion Data
 
-We have already provided some off-the-shelf motion data in the `source/legged_lab/legged_lab/data/MotionData` folder for testing.
+仓库使用 Git LFS 提供 `source/legged_lab/legged_lab/data/MotionData` 中的参考动作，以及 `data/Robots` 中的机器人资源。
 
-If you want to add more motion data, you can do so by following the steps below.
+增加动作时，可先用 [GMR](https://github.com/YanjieZe/GMR) 重定向，再转换数据：
 
-1. Retarget human motion data to the robot model. We recommend using [GMR](https://github.com/YanjieZe/GMR) for retargeting human motion data.
-2. Put the retargeted motion data in the `temp/gmr_data` folder.
-3. Use a helper script to convert the motion data to the required format:
+```bash
+"$ISAACLAB_PYTHON" scripts/tools/retarget/dataset_retarget.py \
+  --robot g1 --input_dir temp/gmr_data/ --output_dir temp/lab_data/ \
+  --config_file scripts/tools/retarget/config/g1_29dof.yaml --loop clamp
+```
 
-    ```bash
-    python scripts/tools/retarget/dataset_retarget.py \
-        --robot g1 \
-        --input_dir temp/gmr_data/ \
-        --output_dir temp/lab_data/ \
-        --config_file scripts/tools/retarget/config/g1_29dof.yaml \
-        --loop clamp
-    ```
-4. Move the converted data from `temp/lab_data` to `source/legged_lab/legged_lab/data/MotionData`, and set the `MotionDataCfg` in the config file, e.g., `source/legged_lab/legged_lab/tasks/locomotion/amp/config/g1/g1_amp_env_cfg.py`.
+将转换结果放入 `data/MotionData` 并更新任务动作配置。格式见 [gmr_to_lab.py](scripts/tools/retarget/gmr_to_lab.py)。
 
-Please refer to the comments in the script for more details about the arguments, and refer to `scripts/tools/retarget/gmr_to_lab.py` for the data format used in this repository.
-
-<a id="training-and-play"></a>
 ### 2. Training & Play
 
-#### ⚡ Interactive launcher (optional)
-
-Instead of hand-writing the commands below, you can use the interactive
-launcher, which scans the repo for tasks, shows live GPU usage, and walks you
-through the common options (GPU, `--viz` backend, `max_iterations`, `run_name`,
-checkpoint selection, Hydra overrides, …). It then either prints the assembled
-command for you to copy, or launches it directly in a tmux session named after
-your `run_name`:
+<details open>
+<summary>Train: 从头训练混合地形策略</summary>
 
 ```bash
-python -m scripts.launch
-```
-
-Navigate the menus with the arrow keys (↑/↓, or `j`/`k`) and press `Enter` to
-select. Long lists (e.g. many checkpoints) are paged 10 per page: use ←/→ (or
-`h`/`l`) to flip pages and `0`-`9` to jump straight to an entry on the current
-page; `q` cancels. The tmux mode reads your Python env and proxy from
-`scripts/experiments/env.local.sh`
-(see [experiments README](scripts/experiments/README.md)).
-
-The sections below document the underlying `train.py` / `play.py` commands.
-
-#### 🎭 DeepMimic
-
-<details>
-<summary>Train</summary>
-
-To train the DeepMimic algorithm, you can run the following command:
-
-```bash
-python scripts/rsl_rl/train.py --task LeggedLab-Isaac--Deepmimic-G1-v0 --headless --max_iterations 50000
-```
-
-To train on a non-default GPU, set both `--device` and `agent.device`:
-
-```bash
-# replace `x` with the gpu id you want to use
-python scripts/rsl_rl/train.py --task LeggedLab-Isaac--Deepmimic-G1-v0 --headless --max_iterations 50000 \
-    --device cuda:x agent.device=cuda:x
-```
-
-The `max_iterations` can be adjusted based on your needs. For more details about the arguments, run `python scripts/rsl_rl/train.py -h`.
-
-</details>
-
-<details>
-<summary>Play</summary>
-
-You can play the trained model in a headless mode and record the video:
-
-```bash
-# replace the checkpoint path with the path to your trained model
-python scripts/rsl_rl/play.py --task LeggedLab-Isaac-Deepmimic-G1-v0 --headless --num_envs 64 --video --checkpoint logs/rsl_rl/experiment_name/run_name/model_xxx.pt
+bash scripts/run_with_rsl5.sh scripts/rsl_rl/train.py \
+  --task LeggedLab-Isaac-AMP-Scratch-G1-v1 \
+  --viz none --device cuda:0 --num_envs 2048 \
+  --max_iterations 30000 --seed 42 \
+  --run_name visual_scratch agent.device=cuda:0
 ```
 
 </details>
 
-
-#### 🏃 Adversarial Motion Priors (AMP)
-
 <details>
-<summary>Train</summary>
+<summary>Resume: 继续 Foothold v12 训练</summary>
 
-The AMP task is split into two configs: **flat** terrain (`LeggedLab-Isaac-AMP-Flat-G1-v0`)
-and **rough** generator terrain (`LeggedLab-Isaac-AMP-Rough-G1-v0`, with a height scanner and
-a terrain-difficulty curriculum). Pick whichever task id you want to train:
+需要兼容检查点，跨任务加载受课程迁移规则约束。`--max_iterations` 表示本次追加轮数。
 
 ```bash
-# flat terrain
-python scripts/rsl_rl/train.py --task LeggedLab-Isaac-AMP-Flat-G1-v0 --headless --max_iterations 50000
-
-# rough terrain
-python scripts/rsl_rl/train.py --task LeggedLab-Isaac-AMP-Rough-G1-v0 --headless --max_iterations 50000
+bash scripts/run_with_rsl5.sh scripts/rsl_rl/train.py \
+  --task LeggedLab-Isaac-AMP-Foothold-G1-v0 \
+  --viz none --device cuda:0 --num_envs 2048 \
+  --max_iterations 2100 --seed 42 --run_name foothold_v12 \
+  --resume --load_run /absolute/path/to/run --checkpoint model_62900.pt \
+  agent.device=cuda:0
 ```
 
-To train on a non-default GPU, set both `--device` and `agent.device`:
-
-```bash
-# replace `x` with the gpu id you want to use
-python scripts/rsl_rl/train.py --task LeggedLab-Isaac-AMP-Rough-G1-v0 --headless --max_iterations 50000 \
-    --device cuda:x agent.device=cuda:x
-```
-
-Checkpoints are written to `logs/rsl_rl/g1_amp_flat/...` and `logs/rsl_rl/g1_amp_rough/...`
-respectively. For more details about the arguments, run `python scripts/rsl_rl/train.py -h`.
+本机快捷脚本 `scripts/resume_stairs_foothold.sh` 包含本机解释器路径，迁移时优先使用上述入口。
 
 </details>
 
 <details>
-<summary>Play</summary>
-
-There are two ways to play a trained model, selected by the `--viz` backend.
-
-**Mode 1 — record a video (`--viz kit`).** The Kit visualizer renders the command-velocity
-arrows (desired vs. actual base velocity, drawn above the robot) into the recorded video:
+<summary>Play: Viser 交互播放</summary>
 
 ```bash
-# flat terrain — replace the checkpoint path with the path to your trained model
-python scripts/rsl_rl/play.py --task LeggedLab-Isaac-AMP-Flat-G1-v0 \
-    --num_envs 64 --video --viz kit \
-    --checkpoint logs/rsl_rl/g1_amp_flat/run_name/model_xxx.pt
-
-# rough terrain
-python scripts/rsl_rl/play.py --task LeggedLab-Isaac-AMP-Rough-G1-v0 \
-    --num_envs 64 --video --viz kit \
-    --checkpoint logs/rsl_rl/g1_amp_rough/run_name/model_xxx.pt
+STAIR_TEST_SPEED=0.65 bash scripts/play_stairs_control.sh \
+  /absolute/path/to/model.pt
 ```
 
-The video will be saved in the `logs/rsl_rl/experiment_name/run_name/videos/play` directory.
-
-To keep the robot centered in the recording, add `--follow_cam` — the Kit viewport
-then chases the followed body (default `torso_link`, env 0) in a third-person view:
-
-```bash
-# smooth position-only follow (camera keeps a fixed viewing direction)
-python scripts/rsl_rl/play.py --task LeggedLab-Isaac-AMP-Rough-G1-v0 \
-    --viz kit --video --follow_cam \
-    --checkpoint logs/rsl_rl/g1_amp_rough/run_name/model_xxx.pt
-
-# follow AND rotate with the robot's heading, damping the per-step yaw jitter
-python scripts/rsl_rl/play.py --task LeggedLab-Isaac-AMP-Rough-G1-v0 \
-    --viz kit --video --follow_cam --follow_yaw --follow_smooth 0.9 \
-    --checkpoint logs/rsl_rl/g1_amp_rough/run_name/model_xxx.pt
-```
-
-Tune the shot with `--follow_env` / `--follow_body` / `--follow_offset`; run
-`python scripts/rsl_rl/play.py -h` for the full list. The follow camera drives the
-Kit viewport only — the Viser backend (Mode 2) manages its own camera and ignores it.
-
-**Mode 2 — interactive visualization (`--viz viser`).** The Viser backend serves a live 3D
-view over HTTP (no recording, no display needed) — open the printed URL in a browser. Do not
-pass `--video` or `--headless` in this mode (Viser is a kitless backend and needs neither):
-
-```bash
-# flat terrain — replace the checkpoint path with the path to your trained model
-python scripts/rsl_rl/play.py --task LeggedLab-Isaac-AMP-Flat-G1-v0 \
-    --num_envs 16 --viz viser \
-    --checkpoint logs/rsl_rl/g1_amp_flat/run_name/model_xxx.pt
-
-# rough terrain
-python scripts/rsl_rl/play.py --task LeggedLab-Isaac-AMP-Rough-G1-v0 \
-    --num_envs 16 --viz viser \
-    --checkpoint logs/rsl_rl/g1_amp_rough/run_name/model_xxx.pt
-```
-
-On a remote machine, forward the Viser port to your local browser, e.g.
-`ssh -L 8080:localhost:8080 <host>`.
+默认单机器人，使用兼容输入的 Stairs-Long PLAY 任务。打开 [Viser](http://127.0.0.1:8082/)。迁移机器前检查脚本的解释器默认路径；播放不会自动切换到新保存的模型。
 
 </details>
-
-
-#### 🎬 Animation (motion replay)
-
-The Animation task (`LeggedLab-Isaac-Animation-G1-v0`) is a **pure motion-data replay** —
-there is no policy and no training. Every step the robot is kinematically posed directly
-from the motion data (gravity/collision disabled), which is handy for visually inspecting
-retargeted reference motion before using it for AMP / DeepMimic. Because there is no policy
-to load, it runs with a **zero-action agent** (`scripts/zero_agent.py`) instead of `play.py` —
-no `--checkpoint` is needed.
 
 <details>
-<summary>Replay / Visualize</summary>
-
-The motion dataset to replay is set by `MotionDataCfg` in
-`source/legged_lab/legged_lab/tasks/locomotion/animation/config/g1/g1_anim_env_cfg.py`.
-
-**Mode 1 — Kit viewport (`--viz kit`).** Opens the Isaac Sim viewport; red spheres mark
-the reference key-body positions:
+<summary>Reference: 重放 AMP 参考动作</summary>
 
 ```bash
-python scripts/zero_agent.py --task LeggedLab-Isaac-Animation-G1-v0 \
-    --num_envs 16 --viz kit
+bash scripts/run_with_rsl5.sh scripts/tools/replay_amp_reference.py \
+  --run_dir /absolute/path/to/run --port 8081
 ```
 
-**Mode 2 — interactive Viser (`--viz viser`).** Serves a live 3D view over HTTP — open the
-printed URL in a browser (no display needed). Do not pass `--headless` in this mode:
-
-```bash
-python scripts/zero_agent.py --task LeggedLab-Isaac-Animation-G1-v0 \
-    --num_envs 16 --viz viser
-```
-
-On a remote machine, forward the Viser port to your local browser, e.g.
-`ssh -L 8080:localhost:8080 <host>`.
+运行目录需要包含动作配置。参考重放不加载策略，不代表机器人已经学会这些动作。
 
 </details>
+
+### 3. Evaluation & Sim2sim
+
+固定条件比较：
+
+```bash
+bash scripts/run_with_rsl5.sh scripts/tools/compare_stairs_checkpoints.py \
+  --viz none --device cuda:0 --num_envs 32 --seed 42 \
+  --cases slowup20 slowdown20 up20 down20 boxes rough reverse turn_left turn_right \
+  --output logs/checkpoint_comparison.json \
+  --checkpoints /absolute/path/to/baseline.pt /absolute/path/to/candidate.pt
+```
+
+这些楼梯案例为 20 cm，不能验证 25/30 cm。应使用多种子，并分别统计穿越、失败与超时。
+
+MuJoCo 需要外部资源、依赖，以及检查点旁的 `params/env.yaml` 和 `params/agent.yaml`：
+
+```bash
+bash scripts/run_sim2sim.sh --checkpoint /absolute/path/to/model.pt
+```
+
+依赖、资源导出和验证边界见 [MuJoCo 文档](docs/sim2sim_mujoco.md)。
+
+### Repository Contents
+
+```text
+source/legged_lab/       Python 包、任务、算法、测试、机器人与动作资源
+scripts/                训练、播放、重定向、评测与 sim2sim 工具
+docs/                   使用说明、实验记录与评测证据
+.vscode/                共享开发配置
+```
+
+沿用上游的源码和资源提交范围，增加本项目测试与研究文档。训练输出 `logs/`、本机依赖 `.runtime/`、缓存、私有环境配置及独立第三方仓库不上传。发布文件总量限制为 **1,000,000,000 字节**，按 LFS 资源实际大小核算。对照说明见 [repository_release.md](docs/repository_release.md)。
 
 <a id="roadmap"></a>
-## 🗺️ Roadmap
+## Roadmap
 
-- [ ] Add more legged robots, such as Unitree H1
-- [x] Self-contact penalty in AMP
-- [x] Asymmetric Actor-Critic in AMP
-- [x] Symmetric Reward
-- [ ] Sim2sim in mujoco
-- [ ] Add support for image observations
-- [x] Walk in rough terrain with AMP
-
-<a id="citation"></a>
-## 📚 Citation
-
-If you find this repository useful in your research, please consider citing it:
-
-```bibtex
-@misc{legged_lab,
-  author       = {Zitong Bai},
-  title        = {Legged Lab: An Isaac Lab Extension for Legged Robot Reinforcement Learning},
-  year         = {2026},
-  publisher    = {GitHub},
-  journal      = {GitHub repository},
-  howpublished = {\url{https://github.com/zitongbai/legged_lab}}
-}
-```
+- [x] 深度历史输入与 PPO/AMP 训练链路。
+- [x] 混合地形与独立上下楼课程。
+- [x] Viser 交互播放及视觉输入诊断。
+- [x] MuJoCo 适配和固定路线验证。
+- [ ] 完成最新 v12 检查点的固定条件、多种子对比。
+- [ ] 提升低速高台阶、自然转向和停走重启稳定性。
+- [ ] 对新增奖励和课程进行消融评估。
+- [ ] 扩展跨地形泛化与真机验证。
 
 <a id="acknowledgement"></a>
-## 🙏 Acknowledgement
+## Acknowledgement
 
-We would like to express our gratitude to the following open-source projects:
+感谢 [Legged Lab](https://github.com/zitongbai/legged_lab)、[Isaac Lab](https://github.com/isaac-sim/IsaacLab)、[RSL-RL](https://github.com/leggedrobotics/rsl_rl)、[AMP_for_hardware](https://github.com/Alescontrela/AMP_for_hardware)、[GMR](https://github.com/YanjieZe/GMR)、[MimicKit](https://github.com/xbpeng/MimicKit)、[InstinctLab](https://github.com/project-instinct/InstinctLab) 和 [hiking-in-the-wild-sim2sim](https://github.com/jie0110/hiking-in-the-wild-sim2sim)。
 
-- [**Isaac Lab**](https://github.com/isaac-sim/IsaacLab) - The foundation of this project.
-- [**RSL-RL**](https://github.com/leggedrobotics/rsl_rl) - Reinforcement learning algorithms for legged robots.
-- [**AMP_for_hardware**](https://github.com/Alescontrela/AMP_for_hardware) - Inspiration for AMP implementation.
-- [**GMR**](https://github.com/YanjieZe/GMR) - Excellent motion retargeting library.
-- [**MimicKit**](https://github.com/xbpeng/MimicKit) - Reference for imitation learning.
-- [**InstinctLab**](https://github.com/project-instinct/instinctlab/) - Reference for the Perlin-augmented terrain generation.
+原始代码许可证见 [LICENCE](LICENCE)，上游引用及第三方许可见 [NOTICE.md](NOTICE.md)。部分适配文件标注 CC BY-NC 4.0；机器人、动作数据及其他第三方内容沿用各自许可。

@@ -1,0 +1,48 @@
+{
+  "Mean value loss": {
+    "count": 20,
+    "first": 3.7232,
+    "last": 59.3768,
+    "min": 3.7232,
+    "max": 229.2183
+  },
+  "Episode_Reward/feet_loaded_overhang": {
+    "count": 20,
+    "first": 0.0,
+    "last": -0.0004,
+    "min": -0.0004,
+    "max": 0.0
+  },
+  "Episode_Reward/feet_swing_clearance": {
+    "count": 20,
+    "first": 0.0,
+    "last": -0.0,
+    "min": -0.0001,
+    "max": 0.0
+  },
+  "AMP/weighted_style_reward_per_step": {
+    "count": 20,
+    "first": 0.1226,
+    "last": 0.0895,
+    "min": 0.0808,
+    "max": 0.1594
+  },
+  "AMP/raw_style_reward_per_step": {
+    "count": 20,
+    "first": 0.4905,
+    "last": 0.3579,
+    "min": 0.3233,
+    "max": 0.6377
+  },
+  "cpu_tests": {
+    "total": 57,
+    "passed": 56,
+    "skipped": 1
+  },
+  "gpu_smoke": {
+    "envs": 64,
+    "updates": 20,
+    "checkpoint": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_17-40-20_safe_landing_v9_smoke/model_46419.pt",
+    "all_147_checkpoint_tensors_finite": true
+  }
+}

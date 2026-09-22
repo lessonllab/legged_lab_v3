@@ -1,0 +1,7 @@
+{
+  "run": "/home/ljc/legged_lab_v3/logs/rsl_rl/g1_amp_depth_target_v4/2026-09-11_19-12-51_target_v4_smoke",
+  "num_envs": 512,
+  "iterations": 3,
+  "resume": false,
+  "finite_checkpoint_tensor_count": 129
+}

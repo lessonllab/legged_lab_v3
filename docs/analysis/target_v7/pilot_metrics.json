@@ -1,0 +1,15 @@
+{
+  "Train/mean_episode_length": 901.877001953125,
+  "AMP/progress_gate": 0.956559830904007,
+  "AMP/raw_style_reward_per_step": 0.16886639967560768,
+  "AMP/mixed_reward_per_step": 0.026512718014419078,
+  "AMP/weighted_task_reward_per_step": -0.012904004100710154,
+  "AMP/weighted_style_reward_per_step": 0.03941672220826149,
+  "Metrics/base_velocity/moving_tracking_exp_vel_xy": 0.6753495693206787,
+  "Metrics/base_velocity/valid_targets_reached": 1.3769445240497589,
+  "Metrics/base_velocity/target_progress_m": 3.265130913257599,
+  "Episode_Termination/base_height": 0.0,
+  "Episode_Termination/excessive_body_tilt": 0.1469970762729645,
+  "Episode_Reward/low_pelvis_height": -0.03067307360470295,
+  "Policy/mean_std": 0.2639386966824532
+}

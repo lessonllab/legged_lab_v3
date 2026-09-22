@@ -99,8 +99,11 @@ class AmpVelocityCommand(UniformVelocityCommand):
         self.vel_command_b[env_ids, 1] = ref_lin_vel_b[:, 1].clamp(
             self.cfg.ranges.lin_vel_y[0], self.cfg.ranges.lin_vel_y[1]
         )
-        # yaw placeholder; overwritten each step by the heading controller when heading_command
-        self.vel_command_b[env_ids, 2] = ref_ang_vel_b[:, 2]
+        # Direct yaw commands stay latched until resampling. Bound reference spikes here
+        # too; with heading control enabled this value is overwritten each step.
+        self.vel_command_b[env_ids, 2] = ref_ang_vel_b[:, 2].clamp(
+            self.cfg.ranges.ang_vel_z[0], self.cfg.ranges.ang_vel_z[1]
+        )
 
         if self.cfg.heading_command:
             # reference heading (yaw of the ref frame) plus a short look-ahead along the current

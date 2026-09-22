@@ -1,0 +1,31 @@
+{
+  "task": "LeggedLab-Isaac-AMP-Depth-Style-G1-Play-v0",
+  "device": "cuda:0",
+  "num_envs": 4,
+  "disc_shape": [
+    4,
+    10,
+    67
+  ],
+  "disc_demo_shape": [
+    4,
+    10,
+    67
+  ],
+  "max_state_errors_per_frame": [
+    1.7881393432617188e-06,
+    3.5762786865234375e-06,
+    1.430511474609375e-06,
+    4.291534423828125e-06,
+    6.377696990966797e-06,
+    5.7220458984375e-06,
+    4.410743713378906e-06,
+    2.2649765014648438e-06,
+    3.337860107421875e-06,
+    1.3113021850585938e-06
+  ],
+  "joint_order_matches_retarget": true,
+  "history_order_matches_reference": true,
+  "mirror_and_partial_reset_pass": true,
+  "scope": "Kinematic observation consistency, not learned gait quality."
+}

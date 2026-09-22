@@ -1,0 +1,9 @@
+{
+  "run": "/home/ljc/legged_lab_v3/logs/rsl_rl/g1_amp_depth_style_v3/2026-09-11_19-04-07_style_v3_final_smoke",
+  "checkpoint": "/home/ljc/legged_lab_v3/logs/rsl_rl/g1_amp_depth_style_v3/2026-09-11_19-04-07_style_v3_final_smoke/model_2.pt",
+  "all_checkpoint_tensors_finite": true,
+  "tensor_count": 129,
+  "resume": false,
+  "num_envs": 512,
+  "iterations": 3
+}

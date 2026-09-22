@@ -4,6 +4,8 @@ import torch
 from typing import TYPE_CHECKING
 
 from isaaclab.managers import SceneEntityCfg
+from isaaclab.utils.math import quat_apply_inverse
+from .style_state import tensor
 
 if TYPE_CHECKING:
     from isaaclab.assets import RigidObject  # runtime class, guarded per v3 pattern
@@ -57,3 +59,22 @@ def root_height_below_minimum_adaptive(
         terrain_z = 0.0
 
     return asset.data.root_pos_w.torch[:, 2] - terrain_z < minimum_height
+
+
+def body_tilt_exceeds(
+    env: ManagerBasedRLEnv,
+    limit_angle: float,
+    asset_cfg: SceneEntityCfg = SceneEntityCfg("robot"),
+) -> torch.Tensor:
+    """Terminate excessive tilt of explicitly named bodies, independent of root.
+
+    Unlike an XY-gravity penalty this also detects upside-down orientations.
+    """
+    if not 0. < limit_angle < torch.pi:
+        raise ValueError("limit_angle must be between zero and pi")
+    quat = tensor(env.scene[asset_cfg.name].data.body_quat_w)[:, asset_cfg.body_ids]
+    gravity = torch.zeros_like(quat[..., :3])
+    gravity[..., 2] = -1.
+    local_gravity = quat_apply_inverse(quat, gravity)
+    cosine = torch.cos(local_gravity.new_tensor(limit_angle))
+    return ((-local_gravity[..., 2]) < cosine).any(dim=-1)

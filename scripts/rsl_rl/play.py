@@ -57,12 +57,14 @@ from isaaclab_rl.rsl_rl import (
 from isaaclab_rl.utils.pretrained_checkpoint import get_published_pretrained_checkpoint
 
 import isaaclab_tasks  # noqa: F401
-from isaaclab_tasks.utils import (
-    add_launcher_args,
-    get_checkpoint_path,
-    launch_simulation,
-    setup_preset_cli,
-)
+from isaaclab_tasks.utils import get_checkpoint_path, setup_preset_cli
+
+try:
+    from isaaclab.app.sim_launcher import add_launcher_args, launch_simulation
+except ModuleNotFoundError as exc:
+    if exc.name != "isaaclab.app.sim_launcher":
+        raise
+    from isaaclab_tasks.utils import add_launcher_args, launch_simulation
 from isaaclab_tasks.utils.hydra import hydra_task_config
 
 # local imports
@@ -80,6 +82,12 @@ parser.add_argument(
     "--disable_fabric", action="store_true", default=False, help="Disable fabric and use USD I/O operations."
 )
 parser.add_argument("--num_envs", type=int, default=None, help="Number of environments to simulate.")
+parser.add_argument("--stepping_stones", action="store_true", help="Add AME-style stepping stones to G1 target terrains.")
+parser.add_argument("--terrain_showcase", action="store_true", help="One robot per terrain type at fixed moderate difficulty (playback only).")
+parser.add_argument("--terrain_control", action="store_true", help="One robot with interactive terrain difficulty controls.")
+parser.add_argument("--stair_matrix", action="store_true", help="One robot per tile; 17 steps and stair heights 8–30 cm.")
+parser.add_argument("--stair_test_speed", type=float, default=.8, help="Fixed speed cap for the stair matrix (m/s).")
+parser.add_argument("--instinct_play", action="store_true", help="Target task: standing resets, 10-second episodes and close follow view, inspired by Instinct PLAY.")
 parser.add_argument("--task", type=str, default=None, help="Name of the task.")
 parser.add_argument(
     "--agent", type=str, default="rsl_rl_cfg_entry_point", help="Name of the RL agent configuration entry point."
@@ -89,6 +97,9 @@ parser.add_argument(
     "--use_pretrained_checkpoint", action="store_true", help="Use the pre-trained checkpoint from Nucleus."
 )
 parser.add_argument("--real-time", action="store_true", default=False, help="Run in real-time, if possible.")
+parser.add_argument("--max_steps", type=int, default=0, help="Stop playback after this many steps; 0 runs until interrupted.")
+parser.add_argument("--viser_port", type=int, default=8080, help="PhysX browser viewer port.")
+parser.add_argument("--viser_host", default="127.0.0.1", help="PhysX browser viewer bind address; use 0.0.0.0 for remote access.")
 parser.add_argument(
     "--follow_cam",
     action="store_true",
@@ -159,6 +170,20 @@ installed_version = metadata.version("rsl-rl-lib")
 @hydra_task_config(args_cli.task, args_cli.agent)
 def main(env_cfg: ManagerBasedRLEnvCfg | DirectRLEnvCfg | DirectMARLEnvCfg, agent_cfg: RslRlBaseRunnerCfg):
     """Play with RSL-RL agent."""
+    # Use our read-only PhysX -> Viser bridge instead of the installed
+    # Newton-specific visualizer. Physics and policy inputs remain unchanged.
+    physics = getattr(env_cfg.sim.physics, "default", env_cfg.sim.physics)
+    physics_class = str(getattr(physics, "class_type", "")).lower()
+    physics_override = getattr(args_cli, "physics", None)
+    if physics_override:
+        physics_class = str(physics_override).lower()
+    requested = args_cli.visualizer
+    use_physx_viser = bool(requested and "viser" in requested and "physx" in physics_class)
+    if use_physx_viser:
+        args_cli.visualizer = [name for name in requested if name != "viser"] or ["none"]
+        print("[INFO] PhysX playback: using the project's Viser browser bridge (no Newton).", flush=True)
+    if args_cli.max_steps < 0:
+        raise ValueError("--max_steps must be non-negative")
     with launch_simulation(env_cfg, args_cli):
         task_name = args_cli.task.split(":")[-1]
         train_task_name = task_name.replace("-Play", "")
@@ -170,6 +195,71 @@ def main(env_cfg: ManagerBasedRLEnvCfg | DirectRLEnvCfg | DirectMARLEnvCfg, agen
 
         env_cfg.seed = agent_cfg.seed
         env_cfg.sim.device = args_cli.device if args_cli.device is not None else env_cfg.sim.device
+        if args_cli.stair_matrix or args_cli.terrain_control:
+            if args_cli.task != 'LeggedLab-Isaac-AMP-Stairs-Long-G1-Play-v0':
+                raise ValueError('--stair_matrix requires the long-stair PLAY task')
+            if args_cli.terrain_showcase or args_cli.instinct_play or args_cli.stepping_stones:
+                raise ValueError('Stair matrix cannot be combined with other terrain showcases')
+            from legged_lab.tasks.locomotion.amp.mdp.stair_play_matrix import configure_stair_matrix
+            if args_cli.stair_matrix and args_cli.terrain_control:
+                raise ValueError('Choose either matrix or interactive terrain control')
+            if args_cli.terrain_control:
+                from legged_lab.tasks.locomotion.amp.mdp.stair_play_matrix import configure_stair_control
+                configure_stair_control(env_cfg, args_cli.stair_test_speed)
+            else:
+                configure_stair_matrix(env_cfg, args_cli.stair_test_speed)
+        if args_cli.stepping_stones:
+            from legged_lab.tasks.locomotion.amp.config.g1.terrain_variants import add_stepping_stones
+            add_stepping_stones(env_cfg)
+            print("[PLAY] Added AME-style stepping stones; old checkpoints have not necessarily learned this terrain.", flush=True)
+        if args_cli.instinct_play:
+            if args_cli.terrain_showcase:
+                raise ValueError("Choose --instinct_play or --terrain_showcase")
+            if "Depth-Target-G1" not in args_cli.task:
+                raise ValueError("--instinct_play requires the G1 Depth-Target task")
+            from isaaclab.managers import EventTermCfg
+            from isaaclab.envs import mdp as base_mdp
+            generator = env_cfg.scene.terrain.terrain_generator
+            for subterrain in generator.sub_terrains.values():
+                subterrain.proportion = 1.0
+            generator.curriculum = True
+            generator.num_rows = 4
+            generator.num_cols = len(generator.sub_terrains)
+            env_cfg.scene.num_envs = generator.num_cols
+            env_cfg.scene.terrain.max_init_terrain_level = 3
+            env_cfg.curriculum.terrain_levels = None
+            env_cfg.episode_length_s = 10.
+            env_cfg.events.reset_from_ref = None
+            # v5 already defines standing reset events. Replace them instead
+            # of running two root/joint reset terms on every episode boundary.
+            if hasattr(env_cfg.events, "reset_base"):
+                env_cfg.events.reset_base = None
+            if hasattr(env_cfg.events, "reset_robot_joints"):
+                env_cfg.events.reset_robot_joints = None
+            env_cfg.events.play_reset_base = EventTermCfg(
+                func=base_mdp.reset_root_state_uniform, mode="reset", params={
+                    "pose_range": {"x": (-.1, .1), "y": (-.1, .1), "yaw": (-.1, .1)},
+                    "velocity_range": {axis: (-.2, .2) for axis in ("x", "y", "z", "roll", "pitch", "yaw")}})
+            env_cfg.events.play_reset_joints = EventTermCfg(
+                func=base_mdp.reset_joints_by_offset, mode="reset",
+                params={"position_range": (0., 0.), "velocity_range": (0., 0.)})
+            args_cli.follow_cam = True
+            print("[PLAY] Instinct-style standing reset; 10 s episodes; 4 difficulty rows; fall terminations retained.", flush=True)
+        if args_cli.terrain_showcase:
+            generator = env_cfg.scene.terrain.terrain_generator
+            if generator is None:
+                raise ValueError("Terrain showcase requires a generated terrain task")
+            # Equal proportions and ordered columns guarantee all types appear.
+            for subterrain in generator.sub_terrains.values():
+                subterrain.proportion = 1.0
+            generator.curriculum = True
+            generator.num_rows = 1
+            generator.num_cols = len(generator.sub_terrains)
+            generator.difficulty_range = (0.25, 0.25)
+            env_cfg.scene.num_envs = generator.num_cols
+            env_cfg.scene.terrain.max_init_terrain_level = 0
+            env_cfg.curriculum.terrain_levels = None
+            print("[INFO] Terrain showcase robot columns:", list(enumerate(generator.sub_terrains)), flush=True)
 
         log_root_path = os.path.join("logs", "rsl_rl", agent_cfg.experiment_name)
         log_root_path = os.path.abspath(log_root_path)
@@ -189,6 +279,14 @@ def main(env_cfg: ManagerBasedRLEnvCfg | DirectRLEnvCfg | DirectMARLEnvCfg, agen
         env_cfg.log_dir = log_dir
 
         env = gym.make(args_cli.task, cfg=env_cfg, render_mode="rgb_array" if args_cli.video else None)
+        env.unwrapped.terrain_control_play = args_cli.terrain_control
+        env.unwrapped.stair_matrix_play = args_cli.stair_matrix
+        if args_cli.stair_matrix:
+            env.unwrapped.terrain_showcase_names = env.unwrapped.command_manager.get_term('base_velocity').matrix_labels()
+        if args_cli.terrain_showcase or args_cli.instinct_play:
+            env.unwrapped.terrain_showcase_names = list(env_cfg.scene.terrain.terrain_generator.sub_terrains)
+        env.unwrapped.instinct_play = args_cli.instinct_play
+        env.unwrapped.play_checkpoint_label = os.path.basename(os.path.dirname(resume_path)) + ' / ' + os.path.basename(resume_path)
 
         if isinstance(env.unwrapped.cfg, DirectMARLEnvCfg):
             from isaaclab.envs import multi_agent_to_single_agent
@@ -218,7 +316,20 @@ def main(env_cfg: ManagerBasedRLEnvCfg | DirectRLEnvCfg | DirectMARLEnvCfg, agen
         if args_cli.deterministic:
             configure_seed(env_cfg.seed, True)
 
-        runner.load(resume_path, map_location=agent_cfg.device)
+        if args_cli.stair_matrix or args_cli.terrain_control:
+            # Evaluation owns the fixed rows/columns. Load network weights
+            # strictly, but do not overwrite this layout with training groups.
+            from legged_lab.rsl_rl.amp.ppo_amp import PPOAMP
+            saved = torch.load(resume_path, map_location=agent_cfg.device, weights_only=False)
+            PPOAMP.load(runner.alg, saved, {'actor': True, 'critic': True, 'optimizer': False}, strict=True)
+            for name, value in runner.alg.get_policy().state_dict().items():
+                if not torch.equal(value, saved['actor_state_dict'][name].to(value.device)):
+                    raise RuntimeError(f'Matrix playback policy was not restored exactly: {name}')
+            env.unwrapped.reset()
+            print(f'[PLAY] {env.num_envs} robots; 17 steps; heights 8/10/12/14/16/18/20/25/30 cm; '
+                  f'speed cap {args_cli.stair_test_speed} m/s; frozen layout, model weights only', flush=True)
+        else:
+            runner.load(resume_path, map_location=agent_cfg.device)
         policy = runner.get_inference_policy(device=env.unwrapped.device)
 
         export_model_dir = os.path.join(os.path.dirname(resume_path), "exported")
@@ -235,6 +346,13 @@ def main(env_cfg: ManagerBasedRLEnvCfg | DirectRLEnvCfg | DirectMARLEnvCfg, agen
         dt = env.unwrapped.step_dt
         obs = env.get_observations()
         timestep = 0
+        browser_viewer = None
+        if use_physx_viser:
+            from physx_viser import PhysxViser
+            browser_viewer = PhysxViser(env.unwrapped, host=args_cli.viser_host,
+                                       port=args_cli.viser_port, follow=args_cli.follow_cam,
+                                       selected_env=args_cli.follow_env)
+            browser_viewer.update(obs)
 
         # -- follow camera -------------------------------------------------------
         # Manually drive the viewport camera to chase the robot each step. We do this
@@ -255,7 +373,7 @@ def main(env_cfg: ManagerBasedRLEnvCfg | DirectRLEnvCfg | DirectMARLEnvCfg, agen
         follow_body_id = None
         follow_offset = None
         follow_yaw_state = None  # smoothed heading (radians), lazily initialized on first step
-        if args_cli.follow_cam:
+        if args_cli.follow_cam and not use_physx_viser:
             if not 0.0 <= args_cli.follow_smooth < 1.0:
                 raise ValueError(
                     f"--follow_smooth must be in [0, 1), got {args_cli.follow_smooth}."
@@ -275,8 +393,21 @@ def main(env_cfg: ManagerBasedRLEnvCfg | DirectRLEnvCfg | DirectMARLEnvCfg, agen
                 f"'{body_names_found[0]}' in {mode} mode, eye offset {tuple(follow_offset)}."
             )
 
+        playback_steps = 0
         try:
             while True:
+                if browser_viewer is not None:
+                    with torch.inference_mode():
+                        changed = browser_viewer.process_inputs()
+                    if browser_viewer.reset_observations:
+                        obs = env.get_observations()
+                        policy.reset(torch.ones(env.num_envs, device=env.unwrapped.device, dtype=torch.bool))
+                        browser_viewer.reset_observations = False
+                    if changed or browser_viewer.pause.value:
+                        browser_viewer.update(obs)
+                if browser_viewer is not None and browser_viewer.pause.value:
+                    time.sleep(0.02)
+                    continue
                 start_time = time.time()
                 with torch.inference_mode():
                     actions = policy(obs)
@@ -285,7 +416,12 @@ def main(env_cfg: ManagerBasedRLEnvCfg | DirectRLEnvCfg | DirectMARLEnvCfg, agen
                         policy.reset(dones)
                     elif policy_nn is not None:
                         policy_nn.reset(dones)
-                if args_cli.follow_cam:
+                playback_steps += 1
+                if browser_viewer is not None:
+                    browser_viewer.record_step(dones)
+                if browser_viewer is not None and playback_steps % 2 == 0:
+                    browser_viewer.update(obs)
+                if args_cli.follow_cam and not use_physx_viser:
                     # body_pos_w is a Warp array in this IsaacLab build; .torch gives a view.
                     target = follow_robot.data.body_pos_w.torch[args_cli.follow_env, follow_body_id]
                     target = target.detach().cpu().tolist()
@@ -317,9 +453,15 @@ def main(env_cfg: ManagerBasedRLEnvCfg | DirectRLEnvCfg | DirectMARLEnvCfg, agen
                 sleep_time = dt - (time.time() - start_time)
                 if args_cli.real_time and sleep_time > 0:
                     time.sleep(sleep_time)
-            env.close()
+                if args_cli.max_steps and playback_steps >= args_cli.max_steps:
+                    print(f"[INFO] Playback completed {playback_steps} steps.", flush=True)
+                    break
         except KeyboardInterrupt:
             pass
+        finally:
+            if browser_viewer is not None:
+                browser_viewer.close()
+            env.close()
 
 
 if __name__ == "__main__":

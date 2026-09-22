@@ -1,0 +1,183 @@
+{
+  "scope": "Frozen deterministic matched first episodes; stairs 17 steps, 20 cm, 60 s; slow cases 0.3 m/s; boxes difficulty 3 and rough difficulty 5 at 0.6 m/s for 30 s; reverse/turn 8 s. No policy updates.",
+  "results": [
+    {
+      "checkpoint": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_20-26-52_reverse_height_v11/model_55000.pt",
+      "case": "boxes",
+      "speed_cap": 0.6,
+      "difficulty": 3,
+      "trials": 8,
+      "crossed": 0,
+      "failed": 1,
+      "mean_vx": 0.2794893980026245,
+      "mean_yaw_rate": 0.08051931113004684,
+      "mean_drift_m": 1.8058315515518188,
+      "episodes": [
+        {
+          "failed": false,
+          "crossed": false,
+          "arrivals": 3.0,
+          "duration_s": 30.0,
+          "final_xy": [
+            -6.002631187438965,
+            -3.954336166381836
+          ],
+          "env": 0,
+          "mean_vx": 0.34771183133125305,
+          "mean_vy": 0.001045350101776421,
+          "mean_yaw_rate": 0.07969661056995392,
+          "mean_drift_m": 2.157620429992676,
+          "measurement_steps": 1450
+        },
+        {
+          "failed": false,
+          "crossed": false,
+          "arrivals": 3.0,
+          "duration_s": 30.0,
+          "final_xy": [
+            -9.545001983642578,
+            -9.833501815795898
+          ],
+          "env": 1,
+          "mean_vx": 0.25407853722572327,
+          "mean_vy": -0.017464030534029007,
+          "mean_yaw_rate": 0.1512392908334732,
+          "mean_drift_m": 2.4625062942504883,
+          "measurement_steps": 1450
+        },
+        {
+          "failed": false,
+          "crossed": false,
+          "arrivals": 3.0,
+          "duration_s": 30.0,
+          "final_xy": [
+            -8.168153762817383,
+            -10.573466300964355
+          ],
+          "env": 2,
+          "mean_vx": 0.30377331376075745,
+          "mean_vy": 0.002046622335910797,
+          "mean_yaw_rate": 0.11055725812911987,
+          "mean_drift_m": 2.103564739227295,
+          "measurement_steps": 1450
+        },
+        {
+          "failed": false,
+          "crossed": false,
+          "arrivals": 3.0,
+          "duration_s": 30.0,
+          "final_xy": [
+            -7.237183570861816,
+            -8.09557056427002
+          ],
+          "env": 3,
+          "mean_vx": 0.18290607631206512,
+          "mean_vy": -0.004329092800617218,
+          "mean_yaw_rate": -0.15787920355796814,
+          "mean_drift_m": 1.4843982458114624,
+          "measurement_steps": 1450
+        },
+        {
+          "failed": true,
+          "crossed": false,
+          "arrivals": 1.0,
+          "duration_s": 17.6,
+          "final_xy": [
+            -4.033320903778076,
+            -5.830686092376709
+          ],
+          "env": 4,
+          "mean_vx": 0.1919204741716385,
+          "mean_vy": 0.013700868003070354,
+          "mean_yaw_rate": 0.12011851370334625,
+          "mean_drift_m": 1.1718717813491821,
+          "measurement_steps": 830
+        },
+        {
+          "failed": false,
+          "crossed": false,
+          "arrivals": 2.0,
+          "duration_s": 30.0,
+          "final_xy": [
+            -7.193149089813232,
+            -6.565685749053955
+          ],
+          "env": 5,
+          "mean_vx": 0.12070836871862411,
+          "mean_vy": -0.0015344807179644704,
+          "mean_yaw_rate": -0.03539413586258888,
+          "mean_drift_m": 1.1629221439361572,
+          "measurement_steps": 1450
+        },
+        {
+          "failed": false,
+          "crossed": false,
+          "arrivals": 2.0,
+          "duration_s": 30.0,
+          "final_xy": [
+            -7.786564350128174,
+            -6.375217914581299
+          ],
+          "env": 6,
+          "mean_vx": 0.5471956729888916,
+          "mean_vy": -0.048624437302351,
+          "mean_yaw_rate": 0.2475430816411972,
+          "mean_drift_m": 2.049610137939453,
+          "measurement_steps": 1450
+        },
+        {
+          "failed": false,
+          "crossed": false,
+          "arrivals": 3.0,
+          "duration_s": 30.0,
+          "final_xy": [
+            -7.292512893676758,
+            -6.450117588043213
+          ],
+          "env": 7,
+          "mean_vx": 0.2876208424568176,
+          "mean_vy": -0.0010589275043457747,
+          "mean_yaw_rate": 0.12827306985855103,
+          "mean_drift_m": 1.854158639907837,
+          "measurement_steps": 1450
+        }
+      ],
+      "starts": [
+        [
+          -6.990398406982422,
+          -6.964303016662598
+        ],
+        [
+          -6.999795436859131,
+          -7.004487037658691
+        ],
+        [
+          -6.9322614669799805,
+          -6.977954864501953
+        ],
+        [
+          -6.925538539886475,
+          -6.950362205505371
+        ],
+        [
+          -6.982350826263428,
+          -6.913212299346924
+        ],
+        [
+          -6.900294303894043,
+          -6.909286022186279
+        ],
+        [
+          -7.050597667694092,
+          -6.994000434875488
+        ],
+        [
+          -7.044414043426514,
+          -7.021565914154053
+        ]
+      ]
+    }
+  ],
+  "seed": 42,
+  "stair_speed": 0.65
+}

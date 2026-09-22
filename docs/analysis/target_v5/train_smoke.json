@@ -1,0 +1,15 @@
+{
+  "task": "LeggedLab-Isaac-AMP-Depth-Target-G1-v1",
+  "num_envs": 1024,
+  "iterations": 3,
+  "exit_code": 0,
+  "run": "/home/ljc/legged_lab_v3/logs/rsl_rl/g1_amp_depth_target_v5_smoke/2026-09-12_12-12-09_target_v5_smoke",
+  "checkpoint": "/home/ljc/legged_lab_v3/logs/rsl_rl/g1_amp_depth_target_v5_smoke/2026-09-12_12-12-09_target_v5_smoke/model_2.pt",
+  "finite_checkpoint_tensors": 132,
+  "action_std_updated": true,
+  "action_std_min": 0.49978601932525635,
+  "action_std_max": 0.5014541149139404,
+  "depth_encoder_updated": true,
+  "formal_training_started": false,
+  "scope": "Short optimizer and checkpoint validation; not a gait-quality or convergence result."
+}

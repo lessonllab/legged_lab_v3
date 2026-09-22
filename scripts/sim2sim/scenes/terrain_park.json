@@ -1,0 +1,136 @@
+{
+  "lane_center_spacing": 10,
+  "lane_clear_gap": 7,
+  "lanes": [
+    {
+      "name": "8 cm stairs",
+      "spawn": [
+        0,
+        -20.0,
+        0.8
+      ],
+      "target": [
+        6.8,
+        -20.0
+      ],
+      "height": 0.08,
+      "tread": 0.3
+    },
+    {
+      "name": "12 cm stairs",
+      "spawn": [
+        0,
+        -10.0,
+        0.8
+      ],
+      "target": [
+        6.8,
+        -10.0
+      ],
+      "height": 0.12,
+      "tread": 0.3
+    },
+    {
+      "name": "16 cm stairs",
+      "spawn": [
+        0,
+        0.0,
+        0.8
+      ],
+      "target": [
+        6.8,
+        0.0
+      ],
+      "height": 0.16,
+      "tread": 0.3
+    },
+    {
+      "name": "20 cm stairs",
+      "spawn": [
+        0,
+        10.0,
+        0.8
+      ],
+      "target": [
+        6.8,
+        10.0
+      ],
+      "height": 0.2,
+      "tread": 0.3
+    },
+    {
+      "name": "23 cm stairs",
+      "spawn": [
+        0,
+        20.0,
+        0.8
+      ],
+      "target": [
+        6.8,
+        20.0
+      ],
+      "height": 0.23,
+      "tread": 0.3
+    },
+    {
+      "name": "8 degree hill",
+      "spawn": [
+        16,
+        -20,
+        0.8
+      ],
+      "target": [
+        30,
+        -20
+      ]
+    },
+    {
+      "name": "15 degree hill",
+      "spawn": [
+        16,
+        -10,
+        0.8
+      ],
+      "target": [
+        30,
+        -10
+      ]
+    },
+    {
+      "name": "uneven ground 1.5-6.5 cm",
+      "spawn": [
+        16,
+        0,
+        0.8
+      ],
+      "target": [
+        27,
+        0
+      ]
+    },
+    {
+      "name": "4 cm low hurdles",
+      "spawn": [
+        16,
+        10,
+        0.8
+      ],
+      "target": [
+        26,
+        10
+      ]
+    },
+    {
+      "name": "8 cm stepping blocks",
+      "spawn": [
+        16,
+        20,
+        0.8
+      ],
+      "target": [
+        26,
+        20
+      ]
+    }
+  ]
+}

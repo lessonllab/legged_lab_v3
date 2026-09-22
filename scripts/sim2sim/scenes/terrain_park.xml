@@ -1,0 +1,174 @@
+<mujoco model="G1 separated terrain park">
+  <include file="../../../hiking-in-the-wild-sim2sim/unitree_mujoco/unitree_robots/g1/g1_29dof_with_camera.xml" />
+  <statistic center="0 0 0.1" extent="0.8" />
+  <visual>
+    <headlight diffuse="0.6 0.6 0.6" ambient="0.3 0.3 0.3" specular="0 0 0" />
+    <rgba haze="0.15 0.25 0.35 1" />
+    <global azimuth="-130" elevation="-20" />
+  </visual>
+  <asset>
+    <texture type="skybox" builtin="gradient" rgb1="0.3 0.5 0.7" rgb2="0 0 0" width="512" height="3072" />
+    <texture type="2d" name="groundplane" builtin="checker" mark="edge" rgb1="0.2 0.3 0.4" rgb2="0.1 0.2 0.3" markrgb="0.8 0.8 0.8" width="300" height="300" />
+    <material name="groundplane" texture="groundplane" texuniform="true" texrepeat="5 5" reflectance="0.2" />
+  </asset>
+  <worldbody>
+    <light pos="0 0 1.5" dir="0 0 -1" directional="true" />
+    <geom name="park_floor" type="plane" size="60 50 .1" material="groundplane" />
+    <geom name="stairs_8_up_0" type="box" pos="4.15 -20.0 0.04" size="0.15 1.5 0.04" rgba=".3 .7 .5 1" />
+    <geom name="stairs_8_up_1" type="box" pos="4.45 -20.0 0.08" size="0.15 1.5 0.08" rgba=".3 .7 .5 1" />
+    <geom name="stairs_8_up_2" type="box" pos="4.75 -20.0 0.12" size="0.15 1.5 0.12" rgba=".3 .7 .5 1" />
+    <geom name="stairs_8_up_3" type="box" pos="5.05 -20.0 0.16" size="0.15 1.5 0.16" rgba=".3 .7 .5 1" />
+    <geom name="stairs_8_up_4" type="box" pos="5.35 -20.0 0.2" size="0.15 1.5 0.2" rgba=".3 .7 .5 1" />
+    <geom name="stairs_8_up_5" type="box" pos="5.65 -20.0 0.24" size="0.15 1.5 0.24" rgba=".3 .7 .5 1" />
+    <geom name="stairs_8_platform" type="box" pos="6.8 -20.0 0.24" size="1.0 1.5 0.24" rgba=".3 .7 .5 1" />
+    <geom name="stairs_8_down_0" type="box" pos="7.95 -20.0 0.24" size="0.15 1.5 0.24" rgba=".3 .7 .5 1" />
+    <geom name="stairs_8_down_1" type="box" pos="8.25 -20.0 0.2" size="0.15 1.5 0.2" rgba=".3 .7 .5 1" />
+    <geom name="stairs_8_down_2" type="box" pos="8.55 -20.0 0.16" size="0.15 1.5 0.16" rgba=".3 .7 .5 1" />
+    <geom name="stairs_8_down_3" type="box" pos="8.85 -20.0 0.12" size="0.15 1.5 0.12" rgba=".3 .7 .5 1" />
+    <geom name="stairs_8_down_4" type="box" pos="9.15 -20.0 0.08" size="0.15 1.5 0.08" rgba=".3 .7 .5 1" />
+    <geom name="stairs_8_down_5" type="box" pos="9.45 -20.0 0.04" size="0.15 1.5 0.04" rgba=".3 .7 .5 1" />
+    <geom name="stairs_12_up_0" type="box" pos="4.15 -10.0 0.06" size="0.15 1.5 0.06" rgba=".3 .6 .8 1" />
+    <geom name="stairs_12_up_1" type="box" pos="4.45 -10.0 0.12" size="0.15 1.5 0.12" rgba=".3 .6 .8 1" />
+    <geom name="stairs_12_up_2" type="box" pos="4.75 -10.0 0.18" size="0.15 1.5 0.18" rgba=".3 .6 .8 1" />
+    <geom name="stairs_12_up_3" type="box" pos="5.05 -10.0 0.24" size="0.15 1.5 0.24" rgba=".3 .6 .8 1" />
+    <geom name="stairs_12_up_4" type="box" pos="5.35 -10.0 0.3" size="0.15 1.5 0.3" rgba=".3 .6 .8 1" />
+    <geom name="stairs_12_up_5" type="box" pos="5.65 -10.0 0.36" size="0.15 1.5 0.36" rgba=".3 .6 .8 1" />
+    <geom name="stairs_12_platform" type="box" pos="6.8 -10.0 0.36" size="1.0 1.5 0.36" rgba=".3 .6 .8 1" />
+    <geom name="stairs_12_down_0" type="box" pos="7.95 -10.0 0.36" size="0.15 1.5 0.36" rgba=".3 .6 .8 1" />
+    <geom name="stairs_12_down_1" type="box" pos="8.25 -10.0 0.3" size="0.15 1.5 0.3" rgba=".3 .6 .8 1" />
+    <geom name="stairs_12_down_2" type="box" pos="8.55 -10.0 0.24" size="0.15 1.5 0.24" rgba=".3 .6 .8 1" />
+    <geom name="stairs_12_down_3" type="box" pos="8.85 -10.0 0.18" size="0.15 1.5 0.18" rgba=".3 .6 .8 1" />
+    <geom name="stairs_12_down_4" type="box" pos="9.15 -10.0 0.12" size="0.15 1.5 0.12" rgba=".3 .6 .8 1" />
+    <geom name="stairs_12_down_5" type="box" pos="9.45 -10.0 0.06" size="0.15 1.5 0.06" rgba=".3 .6 .8 1" />
+    <geom name="stairs_16_up_0" type="box" pos="4.15 0.0 0.08" size="0.15 1.5 0.08" rgba=".7 .6 .3 1" />
+    <geom name="stairs_16_up_1" type="box" pos="4.45 0.0 0.16" size="0.15 1.5 0.16" rgba=".7 .6 .3 1" />
+    <geom name="stairs_16_up_2" type="box" pos="4.75 0.0 0.24" size="0.15 1.5 0.24" rgba=".7 .6 .3 1" />
+    <geom name="stairs_16_up_3" type="box" pos="5.05 0.0 0.32" size="0.15 1.5 0.32" rgba=".7 .6 .3 1" />
+    <geom name="stairs_16_up_4" type="box" pos="5.35 0.0 0.4" size="0.15 1.5 0.4" rgba=".7 .6 .3 1" />
+    <geom name="stairs_16_up_5" type="box" pos="5.65 0.0 0.48" size="0.15 1.5 0.48" rgba=".7 .6 .3 1" />
+    <geom name="stairs_16_platform" type="box" pos="6.8 0.0 0.48" size="1.0 1.5 0.48" rgba=".7 .6 .3 1" />
+    <geom name="stairs_16_down_0" type="box" pos="7.95 0.0 0.48" size="0.15 1.5 0.48" rgba=".7 .6 .3 1" />
+    <geom name="stairs_16_down_1" type="box" pos="8.25 0.0 0.4" size="0.15 1.5 0.4" rgba=".7 .6 .3 1" />
+    <geom name="stairs_16_down_2" type="box" pos="8.55 0.0 0.32" size="0.15 1.5 0.32" rgba=".7 .6 .3 1" />
+    <geom name="stairs_16_down_3" type="box" pos="8.85 0.0 0.24" size="0.15 1.5 0.24" rgba=".7 .6 .3 1" />
+    <geom name="stairs_16_down_4" type="box" pos="9.15 0.0 0.16" size="0.15 1.5 0.16" rgba=".7 .6 .3 1" />
+    <geom name="stairs_16_down_5" type="box" pos="9.45 0.0 0.08" size="0.15 1.5 0.08" rgba=".7 .6 .3 1" />
+    <geom name="stairs_20_up_0" type="box" pos="4.15 10.0 0.1" size="0.15 1.5 0.1" rgba=".85 .4 .25 1" />
+    <geom name="stairs_20_up_1" type="box" pos="4.45 10.0 0.2" size="0.15 1.5 0.2" rgba=".85 .4 .25 1" />
+    <geom name="stairs_20_up_2" type="box" pos="4.75 10.0 0.30000000000000004" size="0.15 1.5 0.30000000000000004" rgba=".85 .4 .25 1" />
+    <geom name="stairs_20_up_3" type="box" pos="5.05 10.0 0.4" size="0.15 1.5 0.4" rgba=".85 .4 .25 1" />
+    <geom name="stairs_20_up_4" type="box" pos="5.35 10.0 0.5" size="0.15 1.5 0.5" rgba=".85 .4 .25 1" />
+    <geom name="stairs_20_up_5" type="box" pos="5.65 10.0 0.6000000000000001" size="0.15 1.5 0.6000000000000001" rgba=".85 .4 .25 1" />
+    <geom name="stairs_20_platform" type="box" pos="6.8 10.0 0.6000000000000001" size="1.0 1.5 0.6000000000000001" rgba=".85 .4 .25 1" />
+    <geom name="stairs_20_down_0" type="box" pos="7.95 10.0 0.6000000000000001" size="0.15 1.5 0.6000000000000001" rgba=".85 .4 .25 1" />
+    <geom name="stairs_20_down_1" type="box" pos="8.25 10.0 0.5" size="0.15 1.5 0.5" rgba=".85 .4 .25 1" />
+    <geom name="stairs_20_down_2" type="box" pos="8.55 10.0 0.4" size="0.15 1.5 0.4" rgba=".85 .4 .25 1" />
+    <geom name="stairs_20_down_3" type="box" pos="8.85 10.0 0.30000000000000004" size="0.15 1.5 0.30000000000000004" rgba=".85 .4 .25 1" />
+    <geom name="stairs_20_down_4" type="box" pos="9.15 10.0 0.2" size="0.15 1.5 0.2" rgba=".85 .4 .25 1" />
+    <geom name="stairs_20_down_5" type="box" pos="9.45 10.0 0.1" size="0.15 1.5 0.1" rgba=".85 .4 .25 1" />
+    <geom name="stairs_23_up_0" type="box" pos="4.15 20.0 0.115" size="0.15 1.5 0.115" rgba=".7 .3 .55 1" />
+    <geom name="stairs_23_up_1" type="box" pos="4.45 20.0 0.23" size="0.15 1.5 0.23" rgba=".7 .3 .55 1" />
+    <geom name="stairs_23_up_2" type="box" pos="4.75 20.0 0.34500000000000003" size="0.15 1.5 0.34500000000000003" rgba=".7 .3 .55 1" />
+    <geom name="stairs_23_up_3" type="box" pos="5.05 20.0 0.46" size="0.15 1.5 0.46" rgba=".7 .3 .55 1" />
+    <geom name="stairs_23_up_4" type="box" pos="5.35 20.0 0.5750000000000001" size="0.15 1.5 0.5750000000000001" rgba=".7 .3 .55 1" />
+    <geom name="stairs_23_up_5" type="box" pos="5.65 20.0 0.6900000000000001" size="0.15 1.5 0.6900000000000001" rgba=".7 .3 .55 1" />
+    <geom name="stairs_23_platform" type="box" pos="6.8 20.0 0.6900000000000001" size="1.0 1.5 0.6900000000000001" rgba=".7 .3 .55 1" />
+    <geom name="stairs_23_down_0" type="box" pos="7.95 20.0 0.6900000000000001" size="0.15 1.5 0.6900000000000001" rgba=".7 .3 .55 1" />
+    <geom name="stairs_23_down_1" type="box" pos="8.25 20.0 0.5750000000000001" size="0.15 1.5 0.5750000000000001" rgba=".7 .3 .55 1" />
+    <geom name="stairs_23_down_2" type="box" pos="8.55 20.0 0.46" size="0.15 1.5 0.46" rgba=".7 .3 .55 1" />
+    <geom name="stairs_23_down_3" type="box" pos="8.85 20.0 0.34500000000000003" size="0.15 1.5 0.34500000000000003" rgba=".7 .3 .55 1" />
+    <geom name="stairs_23_down_4" type="box" pos="9.15 20.0 0.23" size="0.15 1.5 0.23" rgba=".7 .3 .55 1" />
+    <geom name="stairs_23_down_5" type="box" pos="9.45 20.0 0.115" size="0.15 1.5 0.115" rgba=".7 .3 .55 1" />
+    <geom name="slope_8_-1" type="box" pos="22.02087596514401 -20 0.13254145909354736" size="2.019655145037236 1.5 0.15" rgba=".55 .65 .35 1" quat="0.9975640502598242 0 -0.0697564737441253 0" />
+    <geom name="slope_8_1" type="box" pos="25.97912403485599 -20 0.13254145909354736" size="2.019655145037236 1.5 0.15" rgba=".55 .65 .35 1" quat="0.9975640502598242 0 0.0697564737441253 0" />
+    <geom name="slope_15_-1" type="box" pos="22.03882285676538 -10 0.39100951091888514" size="2.070552360820166 1.5 0.15" rgba=".55 .65 .35 1" quat="0.9914448613738104 0 -0.13052619222005157 0" />
+    <geom name="slope_15_1" type="box" pos="25.96117714323462 -10 0.39100951091888514" size="2.070552360820166 1.5 0.15" rgba=".55 .65 .35 1" quat="0.9914448613738104 0 0.13052619222005157 0" />
+    <geom name="rough_0_0" type="box" pos="20.2 -1.25 0.026848901213899084" size="0.2 0.25 0.026848901213899084" rgba=".6 .52 .42 1" />
+    <geom name="rough_0_1" type="box" pos="20.2 -0.75 0.018471960993801308" size="0.2 0.25 0.018471960993801308" rgba=".6 .52 .42 1" />
+    <geom name="rough_0_2" type="box" pos="20.2 -0.25 0.02896494799778456" size="0.2 0.25 0.02896494799778456" rgba=".6 .52 .42 1" />
+    <geom name="rough_0_3" type="box" pos="20.2 0.25 0.0249342007264841" size="0.2 0.25 0.0249342007264841" rgba=".6 .52 .42 1" />
+    <geom name="rough_0_4" type="box" pos="20.2 0.75 0.009854433697191238" size="0.2 0.25 0.009854433697191238" rgba=".6 .52 .42 1" />
+    <geom name="rough_0_5" type="box" pos="20.2 1.25 0.0318905587909189" size="0.2 0.25 0.0318905587909189" rgba=".6 .52 .42 1" />
+    <geom name="rough_1_0" type="box" pos="20.6 -1.25 0.026528492549758826" size="0.2 0.25 0.026528492549758826" rgba=".6 .52 .42 1" />
+    <geom name="rough_1_1" type="box" pos="20.6 -0.75 0.027151607631923848" size="0.2 0.25 0.027151607631923848" rgba=".6 .52 .42 1" />
+    <geom name="rough_1_2" type="box" pos="20.6 -0.25 0.010702840816888647" size="0.2 0.25 0.010702840816888647" rgba=".6 .52 .42 1" />
+    <geom name="rough_1_3" type="box" pos="20.6 0.25 0.018759648447389178" size="0.2 0.25 0.018759648447389178" rgba=".6 .52 .42 1" />
+    <geom name="rough_1_4" type="box" pos="20.6 0.75 0.01676995060581453" size="0.2 0.25 0.01676995060581453" rgba=".6 .52 .42 1" />
+    <geom name="rough_1_5" type="box" pos="20.6 1.25 0.030669124721215045" size="0.2 0.25 0.030669124721215045" rgba=".6 .52 .42 1" />
+    <geom name="rough_2_0" type="box" pos="21.0 -1.25 0.023596628002016614" size="0.2 0.25 0.023596628002016614" rgba=".6 .52 .42 1" />
+    <geom name="rough_2_1" type="box" pos="21.0 -0.75 0.02806904033177075" size="0.2 0.25 0.02806904033177075" rgba=".6 .52 .42 1" />
+    <geom name="rough_2_2" type="box" pos="21.0 -0.25 0.01858535497068328" size="0.2 0.25 0.01858535497068328" rgba=".6 .52 .42 1" />
+    <geom name="rough_2_3" type="box" pos="21.0 0.25 0.013180968044619422" size="0.2 0.25 0.013180968044619422" rgba=".6 .52 .42 1" />
+    <geom name="rough_2_4" type="box" pos="21.0 0.75 0.021364619675395873" size="0.2 0.25 0.021364619675395873" rgba=".6 .52 .42 1" />
+    <geom name="rough_2_5" type="box" pos="21.0 1.25 0.009095431402604383" size="0.2 0.25 0.009095431402604383" rgba=".6 .52 .42 1" />
+    <geom name="rough_3_0" type="box" pos="21.4 -1.25 0.028190779299814554" size="0.2 0.25 0.028190779299814554" rgba=".6 .52 .42 1" />
+    <geom name="rough_3_1" type="box" pos="21.4 -0.75 0.02329160997805162" size="0.2 0.25 0.02329160997805162" rgba=".6 .52 .42 1" />
+    <geom name="rough_3_2" type="box" pos="21.4 -0.25 0.026452193502134347" size="0.2 0.25 0.026452193502134347" rgba=".6 .52 .42 1" />
+    <geom name="rough_3_3" type="box" pos="21.4 0.25 0.01636314920324671" size="0.2 0.25 0.01636314920324671" rgba=".6 .52 .42 1" />
+    <geom name="rough_3_4" type="box" pos="21.4 0.75 0.031767450609872586" size="0.2 0.25 0.031767450609872586" rgba=".6 .52 .42 1" />
+    <geom name="rough_3_5" type="box" pos="21.4 1.25 0.029828028033054944" size="0.2 0.25 0.029828028033054944" rgba=".6 .52 .42 1" />
+    <geom name="rough_4_0" type="box" pos="21.8 -1.25 0.026959587426844046" size="0.2 0.25 0.026959587426844046" rgba=".6 .52 .42 1" />
+    <geom name="rough_4_1" type="box" pos="21.8 -0.75 0.01236596769629919" size="0.2 0.25 0.01236596769629919" rgba=".6 .52 .42 1" />
+    <geom name="rough_4_2" type="box" pos="21.8 -0.25 0.019168025093175854" size="0.2 0.25 0.019168025093175854" rgba=".6 .52 .42 1" />
+    <geom name="rough_4_3" type="box" pos="21.8 0.25 0.00859509414468072" size="0.2 0.25 0.00859509414468072" rgba=".6 .52 .42 1" />
+    <geom name="rough_4_4" type="box" pos="21.8 0.75 0.011357237301688696" size="0.2 0.25 0.011357237301688696" rgba=".6 .52 .42 1" />
+    <geom name="rough_4_5" type="box" pos="21.8 1.25 0.024576223831061367" size="0.2 0.25 0.024576223831061367" rgba=".6 .52 .42 1" />
+    <geom name="rough_5_0" type="box" pos="22.2 -1.25 0.026119053897695428" size="0.2 0.25 0.026119053897695428" rgba=".6 .52 .42 1" />
+    <geom name="rough_5_1" type="box" pos="22.2 -0.75 0.03168774331085525" size="0.2 0.25 0.03168774331085525" rgba=".6 .52 .42 1" />
+    <geom name="rough_5_2" type="box" pos="22.2 -0.25 0.0156456339534538" size="0.2 0.25 0.0156456339534538" rgba=".6 .52 .42 1" />
+    <geom name="rough_5_3" type="box" pos="22.2 0.25 0.01676149265087172" size="0.2 0.25 0.01676149265087172" rgba=".6 .52 .42 1" />
+    <geom name="rough_5_4" type="box" pos="22.2 0.75 0.0192388952818952" size="0.2 0.25 0.0192388952818952" rgba=".6 .52 .42 1" />
+    <geom name="rough_5_5" type="box" pos="22.2 1.25 0.012236783977107143" size="0.2 0.25 0.012236783977107143" rgba=".6 .52 .42 1" />
+    <geom name="rough_6_0" type="box" pos="22.6 -1.25 0.010748037633386791" size="0.2 0.25 0.010748037633386791" rgba=".6 .52 .42 1" />
+    <geom name="rough_6_1" type="box" pos="22.6 -0.75 0.019392623155648346" size="0.2 0.25 0.019392623155648346" rgba=".6 .52 .42 1" />
+    <geom name="rough_6_2" type="box" pos="22.6 -0.25 0.013172733726272104" size="0.2 0.25 0.013172733726272104" rgba=".6 .52 .42 1" />
+    <geom name="rough_6_3" type="box" pos="22.6 0.25 0.024245349867062758" size="0.2 0.25 0.024245349867062758" rgba=".6 .52 .42 1" />
+    <geom name="rough_6_4" type="box" pos="22.6 0.75 0.01842879797180827" size="0.2 0.25 0.01842879797180827" rgba=".6 .52 .42 1" />
+    <geom name="rough_6_5" type="box" pos="22.6 1.25 0.028316954901445937" size="0.2 0.25 0.028316954901445937" rgba=".6 .52 .42 1" />
+    <geom name="rough_7_0" type="box" pos="23.0 -1.25 0.02500662755005623" size="0.2 0.25 0.02500662755005623" rgba=".6 .52 .42 1" />
+    <geom name="rough_7_1" type="box" pos="23.0 -0.75 0.015309166034551028" size="0.2 0.25 0.015309166034551028" rgba=".6 .52 .42 1" />
+    <geom name="rough_7_2" type="box" pos="23.0 -0.25 0.028306495034880027" size="0.2 0.25 0.028306495034880027" rgba=".6 .52 .42 1" />
+    <geom name="rough_7_3" type="box" pos="23.0 0.25 0.027619108937420048" size="0.2 0.25 0.027619108937420048" rgba=".6 .52 .42 1" />
+    <geom name="rough_7_4" type="box" pos="23.0 0.75 0.01718695947575436" size="0.2 0.25 0.01718695947575436" rgba=".6 .52 .42 1" />
+    <geom name="rough_7_5" type="box" pos="23.0 1.25 0.014708202598256103" size="0.2 0.25 0.014708202598256103" rgba=".6 .52 .42 1" />
+    <geom name="rough_8_0" type="box" pos="23.4 -1.25 0.02456238759937439" size="0.2 0.25 0.02456238759937439" rgba=".6 .52 .42 1" />
+    <geom name="rough_8_1" type="box" pos="23.4 -0.75 0.010993812090232745" size="0.2 0.25 0.010993812090232745" rgba=".6 .52 .42 1" />
+    <geom name="rough_8_2" type="box" pos="23.4 -0.25 0.012497705061877709" size="0.2 0.25 0.012497705061877709" rgba=".6 .52 .42 1" />
+    <geom name="rough_8_3" type="box" pos="23.4 0.25 0.007684056743775138" size="0.2 0.25 0.007684056743775138" rgba=".6 .52 .42 1" />
+    <geom name="rough_8_4" type="box" pos="23.4 0.75 0.02717310943755346" size="0.2 0.25 0.02717310943755346" rgba=".6 .52 .42 1" />
+    <geom name="rough_8_5" type="box" pos="23.4 1.25 0.024121271414800805" size="0.2 0.25 0.024121271414800805" rgba=".6 .52 .42 1" />
+    <geom name="rough_9_0" type="box" pos="23.8 -1.25 0.025129134465658377" size="0.2 0.25 0.025129134465658377" rgba=".6 .52 .42 1" />
+    <geom name="rough_9_1" type="box" pos="23.8 -0.75 0.027018225775549198" size="0.2 0.25 0.027018225775549198" rgba=".6 .52 .42 1" />
+    <geom name="rough_9_2" type="box" pos="23.8 -0.25 0.0189728943884585" size="0.2 0.25 0.0189728943884585" rgba=".6 .52 .42 1" />
+    <geom name="rough_9_3" type="box" pos="23.8 0.25 0.021718529898822343" size="0.2 0.25 0.021718529898822343" rgba=".6 .52 .42 1" />
+    <geom name="rough_9_4" type="box" pos="23.8 0.75 0.010994924953191435" size="0.2 0.25 0.010994924953191435" rgba=".6 .52 .42 1" />
+    <geom name="rough_9_5" type="box" pos="23.8 1.25 0.010363251838399336" size="0.2 0.25 0.010363251838399336" rgba=".6 .52 .42 1" />
+    <geom name="rough_10_0" type="box" pos="24.2 -1.25 0.024210074044761793" size="0.2 0.25 0.024210074044761793" rgba=".6 .52 .42 1" />
+    <geom name="rough_10_1" type="box" pos="24.2 -0.75 0.019277405153578314" size="0.2 0.25 0.019277405153578314" rgba=".6 .52 .42 1" />
+    <geom name="rough_10_2" type="box" pos="24.2 -0.25 0.021630902662029723" size="0.2 0.25 0.021630902662029723" rgba=".6 .52 .42 1" />
+    <geom name="rough_10_3" type="box" pos="24.2 0.25 0.02662497143540064" size="0.2 0.25 0.02662497143540064" rgba=".6 .52 .42 1" />
+    <geom name="rough_10_4" type="box" pos="24.2 0.75 0.02336795800001477" size="0.2 0.25 0.02336795800001477" rgba=".6 .52 .42 1" />
+    <geom name="rough_10_5" type="box" pos="24.2 1.25 0.021339485016449895" size="0.2 0.25 0.021339485016449895" rgba=".6 .52 .42 1" />
+    <geom name="rough_11_0" type="box" pos="24.6 -1.25 0.02148017901863534" size="0.2 0.25 0.02148017901863534" rgba=".6 .52 .42 1" />
+    <geom name="rough_11_1" type="box" pos="24.6 -0.75 0.015098752451565306" size="0.2 0.25 0.015098752451565306" rgba=".6 .52 .42 1" />
+    <geom name="rough_11_2" type="box" pos="24.6 -0.25 0.008270445864198485" size="0.2 0.25 0.008270445864198485" rgba=".6 .52 .42 1" />
+    <geom name="rough_11_3" type="box" pos="24.6 0.25 0.01841793473080906" size="0.2 0.25 0.01841793473080906" rgba=".6 .52 .42 1" />
+    <geom name="rough_11_4" type="box" pos="24.6 0.75 0.01286461682048823" size="0.2 0.25 0.01286461682048823" rgba=".6 .52 .42 1" />
+    <geom name="rough_11_5" type="box" pos="24.6 1.25 0.017713216093115904" size="0.2 0.25 0.017713216093115904" rgba=".6 .52 .42 1" />
+    <geom name="low_hurdle_0" type="box" pos="20.0 10 0.02" size="0.075 1.5 0.02" rgba=".7 .6 .25 1" />
+    <geom name="low_hurdle_1" type="box" pos="20.65 10 0.02" size="0.075 1.5 0.02" rgba=".7 .6 .25 1" />
+    <geom name="low_hurdle_2" type="box" pos="21.3 10 0.02" size="0.075 1.5 0.02" rgba=".7 .6 .25 1" />
+    <geom name="low_hurdle_3" type="box" pos="21.95 10 0.02" size="0.075 1.5 0.02" rgba=".7 .6 .25 1" />
+    <geom name="low_hurdle_4" type="box" pos="22.6 10 0.02" size="0.075 1.5 0.02" rgba=".7 .6 .25 1" />
+    <geom name="low_hurdle_5" type="box" pos="23.25 10 0.02" size="0.075 1.5 0.02" rgba=".7 .6 .25 1" />
+    <geom name="low_hurdle_6" type="box" pos="23.9 10 0.02" size="0.075 1.5 0.02" rgba=".7 .6 .25 1" />
+    <geom name="stone_0" type="box" pos="20.0 19.82 0.04" size="0.25 0.55 0.04" rgba=".55 .58 .65 1" />
+    <geom name="stone_1" type="box" pos="20.65 20.18 0.04" size="0.25 0.55 0.04" rgba=".55 .58 .65 1" />
+    <geom name="stone_2" type="box" pos="21.3 19.82 0.04" size="0.25 0.55 0.04" rgba=".55 .58 .65 1" />
+    <geom name="stone_3" type="box" pos="21.95 20.18 0.04" size="0.25 0.55 0.04" rgba=".55 .58 .65 1" />
+    <geom name="stone_4" type="box" pos="22.6 19.82 0.04" size="0.25 0.55 0.04" rgba=".55 .58 .65 1" />
+    <geom name="stone_5" type="box" pos="23.25 20.18 0.04" size="0.25 0.55 0.04" rgba=".55 .58 .65 1" />
+    <geom name="stone_6" type="box" pos="23.9 19.82 0.04" size="0.25 0.55 0.04" rgba=".55 .58 .65 1" />
+    <geom name="stone_7" type="box" pos="24.55 20.18 0.04" size="0.25 0.55 0.04" rgba=".55 .58 .65 1" />
+  </worldbody>
+</mujoco>

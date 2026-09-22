@@ -1,0 +1,294 @@
+Warp CUDA error 100: no CUDA-capable device is detected (in function init_cuda_driver, /builds/omniverse/warp/warp/native/cuda_util.cpp:308)
+./home/ljc/isaaclab/lib/python3.12/site-packages/torch/jit/_script.py:1480: DeprecationWarning: `torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+..........................AMP Discriminator trunk: Sequential(
+  (0): Linear(in_features=6, out_features=8, bias=True)
+  (1): ReLU()
+)
+AMP Discriminator linear: Linear(in_features=8, out_features=1, bias=True)
+AMP Discriminator trunk: Sequential(
+  (0): Linear(in_features=6, out_features=8, bias=True)
+  (1): ReLU()
+)
+AMP Discriminator linear: Linear(in_features=8, out_features=1, bias=True)
+AMP Discriminator trunk: Sequential(
+  (0): Linear(in_features=6, out_features=8, bias=True)
+  (1): ReLU()
+)
+AMP Discriminator linear: Linear(in_features=8, out_features=1, bias=True)
+AMP Discriminator trunk: Sequential(
+  (0): Linear(in_features=6, out_features=8, bias=True)
+  (1): ReLU()
+)
+AMP Discriminator linear: Linear(in_features=8, out_features=1, bias=True)
+AMP Discriminator trunk: Sequential(
+  (0): Linear(in_features=6, out_features=8, bias=True)
+  (1): ReLU()
+)
+AMP Discriminator linear: Linear(in_features=8, out_features=1, bias=True)
+AMP Discriminator trunk: Sequential(
+  (0): Linear(in_features=6, out_features=8, bias=True)
+  (1): ReLU()
+)
+AMP Discriminator linear: Linear(in_features=8, out_features=1, bias=True)
+--------------------------------------------------------------------------------
+Resolved observation sets: 
+	 actor :  ['policy']
+	 critic :  ['policy']
+	 discriminator :  ['disc']
+	 discriminator_demonstration :  ['disc_demo']
+--------------------------------------------------------------------------------
+[PPOAMP] Actor: MLPModel(
+  (obs_normalizer): Identity()
+  (distribution): GaussianDistribution()
+  (mlp): MLP(
+    (0): Linear(in_features=5, out_features=8, bias=True)
+    (1): ELU(alpha=1.0)
+    (2): Linear(in_features=8, out_features=2, bias=True)
+  )
+)
+[PPOAMP] Critic: MLPModel(
+  (obs_normalizer): Identity()
+  (mlp): MLP(
+    (0): Linear(in_features=5, out_features=8, bias=True)
+    (1): ELU(alpha=1.0)
+    (2): Linear(in_features=8, out_features=1, bias=True)
+  )
+)
+AMP Discriminator trunk: Sequential(
+  (0): Linear(in_features=6, out_features=8, bias=True)
+  (1): ReLU()
+)
+AMP Discriminator linear: Linear(in_features=8, out_features=1, bias=True)
+--------------------------------------------------------------------------------
+Resolved observation sets: 
+	 actor :  ['policy']
+	 critic :  ['policy']
+	 discriminator :  ['disc']
+	 discriminator_demonstration :  ['disc_demo']
+--------------------------------------------------------------------------------
+[PPOAMP] Actor: MLPModel(
+  (obs_normalizer): Identity()
+  (distribution): GaussianDistribution()
+  (mlp): MLP(
+    (0): Linear(in_features=5, out_features=8, bias=True)
+    (1): ELU(alpha=1.0)
+    (2): Linear(in_features=8, out_features=2, bias=True)
+  )
+)
+[PPOAMP] Critic: MLPModel(
+  (obs_normalizer): Identity()
+  (mlp): MLP(
+    (0): Linear(in_features=5, out_features=8, bias=True)
+    (1): ELU(alpha=1.0)
+    (2): Linear(in_features=8, out_features=1, bias=True)
+  )
+)
+AMP Discriminator trunk: Sequential(
+  (0): Linear(in_features=6, out_features=8, bias=True)
+  (1): ReLU()
+)
+AMP Discriminator linear: Linear(in_features=8, out_features=1, bias=True)
+--------------------------------------------------------------------------------
+Resolved observation sets: 
+	 actor :  ['policy']
+	 critic :  ['policy']
+	 discriminator :  ['disc']
+	 discriminator_demonstration :  ['disc_demo']
+--------------------------------------------------------------------------------
+[PPOAMP] Actor: MLPModel(
+  (obs_normalizer): Identity()
+  (distribution): GaussianDistribution()
+  (mlp): MLP(
+    (0): Linear(in_features=5, out_features=8, bias=True)
+    (1): ELU(alpha=1.0)
+    (2): Linear(in_features=8, out_features=2, bias=True)
+  )
+)
+[PPOAMP] Critic: MLPModel(
+  (obs_normalizer): Identity()
+  (mlp): MLP(
+    (0): Linear(in_features=5, out_features=8, bias=True)
+    (1): ELU(alpha=1.0)
+    (2): Linear(in_features=8, out_features=1, bias=True)
+  )
+)
+AMP Discriminator trunk: Sequential(
+  (0): Linear(in_features=6, out_features=8, bias=True)
+  (1): ReLU()
+)
+AMP Discriminator linear: Linear(in_features=8, out_features=1, bias=True)
+[TargetCommand] resample=8-12 s; gains=(2,2); yaw=+-1 rad/s; stop_radius=0.4 m; standing=5%; speed_caps={'pyramid_stairs': (0.45, 0.8), 'pyramid_stairs_inv': (0.45, 0.8), 'boxes': (0.45, 0.8), 'random_rough': (0.45, 1.0), 'hf_pyramid_slope': (0.45, 0.8), 'hf_pyramid_slope_inv': (0.45, 0.8)}
+.[TargetCommand] resample=8-12 s; gains=(2,2); yaw=+-1 rad/s; stop_radius=0.4 m; standing=0%; speed_caps={'pyramid_stairs': (0.45, 0.8), 'pyramid_stairs_inv': (0.45, 0.8), 'boxes': (0.45, 0.8), 'random_rough': (0.45, 1.0), 'hf_pyramid_slope': (0.45, 0.8), 'hf_pyramid_slope_inv': (0.45, 0.8)}
+.[TargetCommand] resample=8-12 s; gains=(2,2); yaw=+-1 rad/s; stop_radius=0.4 m; standing=0%; speed_caps={'pyramid_stairs': (0.45, 0.8), 'pyramid_stairs_inv': (0.45, 0.8), 'boxes': (0.45, 0.8), 'random_rough': (0.45, 1.0), 'hf_pyramid_slope': (0.45, 0.8), 'hf_pyramid_slope_inv': (0.45, 0.8)}
+.[TargetCommand] resample=8-12 s; gains=(2,2); yaw=+-1 rad/s; stop_radius=0.4 m; standing=0%; speed_caps={'pyramid_stairs': (0.45, 0.8), 'pyramid_stairs_inv': (0.45, 0.8), 'boxes': (0.45, 0.8), 'random_rough': (0.45, 1.0), 'hf_pyramid_slope': (0.45, 0.8), 'hf_pyramid_slope_inv': (0.45, 0.8)}
+..[TargetCommand] resample=8-12 s; gains=(2,2); yaw=+-1 rad/s; stop_radius=0.4 m; standing=0%; speed_caps={'pyramid_stairs': (0.45, 0.8), 'pyramid_stairs_inv': (0.45, 0.8), 'boxes': (0.45, 0.8), 'random_rough': (0.45, 1.0), 'hf_pyramid_slope': (0.45, 0.8), 'hf_pyramid_slope_inv': (0.45, 0.8)}
+.[TargetCommand] resample=8-12 s; gains=(2,2); yaw=+-1 rad/s; stop_radius=0.4 m; standing=0%; speed_caps={'pyramid_stairs': (0.45, 0.8), 'pyramid_stairs_inv': (0.45, 0.8), 'boxes': (0.45, 0.8), 'random_rough': (0.45, 1.0), 'hf_pyramid_slope': (0.45, 0.8), 'hf_pyramid_slope_inv': (0.45, 0.8)}
+..[TargetCommand] resample=8-12 s; gains=(2,2); yaw=+-1 rad/s; stop_radius=0.4 m; standing=0%; speed_caps={'pyramid_stairs': (0.45, 0.8), 'pyramid_stairs_inv': (0.45, 0.8), 'boxes': (0.45, 0.8), 'random_rough': (0.45, 1.0), 'hf_pyramid_slope': (0.45, 0.8), 'hf_pyramid_slope_inv': (0.45, 0.8)}
+..................
+----------------------------------------------------------------------
+Ran 53 tests in 0.753s
+
+OK
+--------------------------------------------------------------------------------
+Resolved observation sets: 
+	 actor :  ['policy', 'depth']
+	 critic :  ['critic', 'depth']
+	 discriminator :  ['disc']
+	 discriminator_demonstration :  ['disc_demo']
+--------------------------------------------------------------------------------
+[PPOAMP] Actor: CNNModel(
+  (obs_normalizer): Identity()
+  (distribution): GaussianDistribution()
+  (mlp): MLP(
+    (0): Linear(in_features=559, out_features=256, bias=True)
+    (1): ELU(alpha=1.0)
+    (2): Linear(in_features=256, out_features=128, bias=True)
+    (3): ELU(alpha=1.0)
+    (4): Linear(in_features=128, out_features=29, bias=True)
+  )
+  (cnns): ModuleDict(
+    (depth): CNN(
+      (0): Conv2d(8, 16, kernel_size=(5, 5), stride=(2, 2))
+      (1): ELU(alpha=1.0)
+      (2): Conv2d(16, 32, kernel_size=(3, 3), stride=(2, 2))
+      (3): ELU(alpha=1.0)
+      (4): Conv2d(32, 32, kernel_size=(3, 3), stride=(2, 2))
+      (5): ELU(alpha=1.0)
+      (6): Flatten(start_dim=1, end_dim=-1)
+    )
+  )
+)
+[PPOAMP] Critic: CNNModel(
+  (obs_normalizer): Identity()
+  (mlp): MLP(
+    (0): Linear(in_features=664, out_features=256, bias=True)
+    (1): ELU(alpha=1.0)
+    (2): Linear(in_features=256, out_features=128, bias=True)
+    (3): ELU(alpha=1.0)
+    (4): Linear(in_features=128, out_features=1, bias=True)
+  )
+  (cnns): ModuleDict(
+    (depth): CNN(
+      (0): Conv2d(8, 16, kernel_size=(5, 5), stride=(2, 2))
+      (1): ELU(alpha=1.0)
+      (2): Conv2d(16, 32, kernel_size=(3, 3), stride=(2, 2))
+      (3): ELU(alpha=1.0)
+      (4): Conv2d(32, 32, kernel_size=(3, 3), stride=(2, 2))
+      (5): ELU(alpha=1.0)
+      (6): Flatten(start_dim=1, end_dim=-1)
+    )
+  )
+)
+AMP Discriminator trunk: Sequential(
+  (0): Linear(in_features=670, out_features=1024, bias=True)
+  (1): ELU(alpha=1.0)
+  (2): Linear(in_features=1024, out_features=512, bias=True)
+  (3): ELU(alpha=1.0)
+)
+AMP Discriminator linear: Linear(in_features=512, out_features=1, bias=True)
+--------------------------------------------------------------------------------
+Resolved observation sets: 
+	 actor :  ['policy', 'depth']
+	 critic :  ['critic', 'depth']
+	 discriminator :  ['disc']
+	 discriminator_demonstration :  ['disc_demo']
+--------------------------------------------------------------------------------
+[PPOAMP] Actor: CNNModel(
+  (obs_normalizer): Identity()
+  (distribution): GaussianDistribution()
+  (mlp): MLP(
+    (0): Linear(in_features=559, out_features=256, bias=True)
+    (1): ELU(alpha=1.0)
+    (2): Linear(in_features=256, out_features=128, bias=True)
+    (3): ELU(alpha=1.0)
+    (4): Linear(in_features=128, out_features=29, bias=True)
+  )
+  (cnns): ModuleDict(
+    (depth): CNN(
+      (0): Conv2d(8, 16, kernel_size=(5, 5), stride=(2, 2))
+      (1): ELU(alpha=1.0)
+      (2): Conv2d(16, 32, kernel_size=(3, 3), stride=(2, 2))
+      (3): ELU(alpha=1.0)
+      (4): Conv2d(32, 32, kernel_size=(3, 3), stride=(2, 2))
+      (5): ELU(alpha=1.0)
+      (6): Flatten(start_dim=1, end_dim=-1)
+    )
+  )
+)
+[PPOAMP] Critic: CNNModel(
+  (obs_normalizer): Identity()
+  (mlp): MLP(
+    (0): Linear(in_features=664, out_features=256, bias=True)
+    (1): ELU(alpha=1.0)
+    (2): Linear(in_features=256, out_features=128, bias=True)
+    (3): ELU(alpha=1.0)
+    (4): Linear(in_features=128, out_features=1, bias=True)
+  )
+  (cnns): ModuleDict(
+    (depth): CNN(
+      (0): Conv2d(8, 16, kernel_size=(5, 5), stride=(2, 2))
+      (1): ELU(alpha=1.0)
+      (2): Conv2d(16, 32, kernel_size=(3, 3), stride=(2, 2))
+      (3): ELU(alpha=1.0)
+      (4): Conv2d(32, 32, kernel_size=(3, 3), stride=(2, 2))
+      (5): ELU(alpha=1.0)
+      (6): Flatten(start_dim=1, end_dim=-1)
+    )
+  )
+)
+AMP Discriminator trunk: Sequential(
+  (0): Linear(in_features=670, out_features=1024, bias=True)
+  (1): ELU(alpha=1.0)
+  (2): Linear(in_features=1024, out_features=512, bias=True)
+  (3): ELU(alpha=1.0)
+)
+AMP Discriminator linear: Linear(in_features=512, out_features=1, bias=True)
+--------------------------------------------------------------------------------
+Resolved observation sets: 
+	 actor :  ['policy', 'depth']
+	 critic :  ['critic']
+	 discriminator :  ['disc']
+	 discriminator_demonstration :  ['disc_demo']
+--------------------------------------------------------------------------------
+[PPOAMP] Actor: CNNModel(
+  (obs_normalizer): Identity()
+  (distribution): GaussianDistribution()
+  (mlp): MLP(
+    (0): Linear(in_features=1071, out_features=256, bias=True)
+    (1): ELU(alpha=1.0)
+    (2): Linear(in_features=256, out_features=128, bias=True)
+    (3): ELU(alpha=1.0)
+    (4): Linear(in_features=128, out_features=29, bias=True)
+  )
+  (cnns): ModuleDict(
+    (depth): CNN(
+      (0): Conv2d(8, 16, kernel_size=(5, 5), stride=(2, 2))
+      (1): ELU(alpha=1.0)
+      (2): Conv2d(16, 32, kernel_size=(3, 3), stride=(2, 2))
+      (3): ELU(alpha=1.0)
+      (4): Conv2d(32, 32, kernel_size=(3, 3), stride=(2, 2))
+      (5): ELU(alpha=1.0)
+      (6): Flatten(start_dim=1, end_dim=-1)
+    )
+  )
+)
+[PPOAMP] Critic: MLPModel(
+  (obs_normalizer): Identity()
+  (mlp): MLP(
+    (0): Linear(in_features=787, out_features=512, bias=True)
+    (1): ELU(alpha=1.0)
+    (2): Linear(in_features=512, out_features=256, bias=True)
+    (3): ELU(alpha=1.0)
+    (4): Linear(in_features=256, out_features=128, bias=True)
+    (5): ELU(alpha=1.0)
+    (6): Linear(in_features=128, out_features=1, bias=True)
+  )
+)
+AMP Discriminator trunk: Sequential(
+  (0): Linear(in_features=244, out_features=1024, bias=True)
+  (1): ELU(alpha=1.0)
+  (2): Linear(in_features=1024, out_features=512, bias=True)
+  (3): ELU(alpha=1.0)
+)
+AMP Discriminator linear: Linear(in_features=512, out_features=1, bias=True)

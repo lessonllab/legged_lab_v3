@@ -1,0 +1,747 @@
+{
+  "checkpoint": "/home/ljc/legged_lab_v3/logs/rsl_rl/g1_amp_stairs_long/2026-09-17_09-37-56_foothold_v12/model_57900.pt",
+  "sha256": "25d91efbfd6708058078e69ad05a8d913d6496b34cf5e5664157002ad929d55d",
+  "speed": 0.65,
+  "tread_width": 0.3,
+  "rises": 17,
+  "duration": 30,
+  "yaw_values": [
+    0,
+    -0.03,
+    0.03
+  ],
+  "caveat": "Deterministic initial-pose perturbations, not statistical success rates. Exported training scenes include height-dependent neighbor tiles; this is not a height-only causal ablation. All tests ascend, not descend. Separate terrain park has six rises and different surroundings.",
+  "results": [
+    {
+      "checkpoint": "/home/ljc/legged_lab_v3/logs/rsl_rl/g1_amp_stairs_long/2026-09-17_09-37-56_foothold_v12/model_57900.pt",
+      "scene": "/home/ljc/legged_lab_v3/.runtime/sim2sim/height_57900/stairs_8cm.xml",
+      "control": "target",
+      "target": [
+        6.7,
+        0.0
+      ],
+      "speed_cap": 0.65,
+      "final_command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sim_seconds": 29.999999999998316,
+      "wall_seconds": 9.78202985599637,
+      "fell": false,
+      "min_base_height": 0.7317512650079185,
+      "final_position": [
+        6.5932121358432365,
+        0.0264431866929902,
+        2.1431316131568092
+      ],
+      "displacement": [
+        6.5932121358432365,
+        0.0264431866929902,
+        1.3431316131568092
+      ],
+      "policy_shape": [
+        1,
+        495
+      ],
+      "depth_shape": [
+        1,
+        8,
+        18,
+        32
+      ],
+      "target_distance": 0.11001313582315406,
+      "target_reached": true,
+      "step_height": 0.08,
+      "yaw": 0.0
+    },
+    {
+      "checkpoint": "/home/ljc/legged_lab_v3/logs/rsl_rl/g1_amp_stairs_long/2026-09-17_09-37-56_foothold_v12/model_57900.pt",
+      "scene": "/home/ljc/legged_lab_v3/.runtime/sim2sim/height_57900/stairs_10cm.xml",
+      "control": "target",
+      "target": [
+        6.7,
+        0.0
+      ],
+      "speed_cap": 0.65,
+      "final_command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sim_seconds": 29.999999999998316,
+      "wall_seconds": 12.51315358899592,
+      "fell": false,
+      "min_base_height": 0.7320569333171906,
+      "final_position": [
+        6.56950671509365,
+        -0.0072907019739894335,
+        2.474290368954734
+      ],
+      "displacement": [
+        6.56950671509365,
+        -0.0072907019739894335,
+        1.6742903689547342
+      ],
+      "policy_shape": [
+        1,
+        495
+      ],
+      "depth_shape": [
+        1,
+        8,
+        18,
+        32
+      ],
+      "target_distance": 0.13069679315470403,
+      "target_reached": true,
+      "step_height": 0.1,
+      "yaw": 0.0
+    },
+    {
+      "checkpoint": "/home/ljc/legged_lab_v3/logs/rsl_rl/g1_amp_stairs_long/2026-09-17_09-37-56_foothold_v12/model_57900.pt",
+      "scene": "/home/ljc/legged_lab_v3/.runtime/sim2sim/height_57900/stairs_12cm.xml",
+      "control": "target",
+      "target": [
+        6.7,
+        0.0
+      ],
+      "speed_cap": 0.65,
+      "final_command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sim_seconds": 29.999999999998316,
+      "wall_seconds": 12.34264216099109,
+      "fell": false,
+      "min_base_height": 0.7302670291891581,
+      "final_position": [
+        6.542853653098508,
+        0.061856821965996185,
+        2.8228792183919835
+      ],
+      "displacement": [
+        6.542853653098508,
+        0.061856821965996185,
+        2.0228792183919833
+      ],
+      "policy_shape": [
+        1,
+        495
+      ],
+      "depth_shape": [
+        1,
+        8,
+        18,
+        32
+      ],
+      "target_distance": 0.16888232817028886,
+      "target_reached": true,
+      "step_height": 0.12,
+      "yaw": 0.0
+    },
+    {
+      "checkpoint": "/home/ljc/legged_lab_v3/logs/rsl_rl/g1_amp_stairs_long/2026-09-17_09-37-56_foothold_v12/model_57900.pt",
+      "scene": "/home/ljc/legged_lab_v3/.runtime/sim2sim/height_57900/stairs_14cm.xml",
+      "control": "target",
+      "target": [
+        6.7,
+        0.0
+      ],
+      "speed_cap": 0.65,
+      "final_command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sim_seconds": 29.999999999998316,
+      "wall_seconds": 12.675772378002875,
+      "fell": false,
+      "min_base_height": 0.7295530286634065,
+      "final_position": [
+        6.706374638620265,
+        0.020644912959549132,
+        3.1583546245223504
+      ],
+      "displacement": [
+        6.706374638620265,
+        0.020644912959549132,
+        2.3583546245223506
+      ],
+      "policy_shape": [
+        1,
+        495
+      ],
+      "depth_shape": [
+        1,
+        8,
+        18,
+        32
+      ],
+      "target_distance": 0.021606676020302997,
+      "target_reached": true,
+      "step_height": 0.14,
+      "yaw": 0.0
+    },
+    {
+      "checkpoint": "/home/ljc/legged_lab_v3/logs/rsl_rl/g1_amp_stairs_long/2026-09-17_09-37-56_foothold_v12/model_57900.pt",
+      "scene": "/home/ljc/legged_lab_v3/.runtime/sim2sim/height_57900/stairs_16cm.xml",
+      "control": "target",
+      "target": [
+        6.7,
+        0.0
+      ],
+      "speed_cap": 0.65,
+      "final_command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sim_seconds": 29.999999999998316,
+      "wall_seconds": 13.097889148994,
+      "fell": false,
+      "min_base_height": 0.7295297045133061,
+      "final_position": [
+        6.6549366016772895,
+        -0.14574475624325986,
+        3.50114230547994
+      ],
+      "displacement": [
+        6.6549366016772895,
+        -0.14574475624325986,
+        2.70114230547994
+      ],
+      "policy_shape": [
+        1,
+        495
+      ],
+      "depth_shape": [
+        1,
+        8,
+        18,
+        32
+      ],
+      "target_distance": 0.15255242980955275,
+      "target_reached": true,
+      "step_height": 0.16,
+      "yaw": 0.0
+    },
+    {
+      "checkpoint": "/home/ljc/legged_lab_v3/logs/rsl_rl/g1_amp_stairs_long/2026-09-17_09-37-56_foothold_v12/model_57900.pt",
+      "scene": "/home/ljc/legged_lab_v3/.runtime/sim2sim/height_57900/stairs_18cm.xml",
+      "control": "target",
+      "target": [
+        6.7,
+        0.0
+      ],
+      "speed_cap": 0.65,
+      "final_command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sim_seconds": 29.999999999998316,
+      "wall_seconds": 14.09166586700303,
+      "fell": false,
+      "min_base_height": 0.7296881293238632,
+      "final_position": [
+        6.579765954643244,
+        0.034410877792748144,
+        3.840232560771971
+      ],
+      "displacement": [
+        6.579765954643244,
+        0.034410877792748144,
+        3.0402325607719707
+      ],
+      "policy_shape": [
+        1,
+        495
+      ],
+      "depth_shape": [
+        1,
+        8,
+        18,
+        32
+      ],
+      "target_distance": 0.12506132165189215,
+      "target_reached": true,
+      "step_height": 0.18,
+      "yaw": 0.0
+    },
+    {
+      "checkpoint": "/home/ljc/legged_lab_v3/logs/rsl_rl/g1_amp_stairs_long/2026-09-17_09-37-56_foothold_v12/model_57900.pt",
+      "scene": "/home/ljc/legged_lab_v3/.runtime/sim2sim/height_57900/stairs_20cm.xml",
+      "control": "target",
+      "target": [
+        6.7,
+        0.0
+      ],
+      "speed_cap": 0.65,
+      "final_command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sim_seconds": 29.999999999998316,
+      "wall_seconds": 13.016030131999287,
+      "fell": false,
+      "min_base_height": 0.7295819804998404,
+      "final_position": [
+        6.65529072332302,
+        -0.06070386241688707,
+        4.182948822188313
+      ],
+      "displacement": [
+        6.65529072332302,
+        -0.06070386241688707,
+        3.382948822188313
+      ],
+      "policy_shape": [
+        1,
+        495
+      ],
+      "depth_shape": [
+        1,
+        8,
+        18,
+        32
+      ],
+      "target_distance": 0.07539150040493366,
+      "target_reached": true,
+      "step_height": 0.2,
+      "yaw": 0.0
+    },
+    {
+      "checkpoint": "/home/ljc/legged_lab_v3/logs/rsl_rl/g1_amp_stairs_long/2026-09-17_09-37-56_foothold_v12/model_57900.pt",
+      "scene": "/home/ljc/legged_lab_v3/.runtime/sim2sim/height_57900/stairs_21.5cm.xml",
+      "control": "target",
+      "target": [
+        6.7,
+        0.0
+      ],
+      "speed_cap": 0.65,
+      "final_command": [
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "sim_seconds": 6.979999999999873,
+      "wall_seconds": 4.057758479000768,
+      "fell": true,
+      "min_base_height": 0.7293976032544444,
+      "final_position": [
+        2.7178605449256117,
+        0.04884979480223238,
+        1.888617337150099
+      ],
+      "displacement": [
+        2.7178605449256117,
+        0.04884979480223238,
+        1.088617337150099
+      ],
+      "policy_shape": [
+        1,
+        495
+      ],
+      "depth_shape": [
+        1,
+        8,
+        18,
+        32
+      ],
+      "target_distance": 3.9824390694789504,
+      "target_reached": false,
+      "step_height": 0.215,
+      "yaw": 0.0
+    },
+    {
+      "checkpoint": "/home/ljc/legged_lab_v3/logs/rsl_rl/g1_amp_stairs_long/2026-09-17_09-37-56_foothold_v12/model_57900.pt",
+      "scene": "/home/ljc/legged_lab_v3/.runtime/sim2sim/height_57900/stairs_23cm.xml",
+      "control": "target",
+      "target": [
+        6.7,
+        0.0
+      ],
+      "speed_cap": 0.65,
+      "final_command": [
+        0.28500372203744334,
+        0.0,
+        -1.0
+      ],
+      "sim_seconds": 11.32000000000037,
+      "wall_seconds": 5.496882495994214,
+      "fell": true,
+      "min_base_height": 0.7292858400079796,
+      "final_position": [
+        6.127511148559922,
+        0.5448803693400263,
+        3.983679647296816
+      ],
+      "displacement": [
+        6.127511148559922,
+        0.5448803693400263,
+        3.183679647296816
+      ],
+      "policy_shape": [
+        1,
+        495
+      ],
+      "depth_shape": [
+        1,
+        8,
+        18,
+        32
+      ],
+      "target_distance": 0.7903404974536631,
+      "target_reached": false,
+      "step_height": 0.23,
+      "yaw": 0.0
+    },
+    {
+      "checkpoint": "/home/ljc/legged_lab_v3/logs/rsl_rl/g1_amp_stairs_long/2026-09-17_09-37-56_foothold_v12/model_57900.pt",
+      "scene": "/home/ljc/legged_lab_v3/.runtime/sim2sim/height_57900_repeat/stairs_18cm.xml",
+      "control": "target",
+      "target": [
+        6.7,
+        0.0
+      ],
+      "speed_cap": 0.65,
+      "final_command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sim_seconds": 29.999999999998316,
+      "wall_seconds": 13.08487102399522,
+      "fell": false,
+      "min_base_height": 0.7378643239359816,
+      "final_position": [
+        6.613690546694232,
+        0.07644021818244649,
+        3.838113106983564
+      ],
+      "displacement": [
+        6.613690546694232,
+        0.07644021818244649,
+        3.0381131069835643
+      ],
+      "policy_shape": [
+        1,
+        495
+      ],
+      "depth_shape": [
+        1,
+        8,
+        18,
+        32
+      ],
+      "target_distance": 0.11529279546320564,
+      "target_reached": true,
+      "step_height": 0.18,
+      "yaw": -0.03
+    },
+    {
+      "checkpoint": "/home/ljc/legged_lab_v3/logs/rsl_rl/g1_amp_stairs_long/2026-09-17_09-37-56_foothold_v12/model_57900.pt",
+      "scene": "/home/ljc/legged_lab_v3/.runtime/sim2sim/height_57900_repeat/stairs_18cm.xml",
+      "control": "target",
+      "target": [
+        6.7,
+        0.0
+      ],
+      "speed_cap": 0.65,
+      "final_command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sim_seconds": 29.999999999998316,
+      "wall_seconds": 12.50684823100164,
+      "fell": false,
+      "min_base_height": 0.7357808954043333,
+      "final_position": [
+        6.723876063436244,
+        -0.25284580096124437,
+        3.8420964926774985
+      ],
+      "displacement": [
+        6.723876063436244,
+        -0.25284580096124437,
+        3.0420964926774987
+      ],
+      "policy_shape": [
+        1,
+        495
+      ],
+      "depth_shape": [
+        1,
+        8,
+        18,
+        32
+      ],
+      "target_distance": 0.2539705996152798,
+      "target_reached": true,
+      "step_height": 0.18,
+      "yaw": 0.03
+    },
+    {
+      "checkpoint": "/home/ljc/legged_lab_v3/logs/rsl_rl/g1_amp_stairs_long/2026-09-17_09-37-56_foothold_v12/model_57900.pt",
+      "scene": "/home/ljc/legged_lab_v3/.runtime/sim2sim/height_57900_repeat/stairs_20cm.xml",
+      "control": "target",
+      "target": [
+        6.7,
+        0.0
+      ],
+      "speed_cap": 0.65,
+      "final_command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sim_seconds": 29.999999999998316,
+      "wall_seconds": 13.401315276991227,
+      "fell": false,
+      "min_base_height": 0.7378718830133972,
+      "final_position": [
+        6.675329134669543,
+        -0.10939660542467743,
+        4.183161676389277
+      ],
+      "displacement": [
+        6.675329134669543,
+        -0.10939660542467743,
+        3.3831616763892773
+      ],
+      "policy_shape": [
+        1,
+        495
+      ],
+      "depth_shape": [
+        1,
+        8,
+        18,
+        32
+      ],
+      "target_distance": 0.11214396494950644,
+      "target_reached": true,
+      "step_height": 0.2,
+      "yaw": -0.03
+    },
+    {
+      "checkpoint": "/home/ljc/legged_lab_v3/logs/rsl_rl/g1_amp_stairs_long/2026-09-17_09-37-56_foothold_v12/model_57900.pt",
+      "scene": "/home/ljc/legged_lab_v3/.runtime/sim2sim/height_57900_repeat/stairs_20cm.xml",
+      "control": "target",
+      "target": [
+        6.7,
+        0.0
+      ],
+      "speed_cap": 0.65,
+      "final_command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sim_seconds": 29.999999999998316,
+      "wall_seconds": 13.050266635997104,
+      "fell": false,
+      "min_base_height": 0.7356893966496434,
+      "final_position": [
+        6.606166020124068,
+        0.14460512835225825,
+        4.181975951236579
+      ],
+      "displacement": [
+        6.606166020124068,
+        0.14460512835225825,
+        3.381975951236579
+      ],
+      "policy_shape": [
+        1,
+        495
+      ],
+      "depth_shape": [
+        1,
+        8,
+        18,
+        32
+      ],
+      "target_distance": 0.17238172445224575,
+      "target_reached": true,
+      "step_height": 0.2,
+      "yaw": 0.03
+    },
+    {
+      "checkpoint": "/home/ljc/legged_lab_v3/logs/rsl_rl/g1_amp_stairs_long/2026-09-17_09-37-56_foothold_v12/model_57900.pt",
+      "scene": "/home/ljc/legged_lab_v3/.runtime/sim2sim/height_57900_repeat/stairs_21.5cm.xml",
+      "control": "target",
+      "target": [
+        6.7,
+        0.0
+      ],
+      "speed_cap": 0.65,
+      "final_command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sim_seconds": 29.999999999998316,
+      "wall_seconds": 12.606597719001002,
+      "fell": false,
+      "min_base_height": 0.7378003787102572,
+      "final_position": [
+        6.580247877499004,
+        0.07547544784872114,
+        4.436730458870728
+      ],
+      "displacement": [
+        6.580247877499004,
+        0.07547544784872114,
+        3.636730458870728
+      ],
+      "policy_shape": [
+        1,
+        495
+      ],
+      "depth_shape": [
+        1,
+        8,
+        18,
+        32
+      ],
+      "target_distance": 0.1415525134763018,
+      "target_reached": true,
+      "step_height": 0.215,
+      "yaw": -0.03
+    },
+    {
+      "checkpoint": "/home/ljc/legged_lab_v3/logs/rsl_rl/g1_amp_stairs_long/2026-09-17_09-37-56_foothold_v12/model_57900.pt",
+      "scene": "/home/ljc/legged_lab_v3/.runtime/sim2sim/height_57900_repeat/stairs_21.5cm.xml",
+      "control": "target",
+      "target": [
+        6.7,
+        0.0
+      ],
+      "speed_cap": 0.65,
+      "final_command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sim_seconds": 29.999999999998316,
+      "wall_seconds": 12.663806726006442,
+      "fell": false,
+      "min_base_height": 0.7355680686334571,
+      "final_position": [
+        6.604251412301595,
+        -0.008771721283054715,
+        4.438106487316054
+      ],
+      "displacement": [
+        6.604251412301595,
+        -0.008771721283054715,
+        3.638106487316054
+      ],
+      "policy_shape": [
+        1,
+        495
+      ],
+      "depth_shape": [
+        1,
+        8,
+        18,
+        32
+      ],
+      "target_distance": 0.09614954571139038,
+      "target_reached": true,
+      "step_height": 0.215,
+      "yaw": 0.03
+    },
+    {
+      "checkpoint": "/home/ljc/legged_lab_v3/logs/rsl_rl/g1_amp_stairs_long/2026-09-17_09-37-56_foothold_v12/model_57900.pt",
+      "scene": "/home/ljc/legged_lab_v3/.runtime/sim2sim/height_57900_23repeat/stairs_23cm.xml",
+      "control": "target",
+      "target": [
+        6.7,
+        0.0
+      ],
+      "speed_cap": 0.65,
+      "final_command": [
+        0.56774633906572,
+        0.0,
+        -0.9189928092780735
+      ],
+      "sim_seconds": 11.100000000000335,
+      "wall_seconds": 5.393762883002637,
+      "fell": true,
+      "min_base_height": 0.7377489964218078,
+      "final_position": [
+        6.281608925473037,
+        0.5298309374549279,
+        4.1571415571308625
+      ],
+      "displacement": [
+        6.281608925473037,
+        0.5298309374549279,
+        3.3571415571308627
+      ],
+      "policy_shape": [
+        1,
+        495
+      ],
+      "depth_shape": [
+        1,
+        8,
+        18,
+        32
+      ],
+      "target_distance": 0.6751088160646359,
+      "target_reached": false,
+      "step_height": 0.23,
+      "yaw": -0.03
+    },
+    {
+      "checkpoint": "/home/ljc/legged_lab_v3/logs/rsl_rl/g1_amp_stairs_long/2026-09-17_09-37-56_foothold_v12/model_57900.pt",
+      "scene": "/home/ljc/legged_lab_v3/.runtime/sim2sim/height_57900_23repeat/stairs_23cm.xml",
+      "control": "target",
+      "target": [
+        6.7,
+        0.0
+      ],
+      "speed_cap": 0.65,
+      "final_command": [
+        0.10713147320932348,
+        0.0,
+        -1.0
+      ],
+      "sim_seconds": 10.720000000000276,
+      "wall_seconds": 4.930948666995391,
+      "fell": true,
+      "min_base_height": 0.7361267852499144,
+      "final_position": [
+        6.152772691328497,
+        0.4346302505116935,
+        4.104445620376228
+      ],
+      "displacement": [
+        6.152772691328497,
+        0.4346302505116935,
+        3.304445620376228
+      ],
+      "policy_shape": [
+        1,
+        495
+      ],
+      "depth_shape": [
+        1,
+        8,
+        18,
+        32
+      ],
+      "target_distance": 0.6988284353228007,
+      "target_reached": false,
+      "step_height": 0.23,
+      "yaw": 0.03
+    }
+  ]
+}

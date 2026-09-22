@@ -64,7 +64,10 @@ class CircularBuffer:
         data = data.to(self._device)
         if self._buffer is None:
             self._pointer = -1
-            self._buffer = torch.empty((self.max_length, *data.shape), dtype=data.dtype, device=self._device)
+            # Rollouts run under inference_mode, but load/reset can run outside
+            # it. Allocate normal mutable storage so either context can clear it.
+            with torch.inference_mode(False):
+                self._buffer = torch.empty((self.max_length, *data.shape), dtype=data.dtype, device=self._device)
         self._pointer = (self._pointer + 1) % self.max_length
         self._buffer[self._pointer] = data
         is_first_push = self._num_pushes == 0
@@ -81,11 +84,20 @@ class CircularBuffer:
         index_in_buffer = torch.remainder(self._pointer - valid_keys, self.max_length)
         return self._buffer[index_in_buffer, self._ALL_INDICES]
 
-    def mini_batch_generator(self, fetch_length: int, num_mini_batches: int, num_epochs: int = 8):
+    def mini_batch_generator(
+        self, fetch_length: int, num_mini_batches: int, num_epochs: int = 8,
+        recent_length: int | None = None, recent_fraction: float = 0.5,
+    ):
         """Yield mini-batches sampled from the circular buffer.
 
         Each yielded batch has shape (mini_batch_size, ...) where data dims follow the appended tensor.
         """
+        if fetch_length < 1 or num_mini_batches < 1 or num_epochs < 1:
+            raise ValueError("Fetch length, mini-batch count and epochs must be positive.")
+        if not 0.0 <= recent_fraction <= 1.0:
+            raise ValueError("recent_fraction must be in [0, 1].")
+        if recent_length is not None and recent_length < 1:
+            raise ValueError("recent_length must be positive.")
         if torch.any(self._num_pushes == 0) or self._buffer is None:
             raise RuntimeError("Attempting to generate batches from an empty circular buffer.")
         min_current_length = torch.min(self.current_length).item()
@@ -96,10 +108,29 @@ class CircularBuffer:
         if epoch_batch_size % num_mini_batches != 0:
             raise ValueError(f"Epoch batch size {epoch_batch_size} is not divisible by {num_mini_batches} mini-batches.")
 
-        total_combinations = self.current_length[0] * self.batch_size
-        linear_indices = torch.randperm(total_combinations, device=self.device)[:epoch_batch_size]
-        indices_0 = linear_indices // self.batch_size
-        indices_1 = linear_indices % self.batch_size
+        # Sample by age, not physical slot: after wraparound or partial reset only
+        # the latest min_current_length slots are valid for every batch member.
+        valid_length = int(min_current_length)
+
+        def sample_ages(start: int, stop: int, count: int):
+            population = (stop - start) * self.batch_size
+            if count <= population:
+                linear = torch.randperm(population, device=self.device)[:count]
+            else:
+                linear = torch.randint(population, (count,), device=self.device)
+            ages = linear // self.batch_size + start
+            return ages, linear % self.batch_size
+
+        if recent_length is not None and valid_length > recent_length:
+            recent_count = round(epoch_batch_size * recent_fraction)
+            new_ages, new_envs = sample_ages(0, recent_length, recent_count)
+            old_ages, old_envs = sample_ages(recent_length, valid_length, epoch_batch_size - recent_count)
+            ages = torch.cat((new_ages, old_ages))
+            indices_1 = torch.cat((new_envs, old_envs))
+        else:
+            # Cold start / resume: fall back to available samples, never read padding.
+            ages, indices_1 = sample_ages(0, valid_length, epoch_batch_size)
+        indices_0 = torch.remainder(self._pointer - ages, self.max_length)
 
         for _ in range(num_epochs):
             indices = torch.randperm(epoch_batch_size, requires_grad=False, device=self.device)

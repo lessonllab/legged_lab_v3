@@ -1,0 +1,40 @@
+{
+  "checkpoint": "logs/rsl_rl/g1_amp_stairs_long/2026-09-17_09-30-49_foothold_v12_smoke_reset/model_55039.pt",
+  "nonfinite_tensors": 0,
+  "layout": "foothold_v12",
+  "promotion_version": 12,
+  "frontier": [
+    7,
+    7
+  ],
+  "speed_phase": [
+    4,
+    4
+  ],
+  "signal_ranges": {
+    "turn_scuff": [
+      -0.0249,
+      0.0
+    ],
+    "turn_step": [
+      0.0,
+      0.003
+    ],
+    "sustained_stall": [
+      -0.3845,
+      0.0
+    ],
+    "terrain_clearance": [
+      -0.0863,
+      0.0
+    ],
+    "rough_impact": [
+      -0.0046,
+      0.0
+    ],
+    "rough_support": [
+      -0.0213,
+      0.0
+    ]
+  }
+}

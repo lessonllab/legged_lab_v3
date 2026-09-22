@@ -1,0 +1,15 @@
+{
+  "command": [
+    [
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "stationary_full_horizon_xy_score": 1.0,
+  "stationary_full_horizon_yaw_score": 0.018315639346837997,
+  "stationary_is_promoted": true,
+  "turning_activates_standing_penalty": true,
+  "turning_does_not_activate_dont_wait": true,
+  "scope": "Deterministic counterexample to v4 reward and curriculum logic, not a measured rollout."
+}

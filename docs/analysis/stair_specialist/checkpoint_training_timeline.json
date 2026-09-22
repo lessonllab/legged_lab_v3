@@ -1,0 +1,191 @@
+[
+  {
+    "step": 24500,
+    "frontier": [
+      1,
+      1
+    ],
+    "phase": [
+      0,
+      1
+    ],
+    "flat_tiers": [
+      0,
+      1,
+      97,
+      414
+    ],
+    "previous_500_iteration_log_means": {
+      "Train/mean_reward": 85.62440978240967,
+      "Train/mean_episode_length": 945.5655815429687,
+      "AMP/weighted_style_reward_per_step": 0.285098920583725,
+      "AMP/style_reward_per_step": 0.285098920583725,
+      "Curriculum/terrain_levels/flat_speed_cap_mean": 1.9172932295799254,
+      "Curriculum/terrain_levels/descent/window_pass_rate": 0.5907805201709271,
+      "AMP/raw_style_reward_per_step": 0.57019784116745,
+      "Curriculum/terrain_levels/ascent/window_pass_rate": 0.2726220069527626
+    }
+  },
+  {
+    "step": 25500,
+    "frontier": [
+      1,
+      1
+    ],
+    "phase": [
+      0,
+      0
+    ],
+    "flat_tiers": [
+      0,
+      4,
+      188,
+      320
+    ],
+    "previous_500_iteration_log_means": {
+      "Train/mean_reward": 85.91640143585205,
+      "Train/mean_episode_length": 956.5262801513671,
+      "AMP/weighted_style_reward_per_step": 0.28791805905103685,
+      "AMP/style_reward_per_step": 0.28791805905103685,
+      "Curriculum/terrain_levels/flat_speed_cap_mean": 1.847600205898285,
+      "Curriculum/terrain_levels/descent/window_pass_rate": 0.6884577687382698,
+      "AMP/raw_style_reward_per_step": 0.5758361181020737,
+      "Curriculum/terrain_levels/ascent/window_pass_rate": 0.21098292029276491
+    }
+  },
+  {
+    "step": 26500,
+    "frontier": [
+      1,
+      1
+    ],
+    "phase": [
+      0,
+      0
+    ],
+    "flat_tiers": [
+      0,
+      7,
+      228,
+      277
+    ],
+    "previous_500_iteration_log_means": {
+      "Train/mean_reward": 83.5619992980957,
+      "Train/mean_episode_length": 952.6851600341797,
+      "AMP/weighted_style_reward_per_step": 0.2880765734910965,
+      "AMP/style_reward_per_step": 0.2880765734910965,
+      "Curriculum/terrain_levels/flat_speed_cap_mean": 1.7860353491306304,
+      "Curriculum/terrain_levels/descent/window_pass_rate": 0.5929590010643006,
+      "AMP/raw_style_reward_per_step": 0.576153146982193,
+      "Curriculum/terrain_levels/ascent/window_pass_rate": 0.2224955067485571
+    }
+  },
+  {
+    "step": 27500,
+    "frontier": [
+      1,
+      1
+    ],
+    "phase": [
+      0,
+      0
+    ],
+    "flat_tiers": [
+      0,
+      2,
+      178,
+      332
+    ],
+    "previous_500_iteration_log_means": {
+      "Train/mean_reward": 82.41728502655029,
+      "Train/mean_episode_length": 955.6415205078125,
+      "AMP/weighted_style_reward_per_step": 0.28725349229574204,
+      "AMP/style_reward_per_step": 0.28725349229574204,
+      "Curriculum/terrain_levels/flat_speed_cap_mean": 1.8338078110218048,
+      "Curriculum/terrain_levels/descent/window_pass_rate": 0.673030433088541,
+      "AMP/raw_style_reward_per_step": 0.5745069845914841,
+      "Curriculum/terrain_levels/ascent/window_pass_rate": 0.21867783596366644
+    }
+  },
+  {
+    "step": 28500,
+    "frontier": [
+      1,
+      1
+    ],
+    "phase": [
+      0,
+      0
+    ],
+    "flat_tiers": [
+      0,
+      13,
+      259,
+      240
+    ],
+    "previous_500_iteration_log_means": {
+      "Train/mean_reward": 81.31780250549316,
+      "Train/mean_episode_length": 963.0984000244141,
+      "AMP/weighted_style_reward_per_step": 0.2851362581253052,
+      "AMP/style_reward_per_step": 0.2851362581253052,
+      "Curriculum/terrain_levels/flat_speed_cap_mean": 1.715349802017212,
+      "Curriculum/terrain_levels/descent/window_pass_rate": 0.6175566852092743,
+      "AMP/raw_style_reward_per_step": 0.5702725162506104,
+      "Curriculum/terrain_levels/ascent/window_pass_rate": 0.20199655158817767
+    }
+  },
+  {
+    "step": 30000,
+    "frontier": [
+      1,
+      1
+    ],
+    "phase": [
+      0,
+      0
+    ],
+    "flat_tiers": [
+      0,
+      18,
+      341,
+      153
+    ],
+    "previous_500_iteration_log_means": {
+      "Train/mean_reward": 82.03769184875489,
+      "Train/mean_episode_length": 965.907640625,
+      "AMP/weighted_style_reward_per_step": 0.28615203166007996,
+      "AMP/style_reward_per_step": 0.28615203166007996,
+      "Curriculum/terrain_levels/flat_speed_cap_mean": 1.7189577128887177,
+      "Curriculum/terrain_levels/descent/window_pass_rate": 0.6156867799237371,
+      "AMP/raw_style_reward_per_step": 0.5723040633201599,
+      "Curriculum/terrain_levels/ascent/window_pass_rate": 0.15579284815303981
+    }
+  },
+  {
+    "step": 31800,
+    "frontier": [
+      1,
+      1
+    ],
+    "phase": [
+      0,
+      0
+    ],
+    "flat_tiers": [
+      0,
+      14,
+      309,
+      189
+    ],
+    "previous_500_iteration_log_means": {
+      "Train/mean_reward": 77.24913449859619,
+      "Train/mean_episode_length": 949.4209389648438,
+      "AMP/weighted_style_reward_per_step": 0.27682216414809224,
+      "AMP/style_reward_per_step": 0.27682216414809224,
+      "Curriculum/terrain_levels/flat_speed_cap_mean": 1.6093428642749787,
+      "Curriculum/terrain_levels/descent/window_pass_rate": 0.47467987474799156,
+      "AMP/raw_style_reward_per_step": 0.5536443282961845,
+      "Curriculum/terrain_levels/ascent/window_pass_rate": 0.10515654361248017
+    }
+  }
+]

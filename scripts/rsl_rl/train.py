@@ -10,10 +10,12 @@ warnings.warn(
 )
 
 import argparse
+import json
 import contextlib
 import importlib.metadata as metadata
 import logging
 import os
+import re
 import platform
 import sys
 import time
@@ -33,12 +35,14 @@ from isaaclab.utils.string import list_intersection, string_to_callable
 from isaaclab_rl.rsl_rl import RslRlBaseRunnerCfg, RslRlVecEnvWrapper, handle_deprecated_rsl_rl_cfg
 
 import isaaclab_tasks  # noqa: F401
-from isaaclab_tasks.utils import (
-    add_launcher_args,
-    get_checkpoint_path,
-    launch_simulation,
-    setup_preset_cli,
-)
+from isaaclab_tasks.utils import get_checkpoint_path, setup_preset_cli
+
+try:
+    from isaaclab.app.sim_launcher import add_launcher_args, launch_simulation
+except ModuleNotFoundError as exc:
+    if exc.name != "isaaclab.app.sim_launcher":
+        raise
+    from isaaclab_tasks.utils import add_launcher_args, launch_simulation
 from isaaclab_tasks.utils.hydra import hydra_task_config
 
 # local imports
@@ -64,6 +68,8 @@ parser.add_argument("--video", action="store_true", default=False, help="Record 
 parser.add_argument("--video_length", type=int, default=200, help="Length of the recorded video (in steps).")
 parser.add_argument("--video_interval", type=int, default=2000, help="Interval between video recordings (in steps).")
 parser.add_argument("--num_envs", type=int, default=None, help="Number of environments to simulate.")
+parser.add_argument('--init_actor', default=None, help='Initialize actor only; new critic/AMP/optimizers and action noise.')
+parser.add_argument("--stepping_stones", action="store_true", help="Add AME-style stepping stones; use a separate _stones experiment.")
 parser.add_argument("--task", type=str, default=None, help="Name of the task.")
 parser.add_argument(
     "--agent", type=str, default="rsl_rl_cfg_entry_point", help="Name of the RL agent configuration entry point."
@@ -114,6 +120,13 @@ def main(env_cfg: ManagerBasedRLEnvCfg | DirectRLEnvCfg | DirectMARLEnvCfg, agen
     with launch_simulation(env_cfg, args_cli):
         # override configurations with non-hydra CLI arguments
         agent_cfg = cli_args.update_rsl_rl_cfg(agent_cfg, args_cli)
+        if args_cli.init_actor and agent_cfg.resume:
+            raise ValueError('--init_actor cannot be combined with resume')
+        if args_cli.stepping_stones:
+            from legged_lab.tasks.locomotion.amp.config.g1.terrain_variants import add_stepping_stones
+            add_stepping_stones(env_cfg)
+            if not agent_cfg.experiment_name.endswith('_stones'):
+                agent_cfg.experiment_name += '_stones'
         env_cfg.scene.num_envs = args_cli.num_envs if args_cli.num_envs is not None else env_cfg.scene.num_envs
         agent_cfg.max_iterations = (
             args_cli.max_iterations if args_cli.max_iterations is not None else agent_cfg.max_iterations
@@ -155,6 +168,22 @@ def main(env_cfg: ManagerBasedRLEnvCfg | DirectRLEnvCfg | DirectMARLEnvCfg, agen
 
         env_cfg.log_dir = log_dir
 
+        if agent_cfg.experiment_name.startswith(("g1_amp_depth_target_v5", "g1_amp_depth_target_v6")):
+            version_label = "v6" if "target_v6" in agent_cfg.experiment_name else "v5"
+            generator = env_cfg.scene.terrain.terrain_generator
+            print(
+                f"[Target {version_label}] depth actor+critic; mirrored 10-frame AMP; standing reset; "
+                f"terrain_types={list(generator.sub_terrains)}; "
+                f"rows={generator.num_rows}; initial_level={env_cfg.scene.terrain.max_init_terrain_level}",
+                flush=True,
+            )
+            print(f"[Target {version_label}] curriculum={env_cfg.curriculum.terrain_levels.params}; "
+                  "promotion requires timeout without failure and real target progress/arrival", flush=True)
+            print(f"[Target {version_label}] action_distribution={agent_cfg.actor.distribution_cfg.to_dict()}; "
+                  f"entropy_coef={agent_cfg.algorithm.entropy_coef}", flush=True)
+            if version_label == "v6":
+                print(f"[Target v6] AMP={agent_cfg.algorithm.amp_cfg.to_dict()}", flush=True)
+
         # create isaac environment
         env = gym.make(args_cli.task, cfg=env_cfg, render_mode="rgb_array" if args_cli.video else None)
 
@@ -165,7 +194,13 @@ def main(env_cfg: ManagerBasedRLEnvCfg | DirectRLEnvCfg | DirectMARLEnvCfg, agen
 
         # save resume path before creating a new log_dir
         if agent_cfg.resume or agent_cfg.algorithm.class_name == "Distillation":
-            resume_path = get_checkpoint_path(log_root_path, agent_cfg.load_run, agent_cfg.load_checkpoint)
+            # Allow explicit migration between experiment folders. Isaac Lab's
+            # helper treats load_run as a regex, not an absolute directory.
+            resume_root, resume_run = log_root_path, agent_cfg.load_run
+            if os.path.isabs(resume_run):
+                resume_root, resume_run = os.path.split(os.path.normpath(resume_run))
+                resume_run = re.escape(resume_run)
+            resume_path = get_checkpoint_path(resume_root, resume_run, agent_cfg.load_checkpoint)
 
         # wrap for video recording
         if args_cli.video:
@@ -198,6 +233,14 @@ def main(env_cfg: ManagerBasedRLEnvCfg | DirectRLEnvCfg | DirectMARLEnvCfg, agen
             configure_seed(env_cfg.seed, True)
 
         runner.add_git_repo_to_log(__file__)
+        if args_cli.init_actor:
+            from legged_lab.rsl_rl.actor_warm_start import initialize_actor
+            report = initialize_actor(runner.alg.actor, args_cli.init_actor)
+            os.makedirs(log_dir, exist_ok=True)
+            with open(os.path.join(log_dir, 'actor_initialization.json'), 'w') as stream:
+                json.dump(report, stream, indent=2)
+            print('[ACTOR INITIALIZATION]', report, flush=True)
+            runner.save(os.path.join(log_dir, 'model_initial.pt'))
         if agent_cfg.resume or agent_cfg.algorithm.class_name == "Distillation":
             print(f"[INFO]: Loading model checkpoint from: {resume_path}")
             runner.load(resume_path)
@@ -206,7 +249,8 @@ def main(env_cfg: ManagerBasedRLEnvCfg | DirectRLEnvCfg | DirectMARLEnvCfg, agen
         dump_yaml(os.path.join(log_dir, "params", "agent.yaml"), agent_cfg)
 
         try:
-            runner.learn(num_learning_iterations=agent_cfg.max_iterations, init_at_random_ep_len=True)
+            runner.learn(num_learning_iterations=agent_cfg.max_iterations,
+                         init_at_random_ep_len=getattr(env_cfg, "randomize_initial_episode_length", True))
             print(f"Training time: {round(time.time() - start_time, 2)} seconds")
             env.close()
         except KeyboardInterrupt:

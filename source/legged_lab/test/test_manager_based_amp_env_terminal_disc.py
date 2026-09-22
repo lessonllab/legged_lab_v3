@@ -183,6 +183,10 @@ def test_step_exports_terminal_obs_and_keeps_post_reset_disc_obs() -> None:
     env.event_manager = _EventManager()
     env.scene = _Scene()
     env.sim = _Sim()
+    # IsaacLab 3 exposes rendering and physics-decimation state as attributes.
+    env.sim.is_rendering = False
+    env._physics_handles_decimation = False
+    env.render_enabled = False
     env.extras = {}
     env._sim_step_counter = 0
     env.episode_length_buf = torch.zeros(2, dtype=torch.long)
@@ -314,6 +318,10 @@ def test_step_previews_only_configured_terminal_obs_groups() -> None:
     env.event_manager = _EventManager()
     env.scene = _Scene()
     env.sim = _Sim()
+    # IsaacLab 3 exposes rendering and physics-decimation state as attributes.
+    env.sim.is_rendering = False
+    env._physics_handles_decimation = False
+    env.render_enabled = False
     env.extras = {}
     env._sim_step_counter = 0
     env.episode_length_buf = torch.zeros(2, dtype=torch.long)
@@ -427,6 +435,10 @@ def test_step_does_not_silently_ignore_terminal_obs_preview_failures() -> None:
     env.event_manager = _EventManager()
     env.scene = _Scene()
     env.sim = _Sim()
+    # IsaacLab 3 exposes rendering and physics-decimation state as attributes.
+    env.sim.is_rendering = False
+    env._physics_handles_decimation = False
+    env.render_enabled = False
     env.extras = {}
     env._sim_step_counter = 0
     env.episode_length_buf = torch.zeros(2, dtype=torch.long)

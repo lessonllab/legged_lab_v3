@@ -1,0 +1,826 @@
+{
+  "runs": [
+    {
+      "metadata": {
+        "checkpoint": "/home/ljc/legged_lab_v3/logs/rsl_rl/g1_amp_stairs_long/2026-09-16_20-26-52_reverse_height_v11/model_50100.pt",
+        "checkpoint_sha256": "a905241b8128ebd9769a903b2b1301ceb2fb4aa6c151b0c4229cf3e7713ac837",
+        "duration": 30.0,
+        "speed": 0.65,
+        "yaw": 0.0,
+        "depth_delay": 0,
+        "wall_geometry": "3 m tall, 1.5 m clear width; short x=[1,5], long x=[1,8]",
+        "trace_columns": [
+          "time",
+          "x",
+          "y",
+          "z",
+          "vx",
+          "vy",
+          "vz",
+          "cmd_vx",
+          "cmd_vy",
+          "cmd_wz",
+          "upright_zz"
+        ],
+        "note": "Deterministic paired cases, immediate target command from the same initial state. Physics contacts sampled every .005 s."
+      },
+      "results": [
+        {
+          "family": "short",
+          "condition": "flat_open",
+          "yaw": 0.0,
+          "speed": 0.65,
+          "duration": 29.999999999998316,
+          "target": [
+            3.0,
+            2.0
+          ],
+          "final_position": [
+            2.9119459559517034,
+            1.9957617931653067,
+            0.7803581704074057
+          ],
+          "max_x": 2.9266025792912385,
+          "max_base_z": 0.7976188587901999,
+          "target_distance": 0.08815598147847374,
+          "target_reached": true,
+          "fell": false,
+          "stalled": false,
+          "final5s_mean_planar_speed": 8.7862201133531e-05,
+          "final5s_mean_forward_command": 0.0,
+          "peak_wall_normal_force_N": 0.0,
+          "wall_contact_physics_steps": 0,
+          "peak_riser_normal_force_N": 0.0,
+          "wall_seconds": 2.829528330003086
+        },
+        {
+          "family": "short",
+          "condition": "flat_walls",
+          "yaw": 0.0,
+          "speed": 0.65,
+          "duration": 29.999999999998316,
+          "target": [
+            3.0,
+            2.0
+          ],
+          "final_position": [
+            2.9108994452621064,
+            2.0272291973101253,
+            0.7822701976954425
+          ],
+          "max_x": 2.9288166080124407,
+          "max_base_z": 0.7976184716502482,
+          "target_distance": 0.09316833174826146,
+          "target_reached": true,
+          "fell": false,
+          "stalled": false,
+          "final5s_mean_planar_speed": 0.0008799640950918241,
+          "final5s_mean_forward_command": 0.0,
+          "peak_wall_normal_force_N": 0.0,
+          "wall_contact_physics_steps": 0,
+          "peak_riser_normal_force_N": 0.0,
+          "wall_seconds": 3.230148923001252
+        },
+        {
+          "family": "short",
+          "condition": "stairs_open",
+          "yaw": 0.0,
+          "speed": 0.65,
+          "duration": 5.979999999999895,
+          "target": [
+            3.0,
+            2.0
+          ],
+          "final_position": [
+            -0.6438543248892401,
+            4.251363138559634,
+            0.3514341200211251
+          ],
+          "max_x": 1.3294963104855153,
+          "max_base_z": 0.9517787633181694,
+          "target_distance": 4.283259310697767,
+          "target_reached": false,
+          "fell": true,
+          "stalled": false,
+          "final5s_mean_planar_speed": 0.8152246578642982,
+          "final5s_mean_forward_command": 0.5940417465798868,
+          "peak_wall_normal_force_N": 0.0,
+          "wall_contact_physics_steps": 0,
+          "peak_riser_normal_force_N": 3254.176413233308,
+          "wall_seconds": 1.8692776169991703
+        },
+        {
+          "family": "short",
+          "condition": "stairs_walls",
+          "yaw": 0.0,
+          "speed": 0.65,
+          "duration": 4.939999999999917,
+          "target": [
+            3.0,
+            2.0
+          ],
+          "final_position": [
+            1.0440120454479387,
+            2.182208256729777,
+            0.5192140202570243
+          ],
+          "max_x": 1.5558945070858827,
+          "max_base_z": 1.1739221415201078,
+          "target_distance": 1.9644563439214577,
+          "target_reached": false,
+          "fell": true,
+          "stalled": false,
+          "final5s_mean_planar_speed": 0.5090583403590557,
+          "final5s_mean_forward_command": 0.6500000000000002,
+          "peak_wall_normal_force_N": 1984.3815633809763,
+          "wall_contact_physics_steps": 16,
+          "peak_riser_normal_force_N": 772.2774532682835,
+          "wall_seconds": 1.1971697760018287
+        },
+        {
+          "family": "long",
+          "condition": "flat_open",
+          "yaw": 0.0,
+          "speed": 0.65,
+          "duration": 29.999999999998316,
+          "target": [
+            6.7,
+            0.0
+          ],
+          "final_position": [
+            6.645098030302471,
+            0.02999809656678556,
+            0.7826135251398647
+          ],
+          "max_x": 6.645153851451319,
+          "max_base_z": 0.7976188587901999,
+          "target_distance": 0.06256286497834508,
+          "target_reached": true,
+          "fell": false,
+          "stalled": false,
+          "final5s_mean_planar_speed": 0.0005059289488754156,
+          "final5s_mean_forward_command": 0.0,
+          "peak_wall_normal_force_N": 0.0,
+          "wall_contact_physics_steps": 0,
+          "peak_riser_normal_force_N": 0.0,
+          "wall_seconds": 3.2237886400034768
+        },
+        {
+          "family": "long",
+          "condition": "flat_walls",
+          "yaw": 0.0,
+          "speed": 0.65,
+          "duration": 29.999999999998316,
+          "target": [
+            6.7,
+            0.0
+          ],
+          "final_position": [
+            6.60353118311307,
+            0.030368904747561733,
+            0.7835748920445468
+          ],
+          "max_x": 6.616788051053062,
+          "max_base_z": 0.7976184716502482,
+          "target_distance": 0.10113606185298382,
+          "target_reached": true,
+          "fell": false,
+          "stalled": false,
+          "final5s_mean_planar_speed": 0.00019836190893543,
+          "final5s_mean_forward_command": 0.0,
+          "peak_wall_normal_force_N": 0.0,
+          "wall_contact_physics_steps": 0,
+          "peak_riser_normal_force_N": 0.0,
+          "wall_seconds": 3.420277894998435
+        },
+        {
+          "family": "long",
+          "condition": "stairs_open",
+          "yaw": 0.0,
+          "speed": 0.65,
+          "duration": 29.999999999998316,
+          "target": [
+            6.7,
+            0.0
+          ],
+          "final_position": [
+            6.647544442962614,
+            -0.016175454863945248,
+            2.8222183105657908
+          ],
+          "max_x": 6.652512079394175,
+          "max_base_z": 2.8256727744865358,
+          "target_distance": 0.054892903039992336,
+          "target_reached": true,
+          "fell": false,
+          "stalled": false,
+          "final5s_mean_planar_speed": 0.00042756793523991536,
+          "final5s_mean_forward_command": 0.0,
+          "peak_wall_normal_force_N": 0.0,
+          "wall_contact_physics_steps": 0,
+          "peak_riser_normal_force_N": 2029.1095363618629,
+          "wall_seconds": 12.206683465999959
+        },
+        {
+          "family": "long",
+          "condition": "stairs_walls",
+          "yaw": 0.0,
+          "speed": 0.65,
+          "duration": 8.519999999999932,
+          "target": [
+            6.7,
+            0.0
+          ],
+          "final_position": [
+            4.342563032010617,
+            0.0655855056864249,
+            1.5067321182213278
+          ],
+          "max_x": 4.414744992470639,
+          "max_base_z": 2.0811010811462314,
+          "target_distance": 2.3583491082956987,
+          "target_reached": false,
+          "fell": true,
+          "stalled": false,
+          "final5s_mean_planar_speed": 0.7375830592988991,
+          "final5s_mean_forward_command": 0.5097172196613606,
+          "peak_wall_normal_force_N": 759.2824567796918,
+          "wall_contact_physics_steps": 98,
+          "peak_riser_normal_force_N": 846.5289245897688,
+          "wall_seconds": 4.772664393000014
+        }
+      ],
+      "source": "/home/ljc/legged_lab_v3/.runtime/sim2sim/wall_ablation/results.json"
+    },
+    {
+      "metadata": {
+        "checkpoint": "/home/ljc/legged_lab_v3/logs/rsl_rl/g1_amp_stairs_long/2026-09-16_20-26-52_reverse_height_v11/model_50100.pt",
+        "checkpoint_sha256": "a905241b8128ebd9769a903b2b1301ceb2fb4aa6c151b0c4229cf3e7713ac837",
+        "duration": 30.0,
+        "speed": 0.55,
+        "yaw": 0.0,
+        "depth_delay": 0,
+        "wall_geometry": "3 m tall, 1.5 m clear width; short x=[1,5], long x=[1,8]",
+        "trace_columns": [
+          "time",
+          "x",
+          "y",
+          "z",
+          "vx",
+          "vy",
+          "vz",
+          "cmd_vx",
+          "cmd_vy",
+          "cmd_wz",
+          "upright_zz"
+        ],
+        "note": "Deterministic paired cases, immediate target command from the same initial state. Physics contacts sampled every .005 s."
+      },
+      "results": [
+        {
+          "family": "short",
+          "condition": "flat_open",
+          "yaw": 0.0,
+          "speed": 0.55,
+          "duration": 29.999999999998316,
+          "target": [
+            3.0,
+            2.0
+          ],
+          "final_position": [
+            2.8338168240454578,
+            2.028005297819873,
+            0.7813267195424581
+          ],
+          "max_x": 2.8637766463520204,
+          "max_base_z": 0.7976713800717197,
+          "target_distance": 0.16852639163145378,
+          "target_reached": true,
+          "fell": false,
+          "stalled": false,
+          "final5s_mean_planar_speed": 0.0001112109985380664,
+          "final5s_mean_forward_command": 0.0,
+          "peak_wall_normal_force_N": 0.0,
+          "wall_contact_physics_steps": 0,
+          "peak_riser_normal_force_N": 0.0,
+          "wall_seconds": 2.7662907260018983
+        },
+        {
+          "family": "short",
+          "condition": "flat_walls",
+          "yaw": 0.0,
+          "speed": 0.55,
+          "duration": 29.999999999998316,
+          "target": [
+            3.0,
+            2.0
+          ],
+          "final_position": [
+            2.830516195756928,
+            2.002100569425062,
+            0.7820449854647225
+          ],
+          "max_x": 2.839868063930784,
+          "max_base_z": 0.7976710799603861,
+          "target_distance": 0.16949682089235044,
+          "target_reached": true,
+          "fell": false,
+          "stalled": false,
+          "final5s_mean_planar_speed": 0.00016240886780624752,
+          "final5s_mean_forward_command": 0.0,
+          "peak_wall_normal_force_N": 0.0,
+          "wall_contact_physics_steps": 0,
+          "peak_riser_normal_force_N": 0.0,
+          "wall_seconds": 2.987860630993964
+        },
+        {
+          "family": "short",
+          "condition": "stairs_open",
+          "yaw": 0.0,
+          "speed": 0.55,
+          "duration": 29.999999999998316,
+          "target": [
+            3.0,
+            2.0
+          ],
+          "final_position": [
+            0.9023182508449459,
+            2.0524264635770635,
+            0.775225464283388
+          ],
+          "max_x": 0.9226744939458953,
+          "max_base_z": 0.7976702636916605,
+          "target_distance": 2.0983367829834667,
+          "target_reached": false,
+          "fell": false,
+          "stalled": true,
+          "final5s_mean_planar_speed": 0.0007181315347242382,
+          "final5s_mean_forward_command": 0.5499999999999999,
+          "peak_wall_normal_force_N": 0.0,
+          "wall_contact_physics_steps": 0,
+          "peak_riser_normal_force_N": 0.0,
+          "wall_seconds": 3.5443862399988575
+        },
+        {
+          "family": "short",
+          "condition": "stairs_walls",
+          "yaw": 0.0,
+          "speed": 0.55,
+          "duration": 29.999999999998316,
+          "target": [
+            3.0,
+            2.0
+          ],
+          "final_position": [
+            0.8922125441318364,
+            2.0534283074042885,
+            0.7758754566847282
+          ],
+          "max_x": 0.9076239810142769,
+          "max_base_z": 0.7976700247433299,
+          "target_distance": 2.1084644989060815,
+          "target_reached": false,
+          "fell": false,
+          "stalled": true,
+          "final5s_mean_planar_speed": 0.00043776634997726914,
+          "final5s_mean_forward_command": 0.5499999999999999,
+          "peak_wall_normal_force_N": 0.0,
+          "wall_contact_physics_steps": 0,
+          "peak_riser_normal_force_N": 0.0,
+          "wall_seconds": 3.7111855799957993
+        },
+        {
+          "family": "long",
+          "condition": "flat_open",
+          "yaw": 0.0,
+          "speed": 0.55,
+          "duration": 29.999999999998316,
+          "target": [
+            6.7,
+            0.0
+          ],
+          "final_position": [
+            6.538812923541072,
+            0.02573036700805098,
+            0.7829667285588358
+          ],
+          "max_x": 6.560189657279373,
+          "max_base_z": 0.7976713800717197,
+          "target_distance": 0.16322783280968142,
+          "target_reached": true,
+          "fell": false,
+          "stalled": false,
+          "final5s_mean_planar_speed": 0.00030828991550353485,
+          "final5s_mean_forward_command": 0.0,
+          "peak_wall_normal_force_N": 0.0,
+          "wall_contact_physics_steps": 0,
+          "peak_riser_normal_force_N": 0.0,
+          "wall_seconds": 3.191919272998348
+        },
+        {
+          "family": "long",
+          "condition": "flat_walls",
+          "yaw": 0.0,
+          "speed": 0.55,
+          "duration": 29.999999999998316,
+          "target": [
+            6.7,
+            0.0
+          ],
+          "final_position": [
+            6.5369417247964074,
+            0.024926205530380528,
+            0.784002538829771
+          ],
+          "max_x": 6.547801097761369,
+          "max_base_z": 0.7976710799603861,
+          "target_distance": 0.1649524684098827,
+          "target_reached": true,
+          "fell": false,
+          "stalled": false,
+          "final5s_mean_planar_speed": 0.0002973205443903989,
+          "final5s_mean_forward_command": 0.0,
+          "peak_wall_normal_force_N": 0.0,
+          "wall_contact_physics_steps": 0,
+          "peak_riser_normal_force_N": 0.0,
+          "wall_seconds": 3.438179652002873
+        },
+        {
+          "family": "long",
+          "condition": "stairs_open",
+          "yaw": 0.0,
+          "speed": 0.55,
+          "duration": 13.740000000000748,
+          "target": [
+            6.7,
+            0.0
+          ],
+          "final_position": [
+            0.22203541336786728,
+            0.22570704809168496,
+            0.34361708682702535
+          ],
+          "max_x": 1.3109183009900969,
+          "max_base_z": 0.809528379922012,
+          "target_distance": 6.481895467933611,
+          "target_reached": false,
+          "fell": true,
+          "stalled": false,
+          "final5s_mean_planar_speed": 0.3273368399650523,
+          "final5s_mean_forward_command": 0.5499999999999999,
+          "peak_wall_normal_force_N": 0.0,
+          "wall_contact_physics_steps": 0,
+          "peak_riser_normal_force_N": 1148.4512040270884,
+          "wall_seconds": 6.058247405002476
+        },
+        {
+          "family": "long",
+          "condition": "stairs_walls",
+          "yaw": 0.0,
+          "speed": 0.55,
+          "duration": 29.999999999998316,
+          "target": [
+            6.7,
+            0.0
+          ],
+          "final_position": [
+            1.5769014497088047,
+            -0.13069601117697438,
+            1.0143398855590005
+          ],
+          "max_x": 1.5769014497088047,
+          "max_base_z": 1.0143398855590005,
+          "target_distance": 5.124765380320675,
+          "target_reached": false,
+          "fell": false,
+          "stalled": false,
+          "final5s_mean_planar_speed": 0.14482945542482545,
+          "final5s_mean_forward_command": 0.5495995444434668,
+          "peak_wall_normal_force_N": 0.0,
+          "wall_contact_physics_steps": 0,
+          "peak_riser_normal_force_N": 925.1389275230476,
+          "wall_seconds": 11.80053139499796
+        }
+      ],
+      "source": "/home/ljc/legged_lab_v3/.runtime/sim2sim/wall_ablation_055/results.json"
+    },
+    {
+      "metadata": {
+        "checkpoint": "/home/ljc/legged_lab_v3/logs/rsl_rl/g1_amp_stairs_long/2026-09-16_20-26-52_reverse_height_v11/model_50100.pt",
+        "checkpoint_sha256": "a905241b8128ebd9769a903b2b1301ceb2fb4aa6c151b0c4229cf3e7713ac837",
+        "duration": 30.0,
+        "speed": 0.65,
+        "yaw": 0.0,
+        "depth_delay": 0,
+        "wall_geometry": "3 m tall, 1.5 m clear width; short x=[1,5], long x=[1,8]",
+        "trace_columns": [
+          "time",
+          "x",
+          "y",
+          "z",
+          "vx",
+          "vy",
+          "vz",
+          "cmd_vx",
+          "cmd_vy",
+          "cmd_wz",
+          "upright_zz"
+        ],
+        "note": "Deterministic paired cases, immediate target command from the same initial state. Physics contacts sampled every .005 s."
+      },
+      "results": [
+        {
+          "family": "long",
+          "condition": "stairs_hidden_walls",
+          "yaw": 0.0,
+          "speed": 0.65,
+          "duration": 6.859999999999876,
+          "target": [
+            6.7,
+            0.0
+          ],
+          "final_position": [
+            3.229837830858205,
+            -0.35360321073747564,
+            1.4314968247661162
+          ],
+          "max_x": 3.7331804182362207,
+          "max_base_z": 1.8867760729916756,
+          "target_distance": 3.4881314067544444,
+          "target_reached": false,
+          "fell": true,
+          "stalled": false,
+          "final5s_mean_planar_speed": 0.7000122256624748,
+          "final5s_mean_forward_command": 0.65,
+          "peak_wall_normal_force_N": 0.0,
+          "wall_contact_physics_steps": 0,
+          "peak_riser_normal_force_N": 779.5291206034905,
+          "wall_seconds": 3.681341818999499
+        },
+        {
+          "family": "long",
+          "condition": "stairs_visual_walls",
+          "yaw": 0.0,
+          "speed": 0.65,
+          "duration": 10.020000000000167,
+          "target": [
+            6.7,
+            0.0
+          ],
+          "final_position": [
+            4.355221127095288,
+            -2.036029222222591,
+            1.6590005205960117
+          ],
+          "max_x": 4.898556711012437,
+          "max_base_z": 2.3958978463606155,
+          "target_distance": 3.1053829001533164,
+          "target_reached": false,
+          "fell": true,
+          "stalled": false,
+          "final5s_mean_planar_speed": 0.8128923576144165,
+          "final5s_mean_forward_command": 0.5602877293659253,
+          "peak_wall_normal_force_N": 0.0,
+          "wall_contact_physics_steps": 0,
+          "peak_riser_normal_force_N": 2048.1245985388837,
+          "wall_seconds": 5.959273051004857
+        }
+      ],
+      "source": "/home/ljc/legged_lab_v3/.runtime/sim2sim/wall_ablation_isolate/results.json"
+    },
+    {
+      "metadata": {
+        "checkpoint": "/home/ljc/legged_lab_v3/logs/rsl_rl/g1_amp_stairs_long/2026-09-16_20-26-52_reverse_height_v11/model_50100.pt",
+        "checkpoint_sha256": "a905241b8128ebd9769a903b2b1301ceb2fb4aa6c151b0c4229cf3e7713ac837",
+        "duration": 30.0,
+        "speed": 0.65,
+        "yaw": 0.0,
+        "depth_delay": 0,
+        "wall_geometry": "3 m tall, 1.5 m clear width; short x=[1,5], long x=[1,8]",
+        "trace_columns": [
+          "time",
+          "x",
+          "y",
+          "z",
+          "vx",
+          "vy",
+          "vz",
+          "cmd_vx",
+          "cmd_vy",
+          "cmd_wz",
+          "upright_zz"
+        ],
+        "note": "Deterministic paired cases, immediate target command from the same initial state. Physics contacts sampled every .005 s."
+      },
+      "results": [
+        {
+          "family": "long",
+          "condition": "stairs_disabled_walls",
+          "yaw": 0.0,
+          "speed": 0.65,
+          "duration": 6.859999999999876,
+          "target": [
+            6.7,
+            0.0
+          ],
+          "final_position": [
+            3.229837830858205,
+            -0.35360321073747564,
+            1.4314968247661162
+          ],
+          "max_x": 3.7331804182362207,
+          "max_base_z": 1.8867760729916756,
+          "target_distance": 3.4881314067544444,
+          "target_reached": false,
+          "fell": true,
+          "stalled": false,
+          "final5s_mean_planar_speed": 0.7000122256624748,
+          "final5s_mean_forward_command": 0.65,
+          "peak_wall_normal_force_N": 0.0,
+          "wall_contact_physics_steps": 0,
+          "peak_riser_normal_force_N": 779.5291206034905,
+          "wall_seconds": 3.605929940000351
+        }
+      ],
+      "source": "/home/ljc/legged_lab_v3/.runtime/sim2sim/wall_ablation_disabled/results.json"
+    },
+    {
+      "metadata": {
+        "checkpoint": "/home/ljc/legged_lab_v3/logs/rsl_rl/g1_amp_stairs_long/2026-09-16_20-26-52_reverse_height_v11/model_50100.pt",
+        "checkpoint_sha256": "a905241b8128ebd9769a903b2b1301ceb2fb4aa6c151b0c4229cf3e7713ac837",
+        "duration": 30.0,
+        "speed": 0.55,
+        "yaw": 0.03,
+        "depth_delay": 0,
+        "wall_geometry": "3 m tall, 1.5 m clear width; short x=[1,5], long x=[1,8]",
+        "trace_columns": [
+          "time",
+          "x",
+          "y",
+          "z",
+          "vx",
+          "vy",
+          "vz",
+          "cmd_vx",
+          "cmd_vy",
+          "cmd_wz",
+          "upright_zz"
+        ],
+        "note": "Deterministic paired cases, immediate target command from the same initial state. Physics contacts sampled every .005 s."
+      },
+      "results": [
+        {
+          "family": "short",
+          "condition": "stairs_open",
+          "yaw": 0.03,
+          "speed": 0.55,
+          "duration": 29.999999999998316,
+          "target": [
+            3.0,
+            2.0
+          ],
+          "final_position": [
+            0.8066127146539825,
+            2.077120429153506,
+            0.775936986700754
+          ],
+          "max_x": 0.8117445217427369,
+          "max_base_z": 0.7976654413118796,
+          "target_distance": 2.194742660110837,
+          "target_reached": false,
+          "fell": false,
+          "stalled": true,
+          "final5s_mean_planar_speed": 0.00029298268118520596,
+          "final5s_mean_forward_command": 0.5499999999999999,
+          "peak_wall_normal_force_N": 0.0,
+          "wall_contact_physics_steps": 0,
+          "peak_riser_normal_force_N": 0.0,
+          "wall_seconds": 3.2156840820025536
+        },
+        {
+          "family": "short",
+          "condition": "stairs_walls",
+          "yaw": 0.03,
+          "speed": 0.55,
+          "duration": 29.999999999998316,
+          "target": [
+            3.0,
+            2.0
+          ],
+          "final_position": [
+            0.8739928845436671,
+            2.0689758891271257,
+            0.7763171467550775
+          ],
+          "max_x": 0.8833668343814897,
+          "max_base_z": 0.7976648096431492,
+          "target_distance": 2.1271257434039565,
+          "target_reached": false,
+          "fell": false,
+          "stalled": true,
+          "final5s_mean_planar_speed": 0.0003194025912862776,
+          "final5s_mean_forward_command": 0.5499999999999999,
+          "peak_wall_normal_force_N": 0.0,
+          "wall_contact_physics_steps": 0,
+          "peak_riser_normal_force_N": 0.0,
+          "wall_seconds": 3.532267270995362
+        }
+      ],
+      "source": "/home/ljc/legged_lab_v3/.runtime/sim2sim/wall_ablation_yaw_pos/results.json"
+    },
+    {
+      "metadata": {
+        "checkpoint": "/home/ljc/legged_lab_v3/logs/rsl_rl/g1_amp_stairs_long/2026-09-16_20-26-52_reverse_height_v11/model_50100.pt",
+        "checkpoint_sha256": "a905241b8128ebd9769a903b2b1301ceb2fb4aa6c151b0c4229cf3e7713ac837",
+        "duration": 30.0,
+        "speed": 0.55,
+        "yaw": -0.03,
+        "depth_delay": 0,
+        "wall_geometry": "3 m tall, 1.5 m clear width; short x=[1,5], long x=[1,8]",
+        "trace_columns": [
+          "time",
+          "x",
+          "y",
+          "z",
+          "vx",
+          "vy",
+          "vz",
+          "cmd_vx",
+          "cmd_vy",
+          "cmd_wz",
+          "upright_zz"
+        ],
+        "note": "Deterministic paired cases, immediate target command from the same initial state. Physics contacts sampled every .005 s."
+      },
+      "results": [
+        {
+          "family": "short",
+          "condition": "stairs_open",
+          "yaw": -0.03,
+          "speed": 0.55,
+          "duration": 29.999999999998316,
+          "target": [
+            3.0,
+            2.0
+          ],
+          "final_position": [
+            0.8981464117944175,
+            2.035596725290907,
+            0.7740769003886435
+          ],
+          "max_x": 0.9207210609311116,
+          "max_base_z": 0.7976724885903287,
+          "target_distance": 2.102154997402456,
+          "target_reached": false,
+          "fell": false,
+          "stalled": true,
+          "final5s_mean_planar_speed": 0.0007335652703156361,
+          "final5s_mean_forward_command": 0.5499999999999999,
+          "peak_wall_normal_force_N": 0.0,
+          "wall_contact_physics_steps": 0,
+          "peak_riser_normal_force_N": 0.0,
+          "wall_seconds": 3.567929484997876
+        },
+        {
+          "family": "short",
+          "condition": "stairs_walls",
+          "yaw": -0.03,
+          "speed": 0.55,
+          "duration": 29.999999999998316,
+          "target": [
+            3.0,
+            2.0
+          ],
+          "final_position": [
+            0.8980251766207004,
+            2.047137148843378,
+            0.774896473973159
+          ],
+          "max_x": 0.9190319779115939,
+          "max_base_z": 0.7976724438360463,
+          "target_distance": 2.102503286304571,
+          "target_reached": false,
+          "fell": false,
+          "stalled": true,
+          "final5s_mean_planar_speed": 0.0006271471055104587,
+          "final5s_mean_forward_command": 0.5499999999999999,
+          "peak_wall_normal_force_N": 0.0,
+          "wall_contact_physics_steps": 0,
+          "peak_riser_normal_force_N": 0.0,
+          "wall_seconds": 3.8093678709992673
+        }
+      ],
+      "source": "/home/ljc/legged_lab_v3/.runtime/sim2sim/wall_ablation_yaw_neg/results.json"
+    }
+  ],
+  "total_cases": 23,
+  "divergence_check": {
+    "time": 3.7,
+    "comparison": "long stairs open vs walls excluded from depth and collision",
+    "actions_identical_at_first_divergence": true,
+    "depth_frames_identical_at_first_divergence": true,
+    "contacts_open": 1,
+    "contacts_disabled_walls": 3,
+    "interpretation": "Physics/contact-generation confound; do not attribute long-stair success/failure solely to visual walls."
+  }
+}

@@ -1,0 +1,594 @@
+{
+  "symmetric_default": {
+    "depth_camera": {
+      "hits": {
+        "torso_link": 2304
+      },
+      "cropped_hits": {
+        "torso_link": 576
+      },
+      "raw_mirror_mae_m": 4.055826866533607e-05,
+      "near_body_pixels": 2304,
+      "mesh_pose_body_order": {
+        "1": "pelvis",
+        "2": "left_hip_pitch_link",
+        "3": "left_hip_roll_link",
+        "4": "left_hip_yaw_link",
+        "5": "left_knee_link",
+        "6": "left_ankle_pitch_link",
+        "7": "left_ankle_roll_link",
+        "8": "right_hip_pitch_link",
+        "9": "right_hip_roll_link",
+        "10": "right_hip_yaw_link",
+        "11": "right_knee_link",
+        "12": "right_ankle_pitch_link",
+        "13": "right_ankle_roll_link",
+        "14": "waist_yaw_link",
+        "15": "waist_roll_link",
+        "16": "torso_link",
+        "17": "left_shoulder_pitch_link",
+        "18": "left_shoulder_roll_link",
+        "19": "left_shoulder_yaw_link",
+        "20": "left_elbow_link",
+        "21": "left_wrist_roll_link",
+        "22": "left_wrist_pitch_link",
+        "23": "left_wrist_yaw_link",
+        "24": "right_shoulder_pitch_link",
+        "25": "right_shoulder_roll_link",
+        "26": "right_shoulder_yaw_link",
+        "27": "right_elbow_link",
+        "28": "right_wrist_roll_link",
+        "29": "right_wrist_pitch_link",
+        "30": "right_wrist_yaw_link"
+      },
+      "max_pose_match_error": 0.0,
+      "camera_pos": [
+        [
+          0.044835396111011505,
+          0.010000001639127731,
+          1.2816648483276367
+        ]
+      ],
+      "torso_pos": [
+        -0.003963494207710028,
+        1.3969838619232178e-09,
+        0.8438620567321777
+      ],
+      "offset_pos": [
+        [
+          0.04879886656999588,
+          0.009999999776482582,
+          0.4378030002117157
+        ]
+      ],
+      "offset_rot": [
+        [
+          0.004363302607089281,
+          0.40673601627349854,
+          0.0,
+          0.9135352969169617
+        ]
+      ],
+      "camera_path": "/World/envs/env_[^/]+/Robot/torso_link",
+      "raw_min": 0.011619435623288155,
+      "raw_max": 0.011784953996539116
+    },
+    "center_camera": {
+      "hits": {
+        "torso_link": 2304
+      },
+      "cropped_hits": {
+        "torso_link": 576
+      },
+      "raw_mirror_mae_m": 1.0129750371845603e-09,
+      "near_body_pixels": 2304,
+      "mesh_pose_body_order": {
+        "1": "pelvis",
+        "2": "left_hip_pitch_link",
+        "3": "left_hip_roll_link",
+        "4": "left_hip_yaw_link",
+        "5": "left_knee_link",
+        "6": "left_ankle_pitch_link",
+        "7": "left_ankle_roll_link",
+        "8": "right_hip_pitch_link",
+        "9": "right_hip_roll_link",
+        "10": "right_hip_yaw_link",
+        "11": "right_knee_link",
+        "12": "right_ankle_pitch_link",
+        "13": "right_ankle_roll_link",
+        "14": "waist_yaw_link",
+        "15": "waist_roll_link",
+        "16": "torso_link",
+        "17": "left_shoulder_pitch_link",
+        "18": "left_shoulder_roll_link",
+        "19": "left_shoulder_yaw_link",
+        "20": "left_elbow_link",
+        "21": "left_wrist_roll_link",
+        "22": "left_wrist_pitch_link",
+        "23": "left_wrist_yaw_link",
+        "24": "right_shoulder_pitch_link",
+        "25": "right_shoulder_roll_link",
+        "26": "right_shoulder_yaw_link",
+        "27": "right_elbow_link",
+        "28": "right_wrist_roll_link",
+        "29": "right_wrist_pitch_link",
+        "30": "right_wrist_yaw_link"
+      },
+      "max_pose_match_error": 0.0,
+      "camera_pos": [
+        [
+          0.04483539238572121,
+          7.307415117452365e-09,
+          1.2816648483276367
+        ]
+      ],
+      "torso_pos": [
+        -0.003963494207710028,
+        1.3969838619232178e-09,
+        0.8438620567321777
+      ],
+      "offset_pos": [
+        [
+          0.04879886656999588,
+          0.0,
+          0.4378030002117157
+        ]
+      ],
+      "offset_rot": [
+        [
+          0.0,
+          0.4067366421222687,
+          0.0,
+          0.9135454297065735
+        ]
+      ],
+      "camera_path": "/World/envs/env_[^/]+/Robot/torso_link",
+      "raw_min": 0.011658995412290096,
+      "raw_max": 0.011744393035769463
+    }
+  },
+  "symmetric_forward": {
+    "depth_camera": {
+      "hits": {
+        "torso_link": 2304
+      },
+      "cropped_hits": {
+        "torso_link": 576
+      },
+      "raw_mirror_mae_m": 4.055826866533607e-05,
+      "near_body_pixels": 2304,
+      "mesh_pose_body_order": {
+        "1": "pelvis",
+        "2": "left_hip_pitch_link",
+        "3": "left_hip_roll_link",
+        "4": "left_hip_yaw_link",
+        "5": "left_knee_link",
+        "6": "left_ankle_pitch_link",
+        "7": "left_ankle_roll_link",
+        "8": "right_hip_pitch_link",
+        "9": "right_hip_roll_link",
+        "10": "right_hip_yaw_link",
+        "11": "right_knee_link",
+        "12": "right_ankle_pitch_link",
+        "13": "right_ankle_roll_link",
+        "14": "waist_yaw_link",
+        "15": "waist_roll_link",
+        "16": "torso_link",
+        "17": "left_shoulder_pitch_link",
+        "18": "left_shoulder_roll_link",
+        "19": "left_shoulder_yaw_link",
+        "20": "left_elbow_link",
+        "21": "left_wrist_roll_link",
+        "22": "left_wrist_pitch_link",
+        "23": "left_wrist_yaw_link",
+        "24": "right_shoulder_pitch_link",
+        "25": "right_shoulder_roll_link",
+        "26": "right_shoulder_yaw_link",
+        "27": "right_elbow_link",
+        "28": "right_wrist_roll_link",
+        "29": "right_wrist_pitch_link",
+        "30": "right_wrist_yaw_link"
+      },
+      "max_pose_match_error": 0.0,
+      "camera_pos": [
+        [
+          0.044835396111011505,
+          0.010000001639127731,
+          1.2816648483276367
+        ]
+      ],
+      "torso_pos": [
+        -0.003963494207710028,
+        1.3969838619232178e-09,
+        0.8438620567321777
+      ],
+      "offset_pos": [
+        [
+          0.04879886656999588,
+          0.009999999776482582,
+          0.4378030002117157
+        ]
+      ],
+      "offset_rot": [
+        [
+          0.004363302607089281,
+          0.40673601627349854,
+          0.0,
+          0.9135352969169617
+        ]
+      ],
+      "camera_path": "/World/envs/env_[^/]+/Robot/torso_link",
+      "raw_min": 0.011619435623288155,
+      "raw_max": 0.011784953996539116
+    },
+    "center_camera": {
+      "hits": {
+        "torso_link": 2304
+      },
+      "cropped_hits": {
+        "torso_link": 576
+      },
+      "raw_mirror_mae_m": 1.0129750371845603e-09,
+      "near_body_pixels": 2304,
+      "mesh_pose_body_order": {
+        "1": "pelvis",
+        "2": "left_hip_pitch_link",
+        "3": "left_hip_roll_link",
+        "4": "left_hip_yaw_link",
+        "5": "left_knee_link",
+        "6": "left_ankle_pitch_link",
+        "7": "left_ankle_roll_link",
+        "8": "right_hip_pitch_link",
+        "9": "right_hip_roll_link",
+        "10": "right_hip_yaw_link",
+        "11": "right_knee_link",
+        "12": "right_ankle_pitch_link",
+        "13": "right_ankle_roll_link",
+        "14": "waist_yaw_link",
+        "15": "waist_roll_link",
+        "16": "torso_link",
+        "17": "left_shoulder_pitch_link",
+        "18": "left_shoulder_roll_link",
+        "19": "left_shoulder_yaw_link",
+        "20": "left_elbow_link",
+        "21": "left_wrist_roll_link",
+        "22": "left_wrist_pitch_link",
+        "23": "left_wrist_yaw_link",
+        "24": "right_shoulder_pitch_link",
+        "25": "right_shoulder_roll_link",
+        "26": "right_shoulder_yaw_link",
+        "27": "right_elbow_link",
+        "28": "right_wrist_roll_link",
+        "29": "right_wrist_pitch_link",
+        "30": "right_wrist_yaw_link"
+      },
+      "max_pose_match_error": 0.0,
+      "camera_pos": [
+        [
+          0.04483539238572121,
+          7.307415117452365e-09,
+          1.2816648483276367
+        ]
+      ],
+      "torso_pos": [
+        -0.003963494207710028,
+        1.3969838619232178e-09,
+        0.8438620567321777
+      ],
+      "offset_pos": [
+        [
+          0.04879886656999588,
+          0.0,
+          0.4378030002117157
+        ]
+      ],
+      "offset_rot": [
+        [
+          0.0,
+          0.4067366421222687,
+          0.0,
+          0.9135454297065735
+        ]
+      ],
+      "camera_path": "/World/envs/env_[^/]+/Robot/torso_link",
+      "raw_min": 0.011658995412290096,
+      "raw_max": 0.011744393035769463
+    }
+  },
+  "left_forward": {
+    "depth_camera": {
+      "hits": {
+        "torso_link": 2304
+      },
+      "cropped_hits": {
+        "torso_link": 576
+      },
+      "raw_mirror_mae_m": 4.055826866533607e-05,
+      "near_body_pixels": 2304,
+      "mesh_pose_body_order": {
+        "1": "pelvis",
+        "2": "left_hip_pitch_link",
+        "3": "left_hip_roll_link",
+        "4": "left_hip_yaw_link",
+        "5": "left_knee_link",
+        "6": "left_ankle_pitch_link",
+        "7": "left_ankle_roll_link",
+        "8": "right_hip_pitch_link",
+        "9": "right_hip_roll_link",
+        "10": "right_hip_yaw_link",
+        "11": "right_knee_link",
+        "12": "right_ankle_pitch_link",
+        "13": "right_ankle_roll_link",
+        "14": "waist_yaw_link",
+        "15": "waist_roll_link",
+        "16": "torso_link",
+        "17": "left_shoulder_pitch_link",
+        "18": "left_shoulder_roll_link",
+        "19": "left_shoulder_yaw_link",
+        "20": "left_elbow_link",
+        "21": "left_wrist_roll_link",
+        "22": "left_wrist_pitch_link",
+        "23": "left_wrist_yaw_link",
+        "24": "right_shoulder_pitch_link",
+        "25": "right_shoulder_roll_link",
+        "26": "right_shoulder_yaw_link",
+        "27": "right_elbow_link",
+        "28": "right_wrist_roll_link",
+        "29": "right_wrist_pitch_link",
+        "30": "right_wrist_yaw_link"
+      },
+      "max_pose_match_error": 0.0,
+      "camera_pos": [
+        [
+          0.044835396111011505,
+          0.010000002570450306,
+          1.2816648483276367
+        ]
+      ],
+      "torso_pos": [
+        -0.003963494207710028,
+        1.4260876923799515e-09,
+        0.8438620567321777
+      ],
+      "offset_pos": [
+        [
+          0.04879886656999588,
+          0.009999999776482582,
+          0.4378030002117157
+        ]
+      ],
+      "offset_rot": [
+        [
+          0.004363302607089281,
+          0.40673601627349854,
+          0.0,
+          0.9135352969169617
+        ]
+      ],
+      "camera_path": "/World/envs/env_[^/]+/Robot/torso_link",
+      "raw_min": 0.011619435623288155,
+      "raw_max": 0.011784953996539116
+    },
+    "center_camera": {
+      "hits": {
+        "torso_link": 2304
+      },
+      "cropped_hits": {
+        "torso_link": 576
+      },
+      "raw_mirror_mae_m": 1.0129750371845603e-09,
+      "near_body_pixels": 2304,
+      "mesh_pose_body_order": {
+        "1": "pelvis",
+        "2": "left_hip_pitch_link",
+        "3": "left_hip_roll_link",
+        "4": "left_hip_yaw_link",
+        "5": "left_knee_link",
+        "6": "left_ankle_pitch_link",
+        "7": "left_ankle_roll_link",
+        "8": "right_hip_pitch_link",
+        "9": "right_hip_roll_link",
+        "10": "right_hip_yaw_link",
+        "11": "right_knee_link",
+        "12": "right_ankle_pitch_link",
+        "13": "right_ankle_roll_link",
+        "14": "waist_yaw_link",
+        "15": "waist_roll_link",
+        "16": "torso_link",
+        "17": "left_shoulder_pitch_link",
+        "18": "left_shoulder_roll_link",
+        "19": "left_shoulder_yaw_link",
+        "20": "left_elbow_link",
+        "21": "left_wrist_roll_link",
+        "22": "left_wrist_pitch_link",
+        "23": "left_wrist_yaw_link",
+        "24": "right_shoulder_pitch_link",
+        "25": "right_shoulder_roll_link",
+        "26": "right_shoulder_yaw_link",
+        "27": "right_elbow_link",
+        "28": "right_wrist_roll_link",
+        "29": "right_wrist_pitch_link",
+        "30": "right_wrist_yaw_link"
+      },
+      "max_pose_match_error": 0.0,
+      "camera_pos": [
+        [
+          0.04483539238572121,
+          7.336518947909099e-09,
+          1.2816648483276367
+        ]
+      ],
+      "torso_pos": [
+        -0.003963494207710028,
+        1.4260876923799515e-09,
+        0.8438620567321777
+      ],
+      "offset_pos": [
+        [
+          0.04879886656999588,
+          0.0,
+          0.4378030002117157
+        ]
+      ],
+      "offset_rot": [
+        [
+          0.0,
+          0.4067366421222687,
+          0.0,
+          0.9135454297065735
+        ]
+      ],
+      "camera_path": "/World/envs/env_[^/]+/Robot/torso_link",
+      "raw_min": 0.011658995412290096,
+      "raw_max": 0.011744393035769463
+    }
+  },
+  "right_forward": {
+    "depth_camera": {
+      "hits": {
+        "torso_link": 2304
+      },
+      "cropped_hits": {
+        "torso_link": 576
+      },
+      "raw_mirror_mae_m": 4.055826866533607e-05,
+      "near_body_pixels": 2304,
+      "mesh_pose_body_order": {
+        "1": "pelvis",
+        "2": "left_hip_pitch_link",
+        "3": "left_hip_roll_link",
+        "4": "left_hip_yaw_link",
+        "5": "left_knee_link",
+        "6": "left_ankle_pitch_link",
+        "7": "left_ankle_roll_link",
+        "8": "right_hip_pitch_link",
+        "9": "right_hip_roll_link",
+        "10": "right_hip_yaw_link",
+        "11": "right_knee_link",
+        "12": "right_ankle_pitch_link",
+        "13": "right_ankle_roll_link",
+        "14": "waist_yaw_link",
+        "15": "waist_roll_link",
+        "16": "torso_link",
+        "17": "left_shoulder_pitch_link",
+        "18": "left_shoulder_roll_link",
+        "19": "left_shoulder_yaw_link",
+        "20": "left_elbow_link",
+        "21": "left_wrist_roll_link",
+        "22": "left_wrist_pitch_link",
+        "23": "left_wrist_yaw_link",
+        "24": "right_shoulder_pitch_link",
+        "25": "right_shoulder_roll_link",
+        "26": "right_shoulder_yaw_link",
+        "27": "right_elbow_link",
+        "28": "right_wrist_roll_link",
+        "29": "right_wrist_pitch_link",
+        "30": "right_wrist_yaw_link"
+      },
+      "max_pose_match_error": 0.0,
+      "camera_pos": [
+        [
+          0.044835396111011505,
+          0.010000002570450306,
+          1.2816648483276367
+        ]
+      ],
+      "torso_pos": [
+        -0.003963494207710028,
+        1.4260876923799515e-09,
+        0.8438620567321777
+      ],
+      "offset_pos": [
+        [
+          0.04879886656999588,
+          0.009999999776482582,
+          0.4378030002117157
+        ]
+      ],
+      "offset_rot": [
+        [
+          0.004363302607089281,
+          0.40673601627349854,
+          0.0,
+          0.9135352969169617
+        ]
+      ],
+      "camera_path": "/World/envs/env_[^/]+/Robot/torso_link",
+      "raw_min": 0.011619435623288155,
+      "raw_max": 0.011784953996539116
+    },
+    "center_camera": {
+      "hits": {
+        "torso_link": 2304
+      },
+      "cropped_hits": {
+        "torso_link": 576
+      },
+      "raw_mirror_mae_m": 1.0129750371845603e-09,
+      "near_body_pixels": 2304,
+      "mesh_pose_body_order": {
+        "1": "pelvis",
+        "2": "left_hip_pitch_link",
+        "3": "left_hip_roll_link",
+        "4": "left_hip_yaw_link",
+        "5": "left_knee_link",
+        "6": "left_ankle_pitch_link",
+        "7": "left_ankle_roll_link",
+        "8": "right_hip_pitch_link",
+        "9": "right_hip_roll_link",
+        "10": "right_hip_yaw_link",
+        "11": "right_knee_link",
+        "12": "right_ankle_pitch_link",
+        "13": "right_ankle_roll_link",
+        "14": "waist_yaw_link",
+        "15": "waist_roll_link",
+        "16": "torso_link",
+        "17": "left_shoulder_pitch_link",
+        "18": "left_shoulder_roll_link",
+        "19": "left_shoulder_yaw_link",
+        "20": "left_elbow_link",
+        "21": "left_wrist_roll_link",
+        "22": "left_wrist_pitch_link",
+        "23": "left_wrist_yaw_link",
+        "24": "right_shoulder_pitch_link",
+        "25": "right_shoulder_roll_link",
+        "26": "right_shoulder_yaw_link",
+        "27": "right_elbow_link",
+        "28": "right_wrist_roll_link",
+        "29": "right_wrist_pitch_link",
+        "30": "right_wrist_yaw_link"
+      },
+      "max_pose_match_error": 0.0,
+      "camera_pos": [
+        [
+          0.04483539238572121,
+          7.336518947909099e-09,
+          1.2816648483276367
+        ]
+      ],
+      "torso_pos": [
+        -0.003963494207710028,
+        1.4260876923799515e-09,
+        0.8438620567321777
+      ],
+      "offset_pos": [
+        [
+          0.04879886656999588,
+          0.0,
+          0.4378030002117157
+        ]
+      ],
+      "offset_rot": [
+        [
+          0.0,
+          0.4067366421222687,
+          0.0,
+          0.9135454297065735
+        ]
+      ],
+      "camera_path": "/World/envs/env_[^/]+/Robot/torso_link",
+      "raw_min": 0.011658995412290096,
+      "raw_max": 0.011744393035769463
+    }
+  }
+}

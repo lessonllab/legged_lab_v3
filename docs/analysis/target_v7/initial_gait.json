@@ -1,0 +1,82 @@
+{
+  "checkpoint": "/home/ljc/legged_lab_v3/logs/rsl_rl/g1_amp_depth_target_v7/2026-09-13_21-24-17_progress_pilot/model_initial.pt",
+  "task": "LeggedLab-Isaac-AMP-Depth-Target-G1-Play-v3",
+  "steps": 500,
+  "scope": "Six easiest tiles, standing resets; requested forward speed capped by each terrain range; finite diagnostic, not a success-rate benchmark.",
+  "speeds": {
+    "0.5": [
+      {
+        "terrain": "pyramid_stairs",
+        "command_vx": 0.5,
+        "vx_mean": 0.5134721994400024,
+        "xy_speed_mean": 0.517126202583313,
+        "foot_air_fraction": 0.25,
+        "left_liftoffs": 48,
+        "right_liftoffs": 47,
+        "failures": 0,
+        "gate_mean": 0.9827010631561279,
+        "pelvis_above_lower_ankle_m": 0.45864108204841614
+      },
+      {
+        "terrain": "pyramid_stairs_inv",
+        "command_vx": 0.5,
+        "vx_mean": 0.5045394897460938,
+        "xy_speed_mean": 0.5112546682357788,
+        "foot_air_fraction": 0.2737500071525574,
+        "left_liftoffs": 46,
+        "right_liftoffs": 41,
+        "failures": 0,
+        "gate_mean": 0.96566241979599,
+        "pelvis_above_lower_ankle_m": 0.5008086562156677
+      },
+      {
+        "terrain": "boxes",
+        "command_vx": 0.5,
+        "vx_mean": 0.5041393637657166,
+        "xy_speed_mean": 0.5085997581481934,
+        "foot_air_fraction": 0.2474999874830246,
+        "left_liftoffs": 46,
+        "right_liftoffs": 43,
+        "failures": 0,
+        "gate_mean": 0.973926842212677,
+        "pelvis_above_lower_ankle_m": 0.46853122115135193
+      },
+      {
+        "terrain": "random_rough",
+        "command_vx": 0.5,
+        "vx_mean": 0.517414391040802,
+        "xy_speed_mean": 0.5220786333084106,
+        "foot_air_fraction": 0.26374998688697815,
+        "left_liftoffs": 47,
+        "right_liftoffs": 47,
+        "failures": 0,
+        "gate_mean": 0.9963358640670776,
+        "pelvis_above_lower_ankle_m": 0.4608815610408783
+      },
+      {
+        "terrain": "hf_pyramid_slope",
+        "command_vx": 0.5,
+        "vx_mean": 0.5143447518348694,
+        "xy_speed_mean": 0.519907534122467,
+        "foot_air_fraction": 0.25874999165534973,
+        "left_liftoffs": 47,
+        "right_liftoffs": 47,
+        "failures": 0,
+        "gate_mean": 0.9924349784851074,
+        "pelvis_above_lower_ankle_m": 0.46020087599754333
+      },
+      {
+        "terrain": "hf_pyramid_slope_inv",
+        "command_vx": 0.5,
+        "vx_mean": 0.5203050374984741,
+        "xy_speed_mean": 0.5243496298789978,
+        "foot_air_fraction": 0.25999999046325684,
+        "left_liftoffs": 48,
+        "right_liftoffs": 47,
+        "failures": 0,
+        "gate_mean": 0.9959725141525269,
+        "pelvis_above_lower_ankle_m": 0.46123573184013367
+      }
+    ]
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "checkpoint": "/home/ljc/legged_lab_v3/logs/rsl_rl/g1_amp_stairs_long/2026-09-17_09-37-56_foothold_v12/model_57900.pt",
+  "scene": "/home/ljc/legged_lab_v3/scripts/sim2sim/scenes/terrain_park.xml",
+  "control": "target",
+  "target": [
+    6.8,
+    -10.0
+  ],
+  "speed_cap": 0.65,
+  "final_command": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "sim_seconds": 29.999999999998316,
+  "wall_seconds": 5.470798734997516,
+  "fell": false,
+  "min_base_height": 0.7321610342730162,
+  "final_position": [
+    6.75804158316466,
+    -9.99958922627965,
+    1.5007775860014498
+  ],
+  "displacement": [
+    6.75804158316466,
+    0.0004107737203504769,
+    0.7007775860014498
+  ],
+  "policy_shape": [
+    1,
+    495
+  ],
+  "depth_shape": [
+    1,
+    8,
+    18,
+    32
+  ],
+  "target_distance": 0.04196042752853517,
+  "target_reached": true
+}

@@ -1,0 +1,3647 @@
+{
+  "checkpoint": "/home/ljc/legged_lab_v3/logs/rsl_rl/g1_amp_stairs_specialist/2026-09-14_21-21-39_stairs_preserve_flat_style05/model_23200.pt",
+  "steps_per_mode": 2200,
+  "scope": "Frozen policy and curriculum; 64 environments; strict and rolling-window completion compared on the same trajectories.",
+  "training_observations": true,
+  "value_keys": [
+    "distance",
+    "speed",
+    "angular_speed",
+    "root_above_goal",
+    "left_ankle_above_goal",
+    "right_ankle_above_goal",
+    "local_x",
+    "goal_z",
+    "root_z",
+    "command_x",
+    "actual_hold"
+  ],
+  "summary": {
+    "sampled/1": {
+      "episodes": 45,
+      "failed": 1,
+      "ever": {
+        "near": 43,
+        "feet_x": 44,
+        "feet_z": 45,
+        "bounds": 45,
+        "upright": 45,
+        "height": 45,
+        "slow": 45,
+        "angular": 45,
+        "geometric": 43,
+        "all": 42,
+        "all_except_z": 42
+      },
+      "hold_1s_recomputed": 0,
+      "hold_1s_actual": 0,
+      "final_pass": 0,
+      "window_final_pass": 42,
+      "mean_duration": 19.644444444444446
+    },
+    "sampled/2": {
+      "episodes": 26,
+      "failed": 0,
+      "ever": {
+        "near": 25,
+        "feet_x": 26,
+        "feet_z": 26,
+        "bounds": 26,
+        "upright": 26,
+        "height": 26,
+        "slow": 26,
+        "angular": 26,
+        "geometric": 25,
+        "all": 25,
+        "all_except_z": 25
+      },
+      "hold_1s_recomputed": 0,
+      "hold_1s_actual": 0,
+      "final_pass": 0,
+      "window_final_pass": 24,
+      "mean_duration": 20.0
+    }
+  },
+  "near_frames": {
+    "sampled/1": {
+      "near_frames": 24959,
+      "near": 24959,
+      "feet_x": 24896,
+      "feet_z": 24796,
+      "bounds": 23877,
+      "upright": 24959,
+      "height": 24959,
+      "slow": 22454,
+      "angular": 3962,
+      "geometric": 23666,
+      "all": 3691,
+      "all_except_z": 3691
+    },
+    "sampled/2": {
+      "near_frames": 18637,
+      "near": 18637,
+      "feet_x": 18599,
+      "feet_z": 18569,
+      "bounds": 18524,
+      "upright": 18637,
+      "height": 18637,
+      "slow": 17415,
+      "angular": 3186,
+      "geometric": 18433,
+      "all": 3079,
+      "all_except_z": 3079
+    }
+  },
+  "episodes": [
+    {
+      "mode": "sampled",
+      "env": 16,
+      "group": 1,
+      "level": 1,
+      "duration": 20.0,
+      "failed": false,
+      "ever": {
+        "near": true,
+        "feet_x": true,
+        "feet_z": true,
+        "bounds": true,
+        "upright": true,
+        "height": true,
+        "slow": true,
+        "angular": true,
+        "geometric": true,
+        "all": true,
+        "all_except_z": true
+      },
+      "max_recomputed_hold": 0.07999999821186066,
+      "max_actual_hold": 0.07999999821186066,
+      "final_actual_hold": 0.0,
+      "window_completed": true,
+      "terminal_geometry": true,
+      "min_distance": 0.12177187204360962,
+      "final_values": [
+        0.1621328890323639,
+        0.02317269891500473,
+        0.37014850974082947,
+        0.7863625884056091,
+        0.034991662949323654,
+        0.034999679774045944,
+        3.5621490478515625,
+        0.0,
+        0.7863625884056091,
+        0.0,
+        0.0
+      ],
+      "goal": [
+        -24.299999237060547,
+        -20.0,
+        0.0
+      ],
+      "origin": [
+        -28.0,
+        -20.0,
+        -0.5600000023841858
+      ]
+    },
+    {
+      "mode": "sampled",
+      "env": 17,
+      "group": 1,
+      "level": 1,
+      "duration": 20.0,
+      "failed": false,
+      "ever": {
+        "near": true,
+        "feet_x": true,
+        "feet_z": true,
+        "bounds": true,
+        "upright": true,
+        "height": true,
+        "slow": true,
+        "angular": true,
+        "geometric": true,
+        "all": true,
+        "all_except_z": true
+      },
+      "max_recomputed_hold": 0.05999999865889549,
+      "max_actual_hold": 0.05999999865889549,
+      "final_actual_hold": 0.0,
+      "window_completed": true,
+      "terminal_geometry": true,
+      "min_distance": 0.10625765472650528,
+      "final_values": [
+        0.2772912085056305,
+        0.11724995821714401,
+        0.41456449031829834,
+        0.7797397971153259,
+        0.034999605268239975,
+        0.0350237712264061,
+        3.944305419921875,
+        0.0,
+        0.7797397971153259,
+        0.0,
+        0.0
+      ],
+      "goal": [
+        -24.299999237060547,
+        -12.0,
+        0.0
+      ],
+      "origin": [
+        -28.0,
+        -12.0,
+        -0.5600000023841858
+      ]
+    },
+    {
+      "mode": "sampled",
+      "env": 18,
+      "group": 1,
+      "level": 1,
+      "duration": 20.0,
+      "failed": false,
+      "ever": {
+        "near": true,
+        "feet_x": true,
+        "feet_z": true,
+        "bounds": true,
+        "upright": true,
+        "height": true,
+        "slow": true,
+        "angular": true,
+        "geometric": true,
+        "all": true,
+        "all_except_z": true
+      },
+      "max_recomputed_hold": 0.05999999865889549,
+      "max_actual_hold": 0.05999999865889549,
+      "final_actual_hold": 0.0,
+      "window_completed": true,
+      "terminal_geometry": true,
+      "min_distance": 0.05276171490550041,
+      "final_values": [
+        0.25212159752845764,
+        0.0729694813489914,
+        0.5585195422172546,
+        0.7850161194801331,
+        0.03523202985525131,
+        0.0349758118391037,
+        3.6962890625,
+        0.0,
+        0.7850161194801331,
+        0.0,
+        0.0
+      ],
+      "goal": [
+        -24.299999237060547,
+        -20.0,
+        0.0
+      ],
+      "origin": [
+        -28.0,
+        -20.0,
+        -0.5600000023841858
+      ]
+    },
+    {
+      "mode": "sampled",
+      "env": 19,
+      "group": 1,
+      "level": 1,
+      "duration": 20.0,
+      "failed": false,
+      "ever": {
+        "near": true,
+        "feet_x": true,
+        "feet_z": true,
+        "bounds": true,
+        "upright": true,
+        "height": true,
+        "slow": true,
+        "angular": true,
+        "geometric": true,
+        "all": true,
+        "all_except_z": true
+      },
+      "max_recomputed_hold": 0.05999999865889549,
+      "max_actual_hold": 0.05999999865889549,
+      "final_actual_hold": 0.0,
+      "window_completed": true,
+      "terminal_geometry": true,
+      "min_distance": 0.031920354813337326,
+      "final_values": [
+        0.0700417160987854,
+        0.046119559556245804,
+        0.28956374526023865,
+        0.7874767780303955,
+        0.034993093460798264,
+        0.0356174111366272,
+        3.698963165283203,
+        0.0,
+        0.7874767780303955,
+        0.0,
+        0.0
+      ],
+      "goal": [
+        -24.299999237060547,
+        -12.0,
+        0.0
+      ],
+      "origin": [
+        -28.0,
+        -12.0,
+        -0.5600000023841858
+      ]
+    },
+    {
+      "mode": "sampled",
+      "env": 20,
+      "group": 1,
+      "level": 1,
+      "duration": 20.0,
+      "failed": false,
+      "ever": {
+        "near": true,
+        "feet_x": true,
+        "feet_z": true,
+        "bounds": true,
+        "upright": true,
+        "height": true,
+        "slow": true,
+        "angular": true,
+        "geometric": true,
+        "all": true,
+        "all_except_z": true
+      },
+      "max_recomputed_hold": 0.09999999403953552,
+      "max_actual_hold": 0.09999999403953552,
+      "final_actual_hold": 0.0,
+      "window_completed": true,
+      "terminal_geometry": true,
+      "min_distance": 0.13534919917583466,
+      "final_values": [
+        0.15747468173503876,
+        0.10227752476930618,
+        0.8701120018959045,
+        0.7857266664505005,
+        0.03499132767319679,
+        0.03499326854944229,
+        3.5548763275146484,
+        0.0,
+        0.7857266664505005,
+        0.0,
+        0.0
+      ],
+      "goal": [
+        -24.299999237060547,
+        -20.0,
+        0.0
+      ],
+      "origin": [
+        -28.0,
+        -20.0,
+        -0.5600000023841858
+      ]
+    },
+    {
+      "mode": "sampled",
+      "env": 21,
+      "group": 1,
+      "level": 1,
+      "duration": 20.0,
+      "failed": false,
+      "ever": {
+        "near": true,
+        "feet_x": true,
+        "feet_z": true,
+        "bounds": true,
+        "upright": true,
+        "height": true,
+        "slow": true,
+        "angular": true,
+        "geometric": true,
+        "all": true,
+        "all_except_z": true
+      },
+      "max_recomputed_hold": 0.03999999910593033,
+      "max_actual_hold": 0.03999999910593033,
+      "final_actual_hold": 0.0,
+      "window_completed": true,
+      "terminal_geometry": true,
+      "min_distance": 0.18100698292255402,
+      "final_values": [
+        0.20239762961864471,
+        0.06827380508184433,
+        0.7075689435005188,
+        0.7856419086456299,
+        0.035361796617507935,
+        0.03497814014554024,
+        3.497610092163086,
+        0.0,
+        0.7856419086456299,
+        0.0,
+        0.0
+      ],
+      "goal": [
+        -24.299999237060547,
+        -12.0,
+        0.0
+      ],
+      "origin": [
+        -28.0,
+        -12.0,
+        -0.5600000023841858
+      ]
+    },
+    {
+      "mode": "sampled",
+      "env": 22,
+      "group": 1,
+      "level": 1,
+      "duration": 20.0,
+      "failed": false,
+      "ever": {
+        "near": true,
+        "feet_x": true,
+        "feet_z": true,
+        "bounds": true,
+        "upright": true,
+        "height": true,
+        "slow": true,
+        "angular": true,
+        "geometric": true,
+        "all": true,
+        "all_except_z": true
+      },
+      "max_recomputed_hold": 0.03999999910593033,
+      "max_actual_hold": 0.03999999910593033,
+      "final_actual_hold": 0.0,
+      "window_completed": true,
+      "terminal_geometry": true,
+      "min_distance": 0.07577303051948547,
+      "final_values": [
+        0.30614978075027466,
+        0.04175160452723503,
+        0.4343324303627014,
+        0.7853923439979553,
+        0.0349963903427124,
+        0.03554096072912216,
+        3.4066925048828125,
+        0.0,
+        0.7853923439979553,
+        0.0,
+        0.0
+      ],
+      "goal": [
+        -24.299999237060547,
+        -20.0,
+        0.0
+      ],
+      "origin": [
+        -28.0,
+        -20.0,
+        -0.5600000023841858
+      ]
+    },
+    {
+      "mode": "sampled",
+      "env": 23,
+      "group": 1,
+      "level": 1,
+      "duration": 20.0,
+      "failed": false,
+      "ever": {
+        "near": true,
+        "feet_x": true,
+        "feet_z": true,
+        "bounds": true,
+        "upright": true,
+        "height": true,
+        "slow": true,
+        "angular": true,
+        "geometric": true,
+        "all": true,
+        "all_except_z": true
+      },
+      "max_recomputed_hold": 0.07999999821186066,
+      "max_actual_hold": 0.07999999821186066,
+      "final_actual_hold": 0.0,
+      "window_completed": true,
+      "terminal_geometry": true,
+      "min_distance": 0.03706818446516991,
+      "final_values": [
+        0.14626489579677582,
+        0.11571629345417023,
+        0.45171648263931274,
+        0.7837733626365662,
+        0.03499378636479378,
+        0.035316139459609985,
+        3.837953567504883,
+        0.0,
+        0.7837733626365662,
+        0.0,
+        0.0
+      ],
+      "goal": [
+        -24.299999237060547,
+        -12.0,
+        0.0
+      ],
+      "origin": [
+        -28.0,
+        -12.0,
+        -0.5600000023841858
+      ]
+    },
+    {
+      "mode": "sampled",
+      "env": 24,
+      "group": 1,
+      "level": 1,
+      "duration": 20.0,
+      "failed": false,
+      "ever": {
+        "near": true,
+        "feet_x": true,
+        "feet_z": true,
+        "bounds": true,
+        "upright": true,
+        "height": true,
+        "slow": true,
+        "angular": true,
+        "geometric": true,
+        "all": true,
+        "all_except_z": true
+      },
+      "max_recomputed_hold": 0.07999999821186066,
+      "max_actual_hold": 0.07999999821186066,
+      "final_actual_hold": 0.0,
+      "window_completed": true,
+      "terminal_geometry": true,
+      "min_distance": 0.18736769258975983,
+      "final_values": [
+        0.24699623882770538,
+        0.08248618245124817,
+        0.7744584083557129,
+        0.785110354423523,
+        0.03499652445316315,
+        0.03535964712500572,
+        3.457225799560547,
+        0.0,
+        0.785110354423523,
+        0.0,
+        0.0
+      ],
+      "goal": [
+        -24.299999237060547,
+        -20.0,
+        0.0
+      ],
+      "origin": [
+        -28.0,
+        -20.0,
+        -0.5600000023841858
+      ]
+    },
+    {
+      "mode": "sampled",
+      "env": 25,
+      "group": 1,
+      "level": 1,
+      "duration": 20.0,
+      "failed": false,
+      "ever": {
+        "near": true,
+        "feet_x": true,
+        "feet_z": true,
+        "bounds": true,
+        "upright": true,
+        "height": true,
+        "slow": true,
+        "angular": true,
+        "geometric": true,
+        "all": true,
+        "all_except_z": true
+      },
+      "max_recomputed_hold": 0.07999999821186066,
+      "max_actual_hold": 0.07999999821186066,
+      "final_actual_hold": 0.0,
+      "window_completed": true,
+      "terminal_geometry": true,
+      "min_distance": 0.07704001665115356,
+      "final_values": [
+        0.08838202059268951,
+        0.02901100553572178,
+        0.4894338846206665,
+        0.7858774065971375,
+        0.034999243915081024,
+        0.034989211708307266,
+        3.693828582763672,
+        0.0,
+        0.7858774065971375,
+        0.0,
+        0.0
+      ],
+      "goal": [
+        -24.299999237060547,
+        -12.0,
+        0.0
+      ],
+      "origin": [
+        -28.0,
+        -12.0,
+        -0.5600000023841858
+      ]
+    },
+    {
+      "mode": "sampled",
+      "env": 26,
+      "group": 1,
+      "level": 1,
+      "duration": 20.0,
+      "failed": false,
+      "ever": {
+        "near": true,
+        "feet_x": true,
+        "feet_z": true,
+        "bounds": true,
+        "upright": true,
+        "height": true,
+        "slow": true,
+        "angular": true,
+        "geometric": true,
+        "all": false,
+        "all_except_z": false
+      },
+      "max_recomputed_hold": 0.0,
+      "max_actual_hold": 0.0,
+      "final_actual_hold": 0.0,
+      "window_completed": false,
+      "terminal_geometry": false,
+      "min_distance": 0.008085082285106182,
+      "final_values": [
+        0.28078386187553406,
+        0.05857677012681961,
+        0.2865592837333679,
+        0.7841193079948425,
+        0.035946544259786606,
+        0.035127319395542145,
+        3.9806251525878906,
+        0.0,
+        0.7841193079948425,
+        0.0,
+        0.0
+      ],
+      "goal": [
+        -24.299999237060547,
+        -20.0,
+        0.0
+      ],
+      "origin": [
+        -28.0,
+        -20.0,
+        -0.5600000023841858
+      ]
+    },
+    {
+      "mode": "sampled",
+      "env": 27,
+      "group": 1,
+      "level": 1,
+      "duration": 20.0,
+      "failed": false,
+      "ever": {
+        "near": true,
+        "feet_x": true,
+        "feet_z": true,
+        "bounds": true,
+        "upright": true,
+        "height": true,
+        "slow": true,
+        "angular": true,
+        "geometric": true,
+        "all": true,
+        "all_except_z": true
+      },
+      "max_recomputed_hold": 0.03999999910593033,
+      "max_actual_hold": 0.03999999910593033,
+      "final_actual_hold": 0.0,
+      "window_completed": true,
+      "terminal_geometry": true,
+      "min_distance": 0.0191921666264534,
+      "final_values": [
+        0.23155832290649414,
+        0.14145217835903168,
+        0.5551829934120178,
+        0.7799715399742126,
+        0.03504166379570961,
+        0.03498932719230652,
+        3.468708038330078,
+        0.0,
+        0.7799715399742126,
+        0.0,
+        0.0
+      ],
+      "goal": [
+        -24.299999237060547,
+        -12.0,
+        0.0
+      ],
+      "origin": [
+        -28.0,
+        -12.0,
+        -0.5600000023841858
+      ]
+    },
+    {
+      "mode": "sampled",
+      "env": 28,
+      "group": 1,
+      "level": 1,
+      "duration": 20.0,
+      "failed": false,
+      "ever": {
+        "near": true,
+        "feet_x": true,
+        "feet_z": true,
+        "bounds": true,
+        "upright": true,
+        "height": true,
+        "slow": true,
+        "angular": true,
+        "geometric": true,
+        "all": true,
+        "all_except_z": true
+      },
+      "max_recomputed_hold": 0.05999999865889549,
+      "max_actual_hold": 0.05999999865889549,
+      "final_actual_hold": 0.0,
+      "window_completed": true,
+      "terminal_geometry": true,
+      "min_distance": 0.014913594350218773,
+      "final_values": [
+        0.2148846536874771,
+        0.10472652316093445,
+        0.8515446186065674,
+        0.7850636839866638,
+        0.03497922420501709,
+        0.03587135300040245,
+        3.8072071075439453,
+        0.0,
+        0.7850636839866638,
+        0.0,
+        0.0
+      ],
+      "goal": [
+        -24.299999237060547,
+        -20.0,
+        0.0
+      ],
+      "origin": [
+        -28.0,
+        -20.0,
+        -0.5600000023841858
+      ]
+    },
+    {
+      "mode": "sampled",
+      "env": 29,
+      "group": 1,
+      "level": 1,
+      "duration": 20.0,
+      "failed": false,
+      "ever": {
+        "near": true,
+        "feet_x": true,
+        "feet_z": true,
+        "bounds": true,
+        "upright": true,
+        "height": true,
+        "slow": true,
+        "angular": true,
+        "geometric": true,
+        "all": true,
+        "all_except_z": true
+      },
+      "max_recomputed_hold": 0.07999999821186066,
+      "max_actual_hold": 0.07999999821186066,
+      "final_actual_hold": 0.019999999552965164,
+      "window_completed": true,
+      "terminal_geometry": true,
+      "min_distance": 0.13412529230117798,
+      "final_values": [
+        0.1523222178220749,
+        0.041357189416885376,
+        0.23748956620693207,
+        0.7855656147003174,
+        0.03497808426618576,
+        0.0368206724524498,
+        3.5891170501708984,
+        0.0,
+        0.7855656147003174,
+        0.0,
+        0.019999999552965164
+      ],
+      "goal": [
+        -24.299999237060547,
+        -12.0,
+        0.0
+      ],
+      "origin": [
+        -28.0,
+        -12.0,
+        -0.5600000023841858
+      ]
+    },
+    {
+      "mode": "sampled",
+      "env": 30,
+      "group": 1,
+      "level": 1,
+      "duration": 20.0,
+      "failed": false,
+      "ever": {
+        "near": true,
+        "feet_x": true,
+        "feet_z": true,
+        "bounds": true,
+        "upright": true,
+        "height": true,
+        "slow": true,
+        "angular": true,
+        "geometric": true,
+        "all": true,
+        "all_except_z": true
+      },
+      "max_recomputed_hold": 0.07999999821186066,
+      "max_actual_hold": 0.07999999821186066,
+      "final_actual_hold": 0.0,
+      "window_completed": true,
+      "terminal_geometry": true,
+      "min_distance": 0.11774758249521255,
+      "final_values": [
+        0.21408814191818237,
+        0.01129534374922514,
+        0.5906058549880981,
+        0.7876613140106201,
+        0.034996047616004944,
+        0.035001546144485474,
+        3.854734420776367,
+        0.0,
+        0.7876613140106201,
+        0.0,
+        0.0
+      ],
+      "goal": [
+        -24.299999237060547,
+        -20.0,
+        0.0
+      ],
+      "origin": [
+        -28.0,
+        -20.0,
+        -0.5600000023841858
+      ]
+    },
+    {
+      "mode": "sampled",
+      "env": 31,
+      "group": 1,
+      "level": 1,
+      "duration": 20.0,
+      "failed": false,
+      "ever": {
+        "near": true,
+        "feet_x": true,
+        "feet_z": true,
+        "bounds": true,
+        "upright": true,
+        "height": true,
+        "slow": true,
+        "angular": true,
+        "geometric": true,
+        "all": true,
+        "all_except_z": true
+      },
+      "max_recomputed_hold": 0.03999999910593033,
+      "max_actual_hold": 0.03999999910593033,
+      "final_actual_hold": 0.03999999910593033,
+      "window_completed": true,
+      "terminal_geometry": true,
+      "min_distance": 0.10030382126569748,
+      "final_values": [
+        0.1218256726861,
+        0.048460010439157486,
+        0.4205973744392395,
+        0.7839444875717163,
+        0.03500036895275116,
+        0.0349997952580452,
+        3.685260772705078,
+        0.0,
+        0.7839444875717163,
+        0.0,
+        0.03999999910593033
+      ],
+      "goal": [
+        -24.299999237060547,
+        -12.0,
+        0.0
+      ],
+      "origin": [
+        -28.0,
+        -12.0,
+        -0.5600000023841858
+      ]
+    },
+    {
+      "mode": "sampled",
+      "env": 32,
+      "group": 1,
+      "level": 1,
+      "duration": 20.0,
+      "failed": false,
+      "ever": {
+        "near": true,
+        "feet_x": true,
+        "feet_z": true,
+        "bounds": true,
+        "upright": true,
+        "height": true,
+        "slow": true,
+        "angular": true,
+        "geometric": true,
+        "all": true,
+        "all_except_z": true
+      },
+      "max_recomputed_hold": 0.05999999865889549,
+      "max_actual_hold": 0.05999999865889549,
+      "final_actual_hold": 0.05999999865889549,
+      "window_completed": true,
+      "terminal_geometry": true,
+      "min_distance": 0.06215594708919525,
+      "final_values": [
+        0.20058225095272064,
+        0.12665216624736786,
+        0.5833668112754822,
+        0.7854487895965576,
+        0.035334572196006775,
+        0.03555642440915108,
+        3.7860107421875,
+        0.0,
+        0.7854487895965576,
+        0.0,
+        0.05999999865889549
+      ],
+      "goal": [
+        -24.299999237060547,
+        -20.0,
+        0.0
+      ],
+      "origin": [
+        -28.0,
+        -20.0,
+        -0.5600000023841858
+      ]
+    },
+    {
+      "mode": "sampled",
+      "env": 33,
+      "group": 1,
+      "level": 1,
+      "duration": 20.0,
+      "failed": false,
+      "ever": {
+        "near": true,
+        "feet_x": true,
+        "feet_z": true,
+        "bounds": true,
+        "upright": true,
+        "height": true,
+        "slow": true,
+        "angular": true,
+        "geometric": true,
+        "all": true,
+        "all_except_z": true
+      },
+      "max_recomputed_hold": 0.07999999821186066,
+      "max_actual_hold": 0.07999999821186066,
+      "final_actual_hold": 0.019999999552965164,
+      "window_completed": true,
+      "terminal_geometry": true,
+      "min_distance": 0.22749942541122437,
+      "final_values": [
+        0.2278541624546051,
+        0.15051153302192688,
+        0.5039400458335876,
+        0.7836487889289856,
+        0.03515367582440376,
+        0.03501658886671066,
+        3.5087203979492188,
+        0.0,
+        0.7836487889289856,
+        0.0,
+        0.019999999552965164
+      ],
+      "goal": [
+        -24.299999237060547,
+        -12.0,
+        0.0
+      ],
+      "origin": [
+        -28.0,
+        -12.0,
+        -0.5600000023841858
+      ]
+    },
+    {
+      "mode": "sampled",
+      "env": 34,
+      "group": 1,
+      "level": 1,
+      "duration": 20.0,
+      "failed": false,
+      "ever": {
+        "near": true,
+        "feet_x": true,
+        "feet_z": true,
+        "bounds": true,
+        "upright": true,
+        "height": true,
+        "slow": true,
+        "angular": true,
+        "geometric": true,
+        "all": true,
+        "all_except_z": true
+      },
+      "max_recomputed_hold": 0.09999999403953552,
+      "max_actual_hold": 0.09999999403953552,
+      "final_actual_hold": 0.0,
+      "window_completed": true,
+      "terminal_geometry": true,
+      "min_distance": 0.021535638719797134,
+      "final_values": [
+        0.08422642201185226,
+        0.08636242151260376,
+        0.23265834152698517,
+        0.784720242023468,
+        0.034992530941963196,
+        0.03500761091709137,
+        3.784027099609375,
+        0.0,
+        0.784720242023468,
+        0.0,
+        0.0
+      ],
+      "goal": [
+        -24.299999237060547,
+        -20.0,
+        0.0
+      ],
+      "origin": [
+        -28.0,
+        -20.0,
+        -0.5600000023841858
+      ]
+    },
+    {
+      "mode": "sampled",
+      "env": 35,
+      "group": 1,
+      "level": 1,
+      "duration": 20.0,
+      "failed": false,
+      "ever": {
+        "near": true,
+        "feet_x": true,
+        "feet_z": true,
+        "bounds": true,
+        "upright": true,
+        "height": true,
+        "slow": true,
+        "angular": true,
+        "geometric": true,
+        "all": true,
+        "all_except_z": true
+      },
+      "max_recomputed_hold": 0.07999999821186066,
+      "max_actual_hold": 0.07999999821186066,
+      "final_actual_hold": 0.0,
+      "window_completed": true,
+      "terminal_geometry": true,
+      "min_distance": 0.099582239985466,
+      "final_values": [
+        0.13085702061653137,
+        0.03431559354066849,
+        0.4848818778991699,
+        0.7813565731048584,
+        0.03499560058116913,
+        0.03500247001647949,
+        3.6847705841064453,
+        0.0,
+        0.7813565731048584,
+        0.0,
+        0.0
+      ],
+      "goal": [
+        -24.299999237060547,
+        -12.0,
+        0.0
+      ],
+      "origin": [
+        -28.0,
+        -12.0,
+        -0.5600000023841858
+      ]
+    },
+    {
+      "mode": "sampled",
+      "env": 36,
+      "group": 1,
+      "level": 1,
+      "duration": 20.0,
+      "failed": false,
+      "ever": {
+        "near": true,
+        "feet_x": true,
+        "feet_z": true,
+        "bounds": true,
+        "upright": true,
+        "height": true,
+        "slow": true,
+        "angular": true,
+        "geometric": true,
+        "all": true,
+        "all_except_z": true
+      },
+      "max_recomputed_hold": 0.05999999865889549,
+      "max_actual_hold": 0.05999999865889549,
+      "final_actual_hold": 0.0,
+      "window_completed": true,
+      "terminal_geometry": true,
+      "min_distance": 0.05116808041930199,
+      "final_values": [
+        0.19561973214149475,
+        0.06516670435667038,
+        0.1841786652803421,
+        0.7828444242477417,
+        0.03500039130449295,
+        0.03632425516843796,
+        3.877756118774414,
+        0.0,
+        0.7828444242477417,
+        0.0,
+        0.0
+      ],
+      "goal": [
+        -24.299999237060547,
+        -20.0,
+        0.0
+      ],
+      "origin": [
+        -28.0,
+        -20.0,
+        -0.5600000023841858
+      ]
+    },
+    {
+      "mode": "sampled",
+      "env": 37,
+      "group": 1,
+      "level": 1,
+      "duration": 20.0,
+      "failed": false,
+      "ever": {
+        "near": true,
+        "feet_x": true,
+        "feet_z": true,
+        "bounds": true,
+        "upright": true,
+        "height": true,
+        "slow": true,
+        "angular": true,
+        "geometric": true,
+        "all": true,
+        "all_except_z": true
+      },
+      "max_recomputed_hold": 0.11999998986721039,
+      "max_actual_hold": 0.11999998986721039,
+      "final_actual_hold": 0.0,
+      "window_completed": true,
+      "terminal_geometry": true,
+      "min_distance": 0.036582157015800476,
+      "final_values": [
+        0.09778337180614471,
+        0.11830664426088333,
+        0.45694223046302795,
+        0.7868330478668213,
+        0.03535459190607071,
+        0.03499094396829605,
+        3.604158401489258,
+        0.0,
+        0.7868330478668213,
+        0.0,
+        0.0
+      ],
+      "goal": [
+        -24.299999237060547,
+        -12.0,
+        0.0
+      ],
+      "origin": [
+        -28.0,
+        -12.0,
+        -0.5600000023841858
+      ]
+    },
+    {
+      "mode": "sampled",
+      "env": 38,
+      "group": 2,
+      "level": 1,
+      "duration": 20.0,
+      "failed": false,
+      "ever": {
+        "near": true,
+        "feet_x": true,
+        "feet_z": true,
+        "bounds": true,
+        "upright": true,
+        "height": true,
+        "slow": true,
+        "angular": true,
+        "geometric": true,
+        "all": true,
+        "all_except_z": true
+      },
+      "max_recomputed_hold": 0.05999999865889549,
+      "max_actual_hold": 0.05999999865889549,
+      "final_actual_hold": 0.019999999552965164,
+      "window_completed": true,
+      "terminal_geometry": true,
+      "min_distance": 0.029181204736232758,
+      "final_values": [
+        0.07907050848007202,
+        0.08576808869838715,
+        0.6009287238121033,
+        0.7861795425415039,
+        0.03508470952510834,
+        0.03499508276581764,
+        3.7472915649414062,
+        0.0,
+        0.7861795425415039,
+        0.0,
+        0.019999999552965164
+      ],
+      "goal": [
+        -24.299999237060547,
+        -36.0,
+        0.0
+      ],
+      "origin": [
+        -28.0,
+        -36.0,
+        0.5600000023841858
+      ]
+    },
+    {
+      "mode": "sampled",
+      "env": 39,
+      "group": 2,
+      "level": 1,
+      "duration": 20.0,
+      "failed": false,
+      "ever": {
+        "near": true,
+        "feet_x": true,
+        "feet_z": true,
+        "bounds": true,
+        "upright": true,
+        "height": true,
+        "slow": true,
+        "angular": true,
+        "geometric": true,
+        "all": true,
+        "all_except_z": true
+      },
+      "max_recomputed_hold": 0.05999999865889549,
+      "max_actual_hold": 0.05999999865889549,
+      "final_actual_hold": 0.0,
+      "window_completed": true,
+      "terminal_geometry": true,
+      "min_distance": 0.036913469433784485,
+      "final_values": [
+        0.036100469529628754,
+        0.027416586875915527,
+        0.1747821569442749,
+        0.7839254140853882,
+        0.036824434995651245,
+        0.038517534732818604,
+        3.6682872772216797,
+        0.0,
+        0.7839254140853882,
+        0.0,
+        0.0
+      ],
+      "goal": [
+        -24.299999237060547,
+        -28.0,
+        0.0
+      ],
+      "origin": [
+        -28.0,
+        -28.0,
+        0.5600000023841858
+      ]
+    },
+    {
+      "mode": "sampled",
+      "env": 40,
+      "group": 2,
+      "level": 1,
+      "duration": 20.0,
+      "failed": false,
+      "ever": {
+        "near": true,
+        "feet_x": true,
+        "feet_z": true,
+        "bounds": true,
+        "upright": true,
+        "height": true,
+        "slow": true,
+        "angular": true,
+        "geometric": true,
+        "all": true,
+        "all_except_z": true
+      },
+      "max_recomputed_hold": 0.05999999865889549,
+      "max_actual_hold": 0.05999999865889549,
+      "final_actual_hold": 0.0,
+      "window_completed": true,
+      "terminal_geometry": true,
+      "min_distance": 0.003050777828320861,
+      "final_values": [
+        0.1931043565273285,
+        0.044051818549633026,
+        0.5303895473480225,
+        0.7848795652389526,
+        0.03525581955909729,
+        0.03522490710020065,
+        3.8887691497802734,
+        0.0,
+        0.7848795652389526,
+        0.0,
+        0.0
+      ],
+      "goal": [
+        -24.299999237060547,
+        -36.0,
+        0.0
+      ],
+      "origin": [
+        -28.0,
+        -36.0,
+        0.5600000023841858
+      ]
+    },
+    {
+      "mode": "sampled",
+      "env": 41,
+      "group": 2,
+      "level": 1,
+      "duration": 20.0,
+      "failed": false,
+      "ever": {
+        "near": true,
+        "feet_x": true,
+        "feet_z": true,
+        "bounds": true,
+        "upright": true,
+        "height": true,
+        "slow": true,
+        "angular": true,
+        "geometric": true,
+        "all": true,
+        "all_except_z": true
+      },
+      "max_recomputed_hold": 0.09999999403953552,
+      "max_actual_hold": 0.09999999403953552,
+      "final_actual_hold": 0.0,
+      "window_completed": true,
+      "terminal_geometry": true,
+      "min_distance": 0.06669170409440994,
+      "final_values": [
+        0.09526792913675308,
+        0.12164982408285141,
+        0.541540265083313,
+        0.7873197793960571,
+        0.037637002766132355,
+        0.03537473827600479,
+        3.7131195068359375,
+        0.0,
+        0.7873197793960571,
+        0.0,
+        0.0
+      ],
+      "goal": [
+        -24.299999237060547,
+        -28.0,
+        0.0
+      ],
+      "origin": [
+        -28.0,
+        -28.0,
+        0.5600000023841858
+      ]
+    },
+    {
+      "mode": "sampled",
+      "env": 42,
+      "group": 2,
+      "level": 1,
+      "duration": 20.0,
+      "failed": false,
+      "ever": {
+        "near": true,
+        "feet_x": true,
+        "feet_z": true,
+        "bounds": true,
+        "upright": true,
+        "height": true,
+        "slow": true,
+        "angular": true,
+        "geometric": true,
+        "all": true,
+        "all_except_z": true
+      },
+      "max_recomputed_hold": 0.07999999821186066,
+      "max_actual_hold": 0.07999999821186066,
+      "final_actual_hold": 0.0,
+      "window_completed": true,
+      "terminal_geometry": true,
+      "min_distance": 0.08867467939853668,
+      "final_values": [
+        0.12652231752872467,
+        0.13464216887950897,
+        0.29145535826683044,
+        0.7821757793426514,
+        0.03516004979610443,
+        0.035204607993364334,
+        3.6080055236816406,
+        0.0,
+        0.7821757793426514,
+        0.0,
+        0.0
+      ],
+      "goal": [
+        -24.299999237060547,
+        -36.0,
+        0.0
+      ],
+      "origin": [
+        -28.0,
+        -36.0,
+        0.5600000023841858
+      ]
+    },
+    {
+      "mode": "sampled",
+      "env": 43,
+      "group": 2,
+      "level": 1,
+      "duration": 20.0,
+      "failed": false,
+      "ever": {
+        "near": true,
+        "feet_x": true,
+        "feet_z": true,
+        "bounds": true,
+        "upright": true,
+        "height": true,
+        "slow": true,
+        "angular": true,
+        "geometric": true,
+        "all": true,
+        "all_except_z": true
+      },
+      "max_recomputed_hold": 0.05999999865889549,
+      "max_actual_hold": 0.05999999865889549,
+      "final_actual_hold": 0.019999999552965164,
+      "window_completed": true,
+      "terminal_geometry": true,
+      "min_distance": 0.0754096582531929,
+      "final_values": [
+        0.07257454842329025,
+        0.1166066825389862,
+        0.672143280506134,
+        0.7853591442108154,
+        0.03546999767422676,
+        0.03499513491988182,
+        3.743715286254883,
+        0.0,
+        0.7853591442108154,
+        0.0,
+        0.019999999552965164
+      ],
+      "goal": [
+        -24.299999237060547,
+        -28.0,
+        0.0
+      ],
+      "origin": [
+        -28.0,
+        -28.0,
+        0.5600000023841858
+      ]
+    },
+    {
+      "mode": "sampled",
+      "env": 44,
+      "group": 2,
+      "level": 1,
+      "duration": 20.0,
+      "failed": false,
+      "ever": {
+        "near": true,
+        "feet_x": true,
+        "feet_z": true,
+        "bounds": true,
+        "upright": true,
+        "height": true,
+        "slow": true,
+        "angular": true,
+        "geometric": true,
+        "all": true,
+        "all_except_z": true
+      },
+      "max_recomputed_hold": 0.09999999403953552,
+      "max_actual_hold": 0.09999999403953552,
+      "final_actual_hold": 0.0,
+      "window_completed": true,
+      "terminal_geometry": true,
+      "min_distance": 0.06592962890863419,
+      "final_values": [
+        0.22017928957939148,
+        0.09168760478496552,
+        0.47972968220710754,
+        0.7852191925048828,
+        0.037756338715553284,
+        0.03516240417957306,
+        3.8907527923583984,
+        0.0,
+        0.7852191925048828,
+        0.0,
+        0.0
+      ],
+      "goal": [
+        -24.299999237060547,
+        -36.0,
+        0.0
+      ],
+      "origin": [
+        -28.0,
+        -36.0,
+        0.5600000023841858
+      ]
+    },
+    {
+      "mode": "sampled",
+      "env": 45,
+      "group": 2,
+      "level": 1,
+      "duration": 20.0,
+      "failed": false,
+      "ever": {
+        "near": true,
+        "feet_x": true,
+        "feet_z": true,
+        "bounds": true,
+        "upright": true,
+        "height": true,
+        "slow": true,
+        "angular": true,
+        "geometric": true,
+        "all": true,
+        "all_except_z": true
+      },
+      "max_recomputed_hold": 0.07999999821186066,
+      "max_actual_hold": 0.07999999821186066,
+      "final_actual_hold": 0.0,
+      "window_completed": true,
+      "terminal_geometry": true,
+      "min_distance": 0.06515993922948837,
+      "final_values": [
+        0.13577869534492493,
+        0.04165930300951004,
+        0.47568729519844055,
+        0.7848573327064514,
+        0.035093311220407486,
+        0.034995004534721375,
+        3.798076629638672,
+        0.0,
+        0.7848573327064514,
+        0.0,
+        0.0
+      ],
+      "goal": [
+        -24.299999237060547,
+        -28.0,
+        0.0
+      ],
+      "origin": [
+        -28.0,
+        -28.0,
+        0.5600000023841858
+      ]
+    },
+    {
+      "mode": "sampled",
+      "env": 46,
+      "group": 2,
+      "level": 1,
+      "duration": 20.0,
+      "failed": false,
+      "ever": {
+        "near": true,
+        "feet_x": true,
+        "feet_z": true,
+        "bounds": true,
+        "upright": true,
+        "height": true,
+        "slow": true,
+        "angular": true,
+        "geometric": true,
+        "all": true,
+        "all_except_z": true
+      },
+      "max_recomputed_hold": 0.05999999865889549,
+      "max_actual_hold": 0.05999999865889549,
+      "final_actual_hold": 0.0,
+      "window_completed": true,
+      "terminal_geometry": false,
+      "min_distance": 0.024746015667915344,
+      "final_values": [
+        0.3072417080402374,
+        0.03576792776584625,
+        0.5773633718490601,
+        0.7785528302192688,
+        0.03499258682131767,
+        0.035503510385751724,
+        3.9986209869384766,
+        0.0,
+        0.7785528302192688,
+        0.0,
+        0.0
+      ],
+      "goal": [
+        -24.299999237060547,
+        -36.0,
+        0.0
+      ],
+      "origin": [
+        -28.0,
+        -36.0,
+        0.5600000023841858
+      ]
+    },
+    {
+      "mode": "sampled",
+      "env": 47,
+      "group": 2,
+      "level": 1,
+      "duration": 20.0,
+      "failed": false,
+      "ever": {
+        "near": true,
+        "feet_x": true,
+        "feet_z": true,
+        "bounds": true,
+        "upright": true,
+        "height": true,
+        "slow": true,
+        "angular": true,
+        "geometric": true,
+        "all": true,
+        "all_except_z": true
+      },
+      "max_recomputed_hold": 0.05999999865889549,
+      "max_actual_hold": 0.05999999865889549,
+      "final_actual_hold": 0.0,
+      "window_completed": true,
+      "terminal_geometry": true,
+      "min_distance": 0.19917814433574677,
+      "final_values": [
+        0.2837592363357544,
+        0.026599733158946037,
+        0.4425646960735321,
+        0.7862014770507812,
+        0.035478997975587845,
+        0.03499320149421692,
+        3.882802963256836,
+        0.0,
+        0.7862014770507812,
+        0.0,
+        0.0
+      ],
+      "goal": [
+        -24.299999237060547,
+        -28.0,
+        0.0
+      ],
+      "origin": [
+        -28.0,
+        -28.0,
+        0.5600000023841858
+      ]
+    },
+    {
+      "mode": "sampled",
+      "env": 48,
+      "group": 2,
+      "level": 1,
+      "duration": 20.0,
+      "failed": false,
+      "ever": {
+        "near": true,
+        "feet_x": true,
+        "feet_z": true,
+        "bounds": true,
+        "upright": true,
+        "height": true,
+        "slow": true,
+        "angular": true,
+        "geometric": true,
+        "all": true,
+        "all_except_z": true
+      },
+      "max_recomputed_hold": 0.07999999821186066,
+      "max_actual_hold": 0.07999999821186066,
+      "final_actual_hold": 0.0,
+      "window_completed": true,
+      "terminal_geometry": true,
+      "min_distance": 0.03168230503797531,
+      "final_values": [
+        0.08441682904958725,
+        0.07713067531585693,
+        0.8226566314697266,
+        0.784163773059845,
+        0.03501034528017044,
+        0.0349910743534565,
+        3.639345169067383,
+        0.0,
+        0.784163773059845,
+        0.0,
+        0.0
+      ],
+      "goal": [
+        -24.299999237060547,
+        -36.0,
+        0.0
+      ],
+      "origin": [
+        -28.0,
+        -36.0,
+        0.5600000023841858
+      ]
+    },
+    {
+      "mode": "sampled",
+      "env": 49,
+      "group": 2,
+      "level": 1,
+      "duration": 20.0,
+      "failed": false,
+      "ever": {
+        "near": true,
+        "feet_x": true,
+        "feet_z": true,
+        "bounds": true,
+        "upright": true,
+        "height": true,
+        "slow": true,
+        "angular": true,
+        "geometric": true,
+        "all": true,
+        "all_except_z": true
+      },
+      "max_recomputed_hold": 0.07999999821186066,
+      "max_actual_hold": 0.07999999821186066,
+      "final_actual_hold": 0.0,
+      "window_completed": true,
+      "terminal_geometry": true,
+      "min_distance": 0.019889282062649727,
+      "final_values": [
+        0.06946884095668793,
+        0.075094074010849,
+        0.30802807211875916,
+        0.7859190702438354,
+        0.035001564770936966,
+        0.034989990293979645,
+        3.7426223754882812,
+        0.0,
+        0.7859190702438354,
+        0.0,
+        0.0
+      ],
+      "goal": [
+        -24.299999237060547,
+        -28.0,
+        0.0
+      ],
+      "origin": [
+        -28.0,
+        -28.0,
+        0.5600000023841858
+      ]
+    },
+    {
+      "mode": "sampled",
+      "env": 50,
+      "group": 2,
+      "level": 1,
+      "duration": 20.0,
+      "failed": false,
+      "ever": {
+        "near": true,
+        "feet_x": true,
+        "feet_z": true,
+        "bounds": true,
+        "upright": true,
+        "height": true,
+        "slow": true,
+        "angular": true,
+        "geometric": true,
+        "all": true,
+        "all_except_z": true
+      },
+      "max_recomputed_hold": 0.07999999821186066,
+      "max_actual_hold": 0.07999999821186066,
+      "final_actual_hold": 0.0,
+      "window_completed": true,
+      "terminal_geometry": true,
+      "min_distance": 0.02114591933786869,
+      "final_values": [
+        0.08049128204584122,
+        0.10698815435171127,
+        0.33208125829696655,
+        0.7861750721931458,
+        0.0349791944026947,
+        0.035408079624176025,
+        3.7783584594726562,
+        0.0,
+        0.7861750721931458,
+        0.0,
+        0.0
+      ],
+      "goal": [
+        -24.299999237060547,
+        -36.0,
+        0.0
+      ],
+      "origin": [
+        -28.0,
+        -36.0,
+        0.5600000023841858
+      ]
+    },
+    {
+      "mode": "sampled",
+      "env": 32,
+      "group": 1,
+      "level": 1,
+      "duration": 4.0,
+      "failed": true,
+      "ever": {
+        "near": false,
+        "feet_x": false,
+        "feet_z": true,
+        "bounds": true,
+        "upright": true,
+        "height": true,
+        "slow": true,
+        "angular": true,
+        "geometric": false,
+        "all": false,
+        "all_except_z": false
+      },
+      "max_recomputed_hold": 0.0,
+      "max_actual_hold": 0.0,
+      "final_actual_hold": 0.0,
+      "window_completed": false,
+      "terminal_geometry": false,
+      "min_distance": 1.3482378721237183,
+      "final_values": [
+        1.321469783782959,
+        1.2564057111740112,
+        11.964921951293945,
+        0.11259761452674866,
+        0.06926820427179337,
+        0.02270212396979332,
+        2.4085311889648438,
+        0.0,
+        0.11259761452674866,
+        0.5003660917282104,
+        0.0
+      ],
+      "goal": [
+        -24.299999237060547,
+        -20.0,
+        0.0
+      ],
+      "origin": [
+        -28.0,
+        -20.0,
+        -0.5600000023841858
+      ]
+    },
+    {
+      "mode": "sampled",
+      "env": 16,
+      "group": 1,
+      "level": 1,
+      "duration": 20.0,
+      "failed": false,
+      "ever": {
+        "near": true,
+        "feet_x": true,
+        "feet_z": true,
+        "bounds": true,
+        "upright": true,
+        "height": true,
+        "slow": true,
+        "angular": true,
+        "geometric": true,
+        "all": true,
+        "all_except_z": true
+      },
+      "max_recomputed_hold": 0.07999999821186066,
+      "max_actual_hold": 0.07999999821186066,
+      "final_actual_hold": 0.0,
+      "window_completed": true,
+      "terminal_geometry": true,
+      "min_distance": 0.07303283363580704,
+      "final_values": [
+        0.1487865298986435,
+        0.12080021947622299,
+        0.28131356835365295,
+        0.7847484946250916,
+        0.03499681502580643,
+        0.035220518708229065,
+        3.6239185333251953,
+        0.0,
+        0.7847484946250916,
+        0.0,
+        0.0
+      ],
+      "goal": [
+        -24.299999237060547,
+        -20.0,
+        0.0
+      ],
+      "origin": [
+        -28.0,
+        -20.0,
+        -0.5600000023841858
+      ]
+    },
+    {
+      "mode": "sampled",
+      "env": 17,
+      "group": 1,
+      "level": 1,
+      "duration": 20.0,
+      "failed": false,
+      "ever": {
+        "near": true,
+        "feet_x": true,
+        "feet_z": true,
+        "bounds": true,
+        "upright": true,
+        "height": true,
+        "slow": true,
+        "angular": true,
+        "geometric": true,
+        "all": true,
+        "all_except_z": true
+      },
+      "max_recomputed_hold": 0.07999999821186066,
+      "max_actual_hold": 0.07999999821186066,
+      "final_actual_hold": 0.0,
+      "window_completed": true,
+      "terminal_geometry": true,
+      "min_distance": 0.11640982329845428,
+      "final_values": [
+        0.14284168183803558,
+        0.1966051310300827,
+        0.6442842483520508,
+        0.7868670225143433,
+        0.03499101474881172,
+        0.035092078149318695,
+        3.711782455444336,
+        0.0,
+        0.7868670225143433,
+        0.0,
+        0.0
+      ],
+      "goal": [
+        -24.299999237060547,
+        -12.0,
+        0.0
+      ],
+      "origin": [
+        -28.0,
+        -12.0,
+        -0.5600000023841858
+      ]
+    },
+    {
+      "mode": "sampled",
+      "env": 18,
+      "group": 1,
+      "level": 1,
+      "duration": 20.0,
+      "failed": false,
+      "ever": {
+        "near": true,
+        "feet_x": true,
+        "feet_z": true,
+        "bounds": true,
+        "upright": true,
+        "height": true,
+        "slow": true,
+        "angular": true,
+        "geometric": true,
+        "all": true,
+        "all_except_z": true
+      },
+      "max_recomputed_hold": 0.07999999821186066,
+      "max_actual_hold": 0.07999999821186066,
+      "final_actual_hold": 0.0,
+      "window_completed": true,
+      "terminal_geometry": true,
+      "min_distance": 0.12006471306085587,
+      "final_values": [
+        0.24156098067760468,
+        0.06021583080291748,
+        0.3184414803981781,
+        0.7855743169784546,
+        0.03498133271932602,
+        0.03516538441181183,
+        3.840951919555664,
+        0.0,
+        0.7855743169784546,
+        0.0,
+        0.0
+      ],
+      "goal": [
+        -24.299999237060547,
+        -20.0,
+        0.0
+      ],
+      "origin": [
+        -28.0,
+        -20.0,
+        -0.5600000023841858
+      ]
+    },
+    {
+      "mode": "sampled",
+      "env": 19,
+      "group": 1,
+      "level": 1,
+      "duration": 20.0,
+      "failed": false,
+      "ever": {
+        "near": true,
+        "feet_x": true,
+        "feet_z": true,
+        "bounds": true,
+        "upright": true,
+        "height": true,
+        "slow": true,
+        "angular": true,
+        "geometric": true,
+        "all": true,
+        "all_except_z": true
+      },
+      "max_recomputed_hold": 0.05999999865889549,
+      "max_actual_hold": 0.05999999865889549,
+      "final_actual_hold": 0.0,
+      "window_completed": true,
+      "terminal_geometry": true,
+      "min_distance": 0.01922590658068657,
+      "final_values": [
+        0.054506655782461166,
+        0.10459999740123749,
+        0.5957624912261963,
+        0.7849989533424377,
+        0.03498963639140129,
+        0.035798631608486176,
+        3.6489505767822266,
+        0.0,
+        0.7849989533424377,
+        0.0,
+        0.0
+      ],
+      "goal": [
+        -24.299999237060547,
+        -12.0,
+        0.0
+      ],
+      "origin": [
+        -28.0,
+        -12.0,
+        -0.5600000023841858
+      ]
+    },
+    {
+      "mode": "sampled",
+      "env": 20,
+      "group": 1,
+      "level": 1,
+      "duration": 20.0,
+      "failed": false,
+      "ever": {
+        "near": true,
+        "feet_x": true,
+        "feet_z": true,
+        "bounds": true,
+        "upright": true,
+        "height": true,
+        "slow": true,
+        "angular": true,
+        "geometric": true,
+        "all": true,
+        "all_except_z": true
+      },
+      "max_recomputed_hold": 0.05999999865889549,
+      "max_actual_hold": 0.05999999865889549,
+      "final_actual_hold": 0.0,
+      "window_completed": true,
+      "terminal_geometry": true,
+      "min_distance": 0.22759883105754852,
+      "final_values": [
+        0.2547682523727417,
+        0.02327742986381054,
+        0.3464660942554474,
+        0.7824145555496216,
+        0.03539721667766571,
+        0.03515291213989258,
+        3.681001663208008,
+        0.0,
+        0.7824145555496216,
+        0.0,
+        0.0
+      ],
+      "goal": [
+        -24.299999237060547,
+        -20.0,
+        0.0
+      ],
+      "origin": [
+        -28.0,
+        -20.0,
+        -0.5600000023841858
+      ]
+    },
+    {
+      "mode": "sampled",
+      "env": 21,
+      "group": 1,
+      "level": 1,
+      "duration": 20.0,
+      "failed": false,
+      "ever": {
+        "near": true,
+        "feet_x": true,
+        "feet_z": true,
+        "bounds": true,
+        "upright": true,
+        "height": true,
+        "slow": true,
+        "angular": true,
+        "geometric": true,
+        "all": true,
+        "all_except_z": true
+      },
+      "max_recomputed_hold": 0.09999999403953552,
+      "max_actual_hold": 0.09999999403953552,
+      "final_actual_hold": 0.0,
+      "window_completed": true,
+      "terminal_geometry": true,
+      "min_distance": 0.1644354611635208,
+      "final_values": [
+        0.2347625344991684,
+        0.01930677331984043,
+        0.8817199468612671,
+        0.7832078337669373,
+        0.035009369254112244,
+        0.03691314905881882,
+        3.4808006286621094,
+        0.0,
+        0.7832078337669373,
+        0.0,
+        0.0
+      ],
+      "goal": [
+        -24.299999237060547,
+        -12.0,
+        0.0
+      ],
+      "origin": [
+        -28.0,
+        -12.0,
+        -0.5600000023841858
+      ]
+    },
+    {
+      "mode": "sampled",
+      "env": 22,
+      "group": 1,
+      "level": 1,
+      "duration": 20.0,
+      "failed": false,
+      "ever": {
+        "near": true,
+        "feet_x": true,
+        "feet_z": true,
+        "bounds": true,
+        "upright": true,
+        "height": true,
+        "slow": true,
+        "angular": true,
+        "geometric": true,
+        "all": true,
+        "all_except_z": true
+      },
+      "max_recomputed_hold": 0.05999999865889549,
+      "max_actual_hold": 0.05999999865889549,
+      "final_actual_hold": 0.0,
+      "window_completed": true,
+      "terminal_geometry": true,
+      "min_distance": 0.02990434132516384,
+      "final_values": [
+        0.3472541868686676,
+        0.11897110193967819,
+        0.4703746736049652,
+        0.7878977060317993,
+        0.0352107472717762,
+        0.03895149752497673,
+        3.4424057006835938,
+        0.0,
+        0.7878977060317993,
+        0.0,
+        0.0
+      ],
+      "goal": [
+        -24.299999237060547,
+        -20.0,
+        0.0
+      ],
+      "origin": [
+        -28.0,
+        -20.0,
+        -0.5600000023841858
+      ]
+    },
+    {
+      "mode": "sampled",
+      "env": 23,
+      "group": 1,
+      "level": 1,
+      "duration": 20.0,
+      "failed": false,
+      "ever": {
+        "near": true,
+        "feet_x": true,
+        "feet_z": true,
+        "bounds": true,
+        "upright": true,
+        "height": true,
+        "slow": true,
+        "angular": true,
+        "geometric": true,
+        "all": true,
+        "all_except_z": true
+      },
+      "max_recomputed_hold": 0.05999999865889549,
+      "max_actual_hold": 0.05999999865889549,
+      "final_actual_hold": 0.0,
+      "window_completed": true,
+      "terminal_geometry": true,
+      "min_distance": 0.001667601172812283,
+      "final_values": [
+        0.033561717718839645,
+        0.06320348381996155,
+        0.43846672773361206,
+        0.7838054895401001,
+        0.0350782573223114,
+        0.03498103469610214,
+        3.6944026947021484,
+        0.0,
+        0.7838054895401001,
+        0.0,
+        0.0
+      ],
+      "goal": [
+        -24.299999237060547,
+        -12.0,
+        0.0
+      ],
+      "origin": [
+        -28.0,
+        -12.0,
+        -0.5600000023841858
+      ]
+    },
+    {
+      "mode": "sampled",
+      "env": 24,
+      "group": 1,
+      "level": 1,
+      "duration": 20.0,
+      "failed": false,
+      "ever": {
+        "near": true,
+        "feet_x": true,
+        "feet_z": true,
+        "bounds": true,
+        "upright": true,
+        "height": true,
+        "slow": true,
+        "angular": true,
+        "geometric": true,
+        "all": true,
+        "all_except_z": true
+      },
+      "max_recomputed_hold": 0.07999999821186066,
+      "max_actual_hold": 0.07999999821186066,
+      "final_actual_hold": 0.0,
+      "window_completed": true,
+      "terminal_geometry": true,
+      "min_distance": 0.0038632324431091547,
+      "final_values": [
+        0.0789705440402031,
+        0.15097291767597198,
+        0.20471876859664917,
+        0.7791814804077148,
+        0.034987688064575195,
+        0.035001400858163834,
+        3.7606163024902344,
+        0.0,
+        0.7791814804077148,
+        0.0,
+        0.0
+      ],
+      "goal": [
+        -24.299999237060547,
+        -20.0,
+        0.0
+      ],
+      "origin": [
+        -28.0,
+        -20.0,
+        -0.5600000023841858
+      ]
+    },
+    {
+      "mode": "sampled",
+      "env": 25,
+      "group": 1,
+      "level": 1,
+      "duration": 20.0,
+      "failed": false,
+      "ever": {
+        "near": true,
+        "feet_x": true,
+        "feet_z": true,
+        "bounds": true,
+        "upright": true,
+        "height": true,
+        "slow": true,
+        "angular": true,
+        "geometric": true,
+        "all": true,
+        "all_except_z": true
+      },
+      "max_recomputed_hold": 0.09999999403953552,
+      "max_actual_hold": 0.09999999403953552,
+      "final_actual_hold": 0.0,
+      "window_completed": true,
+      "terminal_geometry": true,
+      "min_distance": 0.1349647492170334,
+      "final_values": [
+        0.19720175862312317,
+        0.08228068798780441,
+        0.3153485059738159,
+        0.7872433066368103,
+        0.0373309962451458,
+        0.03752514719963074,
+        3.7298221588134766,
+        0.0,
+        0.7872433066368103,
+        0.0,
+        0.0
+      ],
+      "goal": [
+        -24.299999237060547,
+        -12.0,
+        0.0
+      ],
+      "origin": [
+        -28.0,
+        -12.0,
+        -0.5600000023841858
+      ]
+    },
+    {
+      "mode": "sampled",
+      "env": 26,
+      "group": 1,
+      "level": 1,
+      "duration": 20.0,
+      "failed": false,
+      "ever": {
+        "near": true,
+        "feet_x": true,
+        "feet_z": true,
+        "bounds": true,
+        "upright": true,
+        "height": true,
+        "slow": true,
+        "angular": true,
+        "geometric": true,
+        "all": true,
+        "all_except_z": true
+      },
+      "max_recomputed_hold": 0.07999999821186066,
+      "max_actual_hold": 0.07999999821186066,
+      "final_actual_hold": 0.0,
+      "window_completed": true,
+      "terminal_geometry": true,
+      "min_distance": 0.13749606907367706,
+      "final_values": [
+        0.14638909697532654,
+        0.06197139620780945,
+        0.3910976052284241,
+        0.7817463278770447,
+        0.0350002720952034,
+        0.03517196327447891,
+        3.6413421630859375,
+        0.0,
+        0.7817463278770447,
+        0.0,
+        0.0
+      ],
+      "goal": [
+        -24.299999237060547,
+        -20.0,
+        0.0
+      ],
+      "origin": [
+        -28.0,
+        -20.0,
+        -0.5600000023841858
+      ]
+    },
+    {
+      "mode": "sampled",
+      "env": 27,
+      "group": 1,
+      "level": 1,
+      "duration": 20.0,
+      "failed": false,
+      "ever": {
+        "near": false,
+        "feet_x": true,
+        "feet_z": true,
+        "bounds": true,
+        "upright": true,
+        "height": true,
+        "slow": true,
+        "angular": true,
+        "geometric": false,
+        "all": false,
+        "all_except_z": false
+      },
+      "max_recomputed_hold": 0.0,
+      "max_actual_hold": 0.0,
+      "final_actual_hold": 0.0,
+      "window_completed": false,
+      "terminal_geometry": false,
+      "min_distance": 0.6558600068092346,
+      "final_values": [
+        13.644556045532227,
+        2.590073585510254,
+        4.456352710723877,
+        0.7127649188041687,
+        0.0362849086523056,
+        0.29925957322120667,
+        4.904972076416016,
+        0.0,
+        0.7127649188041687,
+        0.0,
+        0.0
+      ],
+      "goal": [
+        -24.299999237060547,
+        -12.0,
+        0.0
+      ],
+      "origin": [
+        -28.0,
+        -12.0,
+        -0.5600000023841858
+      ]
+    },
+    {
+      "mode": "sampled",
+      "env": 28,
+      "group": 1,
+      "level": 1,
+      "duration": 20.0,
+      "failed": false,
+      "ever": {
+        "near": true,
+        "feet_x": true,
+        "feet_z": true,
+        "bounds": true,
+        "upright": true,
+        "height": true,
+        "slow": true,
+        "angular": true,
+        "geometric": true,
+        "all": true,
+        "all_except_z": true
+      },
+      "max_recomputed_hold": 0.07999999821186066,
+      "max_actual_hold": 0.07999999821186066,
+      "final_actual_hold": 0.0,
+      "window_completed": true,
+      "terminal_geometry": true,
+      "min_distance": 0.05345487967133522,
+      "final_values": [
+        0.11169400811195374,
+        0.11594485491514206,
+        0.39198118448257446,
+        0.7819401621818542,
+        0.035002127289772034,
+        0.034970756620168686,
+        3.594419479370117,
+        0.0,
+        0.7819401621818542,
+        0.0,
+        0.0
+      ],
+      "goal": [
+        -24.299999237060547,
+        -20.0,
+        0.0
+      ],
+      "origin": [
+        -28.0,
+        -20.0,
+        -0.5600000023841858
+      ]
+    },
+    {
+      "mode": "sampled",
+      "env": 29,
+      "group": 1,
+      "level": 1,
+      "duration": 20.0,
+      "failed": false,
+      "ever": {
+        "near": true,
+        "feet_x": true,
+        "feet_z": true,
+        "bounds": true,
+        "upright": true,
+        "height": true,
+        "slow": true,
+        "angular": true,
+        "geometric": true,
+        "all": true,
+        "all_except_z": true
+      },
+      "max_recomputed_hold": 0.05999999865889549,
+      "max_actual_hold": 0.05999999865889549,
+      "final_actual_hold": 0.0,
+      "window_completed": true,
+      "terminal_geometry": true,
+      "min_distance": 0.0021418428514152765,
+      "final_values": [
+        0.016513556241989136,
+        0.13444368541240692,
+        0.3069967031478882,
+        0.7888705134391785,
+        0.034977756440639496,
+        0.037168730050325394,
+        3.7037887573242188,
+        0.0,
+        0.7888705134391785,
+        0.0,
+        0.0
+      ],
+      "goal": [
+        -24.299999237060547,
+        -12.0,
+        0.0
+      ],
+      "origin": [
+        -28.0,
+        -12.0,
+        -0.5600000023841858
+      ]
+    },
+    {
+      "mode": "sampled",
+      "env": 30,
+      "group": 1,
+      "level": 1,
+      "duration": 20.0,
+      "failed": false,
+      "ever": {
+        "near": true,
+        "feet_x": true,
+        "feet_z": true,
+        "bounds": true,
+        "upright": true,
+        "height": true,
+        "slow": true,
+        "angular": true,
+        "geometric": true,
+        "all": true,
+        "all_except_z": true
+      },
+      "max_recomputed_hold": 0.05999999865889549,
+      "max_actual_hold": 0.05999999865889549,
+      "final_actual_hold": 0.0,
+      "window_completed": true,
+      "terminal_geometry": true,
+      "min_distance": 0.06666237860918045,
+      "final_values": [
+        0.31279703974723816,
+        0.11826946586370468,
+        0.24438390135765076,
+        0.7843698263168335,
+        0.034991130232810974,
+        0.03535100072622299,
+        3.7903099060058594,
+        0.0,
+        0.7843698263168335,
+        0.0,
+        0.0
+      ],
+      "goal": [
+        -24.299999237060547,
+        -20.0,
+        0.0
+      ],
+      "origin": [
+        -28.0,
+        -20.0,
+        -0.5600000023841858
+      ]
+    },
+    {
+      "mode": "sampled",
+      "env": 31,
+      "group": 1,
+      "level": 1,
+      "duration": 20.0,
+      "failed": false,
+      "ever": {
+        "near": true,
+        "feet_x": true,
+        "feet_z": true,
+        "bounds": true,
+        "upright": true,
+        "height": true,
+        "slow": true,
+        "angular": true,
+        "geometric": true,
+        "all": true,
+        "all_except_z": true
+      },
+      "max_recomputed_hold": 0.03999999910593033,
+      "max_actual_hold": 0.03999999910593033,
+      "final_actual_hold": 0.0,
+      "window_completed": true,
+      "terminal_geometry": true,
+      "min_distance": 0.0357799306511879,
+      "final_values": [
+        0.32836267352104187,
+        0.16146685183048248,
+        0.3425033390522003,
+        0.7857864499092102,
+        0.03693901374936104,
+        0.03506360203027725,
+        3.464010238647461,
+        0.0,
+        0.7857864499092102,
+        0.0,
+        0.0
+      ],
+      "goal": [
+        -24.299999237060547,
+        -12.0,
+        0.0
+      ],
+      "origin": [
+        -28.0,
+        -12.0,
+        -0.5600000023841858
+      ]
+    },
+    {
+      "mode": "sampled",
+      "env": 33,
+      "group": 1,
+      "level": 1,
+      "duration": 20.0,
+      "failed": false,
+      "ever": {
+        "near": true,
+        "feet_x": true,
+        "feet_z": true,
+        "bounds": true,
+        "upright": true,
+        "height": true,
+        "slow": true,
+        "angular": true,
+        "geometric": true,
+        "all": true,
+        "all_except_z": true
+      },
+      "max_recomputed_hold": 0.05999999865889549,
+      "max_actual_hold": 0.05999999865889549,
+      "final_actual_hold": 0.0,
+      "window_completed": true,
+      "terminal_geometry": true,
+      "min_distance": 0.013521651737391949,
+      "final_values": [
+        0.030038215219974518,
+        0.11669003218412399,
+        0.5845984220504761,
+        0.784035861492157,
+        0.03499526530504227,
+        0.03520110249519348,
+        3.6744327545166016,
+        0.0,
+        0.784035861492157,
+        0.0,
+        0.0
+      ],
+      "goal": [
+        -24.299999237060547,
+        -12.0,
+        0.0
+      ],
+      "origin": [
+        -28.0,
+        -12.0,
+        -0.5600000023841858
+      ]
+    },
+    {
+      "mode": "sampled",
+      "env": 34,
+      "group": 1,
+      "level": 1,
+      "duration": 20.0,
+      "failed": false,
+      "ever": {
+        "near": true,
+        "feet_x": true,
+        "feet_z": true,
+        "bounds": true,
+        "upright": true,
+        "height": true,
+        "slow": true,
+        "angular": true,
+        "geometric": true,
+        "all": true,
+        "all_except_z": true
+      },
+      "max_recomputed_hold": 0.07999999821186066,
+      "max_actual_hold": 0.07999999821186066,
+      "final_actual_hold": 0.0,
+      "window_completed": true,
+      "terminal_geometry": true,
+      "min_distance": 0.008882947266101837,
+      "final_values": [
+        0.06617165356874466,
+        0.0596013106405735,
+        0.43645215034484863,
+        0.7872439622879028,
+        0.035018742084503174,
+        0.035013239830732346,
+        3.7652206420898438,
+        0.0,
+        0.7872439622879028,
+        0.0,
+        0.0
+      ],
+      "goal": [
+        -24.299999237060547,
+        -20.0,
+        0.0
+      ],
+      "origin": [
+        -28.0,
+        -20.0,
+        -0.5600000023841858
+      ]
+    },
+    {
+      "mode": "sampled",
+      "env": 35,
+      "group": 1,
+      "level": 1,
+      "duration": 20.0,
+      "failed": false,
+      "ever": {
+        "near": true,
+        "feet_x": true,
+        "feet_z": true,
+        "bounds": true,
+        "upright": true,
+        "height": true,
+        "slow": true,
+        "angular": true,
+        "geometric": true,
+        "all": true,
+        "all_except_z": true
+      },
+      "max_recomputed_hold": 0.05999999865889549,
+      "max_actual_hold": 0.05999999865889549,
+      "final_actual_hold": 0.019999999552965164,
+      "window_completed": true,
+      "terminal_geometry": true,
+      "min_distance": 0.037159159779548645,
+      "final_values": [
+        0.07494977116584778,
+        0.07335198670625687,
+        0.1560075730085373,
+        0.7853361964225769,
+        0.03497682511806488,
+        0.03644529730081558,
+        3.770599365234375,
+        0.0,
+        0.7853361964225769,
+        0.0,
+        0.019999999552965164
+      ],
+      "goal": [
+        -24.299999237060547,
+        -12.0,
+        0.0
+      ],
+      "origin": [
+        -28.0,
+        -12.0,
+        -0.5600000023841858
+      ]
+    },
+    {
+      "mode": "sampled",
+      "env": 36,
+      "group": 1,
+      "level": 1,
+      "duration": 20.0,
+      "failed": false,
+      "ever": {
+        "near": true,
+        "feet_x": true,
+        "feet_z": true,
+        "bounds": true,
+        "upright": true,
+        "height": true,
+        "slow": true,
+        "angular": true,
+        "geometric": true,
+        "all": true,
+        "all_except_z": true
+      },
+      "max_recomputed_hold": 0.05999999865889549,
+      "max_actual_hold": 0.05999999865889549,
+      "final_actual_hold": 0.0,
+      "window_completed": true,
+      "terminal_geometry": true,
+      "min_distance": 0.13469719886779785,
+      "final_values": [
+        0.18157920241355896,
+        0.06268388032913208,
+        0.18593734502792358,
+        0.7784789204597473,
+        0.03530331701040268,
+        0.034990981221199036,
+        3.5205020904541016,
+        0.0,
+        0.7784789204597473,
+        0.0,
+        0.0
+      ],
+      "goal": [
+        -24.299999237060547,
+        -20.0,
+        0.0
+      ],
+      "origin": [
+        -28.0,
+        -20.0,
+        -0.5600000023841858
+      ]
+    },
+    {
+      "mode": "sampled",
+      "env": 37,
+      "group": 1,
+      "level": 1,
+      "duration": 20.0,
+      "failed": false,
+      "ever": {
+        "near": true,
+        "feet_x": true,
+        "feet_z": true,
+        "bounds": true,
+        "upright": true,
+        "height": true,
+        "slow": true,
+        "angular": true,
+        "geometric": true,
+        "all": true,
+        "all_except_z": true
+      },
+      "max_recomputed_hold": 0.05999999865889549,
+      "max_actual_hold": 0.05999999865889549,
+      "final_actual_hold": 0.0,
+      "window_completed": true,
+      "terminal_geometry": true,
+      "min_distance": 0.19913525879383087,
+      "final_values": [
+        0.2242908775806427,
+        0.06347782164812088,
+        0.2592940628528595,
+        0.7847586870193481,
+        0.03499458730220795,
+        0.03500711917877197,
+        3.544099807739258,
+        0.0,
+        0.7847586870193481,
+        0.0,
+        0.0
+      ],
+      "goal": [
+        -24.299999237060547,
+        -12.0,
+        0.0
+      ],
+      "origin": [
+        -28.0,
+        -12.0,
+        -0.5600000023841858
+      ]
+    },
+    {
+      "mode": "sampled",
+      "env": 38,
+      "group": 2,
+      "level": 1,
+      "duration": 20.0,
+      "failed": false,
+      "ever": {
+        "near": true,
+        "feet_x": true,
+        "feet_z": true,
+        "bounds": true,
+        "upright": true,
+        "height": true,
+        "slow": true,
+        "angular": true,
+        "geometric": true,
+        "all": true,
+        "all_except_z": true
+      },
+      "max_recomputed_hold": 0.07999999821186066,
+      "max_actual_hold": 0.07999999821186066,
+      "final_actual_hold": 0.019999999552965164,
+      "window_completed": true,
+      "terminal_geometry": true,
+      "min_distance": 0.0015116083668544888,
+      "final_values": [
+        0.03304257616400719,
+        0.025247778743505478,
+        0.6542769074440002,
+        0.7865815162658691,
+        0.034995898604393005,
+        0.035003095865249634,
+        3.682851791381836,
+        0.0,
+        0.7865815162658691,
+        0.0,
+        0.019999999552965164
+      ],
+      "goal": [
+        -24.299999237060547,
+        -36.0,
+        0.0
+      ],
+      "origin": [
+        -28.0,
+        -36.0,
+        0.5600000023841858
+      ]
+    },
+    {
+      "mode": "sampled",
+      "env": 39,
+      "group": 2,
+      "level": 1,
+      "duration": 20.0,
+      "failed": false,
+      "ever": {
+        "near": true,
+        "feet_x": true,
+        "feet_z": true,
+        "bounds": true,
+        "upright": true,
+        "height": true,
+        "slow": true,
+        "angular": true,
+        "geometric": true,
+        "all": true,
+        "all_except_z": true
+      },
+      "max_recomputed_hold": 0.05999999865889549,
+      "max_actual_hold": 0.05999999865889549,
+      "final_actual_hold": 0.0,
+      "window_completed": true,
+      "terminal_geometry": true,
+      "min_distance": 0.0161175187677145,
+      "final_values": [
+        0.06528347730636597,
+        0.13353706896305084,
+        0.37190932035446167,
+        0.7847028970718384,
+        0.03566424176096916,
+        0.03499389439821243,
+        3.7503833770751953,
+        0.0,
+        0.7847028970718384,
+        0.0,
+        0.0
+      ],
+      "goal": [
+        -24.299999237060547,
+        -28.0,
+        0.0
+      ],
+      "origin": [
+        -28.0,
+        -28.0,
+        0.5600000023841858
+      ]
+    },
+    {
+      "mode": "sampled",
+      "env": 40,
+      "group": 2,
+      "level": 1,
+      "duration": 20.0,
+      "failed": false,
+      "ever": {
+        "near": true,
+        "feet_x": true,
+        "feet_z": true,
+        "bounds": true,
+        "upright": true,
+        "height": true,
+        "slow": true,
+        "angular": true,
+        "geometric": true,
+        "all": true,
+        "all_except_z": true
+      },
+      "max_recomputed_hold": 0.09999999403953552,
+      "max_actual_hold": 0.09999999403953552,
+      "final_actual_hold": 0.0,
+      "window_completed": true,
+      "terminal_geometry": true,
+      "min_distance": 0.01691425032913685,
+      "final_values": [
+        0.23586061596870422,
+        0.06807127594947815,
+        0.24745981395244598,
+        0.7851701378822327,
+        0.03524130582809448,
+        0.035191066563129425,
+        3.934885025024414,
+        0.0,
+        0.7851701378822327,
+        0.0,
+        0.0
+      ],
+      "goal": [
+        -24.299999237060547,
+        -36.0,
+        0.0
+      ],
+      "origin": [
+        -28.0,
+        -36.0,
+        0.5600000023841858
+      ]
+    },
+    {
+      "mode": "sampled",
+      "env": 41,
+      "group": 2,
+      "level": 1,
+      "duration": 20.0,
+      "failed": false,
+      "ever": {
+        "near": true,
+        "feet_x": true,
+        "feet_z": true,
+        "bounds": true,
+        "upright": true,
+        "height": true,
+        "slow": true,
+        "angular": true,
+        "geometric": true,
+        "all": true,
+        "all_except_z": true
+      },
+      "max_recomputed_hold": 0.05999999865889549,
+      "max_actual_hold": 0.05999999865889549,
+      "final_actual_hold": 0.0,
+      "window_completed": true,
+      "terminal_geometry": true,
+      "min_distance": 0.0009562742779962718,
+      "final_values": [
+        0.033595629036426544,
+        0.09810706973075867,
+        0.30466172099113464,
+        0.7834459543228149,
+        0.034993015229701996,
+        0.034992583096027374,
+        3.671855926513672,
+        0.0,
+        0.7834459543228149,
+        0.0,
+        0.0
+      ],
+      "goal": [
+        -24.299999237060547,
+        -28.0,
+        0.0
+      ],
+      "origin": [
+        -28.0,
+        -28.0,
+        0.5600000023841858
+      ]
+    },
+    {
+      "mode": "sampled",
+      "env": 42,
+      "group": 2,
+      "level": 1,
+      "duration": 20.0,
+      "failed": false,
+      "ever": {
+        "near": false,
+        "feet_x": true,
+        "feet_z": true,
+        "bounds": true,
+        "upright": true,
+        "height": true,
+        "slow": true,
+        "angular": true,
+        "geometric": false,
+        "all": false,
+        "all_except_z": false
+      },
+      "max_recomputed_hold": 0.0,
+      "max_actual_hold": 0.0,
+      "final_actual_hold": 0.0,
+      "window_completed": false,
+      "terminal_geometry": false,
+      "min_distance": 0.5485228896141052,
+      "final_values": [
+        6.649367332458496,
+        2.9021289348602295,
+        1.7218050956726074,
+        0.8138534426689148,
+        0.11564266681671143,
+        0.2331099510192871,
+        8.384050369262695,
+        0.0,
+        0.8138534426689148,
+        0.3805203139781952,
+        0.0
+      ],
+      "goal": [
+        -24.299999237060547,
+        -36.0,
+        0.0
+      ],
+      "origin": [
+        -28.0,
+        -36.0,
+        0.5600000023841858
+      ]
+    },
+    {
+      "mode": "sampled",
+      "env": 43,
+      "group": 2,
+      "level": 1,
+      "duration": 20.0,
+      "failed": false,
+      "ever": {
+        "near": true,
+        "feet_x": true,
+        "feet_z": true,
+        "bounds": true,
+        "upright": true,
+        "height": true,
+        "slow": true,
+        "angular": true,
+        "geometric": true,
+        "all": true,
+        "all_except_z": true
+      },
+      "max_recomputed_hold": 0.07999999821186066,
+      "max_actual_hold": 0.07999999821186066,
+      "final_actual_hold": 0.0,
+      "window_completed": true,
+      "terminal_geometry": true,
+      "min_distance": 0.1148773580789566,
+      "final_values": [
+        0.1407558172941208,
+        0.1021096259355545,
+        0.47221386432647705,
+        0.7838466167449951,
+        0.034996263682842255,
+        0.03519444912672043,
+        3.6287879943847656,
+        0.0,
+        0.7838466167449951,
+        0.0,
+        0.0
+      ],
+      "goal": [
+        -24.299999237060547,
+        -28.0,
+        0.0
+      ],
+      "origin": [
+        -28.0,
+        -28.0,
+        0.5600000023841858
+      ]
+    },
+    {
+      "mode": "sampled",
+      "env": 44,
+      "group": 2,
+      "level": 1,
+      "duration": 20.0,
+      "failed": false,
+      "ever": {
+        "near": true,
+        "feet_x": true,
+        "feet_z": true,
+        "bounds": true,
+        "upright": true,
+        "height": true,
+        "slow": true,
+        "angular": true,
+        "geometric": true,
+        "all": true,
+        "all_except_z": true
+      },
+      "max_recomputed_hold": 0.05999999865889549,
+      "max_actual_hold": 0.05999999865889549,
+      "final_actual_hold": 0.019999999552965164,
+      "window_completed": true,
+      "terminal_geometry": true,
+      "min_distance": 0.0013818105217069387,
+      "final_values": [
+        0.08125164359807968,
+        0.18068571388721466,
+        0.1435975730419159,
+        0.7848424911499023,
+        0.03499414771795273,
+        0.03499884903430939,
+        3.7764034271240234,
+        0.0,
+        0.7848424911499023,
+        0.0,
+        0.019999999552965164
+      ],
+      "goal": [
+        -24.299999237060547,
+        -36.0,
+        0.0
+      ],
+      "origin": [
+        -28.0,
+        -36.0,
+        0.5600000023841858
+      ]
+    },
+    {
+      "mode": "sampled",
+      "env": 45,
+      "group": 2,
+      "level": 1,
+      "duration": 20.0,
+      "failed": false,
+      "ever": {
+        "near": true,
+        "feet_x": true,
+        "feet_z": true,
+        "bounds": true,
+        "upright": true,
+        "height": true,
+        "slow": true,
+        "angular": true,
+        "geometric": true,
+        "all": true,
+        "all_except_z": true
+      },
+      "max_recomputed_hold": 0.07999999821186066,
+      "max_actual_hold": 0.07999999821186066,
+      "final_actual_hold": 0.0,
+      "window_completed": true,
+      "terminal_geometry": true,
+      "min_distance": 0.01920454017817974,
+      "final_values": [
+        0.0812315121293068,
+        0.062414079904556274,
+        0.5542371869087219,
+        0.7865495681762695,
+        0.03498901426792145,
+        0.035356082022190094,
+        3.7370128631591797,
+        0.0,
+        0.7865495681762695,
+        0.0,
+        0.0
+      ],
+      "goal": [
+        -24.299999237060547,
+        -28.0,
+        0.0
+      ],
+      "origin": [
+        -28.0,
+        -28.0,
+        0.5600000023841858
+      ]
+    },
+    {
+      "mode": "sampled",
+      "env": 46,
+      "group": 2,
+      "level": 1,
+      "duration": 20.0,
+      "failed": false,
+      "ever": {
+        "near": true,
+        "feet_x": true,
+        "feet_z": true,
+        "bounds": true,
+        "upright": true,
+        "height": true,
+        "slow": true,
+        "angular": true,
+        "geometric": true,
+        "all": true,
+        "all_except_z": true
+      },
+      "max_recomputed_hold": 0.07999999821186066,
+      "max_actual_hold": 0.07999999821186066,
+      "final_actual_hold": 0.07999999821186066,
+      "window_completed": true,
+      "terminal_geometry": true,
+      "min_distance": 0.003746423637494445,
+      "final_values": [
+        0.048004813492298126,
+        0.12986266613006592,
+        0.5570985078811646,
+        0.786055326461792,
+        0.03519299626350403,
+        0.03511613607406616,
+        3.7310657501220703,
+        0.0,
+        0.786055326461792,
+        0.0,
+        0.07999999821186066
+      ],
+      "goal": [
+        -24.299999237060547,
+        -36.0,
+        0.0
+      ],
+      "origin": [
+        -28.0,
+        -36.0,
+        0.5600000023841858
+      ]
+    },
+    {
+      "mode": "sampled",
+      "env": 47,
+      "group": 2,
+      "level": 1,
+      "duration": 20.0,
+      "failed": false,
+      "ever": {
+        "near": true,
+        "feet_x": true,
+        "feet_z": true,
+        "bounds": true,
+        "upright": true,
+        "height": true,
+        "slow": true,
+        "angular": true,
+        "geometric": true,
+        "all": true,
+        "all_except_z": true
+      },
+      "max_recomputed_hold": 0.05999999865889549,
+      "max_actual_hold": 0.05999999865889549,
+      "final_actual_hold": 0.0,
+      "window_completed": true,
+      "terminal_geometry": true,
+      "min_distance": 0.06490280479192734,
+      "final_values": [
+        0.07179227471351624,
+        0.08258102834224701,
+        0.607134222984314,
+        0.783183753490448,
+        0.03500807285308838,
+        0.03502177819609642,
+        3.673511505126953,
+        0.0,
+        0.783183753490448,
+        0.0,
+        0.0
+      ],
+      "goal": [
+        -24.299999237060547,
+        -28.0,
+        0.0
+      ],
+      "origin": [
+        -28.0,
+        -28.0,
+        0.5600000023841858
+      ]
+    },
+    {
+      "mode": "sampled",
+      "env": 48,
+      "group": 2,
+      "level": 1,
+      "duration": 20.0,
+      "failed": false,
+      "ever": {
+        "near": true,
+        "feet_x": true,
+        "feet_z": true,
+        "bounds": true,
+        "upright": true,
+        "height": true,
+        "slow": true,
+        "angular": true,
+        "geometric": true,
+        "all": true,
+        "all_except_z": true
+      },
+      "max_recomputed_hold": 0.07999999821186066,
+      "max_actual_hold": 0.07999999821186066,
+      "final_actual_hold": 0.0,
+      "window_completed": true,
+      "terminal_geometry": true,
+      "min_distance": 0.20200182497501373,
+      "final_values": [
+        0.32482725381851196,
+        0.07278390973806381,
+        0.2305140495300293,
+        0.7872707843780518,
+        0.034983471035957336,
+        0.035090938210487366,
+        3.9376468658447266,
+        0.0,
+        0.7872707843780518,
+        0.0,
+        0.0
+      ],
+      "goal": [
+        -24.299999237060547,
+        -36.0,
+        0.0
+      ],
+      "origin": [
+        -28.0,
+        -36.0,
+        0.5600000023841858
+      ]
+    },
+    {
+      "mode": "sampled",
+      "env": 49,
+      "group": 2,
+      "level": 1,
+      "duration": 20.0,
+      "failed": false,
+      "ever": {
+        "near": true,
+        "feet_x": true,
+        "feet_z": true,
+        "bounds": true,
+        "upright": true,
+        "height": true,
+        "slow": true,
+        "angular": true,
+        "geometric": true,
+        "all": true,
+        "all_except_z": true
+      },
+      "max_recomputed_hold": 0.05999999865889549,
+      "max_actual_hold": 0.05999999865889549,
+      "final_actual_hold": 0.03999999910593033,
+      "window_completed": true,
+      "terminal_geometry": true,
+      "min_distance": 0.007077123038470745,
+      "final_values": [
+        0.018676690757274628,
+        0.19932705163955688,
+        0.3323530852794647,
+        0.7869243025779724,
+        0.034996893256902695,
+        0.037000566720962524,
+        3.7067413330078125,
+        0.0,
+        0.7869243025779724,
+        0.0,
+        0.03999999910593033
+      ],
+      "goal": [
+        -24.299999237060547,
+        -28.0,
+        0.0
+      ],
+      "origin": [
+        -28.0,
+        -28.0,
+        0.5600000023841858
+      ]
+    },
+    {
+      "mode": "sampled",
+      "env": 50,
+      "group": 2,
+      "level": 1,
+      "duration": 20.0,
+      "failed": false,
+      "ever": {
+        "near": true,
+        "feet_x": true,
+        "feet_z": true,
+        "bounds": true,
+        "upright": true,
+        "height": true,
+        "slow": true,
+        "angular": true,
+        "geometric": true,
+        "all": true,
+        "all_except_z": true
+      },
+      "max_recomputed_hold": 0.09999999403953552,
+      "max_actual_hold": 0.09999999403953552,
+      "final_actual_hold": 0.0,
+      "window_completed": true,
+      "terminal_geometry": true,
+      "min_distance": 0.054484523832798004,
+      "final_values": [
+        0.0871630311012268,
+        0.06736163794994354,
+        0.6082779169082642,
+        0.7823666334152222,
+        0.03501371294260025,
+        0.0352303609251976,
+        3.7868194580078125,
+        0.0,
+        0.7823666334152222,
+        0.0,
+        0.0
+      ],
+      "goal": [
+        -24.299999237060547,
+        -36.0,
+        0.0
+      ],
+      "origin": [
+        -28.0,
+        -36.0,
+        0.5600000023841858
+      ]
+    },
+    {
+      "mode": "sampled",
+      "env": 32,
+      "group": 1,
+      "level": 1,
+      "duration": 20.0,
+      "failed": false,
+      "ever": {
+        "near": true,
+        "feet_x": true,
+        "feet_z": true,
+        "bounds": true,
+        "upright": true,
+        "height": true,
+        "slow": true,
+        "angular": true,
+        "geometric": true,
+        "all": true,
+        "all_except_z": true
+      },
+      "max_recomputed_hold": 0.03999999910593033,
+      "max_actual_hold": 0.03999999910593033,
+      "final_actual_hold": 0.0,
+      "window_completed": true,
+      "terminal_geometry": true,
+      "min_distance": 0.09207741171121597,
+      "final_values": [
+        0.16093580424785614,
+        0.11258959770202637,
+        0.5810476541519165,
+        0.7823465466499329,
+        0.03499893099069595,
+        0.03499603644013405,
+        3.5762939453125,
+        0.0,
+        0.7823465466499329,
+        0.0,
+        0.0
+      ],
+      "goal": [
+        -24.299999237060547,
+        -20.0,
+        0.0
+      ],
+      "origin": [
+        -28.0,
+        -20.0,
+        -0.5600000023841858
+      ]
+    }
+  ]
+}

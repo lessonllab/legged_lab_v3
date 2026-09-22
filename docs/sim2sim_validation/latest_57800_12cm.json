@@ -1,0 +1,41 @@
+{
+  "checkpoint": "/home/ljc/legged_lab_v3/logs/rsl_rl/g1_amp_stairs_long/2026-09-17_09-37-56_foothold_v12/model_57800.pt",
+  "scene": "/home/ljc/legged_lab_v3/scripts/sim2sim/scenes/training_stairs_12cm.xml",
+  "control": "target",
+  "target": [
+    6.7,
+    0.0
+  ],
+  "speed_cap": 0.65,
+  "final_command": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "sim_seconds": 29.999999999998316,
+  "wall_seconds": 11.821208485998795,
+  "fell": false,
+  "min_base_height": 0.7382354111782297,
+  "final_position": [
+    6.748958470936595,
+    -0.2199386082014557,
+    2.825486424862847
+  ],
+  "displacement": [
+    6.748958470936595,
+    -0.2199386082014557,
+    2.025486424862847
+  ],
+  "policy_shape": [
+    1,
+    495
+  ],
+  "depth_shape": [
+    1,
+    8,
+    18,
+    32
+  ],
+  "target_distance": 0.22532182152211266,
+  "target_reached": true
+}

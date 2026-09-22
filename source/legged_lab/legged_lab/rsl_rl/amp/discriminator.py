@@ -1,5 +1,5 @@
 # Adapted from lab_dev/rsl_rl@feature/amp (rsl_rl/modules/amp.py).
-# Imports updated for rsl-rl-lib 5.4.1; logic unchanged.
+# Supports rsl-rl-lib 5.4.1 and optional additive AMP reward/regularization.
 
 from __future__ import annotations
 
@@ -39,6 +39,9 @@ class AMPDiscriminator(nn.Module):
         style_reward_scale: float = 1.0,
         task_style_lerp: float = 0.0,
         device: str = "cpu",
+        reward_combination: str = "lerp",
+        style_reward_time_scaled: bool = True,
+        observation_normalization: str = "empirical",
     ):
         super().__init__()
         if hidden_dims is None:
@@ -54,9 +57,21 @@ class AMPDiscriminator(nn.Module):
         self.task_style_lerp = task_style_lerp
         self.device = device
         self.loss_type = loss_type
+        if reward_combination not in ("lerp", "additive"):
+            raise ValueError("reward_combination must be 'lerp' or 'additive'.")
+        if observation_normalization not in ("empirical", "none"):
+            raise ValueError("observation_normalization must be 'empirical' or 'none'.")
+        self.reward_combination = reward_combination
+        self.style_reward_time_scaled = style_reward_time_scaled
+        self.observation_normalization = observation_normalization
+        self.raw_style_rewards: torch.Tensor | None = None
 
-        # Discriminator observation normalizer (per-dim, across history)
-        self.disc_obs_normalizer = EmpiricalNormalization(shape=self.disc_obs_dim, until=1e8).to(device)
+        # The legacy normalizer retains exactly the same state-dict keys. The
+        # Instinct-aligned mode consumes the already scaled physical features.
+        self.disc_obs_normalizer = (
+            EmpiricalNormalization(shape=self.disc_obs_dim, until=1e8)
+            if observation_normalization == "empirical" else nn.Identity()
+        ).to(device)
 
         # Build the trunk
         disc_layers: list[nn.Module] = []
@@ -132,7 +147,8 @@ class AMPDiscriminator(nn.Module):
     def update_normalization(self, disc_obs: torch.Tensor) -> None:
         """Update running normalizer with new (un-normalised) disc obs."""
         assert disc_obs.ndim == 3
-        self.disc_obs_normalizer.update(disc_obs.reshape(-1, self.disc_obs_dim))
+        if self.observation_normalization == "empirical":
+            self.disc_obs_normalizer.update(disc_obs.reshape(-1, self.disc_obs_dim))
 
     # ------------------------------------------------------------------
     # Reward
@@ -159,7 +175,9 @@ class AMPDiscriminator(nn.Module):
             else:
                 raise ValueError(f"Unknown AMP loss type: {self.loss_type}")
 
-            style_reward = dt * self.style_reward_scale * rew
+            self.raw_style_rewards = rew.squeeze(-1)
+            time_scale = dt if self.style_reward_time_scaled else 1.0
+            style_reward = time_scale * self.style_reward_scale * rew
 
             if was_training:
                 self.train()
@@ -169,25 +187,45 @@ class AMPDiscriminator(nn.Module):
         return style_reward.squeeze(-1), disc_score.squeeze(-1)
 
     def lerp_reward(self, task_reward: torch.Tensor, style_reward: torch.Tensor) -> torch.Tensor:
-        """Blend task and style rewards: lerp * task + (1 - lerp) * style."""
-        return self.task_style_lerp * task_reward + (1.0 - self.task_style_lerp) * style_reward
+        """Combine rewards using the configured mode (legacy method name retained)."""
+        task, style = self.reward_terms(task_reward, style_reward)
+        return task + style
+
+    def reward_terms(self, task_reward: torch.Tensor, style_reward: torch.Tensor):
+        """Return the two weighted terms that actually enter PPO's reward."""
+        if self.reward_combination == "additive":
+            return task_reward, style_reward
+        return self.task_style_lerp * task_reward, (1.0 - self.task_style_lerp) * style_reward
 
     # ------------------------------------------------------------------
     # Discriminator training helpers
     # ------------------------------------------------------------------
 
-    def compute_grad_penalty(self, demo_data: torch.Tensor, scale: float = 10.0) -> torch.Tensor:
-        """Gradient penalty on demonstration data (2D: mini_batch x flat_obs_dim)."""
+    def compute_grad_penalty(
+        self, demo_data: torch.Tensor, scale: float = 10.0, agent_data: torch.Tensor | None = None
+    ) -> torch.Tensor:
+        """Penalize input gradients on demo data, or equally on agent and demo data."""
         assert demo_data.ndim == 2
-        demo_copy = demo_data.clone().detach().requires_grad_(True)
-        disc = self.forward(demo_copy)
-        ones = torch.ones_like(disc, device=demo_copy.device)
+        if agent_data is not None:
+            assert agent_data.ndim == 2 and agent_data.shape == demo_data.shape
+            data = torch.cat((agent_data, demo_data), dim=0)
+        else:
+            data = demo_data
+        data_copy = data.clone().detach().requires_grad_(True)
+        disc = self.forward(data_copy)
+        ones = torch.ones_like(disc, device=data_copy.device)
         grad = autograd.grad(
-            outputs=disc, inputs=demo_copy,
+            outputs=disc, inputs=data_copy,
             grad_outputs=ones, create_graph=True,
             retain_graph=True, only_inputs=True,
         )[0]
         return scale * (grad.norm(2, dim=1) - 0).pow(2).mean()
+
+    def weight_penalties(self) -> tuple[torch.Tensor, torch.Tensor]:
+        """Explicit Instinct regularizers: all parameters and last-layer weights."""
+        all_parameters = sum(param.square().sum() for param in self.parameters())
+        logit_weights = self.disc_linear.weight.square().sum()
+        return all_parameters, logit_weights
 
 
 # ---------------------------------------------------------------------------

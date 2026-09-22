@@ -1,0 +1,110 @@
+{
+  "tests_passed": 27,
+  "noise_audit": {
+    "sampled/1": {
+      "episodes": 45,
+      "failed": 1,
+      "ever": {
+        "near": 43,
+        "feet_x": 44,
+        "feet_z": 45,
+        "bounds": 45,
+        "upright": 45,
+        "height": 45,
+        "slow": 45,
+        "angular": 45,
+        "geometric": 43,
+        "all": 42,
+        "all_except_z": 42
+      },
+      "hold_1s_recomputed": 0,
+      "hold_1s_actual": 0,
+      "final_pass": 0,
+      "window_final_pass": 42,
+      "mean_duration": 19.644444444444446
+    },
+    "sampled/2": {
+      "episodes": 26,
+      "failed": 0,
+      "ever": {
+        "near": 25,
+        "feet_x": 26,
+        "feet_z": 26,
+        "bounds": 26,
+        "upright": 26,
+        "height": 26,
+        "slow": 26,
+        "angular": 26,
+        "geometric": 25,
+        "all": 25,
+        "all_except_z": 25
+      },
+      "hold_1s_recomputed": 0,
+      "hold_1s_actual": 0,
+      "final_pass": 0,
+      "window_final_pass": 24,
+      "mean_duration": 20.0
+    }
+  },
+  "scope": "Completion-rule and resume compatibility checks, not newly learned policy performance.",
+  "migration": {
+    "checkpoint": "/home/ljc/legged_lab_v3/logs/rsl_rl/g1_amp_stairs_specialist/2026-09-15_00-02-13_window_v4_migration_check/model_23601.pt",
+    "version": 4,
+    "frontier": [
+      1,
+      1
+    ],
+    "phase": [
+      0,
+      0
+    ],
+    "attempts": [
+      0,
+      0
+    ],
+    "wins": [
+      0,
+      0
+    ],
+    "last_rate": [
+      -1.0,
+      -1.0
+    ],
+    "flat_tiers": [
+      0,
+      0,
+      7,
+      9
+    ]
+  },
+  "resume": {
+    "checkpoint": "/home/ljc/legged_lab_v3/logs/rsl_rl/g1_amp_stairs_specialist/2026-09-15_00-03-05_window_v4_resume_check/model_23602.pt",
+    "version": 4,
+    "frontier": [
+      1,
+      1
+    ],
+    "phase": [
+      0,
+      0
+    ],
+    "attempts": [
+      0,
+      0
+    ],
+    "wins": [
+      0,
+      0
+    ],
+    "last_rate": [
+      -1.0,
+      -1.0
+    ],
+    "flat_tiers": [
+      0,
+      0,
+      7,
+      9
+    ]
+  }
+}

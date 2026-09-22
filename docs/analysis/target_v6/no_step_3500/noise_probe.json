@@ -1,0 +1,35 @@
+{
+  "note": "Feature substitutions are synthetic sensitivity probes, not executable trajectories. Sampled and deterministic rows are not matched physical states.",
+  "deterministic": {
+    "D": -0.0501546636223793,
+    "raw_style": 0.724136233329773
+  },
+  "sampled": {
+    "D": -0.48246535658836365,
+    "raw_style": 0.4502078890800476
+  },
+  "sampled_replace_gravity": {
+    "D": -0.4836483299732208,
+    "raw_style": 0.4493321478366852
+  },
+  "sampled_replace_joint_pos": {
+    "D": -0.4441438317298889,
+    "raw_style": 0.47822272777557373
+  },
+  "sampled_replace_joint_vel": {
+    "D": -0.30404970049858093,
+    "raw_style": 0.5744646191596985
+  },
+  "sampled_replace_root_lin_vel": {
+    "D": -0.48207026720046997,
+    "raw_style": 0.4504797160625458
+  },
+  "sampled_replace_root_ang_vel": {
+    "D": -0.3216458857059479,
+    "raw_style": 0.5631445050239563
+  },
+  "sampled_repeat_latest_frame": {
+    "D": -0.13219133019447327,
+    "raw_style": 0.6793633699417114
+  }
+}

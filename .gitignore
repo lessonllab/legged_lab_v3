@@ -26,8 +26,6 @@
 **/videos/*
 **/wandb/*
 **/.neptune/*
-docker/artifacts/
-docker/.cache/
 *.tmp
 
 # Isaac-Sim packman
@@ -56,3 +54,9 @@ logs/
 
 # temporary frame dumps from play/record
 _frames_tmp/
+
+# Machine-local runtime dependencies and generated camera checks
+/.runtime/
+
+# External checkout: pinned setup and local scene patch are documented.
+/hiking-in-the-wild-sim2sim/

@@ -1,0 +1,28 @@
+{
+  "click_pixel": [
+    720,
+    700
+  ],
+  "world_target": [
+    1.5114645042391068,
+    -0.05296253620623226,
+    0.0
+  ],
+  "robot_position": [
+    0.6427055943586556,
+    -0.02367284626122284,
+    0.7860172145832929
+  ],
+  "raw_depth_shape": [
+    36,
+    64
+  ],
+  "actor_depth_shape": [
+    18,
+    32
+  ],
+  "head_groups": [
+    3
+  ],
+  "panel_click_ignored": true
+}

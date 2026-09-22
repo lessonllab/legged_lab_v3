@@ -1,0 +1,18 @@
+{
+  "levels": 10,
+  "goals": 500,
+  "all_goals_finite": true,
+  "goal_local_height_range": [
+    -7.62939453125e-06,
+    -7.62939453125e-06
+  ],
+  "goal_x_range": [
+    3.8499984741210938,
+    3.8500003814697266
+  ],
+  "layout": "AME alternate-column generator with requested 0.4m sides, 0.1m gaps, 2m central platform, 0.25m border",
+  "pit_floor_z": -2.0,
+  "independent_ray_checks": 10,
+  "max_ray_error": 7.629394531361022e-06,
+  "scope": "Generated geometry and navigation goals; not trained crossing ability."
+}

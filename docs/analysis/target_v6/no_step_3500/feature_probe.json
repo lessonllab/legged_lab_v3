@@ -1,0 +1,37 @@
+{
+  "policy": {
+    "D": -0.04878125339746475,
+    "raw_style": 0.7248408198356628
+  },
+  "reference_subset": {
+    "D": 0.39347389340400696,
+    "raw_style": 0.8995258808135986
+  },
+  "policy_with_reference_gravity": {
+    "D": -0.04314997047185898,
+    "raw_style": 0.7277821898460388
+  },
+  "policy_with_reference_joint_pos": {
+    "D": -0.02235705778002739,
+    "raw_style": 0.7384634017944336
+  },
+  "policy_with_reference_joint_vel": {
+    "D": -0.05951937660574913,
+    "raw_style": 0.719215452671051
+  },
+  "policy_with_reference_base_lin_vel": {
+    "D": 0.2039230614900589,
+    "raw_style": 0.8363218307495117
+  },
+  "policy_with_reference_base_ang_vel": {
+    "D": -0.10301509499549866,
+    "raw_style": 0.6955451369285583
+  },
+  "gradient_l2_by_group": {
+    "gravity": 0.019584069028496742,
+    "joint_pos": 0.0764840617775917,
+    "joint_vel": 0.06549129635095596,
+    "base_lin_vel": 0.06040111556649208,
+    "base_ang_vel": 0.0687316507101059
+  }
+}

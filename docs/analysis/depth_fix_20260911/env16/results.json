@@ -1,0 +1,134 @@
+{
+  "num_envs": 16,
+  "legacy": false,
+  "poses": {
+    "symmetric_default": {
+      "depth_camera": {
+        "body_pixels": 0,
+        "cropped_arm_side_pixels": {
+          "left": 0,
+          "right": 0
+        },
+        "raw_mirror_mae_m": 0.014191504567861557,
+        "near_body_pixels": 0,
+        "max_pose_match_error_m": 0.0,
+        "max_cross_env_depth_difference_m": 2.1457672119140625e-06,
+        "raw_min_m": 1.1509883403778076,
+        "raw_max_m": 2.5,
+        "max_same_surface_depth_difference_m": 2.1457672119140625e-06,
+        "max_changed_silhouette_pixels_per_env": 0
+      },
+      "center_camera": {
+        "body_pixels": 0,
+        "cropped_arm_side_pixels": {
+          "left": 0,
+          "right": 0
+        },
+        "raw_mirror_mae_m": 2.0903017627915688e-07,
+        "near_body_pixels": 0,
+        "max_pose_match_error_m": 0.0,
+        "max_cross_env_depth_difference_m": 0.0,
+        "raw_min_m": 1.159055233001709,
+        "raw_max_m": 2.5,
+        "max_same_surface_depth_difference_m": 0.0,
+        "max_changed_silhouette_pixels_per_env": 0
+      }
+    },
+    "symmetric_forward": {
+      "depth_camera": {
+        "body_pixels": 262,
+        "cropped_arm_side_pixels": {
+          "left": 69,
+          "right": 36
+        },
+        "raw_mirror_mae_m": 0.09993007779121399,
+        "near_body_pixels": 0,
+        "max_pose_match_error_m": 0.0,
+        "max_cross_env_depth_difference_m": 0.0001195073127746582,
+        "raw_min_m": 0.24874289333820343,
+        "raw_max_m": 2.5,
+        "max_same_surface_depth_difference_m": 0.0001195073127746582,
+        "max_changed_silhouette_pixels_per_env": 0
+      },
+      "center_camera": {
+        "body_pixels": 255,
+        "cropped_arm_side_pixels": {
+          "left": 53,
+          "right": 53
+        },
+        "raw_mirror_mae_m": 0.0008757669129408896,
+        "near_body_pixels": 0,
+        "max_pose_match_error_m": 0.0,
+        "max_cross_env_depth_difference_m": 1.0065604448318481,
+        "raw_min_m": 0.25224870443344116,
+        "raw_max_m": 2.5,
+        "max_same_surface_depth_difference_m": 0.0001659989356994629,
+        "max_changed_silhouette_pixels_per_env": 2
+      }
+    },
+    "left_forward": {
+      "depth_camera": {
+        "body_pixels": 128,
+        "cropped_arm_side_pixels": {
+          "left": 69,
+          "right": 0
+        },
+        "raw_mirror_mae_m": 0.12729361653327942,
+        "near_body_pixels": 0,
+        "max_pose_match_error_m": 0.0,
+        "max_cross_env_depth_difference_m": 8.353590965270996e-05,
+        "raw_min_m": 0.2549360990524292,
+        "raw_max_m": 2.5,
+        "max_same_surface_depth_difference_m": 8.353590965270996e-05,
+        "max_changed_silhouette_pixels_per_env": 0
+      },
+      "center_camera": {
+        "body_pixels": 127,
+        "cropped_arm_side_pixels": {
+          "left": 53,
+          "right": 0
+        },
+        "raw_mirror_mae_m": 0.11346325278282166,
+        "near_body_pixels": 0,
+        "max_pose_match_error_m": 0.0,
+        "max_cross_env_depth_difference_m": 1.0065604448318481,
+        "raw_min_m": 0.25224870443344116,
+        "raw_max_m": 2.5,
+        "max_same_surface_depth_difference_m": 0.0001289844512939453,
+        "max_changed_silhouette_pixels_per_env": 1
+      }
+    },
+    "right_forward": {
+      "depth_camera": {
+        "body_pixels": 134,
+        "cropped_arm_side_pixels": {
+          "left": 0,
+          "right": 36
+        },
+        "raw_mirror_mae_m": 0.1336725503206253,
+        "near_body_pixels": 0,
+        "max_pose_match_error_m": 0.0,
+        "max_cross_env_depth_difference_m": 0.0001195073127746582,
+        "raw_min_m": 0.24874289333820343,
+        "raw_max_m": 2.5,
+        "max_same_surface_depth_difference_m": 0.0001195073127746582,
+        "max_changed_silhouette_pixels_per_env": 0
+      },
+      "center_camera": {
+        "body_pixels": 128,
+        "cropped_arm_side_pixels": {
+          "left": 0,
+          "right": 53
+        },
+        "raw_mirror_mae_m": 0.11433691531419754,
+        "near_body_pixels": 0,
+        "max_pose_match_error_m": 0.0,
+        "max_cross_env_depth_difference_m": 1.006155014038086,
+        "raw_min_m": 0.2522730529308319,
+        "raw_max_m": 2.5,
+        "max_same_surface_depth_difference_m": 0.0001659989356994629,
+        "max_changed_silhouette_pixels_per_env": 1
+      }
+    }
+  }
+}

@@ -1,0 +1,156 @@
+{
+  "checkpoint": "/home/ljc/legged_lab_v3/logs/rsl_rl/g1_amp_depth_target_v7/2026-09-13_21-28-55_progress_pilot_b/model_99.pt",
+  "task": "LeggedLab-Isaac-AMP-Depth-Target-G1-Play-v3",
+  "steps": 500,
+  "scope": "Six easiest tiles, standing resets; requested forward speed capped by each terrain range; finite diagnostic, not a success-rate benchmark.",
+  "speeds": {
+    "0.5": [
+      {
+        "terrain": "pyramid_stairs",
+        "command_vx": 0.5,
+        "vx_mean": 1.0308867692947388,
+        "xy_speed_mean": 1.0425076484680176,
+        "foot_air_fraction": 0.4362500011920929,
+        "left_liftoffs": 45,
+        "right_liftoffs": 44,
+        "failures": 0,
+        "gate_mean": 1.0,
+        "pelvis_above_lower_ankle_m": 0.6094235181808472
+      },
+      {
+        "terrain": "pyramid_stairs_inv",
+        "command_vx": 0.5,
+        "vx_mean": 1.0683616399765015,
+        "xy_speed_mean": 1.087765097618103,
+        "foot_air_fraction": 0.44874998927116394,
+        "left_liftoffs": 44,
+        "right_liftoffs": 44,
+        "failures": 0,
+        "gate_mean": 1.0,
+        "pelvis_above_lower_ankle_m": 0.6215053200721741
+      },
+      {
+        "terrain": "boxes",
+        "command_vx": 0.5,
+        "vx_mean": 1.0584008693695068,
+        "xy_speed_mean": 1.0738356113433838,
+        "foot_air_fraction": 0.45624998211860657,
+        "left_liftoffs": 43,
+        "right_liftoffs": 44,
+        "failures": 0,
+        "gate_mean": 1.0,
+        "pelvis_above_lower_ankle_m": 0.6206687092781067
+      },
+      {
+        "terrain": "random_rough",
+        "command_vx": 0.5,
+        "vx_mean": 1.0493136644363403,
+        "xy_speed_mean": 1.061812162399292,
+        "foot_air_fraction": 0.45374998450279236,
+        "left_liftoffs": 43,
+        "right_liftoffs": 44,
+        "failures": 0,
+        "gate_mean": 1.0,
+        "pelvis_above_lower_ankle_m": 0.6192249059677124
+      },
+      {
+        "terrain": "hf_pyramid_slope",
+        "command_vx": 0.5,
+        "vx_mean": 1.0451503992080688,
+        "xy_speed_mean": 1.0557106733322144,
+        "foot_air_fraction": 0.44874998927116394,
+        "left_liftoffs": 43,
+        "right_liftoffs": 44,
+        "failures": 0,
+        "gate_mean": 1.0,
+        "pelvis_above_lower_ankle_m": 0.6174036860466003
+      },
+      {
+        "terrain": "hf_pyramid_slope_inv",
+        "command_vx": 0.5,
+        "vx_mean": 1.0566500425338745,
+        "xy_speed_mean": 1.0680696964263916,
+        "foot_air_fraction": 0.4587499797344208,
+        "left_liftoffs": 44,
+        "right_liftoffs": 44,
+        "failures": 0,
+        "gate_mean": 1.0,
+        "pelvis_above_lower_ankle_m": 0.6211822628974915
+      }
+    ],
+    "1.5": [
+      {
+        "terrain": "pyramid_stairs",
+        "command_vx": 0.800000011920929,
+        "vx_mean": 1.3242275714874268,
+        "xy_speed_mean": 1.3404793739318848,
+        "foot_air_fraction": 0.4387499988079071,
+        "left_liftoffs": 43,
+        "right_liftoffs": 43,
+        "failures": 0,
+        "gate_mean": 1.0,
+        "pelvis_above_lower_ankle_m": 0.612591564655304
+      },
+      {
+        "terrain": "pyramid_stairs_inv",
+        "command_vx": 0.800000011920929,
+        "vx_mean": 1.345725655555725,
+        "xy_speed_mean": 1.3646827936172485,
+        "foot_air_fraction": 0.44624999165534973,
+        "left_liftoffs": 43,
+        "right_liftoffs": 42,
+        "failures": 0,
+        "gate_mean": 1.0,
+        "pelvis_above_lower_ankle_m": 0.6210138201713562
+      },
+      {
+        "terrain": "boxes",
+        "command_vx": 0.800000011920929,
+        "vx_mean": 1.3886619806289673,
+        "xy_speed_mean": 1.405772089958191,
+        "foot_air_fraction": 0.4699999988079071,
+        "left_liftoffs": 42,
+        "right_liftoffs": 43,
+        "failures": 0,
+        "gate_mean": 1.0,
+        "pelvis_above_lower_ankle_m": 0.6249867081642151
+      },
+      {
+        "terrain": "random_rough",
+        "command_vx": 1.5,
+        "vx_mean": 1.9322631359100342,
+        "xy_speed_mean": 1.973312497138977,
+        "foot_air_fraction": 0.44874998927116394,
+        "left_liftoffs": 41,
+        "right_liftoffs": 41,
+        "failures": 0,
+        "gate_mean": 1.0,
+        "pelvis_above_lower_ankle_m": 0.6093569993972778
+      },
+      {
+        "terrain": "hf_pyramid_slope",
+        "command_vx": 1.2000000476837158,
+        "vx_mean": 1.706734538078308,
+        "xy_speed_mean": 1.736802577972412,
+        "foot_air_fraction": 0.44874998927116394,
+        "left_liftoffs": 42,
+        "right_liftoffs": 41,
+        "failures": 0,
+        "gate_mean": 1.0,
+        "pelvis_above_lower_ankle_m": 0.6145691275596619
+      },
+      {
+        "terrain": "hf_pyramid_slope_inv",
+        "command_vx": 1.2000000476837158,
+        "vx_mean": 1.712638258934021,
+        "xy_speed_mean": 1.7435436248779297,
+        "foot_air_fraction": 0.45124998688697815,
+        "left_liftoffs": 42,
+        "right_liftoffs": 41,
+        "failures": 0,
+        "gate_mean": 1.0,
+        "pelvis_above_lower_ankle_m": 0.6147046685218811
+      }
+    ]
+  }
+}

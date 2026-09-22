@@ -1,0 +1,41 @@
+{
+  "checkpoint": "/home/ljc/legged_lab_v3/logs/rsl_rl/g1_amp_stairs_long/2026-09-16_20-26-52_reverse_height_v11/model_50100.pt",
+  "scene": "/home/ljc/legged_lab_v3/hiking-in-the-wild-sim2sim/unitree_mujoco/unitree_robots/g1/scene_29dof_terrain_with_camera.xml",
+  "control": "target",
+  "target": [
+    3.0,
+    2.0
+  ],
+  "speed_cap": 0.35,
+  "final_command": [
+    0.35,
+    0.0,
+    0.010283939189020022
+  ],
+  "sim_seconds": 29.999999999998316,
+  "wall_seconds": 2.674364806000085,
+  "fell": false,
+  "min_base_height": 0.7752475461729982,
+  "final_position": [
+    0.3139365710529832,
+    2.016683733917319,
+    0.7770791364225014
+  ],
+  "displacement": [
+    0.3139365710529832,
+    0.01668373391731892,
+    -0.022920863577498674
+  ],
+  "policy_shape": [
+    1,
+    495
+  ],
+  "depth_shape": [
+    1,
+    8,
+    18,
+    32
+  ],
+  "target_distance": 2.686115241627587,
+  "target_reached": false
+}

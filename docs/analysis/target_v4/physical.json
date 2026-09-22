@@ -1,0 +1,24 @@
+{
+  "device": "cuda:0",
+  "patch_shape": [
+    10,
+    6,
+    50,
+    3
+  ],
+  "all_patches_on_terrain": true,
+  "max_patch_center_height_offset_m": 0.04960739612579346,
+  "terrain_columns": [
+    "pyramid_stairs",
+    "pyramid_stairs_inv",
+    "boxes",
+    "random_rough",
+    "hf_pyramid_slope",
+    "hf_pyramid_slope_inv"
+  ],
+  "partial_reset_and_curriculum_relocation": true,
+  "arrival_stop_and_restart": true,
+  "dynamic_steps": 40,
+  "finite_bounded_commands": true,
+  "viser_goal_marker_created": true
+}

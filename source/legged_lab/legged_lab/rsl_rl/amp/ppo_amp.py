@@ -18,6 +18,7 @@ from rsl_rl.utils import compile_model, resolve_callable, resolve_obs_groups
 
 from .circular_buffer import CircularBuffer
 from .discriminator import AMPDiscriminator, LossType, resolve_amp_config
+from .reward_gate import get_style_gate
 
 
 class PPOAMP(PPO):
@@ -26,7 +27,7 @@ class PPOAMP(PPO):
     This class extends the upstream ``PPO`` algorithm (rsl-rl-lib ≥ 5.4) with:
     - An AMP discriminator that scores how closely agent behaviour matches demonstrations.
     - Separate discriminator replay buffers (agent obs and demo obs).
-    - A blended reward: ``task_style_lerp * task_reward + (1 - lerp) * style_reward``.
+    - Legacy interpolated rewards, or an explicitly configured additive style reward.
     - An independent discriminator optimizer.
 
     Selection:
@@ -108,21 +109,43 @@ class PPOAMP(PPO):
         ).to(device)
 
         # Discriminator optimizer (separate from PPO optimizer)
-        disc_params = [
-            {
-                "name": "disc_trunk",
-                "params": self.amp_discriminator.disc_trunk.parameters(),
-                "weight_decay": amp_cfg.get("disc_trunk_weight_decay", 1e-4),
-            },
-            {
-                "name": "disc_linear",
-                "params": self.amp_discriminator.disc_linear.parameters(),
-                "weight_decay": amp_cfg.get("disc_linear_weight_decay", 1e-1),
-            },
-        ]
-        self.disc_optimizer = optim.Adam(disc_params, lr=amp_cfg.get("disc_learning_rate", 1e-5))
+        disc_optimizer = amp_cfg.get("disc_optimizer", "adam")
+        if disc_optimizer == "adam":
+            # Keep the legacy parameter groups and optimizer state compatible.
+            disc_params = [
+                {
+                    "name": "disc_trunk",
+                    "params": self.amp_discriminator.disc_trunk.parameters(),
+                    "weight_decay": amp_cfg.get("disc_trunk_weight_decay", 1e-4),
+                },
+                {
+                    "name": "disc_linear",
+                    "params": self.amp_discriminator.disc_linear.parameters(),
+                    "weight_decay": amp_cfg.get("disc_linear_weight_decay", 1e-1),
+                },
+            ]
+            self.disc_optimizer = optim.Adam(disc_params, lr=amp_cfg.get("disc_learning_rate", 1e-5))
+        elif disc_optimizer == "adamw":
+            self.disc_optimizer = optim.AdamW(
+                self.amp_discriminator.parameters(),
+                lr=amp_cfg.get("disc_learning_rate", 1e-5),
+                weight_decay=amp_cfg.get("disc_optimizer_weight_decay", 0.0),
+            )
+        else:
+            raise ValueError("disc_optimizer must be 'adam' or 'adamw'.")
+        self.disc_weight_l2_coef = amp_cfg.get("disc_weight_l2_coef", 0.0)
+        self.disc_logit_l2_coef = amp_cfg.get("disc_logit_l2_coef", 0.0)
+        if min(self.disc_weight_l2_coef, self.disc_logit_l2_coef) < 0:
+            raise ValueError("Discriminator L2 coefficients must be non-negative.")
+        self.grad_penalty_data = amp_cfg.get("grad_penalty_data", "demo")
+        if self.grad_penalty_data not in ("demo", "agent_demo"):
+            raise ValueError("grad_penalty_data must be 'demo' or 'agent_demo'.")
         self.disc_max_grad_norm = amp_cfg.get("disc_max_grad_norm", 0.5)
+        if self.disc_max_grad_norm is not None and self.disc_max_grad_norm <= 0:
+            raise ValueError("disc_max_grad_norm must be positive or None.")
         self.disc_update_interval = amp_cfg.get("disc_update_interval", 1)
+        if not isinstance(self.disc_update_interval, int) or self.disc_update_interval < 1:
+            raise ValueError("disc_update_interval must be a positive integer.")
 
         # AMP replay buffers (pre-built by construct_algorithm)
         self.disc_obs_buffer = disc_obs_buffer
@@ -174,14 +197,18 @@ class PPOAMP(PPO):
             "rl", env.num_envs, cfg["num_steps_per_env"], obs, [env.num_actions], device
         )
 
-        # 7. Build AMP disc replay buffers (size = one rollout = num_steps_per_env)
+        # 7. Capacity is independent of the number of samples used per update.
+        replay_rollouts = cfg["algorithm"]["amp_cfg"].get("disc_replay_rollouts", 1)
+        if not isinstance(replay_rollouts, int) or replay_rollouts < 1:
+            raise ValueError("disc_replay_rollouts must be a positive integer.")
+        replay_capacity = replay_rollouts * cfg["num_steps_per_env"]
         disc_obs_buffer = CircularBuffer(
-            max_len=cfg["num_steps_per_env"],
+            max_len=replay_capacity,
             batch_size=env.num_envs,
             device=device,
         )
         disc_demo_obs_buffer = CircularBuffer(
-            max_len=cfg["num_steps_per_env"],
+            max_len=replay_capacity,
             batch_size=env.num_envs,
             device=device,
         )
@@ -230,9 +257,31 @@ class PPOAMP(PPO):
         self.style_rewards, self.disc_score = self.amp_discriminator.predict_style_reward(
             disc_obs, dt=self.amp_cfg["step_dt"]
         )
+        gate_group = self.amp_cfg.get('style_reward_gate_group')
+        style_gate = None
+        if gate_group is not None:
+            style_gate = get_style_gate(obs, dones, extras, gate_group)
+            self.style_rewards = self.style_rewards * style_gate
         self.rewards_lerp = self.amp_discriminator.lerp_reward(
             task_reward=rewards, style_reward=self.style_rewards
         )
+        weighted_task, weighted_style = self.amp_discriminator.reward_terms(rewards, self.style_rewards)
+
+        # Log the online rewards actually used for PPO, separately from the
+        # runner's raw task-return metric. Make a fresh dict for each step.
+        extras["log"] = {
+            **extras.get("log", {}),
+            "AMP/task_reward_per_step": rewards.detach().mean(),
+            "AMP/style_reward_per_step": self.style_rewards.detach().mean(),
+            "AMP/raw_style_reward_per_step": self.amp_discriminator.raw_style_rewards.detach().mean(),
+            "AMP/weighted_task_reward_per_step": weighted_task.detach().mean(),
+            "AMP/weighted_style_reward_per_step": weighted_style.detach().mean(),
+            "AMP/mixed_reward_per_step": self.rewards_lerp.detach().mean(),
+            "AMP/style_zero_fraction": (self.style_rewards <= 1e-8).float().mean(),
+            "AMP/online_disc_score": self.disc_score.detach().mean(),
+        }
+        if style_gate is not None:
+            extras['log']['AMP/progress_gate'] = style_gate.detach().mean()
 
         # Buffer un-normalised disc obs for the discriminator update
         self.disc_obs_buffer.append(disc_obs)
@@ -261,6 +310,9 @@ class PPOAMP(PPO):
         mean_disc_grad_penalty = 0.0
         mean_disc_score = 0.0
         mean_disc_demo_score = 0.0
+        mean_disc_weight_l2 = 0.0
+        mean_disc_logit_l2 = 0.0
+        mean_disc_total_loss = 0.0
         disc_updates_done = 0
 
         num_steps = self.storage.num_transitions_per_env  # type: ignore
@@ -268,11 +320,15 @@ class PPOAMP(PPO):
             fetch_length=num_steps,
             num_mini_batches=self.num_mini_batches,
             num_epochs=self.num_learning_epochs,
+            recent_length=num_steps,
+            recent_fraction=self.amp_cfg.get("disc_replay_current_fraction", 0.5),
         )
         disc_demo_obs_gen = self.disc_demo_obs_buffer.mini_batch_generator(
             fetch_length=num_steps,
             num_mini_batches=self.num_mini_batches,
             num_epochs=self.num_learning_epochs,
+            recent_length=num_steps,
+            recent_fraction=self.amp_cfg.get("disc_replay_current_fraction", 0.5),
         )
 
         for mini_batch_idx, (disc_obs_batch, disc_demo_obs_batch) in enumerate(
@@ -310,8 +366,16 @@ class PPOAMP(PPO):
             grad_penalty = self.amp_discriminator.compute_grad_penalty(
                 demo_data=demo_flat,
                 scale=self.amp_cfg.get("grad_penalty_scale", 40.0),
+                agent_data=agent_flat if self.grad_penalty_data == "agent_demo" else None,
             )
-            total_disc_loss = disc_loss + grad_penalty
+            # These are explicit loss penalties, separate from optimizer decay.
+            # Avoid extra parameter reductions in the unchanged legacy branch.
+            weight_l2 = logit_l2 = disc_loss.new_zeros(())
+            if self.disc_weight_l2_coef or self.disc_logit_l2_coef:
+                weight_penalty, logit_penalty = self.amp_discriminator.weight_penalties()
+                weight_l2 = self.disc_weight_l2_coef * weight_penalty
+                logit_l2 = self.disc_logit_l2_coef * logit_penalty
+            total_disc_loss = disc_loss + grad_penalty + weight_l2 + logit_l2
 
             # Only step the discriminator every disc_update_interval mini-batches.
             # This slows the discriminator relative to the policy, preventing early saturation.
@@ -320,9 +384,10 @@ class PPOAMP(PPO):
             if do_disc_update:
                 self.disc_optimizer.zero_grad()
                 total_disc_loss.backward()
-                nn.utils.clip_grad_norm_(
-                    self.amp_discriminator.parameters(), self.disc_max_grad_norm
-                )
+                if self.disc_max_grad_norm is not None:
+                    nn.utils.clip_grad_norm_(
+                        self.amp_discriminator.parameters(), self.disc_max_grad_norm
+                    )
                 self.disc_optimizer.step()
                 # Update observation normaliser with un-normalised data
                 self.amp_discriminator.update_normalization(disc_obs_batch)
@@ -333,6 +398,9 @@ class PPOAMP(PPO):
             if do_disc_update:
                 mean_disc_loss += disc_loss.item()
                 mean_disc_grad_penalty += grad_penalty.item()
+                mean_disc_weight_l2 += weight_l2.item()
+                mean_disc_logit_l2 += logit_l2.item()
+                mean_disc_total_loss += total_disc_loss.item()
                 disc_updates_done += 1
 
         num_updates = self.num_learning_epochs * self.num_mini_batches
@@ -347,6 +415,10 @@ class PPOAMP(PPO):
         else:
             result["amp/disc_loss"] = 0.0
             result["amp/disc_grad_penalty"] = 0.0
+        result["amp/disc_weight_l2"] = mean_disc_weight_l2 / max(disc_updates_done, 1)
+        result["amp/disc_logit_l2"] = mean_disc_logit_l2 / max(disc_updates_done, 1)
+        result["amp/disc_total_loss"] = mean_disc_total_loss / max(disc_updates_done, 1)
+        result["amp/disc_updates"] = float(disc_updates_done)
         return result
 
     # ------------------------------------------------------------------
@@ -378,6 +450,10 @@ class PPOAMP(PPO):
 
     def load(self, loaded_dict: dict, load_cfg: dict | None, strict: bool) -> bool:
         load_iteration = super().load(loaded_dict, load_cfg, strict)
+        # Replay is transient (not serialized into every checkpoint). Refill it
+        # from new rollouts after loading; valid-length sampling handles warm-up.
+        self.disc_obs_buffer.reset()
+        self.disc_demo_obs_buffer.reset()
         if "amp_discriminator_state_dict" in loaded_dict:
             self.amp_discriminator.load_state_dict(
                 loaded_dict["amp_discriminator_state_dict"], strict=strict

@@ -1,0 +1,317 @@
+{
+  "created_utc": "2026-09-13T05:23:00.817160+00:00",
+  "run": "/home/ljc/legged_lab_v3/logs/rsl_rl/g1_amp_depth_target_v6_smoke/2026-09-13_13-20-45_target_v6_smoke",
+  "checkpoints": {
+    "first": "model_0.pt",
+    "last": "model_2.pt",
+    "first_iteration": 0,
+    "last_iteration": 2,
+    "note": "model_0 is saved after the first update; parameter comparisons cover subsequent two iterations"
+  },
+  "all_checkpoint_and_optimizer_tensors_finite": true,
+  "nonfinite_paths": [],
+  "checked_tensors": 248,
+  "checked_tensor_elements": 9779558,
+  "actor_cnn_update": {
+    "all_tensors_changed": true,
+    "total_changed_elements": 17104,
+    "tensors": [
+      {
+        "name": "cnns.depth.0.weight",
+        "changed_elements": 3200,
+        "elements": 3200,
+        "max_abs_delta": 0.0005968622863292694
+      },
+      {
+        "name": "cnns.depth.0.bias",
+        "changed_elements": 16,
+        "elements": 16,
+        "max_abs_delta": 0.000340532511472702
+      },
+      {
+        "name": "cnns.depth.2.weight",
+        "changed_elements": 4608,
+        "elements": 4608,
+        "max_abs_delta": 0.0010213889181613922
+      },
+      {
+        "name": "cnns.depth.2.bias",
+        "changed_elements": 32,
+        "elements": 32,
+        "max_abs_delta": 0.0005165934562683105
+      },
+      {
+        "name": "cnns.depth.4.weight",
+        "changed_elements": 9216,
+        "elements": 9216,
+        "max_abs_delta": 0.0021392516791820526
+      },
+      {
+        "name": "cnns.depth.4.bias",
+        "changed_elements": 32,
+        "elements": 32,
+        "max_abs_delta": 0.0005761459469795227
+      }
+    ]
+  },
+  "critic_cnn_update": {
+    "all_tensors_changed": true,
+    "total_changed_elements": 17104,
+    "tensors": [
+      {
+        "name": "cnns.depth.0.weight",
+        "changed_elements": 3200,
+        "elements": 3200,
+        "max_abs_delta": 0.0014843195676803589
+      },
+      {
+        "name": "cnns.depth.0.bias",
+        "changed_elements": 16,
+        "elements": 16,
+        "max_abs_delta": 0.001087244600057602
+      },
+      {
+        "name": "cnns.depth.2.weight",
+        "changed_elements": 4608,
+        "elements": 4608,
+        "max_abs_delta": 0.0025565065443515778
+      },
+      {
+        "name": "cnns.depth.2.bias",
+        "changed_elements": 32,
+        "elements": 32,
+        "max_abs_delta": 0.001458592712879181
+      },
+      {
+        "name": "cnns.depth.4.weight",
+        "changed_elements": 9216,
+        "elements": 9216,
+        "max_abs_delta": 0.0028609856963157654
+      },
+      {
+        "name": "cnns.depth.4.bias",
+        "changed_elements": 32,
+        "elements": 32,
+        "max_abs_delta": 0.00104496069252491
+      }
+    ]
+  },
+  "discriminator_update": {
+    "all_tensors_changed": true,
+    "total_changed_elements": 1212416,
+    "tensors": [
+      {
+        "name": "disc_trunk.0.weight",
+        "changed_elements": 686079,
+        "elements": 686080,
+        "max_abs_delta": 0.005573940463364124
+      },
+      {
+        "name": "disc_trunk.0.bias",
+        "changed_elements": 1024,
+        "elements": 1024,
+        "max_abs_delta": 0.0052955374121665955
+      },
+      {
+        "name": "disc_trunk.2.weight",
+        "changed_elements": 524288,
+        "elements": 524288,
+        "max_abs_delta": 0.005572423338890076
+      },
+      {
+        "name": "disc_trunk.2.bias",
+        "changed_elements": 512,
+        "elements": 512,
+        "max_abs_delta": 0.00474607665091753
+      },
+      {
+        "name": "disc_linear.weight",
+        "changed_elements": 512,
+        "elements": 512,
+        "max_abs_delta": 0.0048104748129844666
+      },
+      {
+        "name": "disc_linear.bias",
+        "changed_elements": 1,
+        "elements": 1,
+        "max_abs_delta": 0.0025234585627913475
+      }
+    ]
+  },
+  "identity_normalizer_has_no_state": true,
+  "effective_action_std": {
+    "finite": true,
+    "min": 0.4995448887348175,
+    "mean": 0.5004897713661194,
+    "max": 0.5012912154197693
+  },
+  "discriminator_optimizer": {
+    "groups": [
+      {
+        "lr": 0.0001,
+        "betas": [
+          0.9,
+          0.999
+        ],
+        "eps": 1e-08,
+        "weight_decay": 0.01,
+        "amsgrad": false,
+        "maximize": false,
+        "foreach": null,
+        "capturable": false,
+        "differentiable": false,
+        "fused": null,
+        "decoupled_weight_decay": true,
+        "params": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      }
+    ],
+    "state_steps": [
+      60.0
+    ]
+  },
+  "all_tensorboard_scalars_finite": true,
+  "discriminator_updates_per_iteration": {
+    "0": 20.0,
+    "1": 20.0,
+    "2": 20.0
+  },
+  "reward_identity_residuals": {
+    "0": {
+      "mixed_minus_weighted_terms": -1.257285475730896e-08,
+      "weighted_style_minus_quarter_raw": 0.0,
+      "weighted_task_minus_task": 0.0,
+      "style_minus_weighted_style": 0.0
+    },
+    "1": {
+      "mixed_minus_weighted_terms": 7.450580596923828e-09,
+      "weighted_style_minus_quarter_raw": 0.0,
+      "weighted_task_minus_task": 0.0,
+      "style_minus_weighted_style": 0.0
+    },
+    "2": {
+      "mixed_minus_weighted_terms": 0.0,
+      "weighted_style_minus_quarter_raw": 0.0,
+      "weighted_task_minus_task": 0.0,
+      "style_minus_weighted_style": 0.0
+    }
+  },
+  "amp_scalar_series": {
+    "AMP/online_disc_score": {
+      "0": -0.0019109029090031981,
+      "1": -0.47955045104026794,
+      "2": -0.499125599861145
+    },
+    "AMP/weighted_style_reward_per_step": {
+      "0": 0.1872323602437973,
+      "1": 0.11229865998029709,
+      "2": 0.1071314662694931
+    },
+    "AMP/raw_style_reward_per_step": {
+      "0": 0.7489294409751892,
+      "1": 0.44919463992118835,
+      "2": 0.4285258650779724
+    },
+    "AMP/weighted_task_reward_per_step": {
+      "0": -0.002634453121572733,
+      "1": -0.058783479034900665,
+      "2": -0.11907528340816498
+    },
+    "AMP/task_reward_per_step": {
+      "0": -0.002634453121572733,
+      "1": -0.058783479034900665,
+      "2": -0.11907528340816498
+    },
+    "AMP/style_reward_per_step": {
+      "0": 0.1872323602437973,
+      "1": 0.11229865998029709,
+      "2": 0.1071314662694931
+    },
+    "AMP/mixed_reward_per_step": {
+      "0": 0.1845978945493698,
+      "1": 0.05351518839597702,
+      "2": -0.011943817138671875
+    },
+    "AMP/style_zero_fraction": {
+      "0": 0.0,
+      "1": 0.0,
+      "2": 0.008463541977107525
+    },
+    "Loss/amp/disc_score": {
+      "0": -0.1887655109167099,
+      "1": -0.5712363719940186,
+      "2": -0.5735507607460022
+    },
+    "Loss/amp/disc_demo_score": {
+      "0": 0.2187928855419159,
+      "1": 0.47261500358581543,
+      "2": 0.5456408262252808
+    },
+    "Loss/amp/disc_loss": {
+      "0": 0.6713790893554688,
+      "1": 0.2655876874923706,
+      "2": 0.23648422956466675
+    },
+    "Loss/amp/disc_grad_penalty": {
+      "0": 0.0961587131023407,
+      "1": 0.22709017992019653,
+      "2": 0.18856872618198395
+    },
+    "Loss/amp/disc_weight_l2": {
+      "0": 0.1520325243473053,
+      "1": 0.1482957899570465,
+      "2": 0.14401261508464813
+    },
+    "Loss/amp/disc_logit_l2": {
+      "0": 0.013437692075967789,
+      "1": 0.01343388669192791,
+      "2": 0.013091770000755787
+    },
+    "Loss/amp/disc_total_loss": {
+      "0": 0.9330080151557922,
+      "1": 0.6544075012207031,
+      "2": 0.5821573138237
+    },
+    "Loss/amp/disc_updates": {
+      "0": 20.0,
+      "1": 20.0,
+      "2": 20.0
+    }
+  },
+  "serialized_amp_profile": {
+    "disc_obs_buffer_size": "1000",
+    "disc_replay_rollouts": "1",
+    "disc_replay_current_fraction": "1.0",
+    "grad_penalty_scale": "5.0",
+    "grad_penalty_data": "agent_demo",
+    "disc_optimizer": "adamw",
+    "disc_optimizer_weight_decay": "0.01",
+    "disc_weight_l2_coef": "0.0003",
+    "disc_logit_l2_coef": "0.04",
+    "disc_trunk_weight_decay": "0.0",
+    "disc_linear_weight_decay": "0.0",
+    "disc_learning_rate": "0.0001",
+    "disc_max_grad_norm": "null",
+    "disc_update_interval": "1",
+    "amp_discriminator": {
+      "hidden_dims": [
+        "1024",
+        "512"
+      ],
+      "activation": "relu",
+      "style_reward_scale": "0.25",
+      "task_style_lerp": "0.0",
+      "reward_combination": "additive",
+      "style_reward_time_scaled": "false",
+      "observation_normalization": "none"
+    },
+    "loss_type": "LSGAN"
+  },
+  "passed": true
+}

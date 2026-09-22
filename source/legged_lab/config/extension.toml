@@ -5,14 +5,15 @@ version = "0.1.0"
 
 # Description
 category = "isaaclab"
-readme  = "README.md"
+readme  = "../../README.md"
 
-title = "Extension Template"
-author = "xiaobaige"
-maintainer = "xiaobaige"
-description="Isaac Lab extension for legged robots."
-repository = "https://github.com/zitongbai/legged_lab"
-keywords = ["extension", "template", "isaaclab"]
+title = "ljc G1 Visual Locomotion"
+author = "ljc"
+maintainer = "ljc"
+description = "G1 depth-vision locomotion, AMP training and Viser evaluation maintained by ljc."
+# No public repository for this local derivative has been configured.
+repository = ""
+keywords = ["ljc", "g1", "depth", "amp", "isaaclab"]
 
 [dependencies]
 "isaaclab" = {}
@@ -20,16 +21,8 @@ keywords = ["extension", "template", "isaaclab"]
 "isaaclab_mimic" = {}
 "isaaclab_rl" = {}
 "isaaclab_tasks" = {}
-# NOTE: Add additional dependencies here
 
 [[python.module]]
 name = "legged_lab"
 
 [isaac_lab_settings]
-# TODO: Uncomment and list any apt dependencies here.
-#       If none, leave it commented out.
-# apt_deps = ["example_package"]
-# TODO: Uncomment and provide path to a ros_ws
-#       with rosdeps to be installed. If none,
-#       leave it commented out.
-# ros_ws = "path/from/extension_root/to/ros_ws"

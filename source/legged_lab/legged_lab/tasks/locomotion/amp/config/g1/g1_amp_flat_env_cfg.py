@@ -9,6 +9,17 @@ from legged_lab.tasks.locomotion.amp.config.g1.g1_amp_rough_env_cfg import (
 ANIMATION_TERM_NAME = "animation"
 
 
+def _configure_flat_commands_and_events(cfg):
+    """Use the same direct velocity commands for flat training and evaluation."""
+    cfg.commands.base_velocity.heading_command = False
+    cfg.commands.base_velocity.rel_heading_envs = 0.0
+    cfg.commands.base_velocity.ranges.lin_vel_x = (0.0, 3.0)
+    cfg.commands.base_velocity.ranges.lin_vel_y = (-0.5, 0.5)
+    cfg.commands.base_velocity.ranges.ang_vel_z = (-1.5, 1.5)
+    # Isolate command responses from periodic external velocity perturbations.
+    cfg.events.push_robot = None
+
+
 @configclass
 class G1AmpFlatEnvCfg(G1AmpRoughEnvCfg):
     """Configuration for the G1 AMP environment on flat terrain.
@@ -16,7 +27,8 @@ class G1AmpFlatEnvCfg(G1AmpRoughEnvCfg):
     Inherits the full rough config and strips the rough-only pieces (mirrors the official
     IsaacLab velocity ``flat_env_cfg`` deriving from ``rough_env_cfg``): reverts the terrain
     back to an infinite plane, removes the height scanner + height_scan observation, and
-    disables the terrain curriculum. This reproduces the original flat AMP behavior.
+    disables the terrain curriculum. Direct velocity commands and no periodic pushes
+    make this task a baseline for studying command tracking versus motion style.
     """
 
     def __post_init__(self):
@@ -43,6 +55,7 @@ class G1AmpFlatEnvCfg(G1AmpRoughEnvCfg):
         # base_height reverts to absolute world-z on flat ground (the rough base pointed it at
         # the now-removed height_scanner). None => original root_height_below_minimum behavior.
         self.terminations.base_height.params["sensor_cfg"] = None
+        _configure_flat_commands_and_events(self)
 
 
 @configclass
@@ -64,3 +77,4 @@ class G1AmpFlatEnvCfg_PLAY(G1AmpRoughEnvCfg_PLAY):
         # env_origins.z == 0 and the reference motion's absolute xy is valid ground, so match the
         # non-play G1AmpFlatEnvCfg and keep the reference xy (DeepMimic-style reset).
         self.events.reset_from_ref.params["align_xy_to_origin"] = False
+        _configure_flat_commands_and_events(self)

@@ -1,0 +1,12 @@
+{
+  "wait_before_target_seconds": 5,
+  "sim_seconds": 9.040000000000013,
+  "fell": true,
+  "position": [
+    0.2631329976799119,
+    0.12635586428382417,
+    0.3247977586014869
+  ],
+  "target_distance": 6.438107067298284,
+  "target_reached": false
+}

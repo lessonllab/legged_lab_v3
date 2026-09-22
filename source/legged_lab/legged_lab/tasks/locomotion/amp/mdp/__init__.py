@@ -51,7 +51,13 @@ from isaaclab.envs.mdp import (
 
 # -- isaaclab_tasks velocity-specific mdp (feet_air_time, feet_air_time_positive_biped,
 #    feet_slide, stand_still_joint_deviation_l1, etc.) - safe wildcard (no pxr) ----
-from isaaclab_tasks.manager_based.locomotion.velocity.mdp import *  # noqa: F401, F403
+try:
+    from isaaclab_tasks.manager_based.locomotion.velocity.mdp import *  # noqa: F401, F403
+except ModuleNotFoundError as exc:
+    if exc.name != "isaaclab_tasks.manager_based":
+        raise
+    # Isaac Lab 3 moved the built-in velocity tasks into the core namespace.
+    from isaaclab_tasks.core.velocity.mdp import *  # noqa: F401, F403
 
 # -- legged_lab deepmimic terms (ref motion, reset_from_ref, symmetry, etc.) ----
 from legged_lab.tasks.locomotion.deepmimic.mdp import *  # noqa: F401, F403

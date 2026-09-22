@@ -1,0 +1,55 @@
+./home/ljc/isaaclab/lib/python3.12/site-packages/torch/jit/_script.py:1480: DeprecationWarning: `torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+....................
+----------------------------------------------------------------------
+Ran 21 tests in 0.369s
+
+OK
+--------------------------------------------------------------------------------
+Resolved observation sets: 
+	 actor :  ['policy', 'depth']
+	 critic :  ['critic']
+	 discriminator :  ['disc']
+	 discriminator_demonstration :  ['disc_demo']
+--------------------------------------------------------------------------------
+[PPOAMP] Actor: CNNModel(
+  (obs_normalizer): Identity()
+  (distribution): GaussianDistribution()
+  (mlp): MLP(
+    (0): Linear(in_features=1071, out_features=256, bias=True)
+    (1): ELU(alpha=1.0)
+    (2): Linear(in_features=256, out_features=128, bias=True)
+    (3): ELU(alpha=1.0)
+    (4): Linear(in_features=128, out_features=29, bias=True)
+  )
+  (cnns): ModuleDict(
+    (depth): CNN(
+      (0): Conv2d(8, 16, kernel_size=(5, 5), stride=(2, 2))
+      (1): ELU(alpha=1.0)
+      (2): Conv2d(16, 32, kernel_size=(3, 3), stride=(2, 2))
+      (3): ELU(alpha=1.0)
+      (4): Conv2d(32, 32, kernel_size=(3, 3), stride=(2, 2))
+      (5): ELU(alpha=1.0)
+      (6): Flatten(start_dim=1, end_dim=-1)
+    )
+  )
+)
+[PPOAMP] Critic: MLPModel(
+  (obs_normalizer): Identity()
+  (mlp): MLP(
+    (0): Linear(in_features=787, out_features=512, bias=True)
+    (1): ELU(alpha=1.0)
+    (2): Linear(in_features=512, out_features=256, bias=True)
+    (3): ELU(alpha=1.0)
+    (4): Linear(in_features=256, out_features=128, bias=True)
+    (5): ELU(alpha=1.0)
+    (6): Linear(in_features=128, out_features=1, bias=True)
+  )
+)
+AMP Discriminator trunk: Sequential(
+  (0): Linear(in_features=244, out_features=1024, bias=True)
+  (1): ELU(alpha=1.0)
+  (2): Linear(in_features=1024, out_features=512, bias=True)
+  (3): ELU(alpha=1.0)
+)
+AMP Discriminator linear: Linear(in_features=512, out_features=1, bias=True)

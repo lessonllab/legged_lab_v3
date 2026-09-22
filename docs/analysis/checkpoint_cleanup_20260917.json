@@ -1,0 +1,994 @@
+{
+  "scope": "Dense long-stair runs with >=20 checkpoints only; preserve all other files",
+  "delete": [
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-17_09-37-56_foothold_v12/model_55100.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-17_09-37-56_foothold_v12/model_55200.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-17_09-37-56_foothold_v12/model_55300.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-17_09-37-56_foothold_v12/model_55400.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-17_09-37-56_foothold_v12/model_55500.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-17_09-37-56_foothold_v12/model_55600.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-17_09-37-56_foothold_v12/model_55700.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-17_09-37-56_foothold_v12/model_55800.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-17_09-37-56_foothold_v12/model_55900.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-17_09-37-56_foothold_v12/model_56100.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-17_09-37-56_foothold_v12/model_56200.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-17_09-37-56_foothold_v12/model_56300.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-17_09-37-56_foothold_v12/model_56400.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-17_09-37-56_foothold_v12/model_56500.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-17_09-37-56_foothold_v12/model_56600.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-17_09-37-56_foothold_v12/model_56700.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-17_09-37-56_foothold_v12/model_56800.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-17_09-37-56_foothold_v12/model_56900.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-17_09-37-56_foothold_v12/model_57100.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-17_09-37-56_foothold_v12/model_57200.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-17_09-37-56_foothold_v12/model_57300.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-17_09-37-56_foothold_v12/model_57400.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-17_09-37-56_foothold_v12/model_57700.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-17_09-37-56_foothold_v12/model_58100.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-17_09-37-56_foothold_v12/model_58200.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-17_09-37-56_foothold_v12/model_58300.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-17_09-37-56_foothold_v12/model_58400.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-17_09-37-56_foothold_v12/model_58500.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-17_09-37-56_foothold_v12/model_58600.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-17_09-37-56_foothold_v12/model_58700.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-17_09-37-56_foothold_v12/model_58900.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-17_09-37-56_foothold_v12/model_59100.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-17_09-37-56_foothold_v12/model_59200.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-17_09-37-56_foothold_v12/model_59300.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-17_09-37-56_foothold_v12/model_59400.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-17_09-37-56_foothold_v12/model_59500.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-17_09-37-56_foothold_v12/model_59600.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-17_09-37-56_foothold_v12/model_59700.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-17_09-37-56_foothold_v12/model_59800.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-17_09-37-56_foothold_v12/model_59900.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-17_09-37-56_foothold_v12/model_60100.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-17_09-37-56_foothold_v12/model_60200.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-17_09-37-56_foothold_v12/model_60300.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-17_09-37-56_foothold_v12/model_60400.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-17_09-37-56_foothold_v12/model_60500.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-17_09-37-56_foothold_v12/model_60600.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-17_09-37-56_foothold_v12/model_60700.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-17_09-37-56_foothold_v12/model_60800.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-17_09-37-56_foothold_v12/model_60900.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-17_09-37-56_foothold_v12/model_61100.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-17_09-37-56_foothold_v12/model_61200.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-17_09-37-56_foothold_v12/model_61300.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-17_09-37-56_foothold_v12/model_61400.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_20-26-52_reverse_height_v11/model_49100.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_20-26-52_reverse_height_v11/model_49200.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_20-26-52_reverse_height_v11/model_49300.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_20-26-52_reverse_height_v11/model_49400.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_20-26-52_reverse_height_v11/model_49600.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_20-26-52_reverse_height_v11/model_49700.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_20-26-52_reverse_height_v11/model_49800.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_20-26-52_reverse_height_v11/model_49900.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_20-26-52_reverse_height_v11/model_50200.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_20-26-52_reverse_height_v11/model_50300.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_20-26-52_reverse_height_v11/model_50400.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_20-26-52_reverse_height_v11/model_50500.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_20-26-52_reverse_height_v11/model_50600.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_20-26-52_reverse_height_v11/model_50700.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_20-26-52_reverse_height_v11/model_50800.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_20-26-52_reverse_height_v11/model_50900.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_20-26-52_reverse_height_v11/model_51100.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_20-26-52_reverse_height_v11/model_51200.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_20-26-52_reverse_height_v11/model_51300.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_20-26-52_reverse_height_v11/model_51400.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_20-26-52_reverse_height_v11/model_51500.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_20-26-52_reverse_height_v11/model_51600.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_20-26-52_reverse_height_v11/model_51700.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_20-26-52_reverse_height_v11/model_51800.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_20-26-52_reverse_height_v11/model_51900.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_20-26-52_reverse_height_v11/model_52100.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_20-26-52_reverse_height_v11/model_52200.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_20-26-52_reverse_height_v11/model_52300.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_20-26-52_reverse_height_v11/model_52400.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_20-26-52_reverse_height_v11/model_52500.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_20-26-52_reverse_height_v11/model_52600.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_20-26-52_reverse_height_v11/model_52700.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_20-26-52_reverse_height_v11/model_52800.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_20-26-52_reverse_height_v11/model_52900.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_20-26-52_reverse_height_v11/model_53100.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_20-26-52_reverse_height_v11/model_53200.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_20-26-52_reverse_height_v11/model_53300.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_20-26-52_reverse_height_v11/model_53400.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_20-26-52_reverse_height_v11/model_53500.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_20-26-52_reverse_height_v11/model_53600.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_20-26-52_reverse_height_v11/model_53700.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_20-26-52_reverse_height_v11/model_53800.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_20-26-52_reverse_height_v11/model_53900.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_20-26-52_reverse_height_v11/model_54100.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_20-26-52_reverse_height_v11/model_54200.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_20-26-52_reverse_height_v11/model_54300.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_20-26-52_reverse_height_v11/model_54400.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_20-26-52_reverse_height_v11/model_54500.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_20-26-52_reverse_height_v11/model_54600.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_20-26-52_reverse_height_v11/model_54700.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_20-26-52_reverse_height_v11/model_54800.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_20-26-52_reverse_height_v11/model_54900.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_20-26-52_reverse_height_v11/model_55100.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_20-26-52_reverse_height_v11/model_55200.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_20-26-52_reverse_height_v11/model_55300.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_20-26-52_reverse_height_v11/model_55400.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_20-26-52_reverse_height_v11/model_55500.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_20-26-52_reverse_height_v11/model_55600.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_20-26-52_reverse_height_v11/model_55700.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_20-26-52_reverse_height_v11/model_55800.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_20-26-52_reverse_height_v11/model_55900.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_20-26-52_reverse_height_v11/model_56100.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_20-26-52_reverse_height_v11/model_56200.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_20-26-52_reverse_height_v11/model_56300.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_20-26-52_reverse_height_v11/model_56400.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_20-26-52_reverse_height_v11/model_56500.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_20-26-52_reverse_height_v11/model_56600.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_20-26-52_reverse_height_v11/model_56700.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_20-26-52_reverse_height_v11/model_56800.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_20-26-52_reverse_height_v11/model_56900.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_20-26-52_reverse_height_v11/model_57100.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_20-26-52_reverse_height_v11/model_57200.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_20-26-52_reverse_height_v11/model_57300.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_20-26-52_reverse_height_v11/model_57400.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_20-26-52_reverse_height_v11/model_57700.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_20-26-52_reverse_height_v11/model_58100.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_20-26-52_reverse_height_v11/model_58200.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_20-26-52_reverse_height_v11/model_58300.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_20-26-52_reverse_height_v11/model_58400.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_20-26-52_reverse_height_v11/model_58500.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_20-26-52_reverse_height_v11/model_58600.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_20-26-52_reverse_height_v11/model_58700.pt",
+      "bytes": 19771069
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_17-42-15_safe_landing_v9/model_46500.pt",
+      "bytes": 19771005
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_17-42-15_safe_landing_v9/model_46600.pt",
+      "bytes": 19771005
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_17-42-15_safe_landing_v9/model_46700.pt",
+      "bytes": 19771005
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_17-42-15_safe_landing_v9/model_46800.pt",
+      "bytes": 19771005
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_17-42-15_safe_landing_v9/model_46900.pt",
+      "bytes": 19771005
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_17-42-15_safe_landing_v9/model_47100.pt",
+      "bytes": 19771005
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_17-42-15_safe_landing_v9/model_47200.pt",
+      "bytes": 19771005
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_17-42-15_safe_landing_v9/model_47300.pt",
+      "bytes": 19771005
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_17-42-15_safe_landing_v9/model_47400.pt",
+      "bytes": 19771005
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_17-42-15_safe_landing_v9/model_47500.pt",
+      "bytes": 19771005
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_17-42-15_safe_landing_v9/model_47600.pt",
+      "bytes": 19771005
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_17-42-15_safe_landing_v9/model_47700.pt",
+      "bytes": 19771005
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_17-42-15_safe_landing_v9/model_47800.pt",
+      "bytes": 19771005
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_17-42-15_safe_landing_v9/model_47900.pt",
+      "bytes": 19771005
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_17-42-15_safe_landing_v9/model_48100.pt",
+      "bytes": 19771005
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_17-42-15_safe_landing_v9/model_48200.pt",
+      "bytes": 19771005
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_17-42-15_safe_landing_v9/model_48300.pt",
+      "bytes": 19771005
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_17-42-15_safe_landing_v9/model_48400.pt",
+      "bytes": 19771005
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_17-42-15_safe_landing_v9/model_48500.pt",
+      "bytes": 19771005
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_17-42-15_safe_landing_v9/model_48600.pt",
+      "bytes": 19771005
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_17-42-15_safe_landing_v9/model_48700.pt",
+      "bytes": 19771005
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_12-11-40_stairs17_crossing_from42700/model_42800.pt",
+      "bytes": 19771005
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_12-11-40_stairs17_crossing_from42700/model_42900.pt",
+      "bytes": 19771005
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_12-11-40_stairs17_crossing_from42700/model_43100.pt",
+      "bytes": 19771005
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_12-11-40_stairs17_crossing_from42700/model_43200.pt",
+      "bytes": 19771005
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_12-11-40_stairs17_crossing_from42700/model_43300.pt",
+      "bytes": 19771005
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_12-11-40_stairs17_crossing_from42700/model_43400.pt",
+      "bytes": 19771005
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_12-11-40_stairs17_crossing_from42700/model_43500.pt",
+      "bytes": 19771005
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_12-11-40_stairs17_crossing_from42700/model_43600.pt",
+      "bytes": 19771005
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_12-11-40_stairs17_crossing_from42700/model_43700.pt",
+      "bytes": 19771005
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_12-11-40_stairs17_crossing_from42700/model_43800.pt",
+      "bytes": 19771005
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_12-11-40_stairs17_crossing_from42700/model_43900.pt",
+      "bytes": 19771005
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_12-11-40_stairs17_crossing_from42700/model_44100.pt",
+      "bytes": 19771005
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_12-11-40_stairs17_crossing_from42700/model_44200.pt",
+      "bytes": 19771005
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_12-11-40_stairs17_crossing_from42700/model_44300.pt",
+      "bytes": 19771005
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_12-11-40_stairs17_crossing_from42700/model_44400.pt",
+      "bytes": 19771005
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_12-11-40_stairs17_crossing_from42700/model_44500.pt",
+      "bytes": 19771005
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_12-11-40_stairs17_crossing_from42700/model_44600.pt",
+      "bytes": 19771005
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_12-11-40_stairs17_crossing_from42700/model_44700.pt",
+      "bytes": 19771005
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_12-11-40_stairs17_crossing_from42700/model_44800.pt",
+      "bytes": 19771005
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_12-11-40_stairs17_crossing_from42700/model_44900.pt",
+      "bytes": 19771005
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_12-11-40_stairs17_crossing_from42700/model_45100.pt",
+      "bytes": 19771005
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_12-11-40_stairs17_crossing_from42700/model_45200.pt",
+      "bytes": 19771005
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_12-11-40_stairs17_crossing_from42700/model_45300.pt",
+      "bytes": 19771005
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_12-11-40_stairs17_crossing_from42700/model_45400.pt",
+      "bytes": 19771005
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_12-11-40_stairs17_crossing_from42700/model_45500.pt",
+      "bytes": 19771005
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_12-11-40_stairs17_crossing_from42700/model_45600.pt",
+      "bytes": 19771005
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_12-11-40_stairs17_crossing_from42700/model_45700.pt",
+      "bytes": 19771005
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_12-11-40_stairs17_crossing_from42700/model_45800.pt",
+      "bytes": 19771005
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_12-11-40_stairs17_crossing_from42700/model_45900.pt",
+      "bytes": 19771005
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_12-11-40_stairs17_crossing_from42700/model_46100.pt",
+      "bytes": 19771005
+    }
+  ],
+  "retain": [
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-17_09-37-56_foothold_v12/model_55000.pt",
+      "bytes": 19771069,
+      "reason": "referenced checkpoint"
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-17_09-37-56_foothold_v12/model_56000.pt",
+      "bytes": 19771069,
+      "reason": "1000-iteration milestone"
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-17_09-37-56_foothold_v12/model_57000.pt",
+      "bytes": 19771069,
+      "reason": "1000-iteration milestone"
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-17_09-37-56_foothold_v12/model_57500.pt",
+      "bytes": 19771069,
+      "reason": "referenced checkpoint"
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-17_09-37-56_foothold_v12/model_57600.pt",
+      "bytes": 19771069,
+      "reason": "referenced checkpoint"
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-17_09-37-56_foothold_v12/model_57800.pt",
+      "bytes": 19771069,
+      "reason": "referenced checkpoint"
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-17_09-37-56_foothold_v12/model_57900.pt",
+      "bytes": 19771069,
+      "reason": "referenced checkpoint"
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-17_09-37-56_foothold_v12/model_58000.pt",
+      "bytes": 19771069,
+      "reason": "1000-iteration milestone"
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-17_09-37-56_foothold_v12/model_58800.pt",
+      "bytes": 19771069,
+      "reason": "referenced checkpoint"
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-17_09-37-56_foothold_v12/model_59000.pt",
+      "bytes": 19771069,
+      "reason": "1000-iteration milestone"
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-17_09-37-56_foothold_v12/model_60000.pt",
+      "bytes": 19771069,
+      "reason": "1000-iteration milestone"
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-17_09-37-56_foothold_v12/model_61000.pt",
+      "bytes": 19771069,
+      "reason": "1000-iteration milestone"
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-17_09-37-56_foothold_v12/model_61500.pt",
+      "bytes": 19771069,
+      "reason": "referenced checkpoint"
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-17_09-37-56_foothold_v12/model_61600.pt",
+      "bytes": 19771069,
+      "reason": "first/latest three"
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-17_09-37-56_foothold_v12/model_61700.pt",
+      "bytes": 19771069,
+      "reason": "referenced checkpoint"
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_20-26-52_reverse_height_v11/model_49000.pt",
+      "bytes": 19771069,
+      "reason": "referenced checkpoint"
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_20-26-52_reverse_height_v11/model_49500.pt",
+      "bytes": 19771069,
+      "reason": "referenced checkpoint"
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_20-26-52_reverse_height_v11/model_50000.pt",
+      "bytes": 19771069,
+      "reason": "1000-iteration milestone"
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_20-26-52_reverse_height_v11/model_50100.pt",
+      "bytes": 19771069,
+      "reason": "referenced checkpoint"
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_20-26-52_reverse_height_v11/model_51000.pt",
+      "bytes": 19771069,
+      "reason": "1000-iteration milestone"
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_20-26-52_reverse_height_v11/model_52000.pt",
+      "bytes": 19771069,
+      "reason": "1000-iteration milestone"
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_20-26-52_reverse_height_v11/model_53000.pt",
+      "bytes": 19771069,
+      "reason": "1000-iteration milestone"
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_20-26-52_reverse_height_v11/model_54000.pt",
+      "bytes": 19771069,
+      "reason": "referenced checkpoint"
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_20-26-52_reverse_height_v11/model_55000.pt",
+      "bytes": 19771069,
+      "reason": "referenced checkpoint"
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_20-26-52_reverse_height_v11/model_56000.pt",
+      "bytes": 19771069,
+      "reason": "1000-iteration milestone"
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_20-26-52_reverse_height_v11/model_57000.pt",
+      "bytes": 19771069,
+      "reason": "1000-iteration milestone"
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_20-26-52_reverse_height_v11/model_57500.pt",
+      "bytes": 19771069,
+      "reason": "referenced checkpoint"
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_20-26-52_reverse_height_v11/model_57600.pt",
+      "bytes": 19771069,
+      "reason": "referenced checkpoint"
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_20-26-52_reverse_height_v11/model_57800.pt",
+      "bytes": 19771069,
+      "reason": "referenced checkpoint"
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_20-26-52_reverse_height_v11/model_57900.pt",
+      "bytes": 19771069,
+      "reason": "referenced checkpoint"
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_20-26-52_reverse_height_v11/model_58000.pt",
+      "bytes": 19771069,
+      "reason": "1000-iteration milestone"
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_20-26-52_reverse_height_v11/model_58800.pt",
+      "bytes": 19771069,
+      "reason": "referenced checkpoint"
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_20-26-52_reverse_height_v11/model_58900.pt",
+      "bytes": 19771069,
+      "reason": "first/latest three"
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_20-26-52_reverse_height_v11/model_58999.pt",
+      "bytes": 19771069,
+      "reason": "referenced checkpoint"
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_17-42-15_safe_landing_v9/model_46400.pt",
+      "bytes": 19771005,
+      "reason": "referenced checkpoint"
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_17-42-15_safe_landing_v9/model_47000.pt",
+      "bytes": 19771005,
+      "reason": "1000-iteration milestone"
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_17-42-15_safe_landing_v9/model_48000.pt",
+      "bytes": 19771005,
+      "reason": "1000-iteration milestone"
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_17-42-15_safe_landing_v9/model_48800.pt",
+      "bytes": 19771005,
+      "reason": "first/latest three"
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_17-42-15_safe_landing_v9/model_48900.pt",
+      "bytes": 19771005,
+      "reason": "first/latest three"
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_17-42-15_safe_landing_v9/model_49000.pt",
+      "bytes": 19771005,
+      "reason": "referenced checkpoint"
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_12-11-40_stairs17_crossing_from42700/model_42700.pt",
+      "bytes": 19771005,
+      "reason": "referenced checkpoint"
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_12-11-40_stairs17_crossing_from42700/model_43000.pt",
+      "bytes": 19771005,
+      "reason": "1000-iteration milestone"
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_12-11-40_stairs17_crossing_from42700/model_44000.pt",
+      "bytes": 19771005,
+      "reason": "1000-iteration milestone"
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_12-11-40_stairs17_crossing_from42700/model_45000.pt",
+      "bytes": 19771005,
+      "reason": "1000-iteration milestone"
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_12-11-40_stairs17_crossing_from42700/model_46000.pt",
+      "bytes": 19771005,
+      "reason": "1000-iteration milestone"
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_12-11-40_stairs17_crossing_from42700/model_46200.pt",
+      "bytes": 19771005,
+      "reason": "first/latest three"
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_12-11-40_stairs17_crossing_from42700/model_46300.pt",
+      "bytes": 19771005,
+      "reason": "first/latest three"
+    },
+    {
+      "path": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_12-11-40_stairs17_crossing_from42700/model_46400.pt",
+      "bytes": 19771005,
+      "reason": "referenced checkpoint"
+    }
+  ],
+  "bytes_to_free": 3677415570,
+  "status": "completed",
+  "deleted_count": 186
+}

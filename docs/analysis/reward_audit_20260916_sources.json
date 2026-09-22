@@ -1,0 +1,203 @@
+{
+  "dt": 0.005,
+  "decimation": 4,
+  "episode_length_s": 60.0,
+  "terms": [
+    {
+      "name": "track_lin_vel_xy_exp",
+      "weight": 3.0,
+      "params": "{'command_name': 'base_velocity', 'std': 0.5}",
+      "function": "legged_lab.tasks.locomotion.amp.config.g1.g1_amp_scratch_env_cfg.dense_linear_tracking",
+      "file": "/home/ljc/legged_lab_v3/source/legged_lab/legged_lab/tasks/locomotion/amp/config/g1/g1_amp_scratch_env_cfg.py",
+      "line": 31,
+      "source": "def dense_linear_tracking(env, command_name='base_velocity', std=.5):\n    command, velocity, _ = motion_state(env, command_name)\n    return torch.exp(-(command[:, :2] - velocity).square().sum(-1) / std**2)\n"
+    },
+    {
+      "name": "track_ang_vel_z_exp",
+      "weight": 2.0,
+      "params": "{'command_name': 'base_velocity', 'std': 0.5}",
+      "function": "legged_lab.tasks.locomotion.amp.config.g1.g1_amp_scratch_env_cfg.dense_angular_tracking",
+      "file": "/home/ljc/legged_lab_v3/source/legged_lab/legged_lab/tasks/locomotion/amp/config/g1/g1_amp_scratch_env_cfg.py",
+      "line": 36,
+      "source": "def dense_angular_tracking(env, command_name='base_velocity', std=.5):\n    command, _, yaw = motion_state(env, command_name)\n    return torch.exp(-(command[:, 2] - yaw).square() / std**2)\n"
+    },
+    {
+      "name": "lin_vel_z_l2",
+      "weight": -0.2,
+      "params": "{}",
+      "function": "isaaclab.envs.mdp.rewards.lin_vel_z_l2",
+      "file": "/home/ljc/isaaclab6/IsaacLab/source/isaaclab/isaaclab/envs/mdp/rewards.py",
+      "line": 78,
+      "source": "def lin_vel_z_l2(env: ManagerBasedRLEnv, asset_cfg: SceneEntityCfg = SceneEntityCfg(\"robot\")) -> torch.Tensor:\n    \"\"\"Penalize z-axis base linear velocity using L2 squared kernel.\"\"\"\n    # extract the used quantities (to enable type-hinting)\n    asset: RigidObject = env.scene[asset_cfg.name]\n    return torch.square(asset.data.root_lin_vel_b.torch[:, 2])\n"
+    },
+    {
+      "name": "ang_vel_xy_l2",
+      "weight": -0.05,
+      "params": "{}",
+      "function": "isaaclab.envs.mdp.rewards.ang_vel_xy_l2",
+      "file": "/home/ljc/isaaclab6/IsaacLab/source/isaaclab/isaaclab/envs/mdp/rewards.py",
+      "line": 85,
+      "source": "def ang_vel_xy_l2(env: ManagerBasedRLEnv, asset_cfg: SceneEntityCfg = SceneEntityCfg(\"robot\")) -> torch.Tensor:\n    \"\"\"Penalize xy-axis base angular velocity using L2 squared kernel.\"\"\"\n    # extract the used quantities (to enable type-hinting)\n    asset: RigidObject = env.scene[asset_cfg.name]\n    return torch.sum(torch.square(asset.data.root_ang_vel_b.torch[:, :2]), dim=1)\n"
+    },
+    {
+      "name": "dof_torques_l2",
+      "weight": -1.5e-07,
+      "params": "{'asset_cfg': SceneEntityCfg(name='robot', joint_names=['.*_hip_.*', '.*_knee_joint', '.*_ankle_.*'], joint_ids=slice(None, None, None), fixed_tendon_names=None, fixed_tendon_ids=slice(None, None, None), body_names=None, body_ids=slice(None, None, None), object_collection_names=None, object_collection_ids=slice(None, None, None), preserve_order=False)}",
+      "function": "isaaclab.envs.mdp.rewards.joint_torques_l2",
+      "file": "/home/ljc/isaaclab6/IsaacLab/source/isaaclab/isaaclab/envs/mdp/rewards.py",
+      "line": 138,
+      "source": "def joint_torques_l2(env: ManagerBasedRLEnv, asset_cfg: SceneEntityCfg = SceneEntityCfg(\"robot\")) -> torch.Tensor:\n    \"\"\"Penalize joint torques applied on the articulation using L2 squared kernel.\n\n    .. note::\n        Only the joints configured in :attr:`asset_cfg.joint_ids` will have their joint torques\n        contribute to the term.\n    \"\"\"\n    # extract the used quantities (to enable type-hinting)\n    asset: Articulation = env.scene[asset_cfg.name]\n    return torch.sum(torch.square(asset.actuators.applied_effort.torch[:, asset_cfg.joint_ids]), dim=1)\n"
+    },
+    {
+      "name": "dof_acc_l2",
+      "weight": -1.25e-07,
+      "params": "{'asset_cfg': SceneEntityCfg(name='robot', joint_names=['.*_hip_.*', '.*_knee_joint'], joint_ids=slice(None, None, None), fixed_tendon_names=None, fixed_tendon_ids=slice(None, None, None), body_names=None, body_ids=slice(None, None, None), object_collection_names=None, object_collection_ids=slice(None, None, None), preserve_order=False)}",
+      "function": "isaaclab.envs.mdp.rewards.joint_acc_l2",
+      "file": "/home/ljc/isaaclab6/IsaacLab/source/isaaclab/isaaclab/envs/mdp/rewards.py",
+      "line": 169,
+      "source": "def joint_acc_l2(env: ManagerBasedRLEnv, asset_cfg: SceneEntityCfg = SceneEntityCfg(\"robot\")) -> torch.Tensor:\n    \"\"\"Penalize joint accelerations on the articulation using L2 squared kernel.\n\n    .. note::\n        Only the joints configured in :attr:`asset_cfg.joint_ids` will have their joint accelerations\n        contribute to the term.\n    \"\"\"\n    # extract the used quantities (to enable type-hinting)\n    asset: Articulation = env.scene[asset_cfg.name]\n    return torch.sum(torch.square(asset.data.joint_acc.torch[:, asset_cfg.joint_ids]), dim=1)\n"
+    },
+    {
+      "name": "action_rate_l2",
+      "weight": -0.005,
+      "params": "{}",
+      "function": "isaaclab.envs.mdp.rewards.action_rate_l2",
+      "file": "/home/ljc/isaaclab6/IsaacLab/source/isaaclab/isaaclab/envs/mdp/rewards.py",
+      "line": 258,
+      "source": "def action_rate_l2(env: ManagerBasedRLEnv) -> torch.Tensor:\n    \"\"\"Penalize the rate of change of the actions using L2 squared kernel.\"\"\"\n    return torch.sum(torch.square(env.action_manager.action - env.action_manager.prev_action), dim=1)\n"
+    },
+    {
+      "name": "dof_pos_limits",
+      "weight": -1.0,
+      "params": "{'asset_cfg': SceneEntityCfg(name='robot', joint_names=['.*_ankle_pitch_joint', '.*_ankle_roll_joint'], joint_ids=slice(None, None, None), fixed_tendon_names=None, fixed_tendon_ids=slice(None, None, None), body_names=None, body_ids=slice(None, None, None), object_collection_names=None, object_collection_ids=slice(None, None, None), preserve_order=False)}",
+      "function": "isaaclab.envs.mdp.rewards.joint_pos_limits",
+      "file": "/home/ljc/isaaclab6/IsaacLab/source/isaaclab/isaaclab/envs/mdp/rewards.py",
+      "line": 192,
+      "source": "def joint_pos_limits(env: ManagerBasedRLEnv, asset_cfg: SceneEntityCfg = SceneEntityCfg(\"robot\")) -> torch.Tensor:\n    \"\"\"Penalize joint positions if they cross the soft limits.\n\n    This is computed as a sum of the absolute value of the difference between the joint position and the soft limits.\n    \"\"\"\n    # extract the used quantities (to enable type-hinting)\n    asset: Articulation = env.scene[asset_cfg.name]\n    # compute out of limits constraints\n    out_of_limits = -(\n        asset.data.joint_pos.torch[:, asset_cfg.joint_ids]\n        - asset.data.soft_joint_pos_limits.torch[:, asset_cfg.joint_ids, 0]\n    ).clip(max=0.0)\n    out_of_limits += (\n        asset.data.joint_pos.torch[:, asset_cfg.joint_ids]\n        - asset.data.soft_joint_pos_limits.torch[:, asset_cfg.joint_ids, 1]\n    ).clip(min=0.0)\n    return torch.sum(out_of_limits, dim=1)\n"
+    },
+    {
+      "name": "feet_air_time",
+      "weight": 0.5,
+      "params": "{'command_name': 'base_velocity', 'vel_threshold': 0.15, 'sensor_cfg': SceneEntityCfg(name='contact_forces', joint_names=None, joint_ids=slice(None, None, None), fixed_tendon_names=None, fixed_tendon_ids=slice(None, None, None), body_names='.*_ankle_roll_link', body_ids=slice(None, None, None), object_collection_names=None, object_collection_ids=slice(None, None, None), preserve_order=False)}",
+      "function": "legged_lab.tasks.locomotion.amp.mdp.rewards.instinct_feet_air_time",
+      "file": "/home/ljc/legged_lab_v3/source/legged_lab/legged_lab/tasks/locomotion/amp/mdp/rewards.py",
+      "line": 45,
+      "source": "def instinct_feet_air_time(\n    env: ManagerBasedRLEnv,\n    command_name: str,\n    vel_threshold: float,\n    sensor_cfg: SceneEntityCfg,\n) -> torch.Tensor:\n    \"\"\"Reward single-support steps under translation *or* turning commands.\n\n    Adapted from InstinctLab parkour's ``feet_air_time`` (CC BY-NC 4.0):\n    https://github.com/project-instinct/InstinctLab/blob/main/source/instinctlab/instinctlab/tasks/parkour/mdp/rewards.py\n\n    Return the shorter of the stance and swing durations when exactly one foot\n    is grounded. The reward manager applies the configured weight and step_dt;\n    this function does not add another time-step factor. Tracking air time must\n    be enabled on the contact sensor and sensor_cfg must select the two feet.\n    \"\"\"\n    contact_sensor = env.scene.sensors[sensor_cfg.name]\n    air_time = _as_torch(contact_sensor.data.current_air_time)[:, sensor_cfg.body_ids]\n    contact_time = _as_torch(contact_sensor.data.current_contact_time)[:, sensor_cfg.body_ids]\n    in_contact = contact_time > 0.0\n    in_mode_time = torch.where(in_contact, contact_time, air_time)\n    single_stance = torch.sum(in_contact, dim=1) == 1\n    reward = torch.min(torch.where(single_stance.unsqueeze(-1), in_mode_time, 0.0), dim=1).values\n    command = _as_torch(env.command_manager.get_command(command_name))\n    moving = (torch.norm(command[:, :2], dim=1) > vel_threshold) | (torch.abs(command[:, 2]) > vel_threshold)\n    return reward * moving\n"
+    },
+    {
+      "name": "feet_slide",
+      "weight": -0.1,
+      "params": "{'sensor_cfg': SceneEntityCfg(name='contact_forces', joint_names=None, joint_ids=slice(None, None, None), fixed_tendon_names=None, fixed_tendon_ids=slice(None, None, None), body_names='.*_ankle_roll_link', body_ids=slice(None, None, None), object_collection_names=None, object_collection_ids=slice(None, None, None), preserve_order=False), 'asset_cfg': SceneEntityCfg(name='robot', joint_names=None, joint_ids=slice(None, None, None), fixed_tendon_names=None, fixed_tendon_ids=slice(None, None, None), body_names='.*_ankle_roll_link', body_ids=slice(None, None, None), object_collection_names=None, object_collection_ids=slice(None, None, None), preserve_order=False)}",
+      "function": "isaaclab_tasks.core.velocity.mdp.rewards.feet_slide",
+      "file": "/home/ljc/isaaclab6/IsaacLab/source/isaaclab_tasks/isaaclab_tasks/core/velocity/mdp/rewards.py",
+      "line": 71,
+      "source": "def feet_slide(env, sensor_cfg: SceneEntityCfg, asset_cfg: SceneEntityCfg = SceneEntityCfg(\"robot\")) -> torch.Tensor:\n    \"\"\"Penalize feet sliding.\n\n    This function penalizes the agent for sliding its feet on the ground. The reward is computed as the\n    norm of the linear velocity of the feet multiplied by a binary contact sensor. This ensures that the\n    agent is penalized only when the feet are in contact with the ground.\n    \"\"\"\n    # Penalize feet sliding\n    contact_sensor: ContactSensor = env.scene.sensors[sensor_cfg.name]\n    contacts = (\n        contact_sensor.data.net_normal_forces_w_history.torch[:, :, sensor_cfg.body_ids, :].norm(dim=-1).max(dim=1)[0]\n        > 1.0\n    )\n    asset = env.scene[asset_cfg.name]\n\n    body_vel = asset.data.body_lin_vel_w.torch[:, asset_cfg.body_ids, :2]\n    reward = torch.sum(body_vel.norm(dim=-1) * contacts, dim=1)\n    return reward\n"
+    },
+    {
+      "name": "undesired_arm_contacts",
+      "weight": -1.0,
+      "params": "{'sensor_cfg': SceneEntityCfg(name='contact_forces', joint_names=None, joint_ids=slice(None, None, None), fixed_tendon_names=None, fixed_tendon_ids=slice(None, None, None), body_names=['.*_elbow_link', '.*_wrist_.*'], body_ids=slice(None, None, None), object_collection_names=None, object_collection_ids=slice(None, None, None), preserve_order=False), 'threshold': 1.0}",
+      "function": "isaaclab.envs.mdp.rewards.undesired_contacts",
+      "file": "/home/ljc/isaaclab6/IsaacLab/source/isaaclab/isaaclab/envs/mdp/rewards.py",
+      "line": 273,
+      "source": "def undesired_contacts(env: ManagerBasedRLEnv, threshold: float, sensor_cfg: SceneEntityCfg) -> torch.Tensor:\n    \"\"\"Penalize undesired contacts as the number of violations that are above a threshold.\"\"\"\n    # extract the used quantities (to enable type-hinting)\n    contact_sensor: ContactSensor = env.scene.sensors[sensor_cfg.name]\n    # check if contact force is above threshold\n    net_contact_forces = contact_sensor.data.net_normal_forces_w_history.torch\n    is_contact = (\n        torch.max(torch.linalg.norm(net_contact_forces[:, :, sensor_cfg.body_ids], dim=-1), dim=1)[0] > threshold\n    )\n    # sum over contacts for each environment\n    return torch.sum(is_contact, dim=1)\n"
+    },
+    {
+      "name": "termination_penalty",
+      "weight": -200.0,
+      "params": "{}",
+      "function": "isaaclab.envs.mdp.rewards.is_terminated",
+      "file": "/home/ljc/isaaclab6/IsaacLab/source/isaaclab/isaaclab/envs/mdp/rewards.py",
+      "line": 38,
+      "source": "def is_terminated(env: ManagerBasedRLEnv) -> torch.Tensor:\n    \"\"\"Penalize terminated episodes that don't correspond to episodic timeouts.\"\"\"\n    return env.termination_manager.terminated.float()\n"
+    },
+    {
+      "name": "feet_edge",
+      "weight": -4.0,
+      "params": "{'kind': 'edge'}",
+      "function": "legged_lab.tasks.locomotion.amp.mdp.stair_virtual_safety.virtual_stair_reward",
+      "file": "/home/ljc/legged_lab_v3/source/legged_lab/legged_lab/tasks/locomotion/amp/mdp/stair_virtual_safety.py",
+      "line": 150,
+      "source": "def virtual_stair_reward(env,kind):\n    safety=get_stair_virtual_safety(env).update(env)\n    if kind=='edge':return safety.edge_cost\n    if kind=='toe':return safety.toe_cost\n    raise ValueError(f'Unknown stair safety reward {kind}')\n"
+    },
+    {
+      "name": "dont_wait",
+      "weight": -0.5,
+      "params": "{'command_name': 'base_velocity', 'startup_grace_s': 0.5}",
+      "function": "legged_lab.tasks.locomotion.amp.mdp.rewards.dont_wait",
+      "file": "/home/ljc/legged_lab_v3/source/legged_lab/legged_lab/tasks/locomotion/amp/mdp/rewards.py",
+      "line": 152,
+      "source": "def dont_wait(\n    env: ManagerBasedRLEnv,\n    command_name: str,\n    command_threshold: float = 0.3,\n    speed_threshold: float = 0.15,\n    startup_grace_s: float = 0.5,\n    asset_cfg: SceneEntityCfg = SceneEntityCfg(\"robot\"),\n) -> torch.Tensor:\n    \"\"\"Penalize failing to move under a forward command; use a negative weight.\n\n    Based on InstinctLab parkour's dont_wait, with an episode-start grace period:\n    https://github.com/project-instinct/InstinctLab/blob/main/source/instinctlab/instinctlab/tasks/parkour/mdp/rewards.py\n    \"\"\"\n    command = env.command_manager.get_command(command_name)\n    velocity = env.scene[asset_cfg.name].data.root_lin_vel_b\n    if not isinstance(velocity, torch.Tensor):\n        velocity = velocity.torch\n    vx = velocity[:, 0]\n    penalty = (vx < speed_threshold).float() + (vx < 0.0).float() + (vx < -speed_threshold).float()\n    active = (command[:, 0] > command_threshold) & (env.episode_length_buf * env.step_dt >= startup_grace_s)\n    return penalty * active\n"
+    },
+    {
+      "name": "heading_error",
+      "weight": -1.0,
+      "params": "{'command_name': 'base_velocity'}",
+      "function": "legged_lab.tasks.locomotion.amp.mdp.rewards.target_heading_error",
+      "file": "/home/ljc/legged_lab_v3/source/legged_lab/legged_lab/tasks/locomotion/amp/mdp/rewards.py",
+      "line": 139,
+      "source": "def target_heading_error(env: ManagerBasedRLEnv, command_name: str) -> torch.Tensor:\n    \"\"\"Penalize target misalignment through the target controller's yaw command.\n\n    Use a negative weight and a target-derived velocity command. The controller\n    recomputes its yaw command from heading error, so facing the target reduces\n    this cost. For arbitrary velocity commands this would instead be a constant\n    command-dependent cost and would not measure the robot's heading error.\n    This matches InstinctLab parkour's ``heading_error`` definition (CC BY-NC 4.0):\n    https://github.com/project-instinct/InstinctLab/blob/main/source/instinctlab/instinctlab/tasks/parkour/mdp/rewards.py\n    \"\"\"\n    return torch.abs(env.command_manager.get_command(command_name)[:, 2])\n"
+    },
+    {
+      "name": "stand_still",
+      "weight": -0.3,
+      "params": "{'command_name': 'base_velocity', 'threshold': 0.15, 'offset': 4.0}",
+      "function": "legged_lab.tasks.locomotion.amp.mdp.rewards.stand_still",
+      "file": "/home/ljc/legged_lab_v3/source/legged_lab/legged_lab/tasks/locomotion/amp/mdp/rewards.py",
+      "line": 73,
+      "source": "def stand_still(\n    env: ManagerBasedRLEnv,\n    command_name: str,\n    asset_cfg: SceneEntityCfg = SceneEntityCfg(\"robot\"),\n    threshold: float = 0.15,\n    offset: float = 4.0,\n) -> torch.Tensor:\n    \"\"\"Return joint deviation minus an offset only for a standing command.\n\n    Adapted from InstinctLab parkour's ``stand_still`` (CC BY-NC 4.0):\n    https://github.com/project-instinct/InstinctLab/blob/main/source/instinctlab/instinctlab/tasks/parkour/mdp/rewards.py\n\n    With a negative reward weight this both discourages joint deviation and\n    provides a standing bonus near the default pose. Do not clamp the offset:\n    it is intentionally a bonus, not a dead band. Joint IDs are honored so the\n    caller can explicitly select the whole body or a particular joint set.\n    \"\"\"\n    data = env.scene[asset_cfg.name].data\n    joint_pos = _as_torch(data.joint_pos)[:, asset_cfg.joint_ids]\n    default_pos = _as_torch(data.default_joint_pos)[:, asset_cfg.joint_ids]\n    deviation = torch.sum(torch.abs(joint_pos - default_pos), dim=1)\n    command = _as_torch(env.command_manager.get_command(command_name))\n    standing = (torch.norm(command[:, :2], dim=1) < threshold) & (torch.abs(command[:, 2]) < threshold)\n    return (deviation - offset) * standing\n"
+    },
+    {
+      "name": "upright_body",
+      "weight": -3.0,
+      "params": "{'asset_cfg': SceneEntityCfg(name='robot', joint_names=None, joint_ids=slice(None, None, None), fixed_tendon_names=None, fixed_tendon_ids=slice(None, None, None), body_names=['pelvis', 'torso_link'], body_ids=slice(None, None, None), object_collection_names=None, object_collection_ids=slice(None, None, None), preserve_order=True)}",
+      "function": "legged_lab.tasks.locomotion.amp.mdp.rewards.body_orientation_l2",
+      "file": "/home/ljc/legged_lab_v3/source/legged_lab/legged_lab/tasks/locomotion/amp/mdp/rewards.py",
+      "line": 99,
+      "source": "def body_orientation_l2(\n    env: ManagerBasedRLEnv,\n    asset_cfg: SceneEntityCfg = SceneEntityCfg(\"robot\"),\n) -> torch.Tensor:\n    \"\"\"Penalize tilt of the selected rigid bodies using projected gravity.\n\n    Select explicit pelvis/torso body names in the reward configuration; this\n    uses each selected body's world quaternion, not the articulation root pose.\n    Selection/order is resolved by SceneEntityCfg. Following InstinctLab's\n    ``link_orientation``, sum the squared horizontal gravity components; when\n    selecting multiple bodies their costs are added. This does not penalize yaw.\n    \"\"\"\n    data = env.scene[asset_cfg.name].data\n    body_quat = _as_torch(data.body_quat_w)[:, asset_cfg.body_ids, :]\n    gravity = _as_torch(data.GRAVITY_VEC_W).unsqueeze(1).expand(-1, body_quat.shape[1], -1)\n    body_gravity = math_utils.quat_apply_inverse(body_quat, gravity)\n    return torch.sum(torch.square(body_gravity[..., :2]), dim=(-1, -2))\n"
+    },
+    {
+      "name": "low_pelvis_height",
+      "weight": -6.0,
+      "params": "{'target_height': 0.55, 'asset_cfg': SceneEntityCfg(name='robot', joint_names=None, joint_ids=slice(None, None, None), fixed_tendon_names=None, fixed_tendon_ids=slice(None, None, None), body_names=['left_ankle_roll_link', 'right_ankle_roll_link'], body_ids=slice(None, None, None), object_collection_names=None, object_collection_ids=slice(None, None, None), preserve_order=False)}",
+      "function": "legged_lab.tasks.locomotion.amp.mdp.locomotion_progress.low_pelvis_height",
+      "file": "/home/ljc/legged_lab_v3/source/legged_lab/legged_lab/tasks/locomotion/amp/mdp/locomotion_progress.py",
+      "line": 62,
+      "source": "def low_pelvis_height(env, target_height=.55, asset_cfg=SceneEntityCfg('robot')):\n    \"\"\"Soft squat cost above the lower ankle; permits terrain-dependent bending.\"\"\"\n    data = env.scene[asset_cfg.name].data\n    support_z = tensor(data.body_pos_w)[:, asset_cfg.body_ids, 2].min(dim=1).values\n    clearance = tensor(data.root_pos_w)[:, 2] - support_z\n    return (target_height - clearance).clamp_min(0.).square()\n"
+    },
+    {
+      "name": "is_alive",
+      "weight": 3.0,
+      "params": "{}",
+      "function": "isaaclab.envs.mdp.rewards.is_alive",
+      "file": "/home/ljc/isaaclab6/IsaacLab/source/isaaclab/isaaclab/envs/mdp/rewards.py",
+      "line": 33,
+      "source": "def is_alive(env: ManagerBasedRLEnv) -> torch.Tensor:\n    \"\"\"Reward for being alive.\"\"\"\n    return (~env.termination_manager.terminated).float()\n"
+    },
+    {
+      "name": "feet_toe_riser",
+      "weight": -2.0,
+      "params": "{'kind': 'toe'}",
+      "function": "legged_lab.tasks.locomotion.amp.mdp.stair_virtual_safety.virtual_stair_reward",
+      "file": "/home/ljc/legged_lab_v3/source/legged_lab/legged_lab/tasks/locomotion/amp/mdp/stair_virtual_safety.py",
+      "line": 150,
+      "source": "def virtual_stair_reward(env,kind):\n    safety=get_stair_virtual_safety(env).update(env)\n    if kind=='edge':return safety.edge_cost\n    if kind=='toe':return safety.toe_cost\n    raise ValueError(f'Unknown stair safety reward {kind}')\n"
+    },
+    {
+      "name": "descent_overspeed",
+      "weight": -0.75,
+      "params": "{}",
+      "function": "legged_lab.tasks.locomotion.amp.mdp.stair_speed_course.descent_overspeed_penalty",
+      "file": "/home/ljc/legged_lab_v3/source/legged_lab/legged_lab/tasks/locomotion/amp/mdp/stair_speed_course.py",
+      "line": 17,
+      "source": "def descent_overspeed_penalty(env, command_name='base_velocity'):\n    c = env.command_manager.get_term(command_name)\n    actual = tensor(c.robot.data.root_lin_vel_w)[:, :2].norm(dim=-1)\n    desired = c.vel_command_b[:, :2].norm(dim=-1)\n    enabled = (c.group == 2) & ~c._skip_progress_transition\n    return overspeed_cost(actual, desired, enabled)\n"
+    }
+  ],
+  "disabled": [
+    "flat_orientation_l2",
+    "joint_deviation_hip",
+    "joint_deviation_arms",
+    "joint_deviation_waist",
+    "feet_support"
+  ]
+}

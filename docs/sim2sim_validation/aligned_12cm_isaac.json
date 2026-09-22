@@ -1,0 +1,29 @@
+{
+  "task": "LeggedLab-Isaac-AMP-Stairs-Long-G1-Play-v0",
+  "checkpoint": "model_50100.pt",
+  "speed": 0.65,
+  "terrain_level": 3,
+  "steps": 1501,
+  "sim_seconds": 30.02,
+  "reset": false,
+  "final_position": [
+    6.605584144592285,
+    -0.04654264450073242,
+    2.826158046722412
+  ],
+  "target": [
+    6.7,
+    0
+  ],
+  "friction": 1.0,
+  "random_mass_and_push_disabled": true,
+  "initial_pose": [
+    0,
+    0,
+    0.8,
+    0,
+    0,
+    0,
+    1
+  ]
+}

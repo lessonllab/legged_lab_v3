@@ -1,0 +1,35 @@
+Warp CUDA error 100: no CUDA-capable device is detected (in function init_cuda_driver, /builds/omniverse/warp/warp/native/cuda_util.cpp:308)
+..[StairCourse] migrating completion criteria: preserve terrain/flat speed stages; clear old evidence
+[AdaptiveStairs] height frontiers: [2, 3] 8cm speed phases: [1, 2] ; 50% current height / 20% speed / 20% review / 10% higher; height speed 0.55–0.75 m/s; maximum height 20 cm; >=100 attempts and >=one episode before adaptation
+[StairCourse] loaded v5: actor/critic/AMP/optimizers retained; stair stages and flat tiers restored; old evidence cleared
+...[StairCourse] migrating completion criteria: preserve terrain/flat speed stages; clear old evidence
+[AdaptiveStairs] height frontiers: [7, 7] 8cm speed phases: [0, 0] ; 50% current height / 20% speed / 20% review / 10% higher; height speed 0.55–0.75 m/s; maximum height 20 cm; >=100 attempts and >=one episode before adaptation
+[StairCourse] loaded v5: actor/critic/AMP/optimizers retained; stair stages and flat tiers restored; old evidence cleared
+..[StairCourse] migrating completion criteria: preserve terrain/flat speed stages; clear old evidence
+[AdaptiveStairs] height frontiers: [2, 2] 8cm speed phases: [3, 3] ; 50% current height / 20% speed / 20% review / 10% higher; height speed 0.55–0.75 m/s; maximum height 20 cm; >=100 attempts and >=one episode before adaptation
+[StairCourse] loaded v5: actor/critic/AMP/optimizers retained; stair stages and flat tiers restored; old evidence cleared
+[AdaptiveStairs] height frontiers: [4, 3] 8cm speed phases: [3, 3] ; 50% current height / 20% speed / 20% review / 10% higher; height speed 0.55–0.75 m/s; maximum height 20 cm; >=100 attempts and >=one episode before adaptation
+[StairCourse] loaded v5: actor/critic/AMP/optimizers retained; stair stages and flat tiers restored; evidence restored
+..........s..[StairCourse] migrating completion criteria: preserve terrain/flat speed stages; clear old evidence
+[StairCourse] loaded v2: actor/critic/AMP/optimizers retained; stairs reset to 10 cm, flat speed tiers retained
+[StairCourse] loaded v4: actor/critic/AMP/optimizers retained; stair stages and flat tiers restored; evidence restored
+[StairCourse] loaded v4: actor/critic/AMP/optimizers retained; stair stages and flat tiers restored; evidence restored
+.[StairCourse] migrating completion criteria: preserve terrain/flat speed stages; clear old evidence
+[StairCourse] loaded v3: actor/critic/AMP/optimizers retained; stair stages and flat tiers restored; old evidence cleared
+.........[StairCourse] short -> long stairs: preserve policy/flat tiers; start long stairs at 8 cm, phase 0
+[StairCourse] migrating completion criteria: preserve terrain/flat speed stages; clear old evidence
+[StairCourse] loaded v5: actor/critic/AMP/optimizers retained; stair stages and flat tiers restored; old evidence cleared
+[StairCourse] loaded v5: actor/critic/AMP/optimizers retained; stair stages and flat tiers restored; evidence restored
+...[StairCourse] migrating completion criteria: preserve terrain/flat speed stages; clear old evidence
+[StairCourse] loaded v5: actor/critic/AMP/optimizers retained; stair stages and flat tiers restored; old evidence cleared
+......[StairCourse] migrating completion criteria: preserve terrain/flat speed stages; clear old evidence
+[StairCourse] loaded v5: actor/critic/AMP/optimizers retained; stair stages and flat tiers restored; old evidence cleared
+[StairCourse] loaded v5: actor/critic/AMP/optimizers retained; stair stages and flat tiers restored; evidence restored
+.....[StairCourse] migrating completion criteria: preserve terrain/flat speed stages; clear old evidence
+[StairCourse] loaded v4: actor/critic/AMP/optimizers retained; stair stages and flat tiers restored; old evidence cleared
+[StairCourse] loaded v5: actor/critic/AMP/optimizers retained; stair stages and flat tiers restored; evidence restored
+.............
+----------------------------------------------------------------------
+Ran 57 tests in 2.920s
+
+OK (skipped=1)
