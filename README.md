@@ -75,7 +75,7 @@ bash scripts/play_stairs_control.sh /absolute/path/to/model.pt
    cd legged_lab_v3
    ```
 
-   当前仓库为私有仓库，需要仓库访问权限。
+   当前仓库为公开仓库，无需登录即可查看和克隆。
 
 2. 下载 Git LFS 资源：
 
