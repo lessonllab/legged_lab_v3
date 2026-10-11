@@ -1,0 +1,252 @@
+{
+  "checkpoint": "/home/ljc/legged_lab_v3/logs/rsl_rl/g1_beamdojo_fullbody_sim6/2026-10-11_02-54-30-055773_square_mixed_generalize_5000_4096/model_8999.pt",
+  "sha256": "a9725109532b333f890138d1301d3ce2401c0c771af56c0971af72f0581d3161",
+  "actor_raw_bitwise_equal": true,
+  "terrain_ray_centers_checked": 160000,
+  "terrain_ray_mismatches": 0,
+  "episodes": [
+    {
+      "family": "cardinal",
+      "level": 0,
+      "angle": 0,
+      "variant": 2,
+      "speed": 1.0,
+      "status": "success",
+      "seconds": 8.219999999999885,
+      "progress": 3.5428702289434613,
+      "root": [
+        3.5428702289434613,
+        0.18430365066011903,
+        0.7846563229081981
+      ]
+    },
+    {
+      "family": "cardinal",
+      "level": 0,
+      "angle": 90,
+      "variant": 2,
+      "speed": 1.0,
+      "status": "success",
+      "seconds": 7.59999999999986,
+      "progress": 3.5037732037608365,
+      "root": [
+        -0.13983358525374492,
+        3.5037732037608365,
+        0.7850899586725469
+      ]
+    },
+    {
+      "family": "cardinal",
+      "level": 0,
+      "angle": 180,
+      "variant": 2,
+      "speed": 1.0,
+      "status": "success",
+      "seconds": 6.899999999999875,
+      "progress": 3.3869632641435876,
+      "root": [
+        -3.374340694763674,
+        -0.21942788389173212,
+        0.781962490366577
+      ]
+    },
+    {
+      "family": "cardinal",
+      "level": 0,
+      "angle": -90,
+      "variant": 2,
+      "speed": 1.0,
+      "status": "success",
+      "seconds": 6.259999999999889,
+      "progress": 3.4515465934483744,
+      "root": [
+        0.15150859096004665,
+        -3.447095408007699,
+        0.7818214969495825
+      ]
+    },
+    {
+      "family": "cardinal",
+      "level": 10,
+      "angle": 0,
+      "variant": 2,
+      "speed": 1.0,
+      "status": "success",
+      "seconds": 9.40000000000007,
+      "progress": 3.550960923150551,
+      "root": [
+        3.550960923150551,
+        0.07341090993366607,
+        0.7851643781489313
+      ]
+    },
+    {
+      "family": "cardinal",
+      "level": 10,
+      "angle": 90,
+      "variant": 2,
+      "speed": 1.0,
+      "status": "success",
+      "seconds": 6.119999999999892,
+      "progress": 3.489503847020833,
+      "root": [
+        -0.1565142240174571,
+        3.489503847020833,
+        0.7854193419514921
+      ]
+    },
+    {
+      "family": "cardinal",
+      "level": 10,
+      "angle": 180,
+      "variant": 2,
+      "speed": 1.0,
+      "status": "boundary",
+      "seconds": 7.219999999999868,
+      "progress": 3.9008841338890634,
+      "root": [
+        -3.9008841338890634,
+        -0.22158629475096445,
+        0.778249443259633
+      ]
+    },
+    {
+      "family": "cardinal",
+      "level": 10,
+      "angle": -90,
+      "variant": 2,
+      "speed": 1.0,
+      "status": "success",
+      "seconds": 6.299999999999888,
+      "progress": 3.5577642446802313,
+      "root": [
+        0.05829689692854084,
+        -3.5577642446802313,
+        0.78284616194154
+      ]
+    },
+    {
+      "family": "diagonal",
+      "level": 0,
+      "angle": 45,
+      "variant": 2,
+      "speed": 1.0,
+      "status": "success",
+      "seconds": 6.299999999999888,
+      "progress": 4.184199824220791,
+      "root": [
+        2.8389879357501933,
+        3.0782753369715925,
+        0.7849632477427959
+      ]
+    },
+    {
+      "family": "diagonal",
+      "level": 0,
+      "angle": 135,
+      "variant": 2,
+      "speed": 1.0,
+      "status": "success",
+      "seconds": 6.279999999999888,
+      "progress": 4.175612607027768,
+      "root": [
+        -3.0662096607884504,
+        2.8389983192862958,
+        0.7825315228262675
+      ]
+    },
+    {
+      "family": "diagonal",
+      "level": 0,
+      "angle": -135,
+      "variant": 2,
+      "speed": 1.0,
+      "status": "success",
+      "seconds": 11.880000000000457,
+      "progress": 4.679475986492799,
+      "root": [
+        -3.2073323094587955,
+        -3.410446095438539,
+        0.7860103582599167
+      ]
+    },
+    {
+      "family": "diagonal",
+      "level": 0,
+      "angle": -45,
+      "variant": 2,
+      "speed": 1.0,
+      "status": "success",
+      "seconds": 6.299999999999888,
+      "progress": 4.156346782640116,
+      "root": [
+        3.0363243704871934,
+        -2.8416376194482376,
+        0.7788348284649164
+      ]
+    },
+    {
+      "family": "diagonal",
+      "level": 10,
+      "angle": 45,
+      "variant": 2,
+      "speed": 1.0,
+      "status": "success",
+      "seconds": 6.159999999999891,
+      "progress": 4.176120721588685,
+      "root": [
+        2.926025226225631,
+        2.9798879816096573,
+        0.778518794637191
+      ]
+    },
+    {
+      "family": "diagonal",
+      "level": 10,
+      "angle": 135,
+      "variant": 2,
+      "speed": 1.0,
+      "status": "success",
+      "seconds": 5.759999999999899,
+      "progress": 4.165721399808021,
+      "root": [
+        -2.9336927773068644,
+        2.957526923369473,
+        0.7803223617010483
+      ]
+    },
+    {
+      "family": "diagonal",
+      "level": 10,
+      "angle": -135,
+      "variant": 2,
+      "speed": 1.0,
+      "status": "success",
+      "seconds": 9.880000000000145,
+      "progress": 4.5976315580094544,
+      "root": [
+        -3.156733556149964,
+        -3.34529934798155,
+        0.7845975304364082
+      ]
+    },
+    {
+      "family": "diagonal",
+      "level": 10,
+      "angle": -45,
+      "variant": 2,
+      "speed": 1.0,
+      "status": "success",
+      "seconds": 5.879999999999897,
+      "progress": 4.187891733579384,
+      "root": [
+        2.9978165603865765,
+        -2.920255067369825,
+        0.7816543679836225
+      ]
+    }
+  ],
+  "successes": 15,
+  "count": 16,
+  "note": "Fixed seed42 variant2; small deterministic transfer test, not broad success estimate. Ideal terrain queries and proprioception; native MuJoCo physics."
+}

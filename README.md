@@ -34,6 +34,25 @@
 <a id="demo"></a>
 ## Demo
 
+### MuJoCo 实际策略演示
+
+**梅花桩：8999 轮模型，L10 正向地图、间距扰动 v2，过桩指令 1 m/s。**视频使用原生 MuJoCo 动力学和冻结模型，保留过桩及到外环停车过程；输入为理想高程图。
+
+[![G1 MuJoCo 梅花桩演示](assets/demo/g1_mujoco_stones_8999.png)](https://media.githubusercontent.com/media/lessonllab/legged_lab_v3/main/assets/demo/g1_mujoco_stones_8999.mp4)
+
+[播放／下载梅花桩视频](https://media.githubusercontent.com/media/lessonllab/legged_lab_v3/main/assets/demo/g1_mujoco_stones_8999.mp4) · [16 个固定案例评测](artifacts/sim2sim_mujoco_8999/results.json) · [运行与复现说明](docs/sim2sim_mujoco.md)
+
+**历史上台阶：50100 轮视觉模型，17 级、每级 12 cm、踏面 30 cm。**这是 2026-09-22 录制的原始 30 秒视频，正常速度，保留到顶停车；与当前梅花桩模型属于不同训练分支。
+
+[![G1 MuJoCo 上台阶演示](assets/demo/g1_mujoco_stairs_50100.jpg)](https://media.githubusercontent.com/media/lessonllab/legged_lab_v3/main/assets/demo/g1_mujoco_stairs_50100.mp4)
+
+[播放／下载上台阶视频](https://media.githubusercontent.com/media/lessonllab/legged_lab_v3/main/assets/demo/g1_mujoco_stairs_50100.mp4) · [上台阶轨迹记录](assets/demo/g1_mujoco_stairs_50100.json) · [视频来源与校验值](assets/demo/manifest.json)
+
+运行当前梅花桩播放：`bash scripts/run_beamdojo_mujoco.sh --port 8091`。页面可选难度 0–10、正向／斜向地图、出生方向与扰动；修改后点击“应用设置并重新开始”。需要自行准备检查点及其归档 `params/`，模型文件不随仓库发布。
+
+两段视频均为策略实际控制，单条演示不能替代统计评测。梅花桩初步固定测试为 15/16 成功；失败案例为 L10/180°未完成停车、触及地图边界。
+
+
 准备好本地检查点后启动交互演示：
 
 ```bash

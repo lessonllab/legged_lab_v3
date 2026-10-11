@@ -19,8 +19,6 @@ import yaml
 ROOT = Path(__file__).resolve().parents[2]
 TRAINING_SCENE = ROOT / 'scripts/sim2sim/scenes/training_stairs_12cm.xml'
 sys.path.insert(0, str(ROOT / '.runtime/rsl_rl_5_4_1'))
-from rsl_rl.models import CNNModel
-from tensordict import TensorDict
 
 
 class ConfigLoader(yaml.SafeLoader):
@@ -139,6 +137,7 @@ class Histories:
         self.delay = delay
 
     def update(self, terms, frame):
+        from tensordict import TensorDict
         if self.policy is None:
             self.policy = [np.repeat(np.asarray(t)[None], 5, axis=0) for t in terms]
             self.depth = frame.repeat(37, 1, 1)
@@ -154,6 +153,8 @@ class Histories:
 
 class Runner:
     def __init__(self, checkpoint, scene, spawn, yaw, delay):
+        from rsl_rl.models import CNNModel
+        from tensordict import TensorDict
         cfg = read_config(checkpoint.parent / 'params/env.yaml')
         agent = read_config(checkpoint.parent / 'params/agent.yaml')
         self.command_config = cfg['commands']['base_velocity']

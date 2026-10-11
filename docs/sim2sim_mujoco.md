@@ -81,3 +81,49 @@ bash scripts/run_sim2sim.sh \
 ```
 
 地形导出默认读取 `/home/ljc/isaaclab6/IsaacLab` 的几何函数，可用 `--isaaclab` 改路径。导出额外需要 pxr、scipy、trimesh，运行不需要 Isaac Lab。运行依赖 MuJoCo、torch、numpy、PyYAML、tensordict 和项目 `.runtime/rsl_rl_5_4_1`。模型网格沿用项目 Unitree 训练资源许可；目标控制器保留本项目 InstinctLab 来源及 CC BY-NC 4.0 说明，见 `NOTICE.md`。
+
+## BeamDojo square-course model_8999 (2026-10-11)
+
+The new independent adapter is `scripts/sim2sim/beamdojo_mujoco.py`.
+Start the browser play with `scripts/run_beamdojo_mujoco.sh --port 8091`.
+The default checkpoint is the completed `square_mixed_generalize_5000_4096/model_8999.pt`.
+This is native MuJoCo dynamics with frozen policy weights, not reference-motion playback.
+The UI selects difficulty 0–10, cardinal/diagonal maps, variants 0–3, route-facing spawn,
+and speed 0.5–1 m/s. Click “应用设置并重新开始” to start again after arrival/failure.
+
+Interface: exact checkpoint joint order, ELU 708→512→256→128→29 network,
+identity-interior mean tails and execution bounds from checkpoint metadata,
+term-major five-frame proprioceptive history, 225 yaw-aligned elevation cells,
+three gyro-integrated course-tracking features, 0.25 joint action scale,
+checkpoint PD gains/effort limits/armature, 200 Hz physics / 50 Hz policy.
+The USD-calibrated robot profile's asset hash matches the checkpoint contract.
+The height input is an ideal terrain query; this does not test a real lidar or camera.
+Course tracking uses ideal body gyro and projected gravity, with no absolute-heading policy input.
+
+Terrain is rebuilt from the checkpoint's archived generator and identical 2 cm raster.
+The 8 m square map retains the 1.4 m central platform and 1 m outer ring, with gaps at -1 m.
+All 160,000 cell-center downward rays match the collision raster, with zero mismatches.
+Robot masses, inertias, joint frames and collision shapes use the existing USD-calibrated profile.
+MuJoCo contact dynamics remain different from PhysX; they are not claimed identical.
+
+Initial fixed-seed transfer matrix: 16 cases (eight headings × L0/L10), seed42,
+variant2, 1 m/s cruise command. 15 reached the outer ring and stood for one second;
+L10/180° crossed the map boundary without qualifying parking. This small deterministic
+set is not a statistical estimate of broad transfer success. Native recording and
+results live in `artifacts/sim2sim_mujoco_8999/`.
+Reproduce checks with `/home/ljc/isaaclab/bin/python scripts/sim2sim/validate_beamdojo.py`.
+Reproduce video with `MUJOCO_GL=egl /home/ljc/isaaclab/bin/python scripts/sim2sim/record_beamdojo.py`.
+
+## Published demo recordings
+
+The README now links two videos under `assets/demo/`, managed by Git LFS:
+
+- `g1_mujoco_stones_8999.mp4`: new native MuJoCo L10 cardinal/variant2 rollout,
+  frozen8999, 1 m/s cruise, with simulation time and terminal status shown.
+- `g1_mujoco_stairs_50100.mp4`: byte-identical copy of the 2026-09-22 historical
+  `03_stairs_up.mp4`, model50100, 17 × 12 cm stairs, complete30 seconds at original speed.
+
+The clips use different models and observation interfaces. Neither is a reference
+motion replay. `assets/demo/manifest.json` records provenance and SHA256 checksums;
+the historical ascent's matching trajectory is also published. Source weights and
+machine-local training logs remain excluded, as stated in the repository release policy.

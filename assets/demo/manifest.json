@@ -1,0 +1,20 @@
+{
+  "g1_mujoco_stones_8999.mp4": {
+    "model_iteration": 8999,
+    "physics": "native MuJoCo",
+    "terrain": "8m square, L10 cardinal, variant2, seed42",
+    "cruise_command_m_s": 1.0,
+    "ideal_elevation_input": true,
+    "recording_date": "2026-10-11",
+    "sha256": "8479bd9ab7d27945e06c160acdc45fee535d56c3bb823200cea76f6905ea6c71"
+  },
+  "g1_mujoco_stairs_50100.mp4": {
+    "model_iteration": 50100,
+    "physics": "native MuJoCo",
+    "terrain": "17 steps, 12cm rise, 30cm tread",
+    "duration_seconds": 30,
+    "recording_date": "2026-09-22",
+    "source": "original 03_stairs_up.mp4, byte-identical copy",
+    "sha256": "e8bbf737926b5011722188c3e949a8dd7eaab47c22e20c69d1c7f95d64fcaaf8"
+  }
+}
