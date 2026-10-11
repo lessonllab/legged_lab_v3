@@ -1,0 +1,19 @@
+{
+  "status": "success",
+  "seconds": 8.3199999999999,
+  "progress": 5.249330227379438,
+  "map_size_m": 12.0,
+  "ring_width_m": 2.0,
+  "stop_depth_m": 1.0,
+  "parking_trigger_depth_m": 1.0088510738705523,
+  "root_position": [
+    5.249330227379438,
+    0.34310751878745904,
+    0.7859364946746721
+  ],
+  "level": 10,
+  "family": "cardinal",
+  "variant": 2,
+  "seed": 42,
+  "model_iteration": 8999
+}

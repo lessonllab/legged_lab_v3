@@ -100,7 +100,7 @@ The USD-calibrated robot profile's asset hash matches the checkpoint contract.
 The height input is an ideal terrain query; this does not test a real lidar or camera.
 Course tracking uses ideal body gyro and projected gravity, with no absolute-heading policy input.
 
-Terrain is rebuilt from the checkpoint's archived generator and identical 2 cm raster.
+The original 8 m terrain is rebuilt from the checkpoint's archived generator and identical 2 cm raster.
 The 8 m square map retains the 1.4 m central platform and 1 m outer ring, with gaps at -1 m.
 All 160,000 cell-center downward rays match the collision raster, with zero mismatches.
 Robot masses, inertias, joint frames and collision shapes use the existing USD-calibrated profile.
@@ -127,3 +127,28 @@ The clips use different models and observation interfaces. Neither is a referenc
 motion replay. `assets/demo/manifest.json` records provenance and SHA256 checksums;
 the historical ascent's matching trajectory is also published. Source weights and
 machine-local training logs remain excluded, as stated in the repository release policy.
+
+## 延长地图、高程显示和在线播放（2026-10-11）
+
+浏览器默认地图改为 12 × 12 m，中央平台仍为 1.4 × 1.4 m，外环加宽到 2 m。
+正向过桩段延长约 1 m，斜向保留补角接应区。新增 `extended_square.py` 只改变播放地图，
+未修改冻结8999权重或归档训练地形；碰撞和支撑面仍使用同一 2 cm 栅格。
+
+双脚完全进入终点支撑区且身体进入平台 1 m 后锁定零速指令，提前 0.8 m 减速。
+随后需稳定站立一秒才成功。L10/cardinal/v2/seed42 原生录像在 8.32 s 成功，
+零速触发深度为 1.009 m，最终深度约 1.25 m。该单次测试与原8 m地图15/16结果分别报告。
+
+页面支持显示实际送入策略的225个高程点：15 × 15、10 cm 间距、1.4 × 1.4 m，随偏航旋转。
+绿色表示支撑面，红色表示间隙。可切换示意射线；这是理想高程查询，不是MID-360原始点云。
+
+```bash
+bash scripts/run_beamdojo_mujoco.sh --map-size 12 --ring-width 2 --stop-depth 1
+MUJOCO_GL=egl /home/ljc/isaaclab/bin/python scripts/sim2sim/record_beamdojo.py \
+  --map-size 12 --ring-width 2 --stop-depth 1 --show-scan \
+  --output assets/demo/g1_mujoco_stones12_8999.mp4
+```
+
+[在线播放页](https://lessonllab.github.io/legged_lab_v3/)使用带控制栏的HTML视频播放器。
+新增20 cm录像使用视觉模型62900：17级、踏面30 cm、总升高3.4 m，完整30秒且到顶停车。
+旧50100在20 cm测试于14.22 s摔倒，因此旧视频仍明确标为12 cm。
+新20 cm场景导出和完整录像轨迹均保留在仓库中。

@@ -1,0 +1,35 @@
+{
+  "config": "logs/rsl_rl/g1_amp_stairs_long/2026-09-16_20-26-52_reverse_height_v11/params/env.yaml",
+  "height": 0.2,
+  "tread_width": 0.3,
+  "tile_size": [
+    14.0,
+    14.0
+  ],
+  "training_origin": [
+    7.0,
+    7.0,
+    -3.4000000000000004
+  ],
+  "spawn": [
+    0.0,
+    0.0,
+    0.8
+  ],
+  "target": [
+    6.7,
+    0.0,
+    3.4000000000000004
+  ],
+  "rises": 17,
+  "neighbor_tiles": [
+    {
+      "offset_x": -14.0,
+      "height": 0.18
+    },
+    {
+      "offset_x": 14.0,
+      "height": 0.215
+    }
+  ]
+}

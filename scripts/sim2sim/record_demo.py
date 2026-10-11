@@ -32,6 +32,8 @@ def main():
     parser.add_argument('--checkpoint', type=Path, required=True)
     parser.add_argument('--output', type=Path, required=True)
     parser.add_argument('--mode', choices=['flat', 'turn', 'stairs-up', 'stairs-down'], required=True)
+    parser.add_argument('--scene', type=Path, default=TRAINING_SCENE)
+    parser.add_argument('--step-height', type=float, default=.12)
     parser.add_argument('--duration', type=float, default=20.)
     parser.add_argument('--speed', type=float, default=.65)
     parser.add_argument('--width', type=int, default=1280)
@@ -44,7 +46,7 @@ def main():
         parser.error('Video dimensions must be even and at least 240 pixels.')
     args.output.parent.mkdir(parents=True, exist_ok=True)
     torch.set_num_threads(1)
-    scene = TRAINING_SCENE
+    scene = args.scene.resolve()
     spawn, yaw, target = [0., 0., .8], 0., np.array([6.7, 0.])
     if args.mode in ('flat', 'turn'):
         scene = flat_scene(args.output.with_suffix('.scene.xml'))
@@ -72,7 +74,7 @@ def main():
                                    macro_block_size=1, ffmpeg_params=['-pix_fmt', 'yuv420p', '-movflags', '+faststart'])
     rows, frames, fell = [], 0, False
     titles = {'flat': 'Forward walking', 'turn': 'Walking with left / right steering',
-              'stairs-up': 'Ascending 17 steps / 12 cm', 'stairs-down': 'Descending 17 steps / 12 cm'}
+              'stairs-up': f'Ascending 17 steps / {args.step_height*100:g} cm', 'stairs-down': f'Descending 17 steps / {args.step_height*100:g} cm'}
     try:
         for tick in range(round(args.duration / runner.dt)):
             seconds = tick * runner.dt
@@ -91,6 +93,7 @@ def main():
                 if renderer is not None:
                     camera.lookat[:] = d.qpos[:3] + np.array([0., 0., .05])
                     renderer.update_scene(d, camera=camera, scene_option=option)
+                    renderer.scene.flags[mujoco.mjtRndFlag.mjRND_SHADOW] = False
                     frame = Image.fromarray(renderer.render())
                     draw = ImageDraw.Draw(frame)
                     draw.rectangle((0, 0, args.width, 76), fill=(20, 24, 29))
@@ -113,7 +116,7 @@ def main():
             writer.close()
         if renderer is not None:
             renderer.close()
-    report = {'checkpoint': str(args.checkpoint.resolve()), 'mode': args.mode, 'scene': str(scene),
+    report = {'checkpoint': str(args.checkpoint.resolve()), 'mode': args.mode, 'scene': str(scene), 'step_height_m':args.step_height if args.mode.startswith('stairs') else None,
               'duration_seconds': float(d.time), 'fell': fell, 'fps': fps, 'frames': frames,
               'final_position': d.qpos[:3].tolist(), 'trajectory': rows}
     args.output.with_suffix('.json').write_text(json.dumps(report, indent=2))

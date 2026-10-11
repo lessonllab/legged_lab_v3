@@ -36,21 +36,23 @@
 
 ### MuJoCo 实际策略演示
 
-**梅花桩：8999 轮模型，L10 正向地图、间距扰动 v2，过桩指令 1 m/s。**视频使用原生 MuJoCo 动力学和冻结模型，保留过桩及到外环停车过程；输入为理想高程图。
+[**点击在线播放全部视频**](https://lessonllab.github.io/legged_lab_v3/)：打开页面后直接点击播放，无需下载。
 
-[![G1 MuJoCo 梅花桩演示](assets/demo/g1_mujoco_stones_8999.png)](https://media.githubusercontent.com/media/lessonllab/legged_lab_v3/main/assets/demo/g1_mujoco_stones_8999.mp4)
+**延长梅花桩：8999 轮模型，12 × 12 m 地图，2 m 宽外环，L10 正向、间距扰动 v2。**中央平台保持 1.4 × 1.4 m，正向桩路延长约 1 m。进入终点平台 1 m 后发零速指令，演示最终停在平台内约 1.25 m；绿色与红色点显示策略实际使用的理想高程采样。
 
-[播放／下载梅花桩视频](https://media.githubusercontent.com/media/lessonllab/legged_lab_v3/main/assets/demo/g1_mujoco_stones_8999.mp4) · [16 个固定案例评测](artifacts/sim2sim_mujoco_8999/results.json) · [运行与复现说明](docs/sim2sim_mujoco.md)
+[![G1 MuJoCo 延长梅花桩演示](assets/demo/g1_mujoco_stones12_8999.png)](https://lessonllab.github.io/legged_lab_v3/#stones)
 
-**历史上台阶：50100 轮视觉模型，17 级、每级 12 cm、踏面 30 cm。**这是 2026-09-22 录制的原始 30 秒视频，正常速度，保留到顶停车；与当前梅花桩模型属于不同训练分支。
+[在线播放梅花桩](https://lessonllab.github.io/legged_lab_v3/#stones) · [原 8 m 地图固定案例评测](artifacts/sim2sim_mujoco_8999/results.json) · [运行与复现说明](docs/sim2sim_mujoco.md)
 
-[![G1 MuJoCo 上台阶演示](assets/demo/g1_mujoco_stairs_50100.jpg)](https://media.githubusercontent.com/media/lessonllab/legged_lab_v3/main/assets/demo/g1_mujoco_stairs_50100.mp4)
+**20 cm 上台阶：62900 轮视觉模型，17 级、踏面 30 cm，总升高 3.4 m。**保留完整 30 秒和到顶停车；与梅花桩模型属于不同训练分支。
 
-[播放／下载上台阶视频](https://media.githubusercontent.com/media/lessonllab/legged_lab_v3/main/assets/demo/g1_mujoco_stairs_50100.mp4) · [上台阶轨迹记录](assets/demo/g1_mujoco_stairs_50100.json) · [视频来源与校验值](assets/demo/manifest.json)
+[![G1 MuJoCo 20 cm 上台阶演示](assets/demo/g1_mujoco_stairs20_62900.jpg)](https://lessonllab.github.io/legged_lab_v3/#stairs20)
 
-运行当前梅花桩播放：`bash scripts/run_beamdojo_mujoco.sh --port 8091`。页面可选难度 0–10、正向／斜向地图、出生方向与扰动；修改后点击“应用设置并重新开始”。需要自行准备检查点及其归档 `params/`，模型文件不随仓库发布。
+[在线播放 20 cm 台阶](https://lessonllab.github.io/legged_lab_v3/#stairs20) · [历史 12 cm 台阶视频](https://lessonllab.github.io/legged_lab_v3/#stairs12) · [视频来源与校验值](assets/demo/manifest.json)
 
-两段视频均为策略实际控制，单条演示不能替代统计评测。梅花桩初步固定测试为 15/16 成功；失败案例为 L10/180°未完成停车、触及地图边界。
+运行梅花桩播放：`bash scripts/run_beamdojo_mujoco.sh --port 8091`。默认使用延长地图；页面可选难度 0–10、正向／斜向地图、出生方向与扰动，并切换高程采样和射线显示。修改后点击“应用设置并重新开始”。原 8 m 地图可加 `--map-size 8 --ring-width 1 --stop-depth .2`。需要自行准备检查点及其归档 `params/`，模型文件不随仓库发布。
+
+视频使用冻结策略控制原生 MuJoCo 动力学。单条演示不能替代统计评测；原 8 m 地图固定测试为 15/16 成功，该结果不适用于延长地图。高程点为理想地形查询，不是原始 MID-360 点云。
 
 
 准备好本地检查点后启动交互演示：
@@ -61,7 +63,7 @@ bash scripts/play_stairs_control.sh /absolute/path/to/model.pt
 
 打开 [Viser](http://127.0.0.1:8082/) 查看机器人、地形和深度输入。参考动作重放和 MuJoCo 演示见下文。
 
-**验证范围：**50100 检查点已记录在 MuJoCo 中完成 12 cm、17 级固定路线的 30 秒测试；停走重启和任意场景尚未保证稳定。最新 62900 尚未完成独立固定条件评估，课程晋级不等于通过率验证。详见 [sim2sim 说明](docs/sim2sim_mujoco.md)与[检查点对比](docs/analysis/checkpoint_comparison_20260917.md)。仓库不附带训练检查点。
+**验证范围：**50100 检查点已记录在 MuJoCo 中完成 12 cm、17 级固定路线的 30 秒测试；停走重启和任意场景尚未保证稳定。62900 已完成 20 cm、17 级固定路线的 30 秒测试，任意场景尚未验证，课程晋级不等于通过率验证。详见 [sim2sim 说明](docs/sim2sim_mujoco.md)与[检查点对比](docs/analysis/checkpoint_comparison_20260917.md)。仓库不附带训练检查点。
 
 <a id="news-updates"></a>
 ## News & Updates
