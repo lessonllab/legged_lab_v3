@@ -16,7 +16,9 @@ def main():
    if r.status=='running':r.step()
    if i%2==0:
     cam.lookat[:]=r.data.qpos[:3];cam.lookat[2]=.5
-    renderer.update_scene(r.data,camera=cam,scene_option=opt);frame=renderer.render()
+    renderer.update_scene(r.data,camera=cam,scene_option=opt)
+    renderer.scene.flags[mujoco.mjtRndFlag.mjRND_SHADOW]=False
+    frame=renderer.render()
     image=Image.fromarray(frame);draw=ImageDraw.Draw(image);font=ImageFont.truetype('/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf',20)
     draw.rectangle((0,0,1280,82),fill=(20,25,32))
     draw.text((20,10),'Native MuJoCo sim2sim | Frozen model_8999 | L10 cardinal | variant 2',font=font,fill='white')

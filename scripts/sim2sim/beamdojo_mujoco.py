@@ -22,10 +22,14 @@ class Runner:
   self.mask=rasterize(self.course)['reward_support_mask']; self.meshes,origin=grid_mesh(np.where(self.mask,0.,-1.))
   root=ET.Element('mujoco',model='G1 BeamDojo MuJoCo'); ET.SubElement(root,'include',file=str(ROOT/'hiking-in-the-wild-sim2sim/unitree_mujoco/unitree_robots/g1/g1_29dof.xml'))
   visual=ET.SubElement(root,'visual');ET.SubElement(visual,'global',offwidth='1280',offheight='720')
-  wb=ET.SubElement(root,'worldbody');ET.SubElement(wb,'light',pos='0 0 5',dir='0 0 -1',directional='true',diffuse='.8 .8 .8',ambient='.4 .4 .4')
+  ET.SubElement(visual,'headlight',diffuse='.5 .5 .5',ambient='.25 .25 .25',specular='.05 .05 .05')
+  assets=ET.SubElement(root,'asset');ET.SubElement(assets,'texture',type='skybox',builtin='gradient',rgb1='.78 .82 .87',rgb2='.48 .55 .64',width='512',height='3072')
+  wb=ET.SubElement(root,'worldbody');ET.SubElement(wb,'light',pos='0 0 5',dir='0 0 -1',directional='true',diffuse='.25 .25 .25',ambient='0 0 0',specular='0 0 0',castshadow='false')
   for i,mesh in enumerate(self.meshes):
    lo,hi=mesh.bounds-origin
-   ET.SubElement(wb,'geom',name=f'terrain_{i}',type='box',pos=' '.join(map(str,(lo+hi)/2)),size=' '.join(map(str,(hi-lo)/2)),group='0',friction='1 0.005 0.0001',rgba='.12 .13 .15 1' if i==0 else '.42 .60 .72 1')
+   platform=bool((np.abs((lo[:2]+hi[:2])/2)>=3.).any() or np.max(np.abs(np.r_[lo[:2],hi[:2]]))<=.71)
+   color='.18 .20 .23 1' if i==0 else ('.58 .61 .65 1' if platform else '.65 .60 .50 1')
+   ET.SubElement(wb,'geom',name=f'terrain_{i}',type='box',pos=' '.join(map(str,(lo+hi)/2)),size=' '.join(map(str,(hi-lo)/2)),group='0',friction='1 0.005 0.0001',rgba=color)
   scene=ROOT/f'.runtime/mujoco_square_scene_{os.getpid()}.xml';scene.write_text(ET.tostring(root,encoding='unicode'))
   self.model=calibrated_model(scene,self.profile);scene.unlink();self.data=mujoco.MjData(self.model)
   m=self.model;d=self.data
@@ -131,7 +135,7 @@ def main():
   for node,bid in nodes:node.remove()
   terrain_nodes.clear();nodes.clear()
   for i,mesh in enumerate(r.meshes):
-   mesh=mesh.copy();mesh.apply_translation([-4,-4,0]);mesh.visual.face_colors=[50,52,58,255] if i==0 else [122,166,190,255];terrain_nodes.append(server.scene.add_mesh_trimesh(f'/terrain/{i}',mesh))
+   mesh=mesh.copy();mesh.apply_translation([-4,-4,0]);mesh.visual.face_colors=(r.model.geom_rgba[r.model.geom(f'terrain_{i}').id]*255).astype(np.uint8);terrain_nodes.append(server.scene.add_mesh_trimesh(f'/terrain/{i}',mesh))
   for v in r.profile['visuals']:
    mesh=trimesh.load(ROOT/'scripts/sim2sim/assets'/f"{v['mesh']}.stl");node=server.scene.add_mesh_trimesh('/robot/'+v['mesh'],mesh);nodes.append((node,r.model.body(v['body']).id))
  build_visuals()

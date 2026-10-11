@@ -6,7 +6,8 @@
     "cruise_command_m_s": 1.0,
     "ideal_elevation_input": true,
     "recording_date": "2026-10-11",
-    "sha256": "8479bd9ab7d27945e06c160acdc45fee535d56c3bb823200cea76f6905ea6c71"
+    "sha256": "06fa052345eb69dcbd0a11d47a1248b58472e73cb0e1ee3703c9a6745a289697",
+    "rendering": "Neutral sky, matte gray platforms, warm stone surfaces; shadow acne disabled. Physics/control unchanged."
   },
   "g1_mujoco_stairs_50100.mp4": {
     "model_iteration": 50100,
