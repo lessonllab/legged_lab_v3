@@ -10,6 +10,7 @@
 
 - [Overview](#overview)
 - [Demo](#demo)
+- [Current Training Status](#current-training-status)
 - [News & Updates](#news-updates)
 - [Installation](#installation)
 - [Usage](#usage)
@@ -19,17 +20,16 @@
 <a id="overview"></a>
 ## Overview
 
-面向 **Unitree G1 EDU 29 自由度机器人**的深度视觉运动控制研究项目，由 **ljc** 基于 [Legged Lab](https://github.com/zitongbai/legged_lab) 扩展。项目独立于 Isaac Lab 开发，使用 PPO 和 AMP 动作先验学习平地、楼梯与崎岖地形运动。
+面向 **Unitree G1 EDU 29 自由度机器人**的运动控制研究项目，由 **ljc** 基于 [Legged Lab](https://github.com/zitongbai/legged_lab) 扩展。当前演示覆盖局部高程图梅花桩策略，以及历史深度视觉 PPO/AMP 楼梯策略；两条分支分别维护训练和验证结果。
 
 **Key Features:**
 
-- 深度视觉与本体状态融合：8 帧深度历史，支持延迟和机器人自身遮挡。
-- PPO/AMP：本地 AMP 实现基于 RSL-RL 5.4.1，当前主线保留 30 段参考动作，风格奖励系数 0.25。
-- Foothold v12：落脚支撑、踩边与碰撞约束、低速跨阶和转向训练。
-- 混合地形与自适应课程：固定 17 级楼梯，上下楼独立晋降级，阶高配置覆盖 8–30 cm。
-- PhysX + Viser：浏览器播放、点击目标、调整地形和观察策略深度输入。
-- MuJoCo sim2sim：机器人参数、观测与地形对齐，以及固定路线验证。
-- 保留上游 DeepMimic、动画重放和速度控制任务，供研究及历史模型使用。
+- 梅花桩任务：中央平台出发、左右交替落脚、外环到达停车，支持正向／斜向路线和地形扰动。
+- 全身控制与地形感知：G1 29 关节策略，结合本体状态与局部高程输入。
+- MuJoCo sim2sim：冻结检查点推理、训练参数适配、原生碰撞动力学与固定案例评测。
+- 浏览器交互播放：选择难度、出生方向和扰动，显示高程采样及射线。
+- 深度视觉历史分支：8 帧深度历史、PPO/AMP 与混合楼梯课程，保留 12 cm 和 20 cm 上台阶录像。
+- [在线演示播放器](https://lessonllab.github.io/legged_lab_v3/)：直接播放、拖动进度和全屏查看；附视频来源与轨迹。
 
 <a id="demo"></a>
 ## Demo
@@ -65,9 +65,25 @@ bash scripts/play_stairs_control.sh /absolute/path/to/model.pt
 
 **验证范围：**50100 检查点已记录在 MuJoCo 中完成 12 cm、17 级固定路线的 30 秒测试；停走重启和任意场景尚未保证稳定。62900 已完成 20 cm、17 级固定路线的 30 秒测试，任意场景尚未验证，课程晋级不等于通过率验证。详见 [sim2sim 说明](docs/sim2sim_mujoco.md)与[检查点对比](docs/analysis/checkpoint_comparison_20260917.md)。仓库不附带训练检查点。
 
+<a id="current-training-status"></a>
+## Current Training Status
+
+**2026/10/11：当前梅花桩演示使用冻结的 8999 轮模型，已接入原生 MuJoCo sim2sim。**正向／斜向地图对应不同桩路布局，机器人出生时面向所选路线；模型输入为本体状态、理想局部高程图和航向跟踪特征。历史 AMP 深度视觉楼梯策略是独立分支，两者的检查点和观测不能混用。
+
+- **原 8 m 地图：**八个出生方向 × L0/L10 共 16 个固定案例，15 个完成到达与站稳；L10/180°未完成停车。该测试不是多种子泛化成功率。[评测记录](artifacts/sim2sim_mujoco_8999/results.json)
+- **延长 12 m 地图：**2 m 宽外环，正向桩路延长约 1 m。进入终点平台 1 m 后锁定零速；L10 正向、扰动 v2、seed42 演示在 8.32 s 完成，最终停在平台内约 1.25 m。[演示记录](assets/demo/g1_mujoco_stones12_8999.json)
+- **高程可视化：**显示策略实际接收的 15×15 采样点，绿色为支撑面、红色为间隙，可切换射线。这是理想高程输入，尚未验证真实 MID-360 数据接入。
+- **20 cm 楼梯：**独立视觉模型 62900 完成 17 级、踏面 30 cm、总升高 3.4 m 的 30 秒 MuJoCo 演示，并在顶端停车。[轨迹记录](assets/demo/g1_mujoco_stairs20_62900.json)
+
+[在线播放](https://lessonllab.github.io/legged_lab_v3/) · [MuJoCo 运行与验证说明](docs/sim2sim_mujoco.md)。本次地图、停车和显示更新未重新训练模型；下一步是延长地图的八方向、多种子评估，以及不规则桩面与感知误差测试。
+
 <a id="news-updates"></a>
 ## News & Updates
 
+- **2026/10/11**：发布冻结 8999 模型的原生 MuJoCo 梅花桩 sim2sim；原 8 m 地图固定测试通过 15/16，保留失败案例及验证范围。
+- **2026/10/11**：播放地图扩展为 12×12 m，外环加宽到 2 m；终点改为进入平台 1 m 后发零速，新增实际高程采样与射线显示。
+- **2026/10/11**：录制 62900 视觉模型的 20 cm、17 级台阶完整 30 秒演示；上线[直接播放的视频页面](https://lessonllab.github.io/legged_lab_v3/)，保留历史 12 cm 视频及来源记录。
+- **2026/10**：梅花桩任务扩展到中央起点、左右交替桩路与外环终点，支持正向／斜向地图、路线朝向出生及大小／间距扰动；交互播放可选择难度与路线。
 - **2026/09/22**：按上游 README 结构整理安装、使用、路线图与发布范围说明。
 - **2026/09/17**：Foothold v12 加入低速跨阶、转向接触和块状地形训练，阶高上限扩展至 30 cm。训练手动停止，最后保存检查点为 62900。
 - **2026/09/16**：完成 MuJoCo 机器人与视觉输入对齐，记录固定 12 cm 楼梯路线验证。
@@ -228,18 +244,19 @@ docs/                   使用说明、实验记录与评测证据
 <a id="roadmap"></a>
 ## Roadmap
 
-- [x] 深度历史输入与 PPO/AMP 训练链路。
-- [x] 混合地形与独立上下楼课程。
-- [x] Viser 交互播放及视觉输入诊断。
-- [x] MuJoCo 适配和固定路线验证。
-- [ ] 完成最新 v12 检查点的固定条件、多种子对比。
-- [ ] 提升低速高台阶、自然转向和停走重启稳定性。
-- [ ] 对新增奖励和课程进行消融评估。
-- [ ] 扩展跨地形泛化与真机验证。
+- [x] 深度历史与 PPO/AMP 楼梯训练链路。
+- [x] 正向／斜向梅花桩地图、路线朝向出生与交互难度选择。
+- [x] 冻结 8999 模型的 MuJoCo 适配及原地图固定案例评测。
+- [x] 延长桩路、终点平台内停车和高程输入可视化。
+- [x] 在线视频播放器，以及 12 cm／20 cm 台阶录像。
+- [ ] 完成延长地图的八方向、多种子评估。
+- [ ] 评估不规则桩面、间距和高差的泛化能力。
+- [ ] 接入实物雷达或深度相机高程图，测试噪声、延迟与遮挡。
+- [ ] 完成奖励、课程与方法消融，以及真机验证。
 
 <a id="acknowledgement"></a>
 ## Acknowledgement
 
-感谢 [Legged Lab](https://github.com/zitongbai/legged_lab)、[Isaac Lab](https://github.com/isaac-sim/IsaacLab)、[RSL-RL](https://github.com/leggedrobotics/rsl_rl)、[AMP_for_hardware](https://github.com/Alescontrela/AMP_for_hardware)、[GMR](https://github.com/YanjieZe/GMR)、[MimicKit](https://github.com/xbpeng/MimicKit)、[InstinctLab](https://github.com/project-instinct/InstinctLab) 和 [hiking-in-the-wild-sim2sim](https://github.com/jie0110/hiking-in-the-wild-sim2sim)。
+感谢 [Unitree RL Lab](https://github.com/unitreerobotics/unitree_rl_lab)、[BeamDojo](https://arxiv.org/abs/2502.10363) 及其 [humanoid-gym 适配实现](https://github.com/ezoicoder/humanoid-gym)、[Legged Lab](https://github.com/zitongbai/legged_lab)、[Isaac Lab](https://github.com/isaac-sim/IsaacLab)、[RSL-RL](https://github.com/leggedrobotics/rsl_rl)、[AMP_for_hardware](https://github.com/Alescontrela/AMP_for_hardware)、[GMR](https://github.com/YanjieZe/GMR)、[MimicKit](https://github.com/xbpeng/MimicKit)、[InstinctLab](https://github.com/project-instinct/InstinctLab) 和 [hiking-in-the-wild-sim2sim](https://github.com/jie0110/hiking-in-the-wild-sim2sim)。
 
 原始代码许可证见 [LICENCE](LICENCE)，上游引用及第三方许可见 [NOTICE.md](NOTICE.md)。部分适配文件标注 CC BY-NC 4.0；机器人、动作数据及其他第三方内容沿用各自许可。
