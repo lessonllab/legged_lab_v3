@@ -22,6 +22,8 @@
 
 - [Isaac Lab](https://github.com/isaac-sim/IsaacLab)：仿真、任务管理与机器人相关基础设施。
 - [RSL-RL](https://github.com/leggedrobotics/rsl_rl)：PPO 训练基础。
+- [Unitree RL Lab](https://github.com/unitreerobotics/unitree_rl_lab/tree/4960b84732b0c2ec593dccbfe963fda1bcd7b1e3)：G1 全身控制、运动奖励及命令课程适配来源；本项目的 `unitree_official/` 与相关合同记录使用该固定版本。
+- [ezoicoder/humanoid-gym](https://github.com/ezoicoder/humanoid-gym/tree/9a47b7dfe85fdcc737c3c8963d80d05997376575)：BeamDojo 地形、局部高程输入和落脚惩罚适配参考；双评论器由本项目适配到原生 RSL-RL 5.4.1。相关来源、固定提交与适配差异记录在任务代码和检查点合同中。
 - [AMP_for_hardware](https://github.com/Alescontrela/AMP_for_hardware)：上游 AMP 实现参考。
 - [GMR](https://github.com/YanjieZe/GMR)：运动重定向工具参考。
 - [MimicKit](https://github.com/xbpeng/MimicKit)：运动模仿参考。

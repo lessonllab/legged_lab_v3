@@ -1,0 +1,77 @@
+{
+  "reviewed_at": "2026-10-16T19:01:37.924402+08:00",
+  "scope": "Selected keyframes and short frame sequences of actual recorded Isaac rollouts; not live browser inspection and not every frame of every episode.",
+  "saved_map_review": {
+    "comparison": "14700_vs_corrected_saved",
+    "cases": [
+      4,
+      8,
+      38,
+      70,
+      74
+    ],
+    "times_s": {
+      "4": [
+        0.6,
+        1.2,
+        1.8,
+        2.4
+      ],
+      "8": [
+        0.6,
+        1.2,
+        1.8,
+        2.4
+      ],
+      "38": [
+        2.4,
+        2.7,
+        3,
+        3.3,
+        6,
+        8
+      ],
+      "70": [
+        2.4,
+        2.7,
+        3,
+        3.3,
+        6,
+        8
+      ],
+      "74": [
+        2.4,
+        3.3,
+        4.8,
+        6,
+        8,
+        10
+      ]
+    },
+    "selection": "Fixed flat/cardinal/diagonal examples plus case74 with largest full-crossing sway/yaw regression."
+  },
+  "observations": [
+    "Alternating stepping and arm motion retained in reviewed examples; no obvious locked-arm or shortened-step gait.",
+    "Slightly slower stepping rhythm on stones is visible and agrees with interval metrics.",
+    "Case74 still crosses and parks but shows the documented sway/yaw tradeoff; it is included in the report rather than hidden.",
+    "Flat function equality is verified separately; small closed-loop trajectory differences must be interpreted with repeat calibration.",
+    "Fresh-map sequence shows restored arm activity compared with15700 while retaining alternating steps; slightly slower stepping and sway tradeoff remain."
+  ],
+  "fresh_map_review": {
+    "comparison": "candidate15700_vs_corrected_fresh",
+    "cases": [
+      46,
+      110,
+      40
+    ],
+    "times_s": [
+      2.4,
+      2.7,
+      3,
+      3.3,
+      6,
+      8
+    ],
+    "selection": "Fixed cardinal/diagonal L10V7 plus automatically selected largest early-window regression case40."
+  }
+}

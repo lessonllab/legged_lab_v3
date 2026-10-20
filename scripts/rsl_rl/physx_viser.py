@@ -11,6 +11,9 @@ from viser_targets import ClickTargetControl, TerrainRayPicker
 from sole_diagnostics import sole_diagnostic
 from vision_overlay import view_boundary, enlarged_depth
 
+FOLLOW_VIEWS = {'front45': '前上方45°', 'front10': '前方10°（4米）', 'manual': '保持手动视角'}
+FRONT_FOLLOW_GEOMETRY = {'前上方45°': (3., 45.), '前方10°（4米）': (4., 10.)}
+
 
 def _numpy(value):
     if hasattr(value, "torch"):
@@ -49,7 +52,10 @@ def _mesh_prims(root):
 
 
 class PhysxViser:
-    def __init__(self, env, host="127.0.0.1", port=8080, follow=False, asset_name="robot", selected_env=0):
+    def __init__(self, env, host="127.0.0.1", port=8080, follow=False, asset_name="robot", selected_env=0,
+                 terrain_bounds=None, follow_view="manual"):
+        if follow_view not in FOLLOW_VIEWS:
+            raise ValueError('Unknown follow-camera view')
         self.env = env
         self.reset_observations = False
         self.control_requests = None
@@ -58,6 +64,9 @@ class PhysxViser:
         self.server.scene.set_up_direction("+z")
         self.pause = self.server.gui.add_checkbox("暂停播放", False)
         self.follow = self.server.gui.add_checkbox("跟随机器人", follow)
+        self.follow_view = self.server.gui.add_dropdown(
+            "跟随视角", list(FOLLOW_VIEWS.values()),
+            initial_value=FOLLOW_VIEWS[follow_view])
         terrain_names = getattr(env, "terrain_showcase_names", None)
         terrain_labels = {"pyramid_stairs": "上阶梯", "pyramid_stairs_inv": "下阶梯",
                           "boxes": "块状地形", "random_rough": "起伏路面",
@@ -163,16 +172,13 @@ class PhysxViser:
                               font_screen_scale=.7) for i, label in enumerate(options)] if terrain_names else []
         stage = env.sim.stage
         ground = stage.GetPrimAtPath("/World/ground")
-        ground_meshes = 0
+        self._terrain_geometry = {}
+        self._terrain_handles = []
         for index, prim in enumerate(_mesh_prims(ground)):
             geometry = _mesh(prim)
             if geometry is not None:
-                if self.target_control is not None:
-                    self.target_control.picker.add_mesh(*geometry)
-                self.server.scene.add_mesh_simple(f"/terrain/{index}", *geometry,
-                                                  color=(155, 165, 160), side="double",
-                                                  flat_shading=True)
-                ground_meshes += 1
+                self._terrain_geometry[index] = geometry
+        ground_meshes = self.set_terrain_bounds(terrain_bounds)
         if ground_meshes == 0 and env.scene.terrain.cfg.terrain_type == "plane":
             self.server.scene.add_grid("/ground", width=200, height=200, plane="xy", plane_opacity=1.0)
             if self.target_control is not None:
@@ -229,6 +235,13 @@ class PhysxViser:
         def on_disconnect(client):
             self._camera_targets.pop(client.client_id, None)
 
+        @self.follow.on_update
+        @self.follow_view.on_update
+        def on_follow_view(_):
+            if self.follow.value and self.follow_view.value in FRONT_FOLLOW_GEOMETRY:
+                for client in self.server.get_clients().values():
+                    self._focus(client)
+
         @self.selected.on_update
         def on_select(_):
             if self.overview is not None:
@@ -267,16 +280,69 @@ class PhysxViser:
         print(f"[INFO] PhysX Viser ready: http://localhost:{self.server.get_port()} "
               f"({env.num_envs} robots, {body_count} visual bodies each; no Newton)", flush=True)
 
+    def set_terrain_bounds(self, bounds):
+        """Render the selected atlas tile without changing its physics meshes.
+
+        Retain USD world geometry so a difficulty change can select a different
+        physical tile without restarting the server or translating an old tile.
+        Call from the simulation thread, together with its terrain-origin reset.
+        """
+        meshes = []
+        for index, geometry in self._terrain_geometry.items():
+            if bounds is not None:
+                vertices, faces = geometry
+                centers = vertices[faces].mean(axis=1)
+                xmin, xmax, ymin, ymax = bounds
+                keep = ((centers[:, 0] >= xmin) & (centers[:, 0] <= xmax)
+                        & (centers[:, 1] >= ymin) & (centers[:, 1] <= ymax))
+                faces = faces[keep]
+                if not len(faces):
+                    continue
+                used, inverse = np.unique(faces, return_inverse=True)
+                geometry = vertices[used], inverse.reshape(-1, 3).astype(np.uint32)
+            meshes.append((index, geometry))
+        if not meshes and self.env.scene.terrain.cfg.terrain_type != "plane":
+            raise RuntimeError("Viser could not find terrain geometry in selected bounds")
+        with self.server.atomic():
+            for handle in self._terrain_handles:
+                handle.remove()
+            self._terrain_handles.clear()
+            if self.target_control is not None:
+                self.target_control.picker.meshes.clear()
+            for index, geometry in meshes:
+                if self.target_control is not None:
+                    self.target_control.picker.add_mesh(*geometry)
+                self._terrain_handles.append(self.server.scene.add_mesh_simple(
+                    f"/terrain/{index}", *geometry, color=(155, 165, 160),
+                    side="double", flat_shading=True))
+        return len(meshes)
+
     def _focus(self, client):
         target = self._positions[self._selection_ids[self.selected.value], 0].copy()
+        if self.follow.value and self.follow_view.value in FRONT_FOLLOW_GEOMETRY:
+            self._front_follow_camera(client, target)
+            self._camera_targets[client.client_id] = target
+            return
         client.camera.up_direction = (0.0, 0.0, 1.0)
         names = getattr(self.env, 'terrain_showcase_names', [])
         selected = self._selection_ids[self.selected.value]
-        offset = ([5., -5., 5.] if names and names[selected] == 'hf_steppingstones' else
+        offset = ([-3., 3., 3.2] if names and names[selected].startswith('AME式中央平台') else
+                  [5., -5., 5.] if names and names[selected] == 'hf_steppingstones' else
                   [4.0, .75, 1.0] if getattr(self.env, "instinct_play", False) else [3., -3., 2.])
         client.camera.position = target + np.array(offset)
         client.camera.look_at = target
         self._camera_targets[client.client_id] = target
+
+    def _front_follow_camera(self, client, target):
+        """Follow the robot heading at the selected horizontal range and elevation."""
+        selected = self._selection_ids[self.selected.value]
+        x, y, z, w = _numpy(self.robot.data.root_quat_w)[selected]
+        yaw = np.arctan2(2*(w*z+x*y), 1-2*(y*y+z*z))
+        distance, angle = FRONT_FOLLOW_GEOMETRY[self.follow_view.value]
+        look_at = target + np.array([0., 0., .2])
+        client.camera.up_direction = (0., 0., 1.)
+        client.camera.position = look_at + np.array([distance*np.cos(yaw), distance*np.sin(yaw), distance*np.tan(np.deg2rad(angle))])
+        client.camera.look_at = look_at
 
     def _overview(self, client):
         points = self._positions[:, 0]
@@ -414,9 +480,12 @@ class PhysxViser:
             for client in self.server.get_clients().values():
                 previous = self._camera_targets.get(client.client_id, target)
                 if self.follow.value:
-                    delta = target - previous
-                    client.camera.position = np.asarray(client.camera.position) + delta
-                    client.camera.look_at = np.asarray(client.camera.look_at) + delta
+                    if self.follow_view.value in FRONT_FOLLOW_GEOMETRY:
+                        self._front_follow_camera(client, target)
+                    else:
+                        delta = target - previous
+                        client.camera.position = np.asarray(client.camera.position) + delta
+                        client.camera.look_at = np.asarray(client.camera.look_at) + delta
                 self._camera_targets[client.client_id] = target
             if observations is not None and "depth" in observations:
                 depth = _numpy(observations["depth"])[self._selection_ids[self.selected.value], -1]

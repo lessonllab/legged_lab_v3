@@ -1,0 +1,12 @@
+{
+  "training_updates": 1000,
+  "iteration": 16700,
+  "main_pipeline_jobs": 15,
+  "repeat_jobs": 3,
+  "all_exit_zero": true,
+  "all_evaluations_zero_policy_updates": true,
+  "all_reward_contracts_equal": true,
+  "all_evaluated_actors_unchanged": true,
+  "archived_actor_sources_verified": true,
+  "original14700_sha256_unchanged": true
+}

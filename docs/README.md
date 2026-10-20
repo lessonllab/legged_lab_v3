@@ -3,6 +3,9 @@
 ## 当前主线
 
 - [项目入口与运行命令](../README.md)
+- [支撑转换 16700：设计、配对结果与复现](support_transition.md)
+- [支撑转换第二阶段：偏航与臂腿协调修正记录](analysis/support_transition_stage2_20261016.md)
+- [公开评估数据与视频来源](../artifacts/support_transition_stage2/README.md)
 - [楼梯专项配置与完成判定](g1_stairs_specialist.md)
 - [平地与崎岖地形混合课程](g1_balanced_course.md)
 - [2026-09-15：8 个模型对照与噪声复测](analysis/stair_specialist/checkpoint_comparison.md)

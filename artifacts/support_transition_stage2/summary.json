@@ -1,0 +1,1766 @@
+{
+  "manifest": {
+    "stage": 2,
+    "starting_iteration": 15700,
+    "ending_iteration": 16700,
+    "updates": 1000,
+    "num_envs": 4096,
+    "flat_fraction": 0.5,
+    "modifications": [
+      "Residual on12leg+3waist joints; original14700 dynamic arm actions protected; yaw authority retained",
+      "Detach prediction/encoder outputs from PPO; supervised predictor training retained",
+      "Additional soft0.02 normalized correction batch-mean penalty; no fixed posture or arm-trajectory target"
+    ],
+    "reward_changes": [],
+    "normal_gait_protection": "frozen14700MLP/normalizer; unchanged11700soft retention with clean teacher; flat rehearsal; bounded leg residual",
+    "risks": [
+      "Leg corrections can still indirectly change arm coordination through closed-loop state.",
+      "Frozen leg_pitch_roll-only intervention worsened yaw2.51deg to5.12deg despite improved coordination; rejected before training.",
+      "Three engineering changes bundled; this is not isolated causal proof."
+    ],
+    "tests": "11 CPU/native-PPO tests passed, including collector inference-probe reset; first startup failure had0 optimizer updates.",
+    "phase": "complete",
+    "source_checkpoint": "/home/ljc/legged_lab_v3/logs/rsl_rl/g1_beamdojo_fullbody_sim6/2026-10-16_14-20-57-510728_support_transition14700_candidate1000/model_15700.pt",
+    "evaluation": "Same saved-map and heldout1729 paired cases as stage1;14700 and15700 controls; visual keyframes and replay",
+    "created_at": "2026-10-16T17:44:31.118776+08:00",
+    "fresh_geometry_seed": 20261016,
+    "fresh_seed_scope": "Not used in pretraining diagnosis or prior stage1; same terrain generator family, not arbitrary terrain.",
+    "startup_incident": {
+      "optimizer_updates": 0,
+      "cause": "Collector rebound normal state buffers to inference tensors; explicit reset outside inference context failed.",
+      "fix": "Preserve initially allocated state buffers with copy_; covered by regression test.",
+      "archive": "startup_attempt1/"
+    },
+    "training_completed": {
+      "checkpoint": "/home/ljc/legged_lab_v3/logs/rsl_rl/g1_beamdojo_fullbody_sim6/2026-10-16_17-53-50-777359_support_transition15700_corrective1000/model_16700.pt",
+      "sha256": "b0ee6a9bf3c501d0e231f20a1dab308b10e1010eedc55a891c0b3248bde1b9a0",
+      "updates": 1000,
+      "iteration": 16700,
+      "frozen14700_base_verified": true,
+      "run_dir": "/home/ljc/legged_lab_v3/logs/rsl_rl/g1_beamdojo_fullbody_sim6/2026-10-16_17-53-50-777359_support_transition15700_corrective1000"
+    },
+    "declared_comparison": "Stage2 compares16700 with original14700 and previous15700. No additional ordinary-control training in this stage; inherited version1 declaration comparison refers to stage1.",
+    "updated_at": "2026-10-16T18:48:46.385411+08:00",
+    "repeat_calibration": {
+      "policy_updates": 0,
+      "same_checkpoint": true,
+      "scope": "One repeat pair of the same14700, saved64stone cases plus32flat; quantify observed reset/internal/numerical variability, not statistical confidence bounds.",
+      "metrics": {
+        "crossing_heading_abs_deg": {
+          "cases": 64,
+          "mean_first": 2.144801512360573,
+          "mean_repeat": 2.2289025224745274,
+          "mean_repeat_minus_first": 0.08410101011395454,
+          "mean_abs_case_difference": 0.3255671411752701,
+          "p95_abs_case_difference": 0.8574329495429988
+        },
+        "torso_sway_deg": {
+          "cases": 64,
+          "mean_first": 1.5733660403639078,
+          "mean_repeat": 1.5894174370914698,
+          "mean_repeat_minus_first": 0.01605139672756195,
+          "mean_abs_case_difference": 0.06425192207098007,
+          "p95_abs_case_difference": 0.18495167493820178
+        },
+        "left_arm_right_foot_stride_corr": {
+          "cases": 64,
+          "mean_first": 0.68530182428808,
+          "mean_repeat": 0.6811340388293391,
+          "mean_repeat_minus_first": -0.0041677854587407435,
+          "mean_abs_case_difference": 0.041503040241718005,
+          "p95_abs_case_difference": 0.11652027912840077
+        },
+        "right_arm_left_foot_stride_corr": {
+          "cases": 64,
+          "mean_first": 0.2395705858970842,
+          "mean_repeat": 0.24275139902711243,
+          "mean_repeat_minus_first": 0.003180813130028227,
+          "mean_abs_case_difference": 0.032233640736247446,
+          "p95_abs_case_difference": 0.08284163489343685
+        }
+      }
+    },
+    "numerical_result_summary": "Both references and corrected candidate passed192/192stone cases. Candidate yaw reduced versus14700 and15700; left coordination recovered versus15700, right nearly unchanged; sway increased, stride retained and cadence slightly slower. Numerical observations pending repeat-calibration interpretation.",
+    "conclusion_zh": "1000轮修正完成。192次过桩与停车全部通过，原模型和第一阶段也全部通过。相对14700平均偏航约2.17°降至1.70°，相对15700约2.60°降至1.69°；左侧臂腿协调从0.43恢复至0.63，右侧基本不变。步幅维持约49cm，步时稍慢，回放未见明显僵硬；身体晃动比14700约增加6%，仍需改进。保留14700为主基线，16700作偏航较好的实验候选，尚非全面胜出或论文方法的因果证明。",
+    "completed_at": "2026-10-16T19:17:44.548208+08:00",
+    "live_play": {
+      "verified": true,
+      "pid": 1934658,
+      "url": "http://127.0.0.1:8095/",
+      "parkings": 4,
+      "arrivals": 4,
+      "failures": 0,
+      "default_mode": "course auto stop; manual controls available",
+      "scope": "Repeated fixed L10V7 scene operational check, not extra independent generalization samples."
+    }
+  },
+  "training_status": {
+    "state": "budget_complete",
+    "pid": 1923594,
+    "run_dir": "/home/ljc/legged_lab_v3/logs/rsl_rl/g1_beamdojo_fullbody_sim6/2026-10-16_17-53-50-777359_support_transition15700_corrective1000",
+    "num_envs": 4096,
+    "parent_checkpoint": "/home/ljc/legged_lab_v3/logs/rsl_rl/g1_beamdojo_fullbody_sim6/2026-10-16_14-20-57-510728_support_transition14700_candidate1000/model_15700.pt",
+    "parent_iteration": 15700,
+    "requested_updates": 1000,
+    "terrain_level": 8,
+    "phase": "generalize",
+    "flat_fraction": 0.5,
+    "runtime": "Isaac Sim 6.0.1 / uv Python / RSL 5.4.1",
+    "started_at": "2026-10-16T17:53:50.777598+08:00",
+    "learned_crossing_verified": false,
+    "updated_at": "2026-10-16T18:48:15.736865+08:00",
+    "curriculum_restore": "exact extended curriculum resume",
+    "flat_environment_count": 2048,
+    "flat_mode_counts": [
+      256,
+      256,
+      256,
+      256,
+      256,
+      256,
+      256,
+      256
+    ],
+    "initialization": "resume15700; same14700MLP frozen; corrected residual; dualcritic/full Adam warm start; pure11700teacher",
+    "critic_reset": false,
+    "optimizer_reset": false,
+    "completed_updates": 1000,
+    "prior_phase_updates": 4000,
+    "phase_completed_updates": 5000,
+    "gait_retention": {
+      "version": 1,
+      "kind": "frozen_11700_action_mean_retention",
+      "teacher_iteration": 11700,
+      "teacher_sha256": "9eb3e3341b8be6670f0bac4cc065616da008457861f5a6ec81ded92cf3796fa3",
+      "config": {
+        "coefficient": 0.1,
+        "min_forward_speed": 0.3,
+        "max_forward_speed": 1.0,
+        "max_lateral_speed": 0.05,
+        "max_yaw_speed": 0.05,
+        "policy_group": "policy",
+        "policy_dimension": 480,
+        "command_start": 42,
+        "action_dimension": 29,
+        "arm_weight": 1.5
+      },
+      "joint_names": [
+        "left_hip_pitch_joint",
+        "right_hip_pitch_joint",
+        "waist_yaw_joint",
+        "left_hip_roll_joint",
+        "right_hip_roll_joint",
+        "waist_roll_joint",
+        "left_hip_yaw_joint",
+        "right_hip_yaw_joint",
+        "waist_pitch_joint",
+        "left_knee_joint",
+        "right_knee_joint",
+        "left_shoulder_pitch_joint",
+        "right_shoulder_pitch_joint",
+        "left_ankle_pitch_joint",
+        "right_ankle_pitch_joint",
+        "left_shoulder_roll_joint",
+        "right_shoulder_roll_joint",
+        "left_ankle_roll_joint",
+        "right_ankle_roll_joint",
+        "left_shoulder_yaw_joint",
+        "right_shoulder_yaw_joint",
+        "left_elbow_joint",
+        "right_elbow_joint",
+        "left_wrist_roll_joint",
+        "right_wrist_roll_joint",
+        "left_wrist_pitch_joint",
+        "right_wrist_pitch_joint",
+        "left_wrist_yaw_joint",
+        "right_wrist_yaw_joint"
+      ],
+      "action_scales": [
+        0.800000011920929,
+        0.800000011920929,
+        0.800000011920929,
+        0.800000011920929,
+        0.800000011920929,
+        0.800000011920929,
+        0.800000011920929,
+        0.800000011920929,
+        0.800000011920929,
+        0.800000011920929,
+        0.800000011920929,
+        0.800000011920929,
+        0.800000011920929,
+        0.800000011920929,
+        0.800000011920929,
+        0.800000011920929,
+        0.800000011920929,
+        0.800000011920929,
+        0.800000011920929,
+        0.800000011920929,
+        0.800000011920929,
+        0.800000011920929,
+        0.800000011920929,
+        0.800000011920929,
+        0.800000011920929,
+        0.800000011920929,
+        0.800000011920929,
+        0.800000011920929,
+        0.800000011920929
+      ],
+      "joint_weights": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.5,
+        1.5,
+        1.0,
+        1.0,
+        1.5,
+        1.5,
+        1.0,
+        1.0,
+        1.5,
+        1.5,
+        1.5,
+        1.5,
+        1.5,
+        1.5,
+        1.5,
+        1.5,
+        1.5,
+        1.5
+      ],
+      "teacher_normalization": "independent frozen source statistics",
+      "mean": "native deterministic/distribution mean including existing mean tails",
+      "normalization": "joint-weighted normalized squared deviation, whole minibatch mean",
+      "scope": "all states with straight positive vx in [0.3, 1.0]; zero stand/reverse/turn weight",
+      "student_parameters": "14700base frozen;15700leg/waist residual trainable; predictor supervised only; std trainable",
+      "integration": "auxiliary backward after native zero_grad, before PPO backward and gradient clipping"
+    },
+    "family_counts": [
+      1024,
+      1024
+    ],
+    "direction_counts": [
+      256,
+      256,
+      256,
+      256,
+      256,
+      256,
+      256,
+      256
+    ],
+    "geometry_validation": {
+      "spawn_yaw_matches_route": true,
+      "body_forward_command": true,
+      "collision_query_origin_match": true,
+      "collision_query_level_match": true,
+      "spawn_centered": true,
+      "query_truth_checked": true
+    },
+    "initial_actions": {
+      "mean_max": 3.9582059383392334,
+      "sample_max": 5.445655822753906,
+      "finite": true
+    },
+    "startup_probe_steps": 160,
+    "native_auxiliary_probe": {
+      "transition_region_ce": 0.5957740545272827,
+      "transition_handoff_huber": 0.0064092534594237804,
+      "transition_region_cell_accuracy": 0.7958984375,
+      "transition_time_mae_s": 0.03966771811246872,
+      "transition_visible_label_fraction": 1.0,
+      "optimizer_steps": 0
+    },
+    "startup_metrics": {
+      "Metrics/square_success": 0.0,
+      "Metrics/square_stand_seconds": 0.0,
+      "Metrics/course_valid_distance": 0.9878675937652588,
+      "Metrics/square_unsafe_fraction": 0.11812970042228699,
+      "Curriculum/square_mean_level": 9.97802734375,
+      "Curriculum/mean_level": 9.97802734375,
+      "Square/family_0_route_0_mean_level": 9.99609375,
+      "Square/family_0_route_0_success_rate": 0.9324329495429993,
+      "Square/family_0_route_1_mean_level": 9.97265625,
+      "Square/family_0_route_1_success_rate": 0.9296038746833801,
+      "Square/family_0_route_2_mean_level": 9.984375,
+      "Square/family_0_route_2_success_rate": 0.9245973229408264,
+      "Square/family_0_route_3_mean_level": 9.984375,
+      "Square/family_0_route_3_success_rate": 0.9255062341690063,
+      "Square/family_1_route_0_mean_level": 9.95703125,
+      "Square/family_1_route_0_success_rate": 0.8837973475456238,
+      "Square/family_1_route_1_mean_level": 9.97265625,
+      "Square/family_1_route_1_success_rate": 0.88846355676651,
+      "Square/family_1_route_2_mean_level": 9.984375,
+      "Square/family_1_route_2_success_rate": 0.8916358947753906,
+      "Square/family_1_route_3_mean_level": 9.97265625,
+      "Square/family_1_route_3_success_rate": 0.8918641209602356,
+      "Flat/forward_xy_velocity_error": 0.12638242542743683,
+      "Flat/forward_yaw_rate_error": 0.1091056615114212,
+      "Flat/backward_xy_velocity_error": 0.11123764514923096,
+      "Flat/backward_yaw_rate_error": 0.0746905505657196,
+      "Flat/left_xy_velocity_error": 0.2056402713060379,
+      "Flat/left_yaw_rate_error": 0.04417194426059723,
+      "Flat/right_xy_velocity_error": 0.19775718450546265,
+      "Flat/right_yaw_rate_error": 0.0388324037194252,
+      "Flat/turn_left_xy_velocity_error": 0.019023612141609192,
+      "Flat/turn_left_yaw_rate_error": 0.14674188196659088,
+      "Flat/turn_right_xy_velocity_error": 0.017119988799095154,
+      "Flat/turn_right_yaw_rate_error": 0.15701207518577576,
+      "Flat/stand_xy_velocity_error": 0.01696927472949028,
+      "Flat/stand_yaw_rate_error": 0.040875665843486786,
+      "Flat/mixed_xy_velocity_error": 0.14140953123569489,
+      "Flat/mixed_yaw_rate_error": 0.12837164103984833,
+      "Extended/arrivals_rate": 0.9082052707672119,
+      "Extended/parkings_rate": 0.9079263806343079,
+      "Extended/stable_parks_rate": 0.0,
+      "Extended/arrived_then_failed_rate": 0.00037591197178699076,
+      "Extended/arrived_then_timeout_rate": 0.9996240735054016,
+      "Extended/timeout_progress_m_mean": 5.63682222366333,
+      "Extended/timeout_planar_speed_mps_mean": 0.06368866562843323,
+      "Extended/timeout_contact_feet_mean": 1.993993878364563,
+      "Extended/timeout_full_support_fraction": 0.9670721888542175,
+      "Extended/maximum_stand_seconds_mean": 0.06093227118253708
+    },
+    "chunk": 1,
+    "active_variant_max": 7,
+    "current_iteration": 16700,
+    "curriculum_summary": {
+      "mean_level": 9.9873046875,
+      "min_level": 9,
+      "max_level": 10,
+      "level_counts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        26,
+        2022
+      ],
+      "episodes": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          17,
+          922,
+          1373,
+          29477
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          9,
+          898,
+          1358,
+          29596
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          3,
+          887,
+          1425,
+          29676
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          17,
+          944,
+          1415,
+          29588
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          6,
+          76,
+          1172,
+          2140,
+          29461
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          6,
+          125,
+          1193,
+          2062,
+          29353
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          52,
+          1132,
+          1960,
+          29494
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          4,
+          39,
+          1095,
+          1986,
+          29526
+        ]
+      ],
+      "successes": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          16,
+          852,
+          1263,
+          27639
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          9,
+          840,
+          1257,
+          27649
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          3,
+          838,
+          1315,
+          27549
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          16,
+          867,
+          1293,
+          27538
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          6,
+          70,
+          1003,
+          1902,
+          26300
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          6,
+          109,
+          1007,
+          1833,
+          26389
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          50,
+          978,
+          1765,
+          26546
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          3,
+          35,
+          954,
+          1789,
+          26542
+        ]
+      ],
+      "failures": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          69,
+          110,
+          1838
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          58,
+          101,
+          1947
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          49,
+          110,
+          2127
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          77,
+          122,
+          2050
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          6,
+          169,
+          238,
+          3161
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          16,
+          186,
+          228,
+          2964
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          2,
+          154,
+          195,
+          2947
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          4,
+          141,
+          197,
+          2983
+        ]
+      ],
+      "timeouts": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ]
+      ]
+    },
+    "terminal_summary": {
+      "arrivals": 236231.0,
+      "parkings": 236167.0,
+      "stable_parks": 0.0,
+      "arrived_then_failed": 80.0,
+      "arrived_then_timeout": 236151.0,
+      "timeout_episodes": 236155.0,
+      "timeout_progress_s_sum": 1330936.5,
+      "timeout_planar_speed_sum": 14519.1357421875,
+      "timeout_contact_count_sum": 471059.0,
+      "timeout_full_support_count": 228684.0,
+      "maximum_stand_seconds_sum": 17350.734375
+    },
+    "support_transition_events": {
+      "events": 2374018,
+      "labels": 13597895,
+      "replay_size": 65536,
+      "incomplete_handoffs": 18402,
+      "observed_terminal_frame_labels": 6840,
+      "label_generator": "native physics before reset; actor input unchanged"
+    },
+    "losses": {
+      "action_mean_bounds": 0.0011756650696042926,
+      "value": 0.01091720862314105,
+      "surrogate": -0.0014700162149893004,
+      "entropy": 3.5124270915985107,
+      "action_raw_mlp_mean_abs_max": 10.446139335632324,
+      "action_bounded_mean_abs_max": 10.028389930725098,
+      "action_mean_tail_fraction": 0.07771957222072558,
+      "gait_retention_loss": 0.0013250925578176976,
+      "gait_retention_mask_fraction": 0.2253824882209301,
+      "gait_retention_max_mean_delta": 3.931549072265625,
+      "transition_delta_rms_rad": 0.004140832391567528,
+      "transition_delta_max_rad": 0.06736611872911454,
+      "transition_active_fraction": 0.1272379606962204,
+      "transition_residual_penalty": 2.9868349793105152e-05,
+      "transition_bias_penalty": 0.00016989769792417065,
+      "transition_bias_normalized_rms": 0.09216060452163219,
+      "transition_region_ce": 1.0164990663528441,
+      "transition_handoff_huber": 0.01612167404964566,
+      "transition_region_cell_accuracy": 0.6359222501516342,
+      "transition_time_mae_s": 0.04333441685885191,
+      "transition_visible_label_fraction": 0.9990234375,
+      "transition_label_count": 13597895.0
+    },
+    "mean_episode_reward": 38.96476011276245,
+    "collection_time_s": 2.6096930503845215,
+    "learning_time_s": 0.3616063594818115,
+    "last_checkpoint": "/home/ljc/legged_lab_v3/logs/rsl_rl/g1_beamdojo_fullbody_sim6/2026-10-16_17-53-50-777359_support_transition15700_corrective1000/model_16700.pt",
+    "frozen14700_base_verified": true
+  },
+  "paired_results": {
+    "14700": {
+      "saved": {
+        "14700": {
+          "cases": 64,
+          "arrivals": 64,
+          "stable_parks": 64,
+          "failed": 0,
+          "整段过桩平均绝对偏航（°）": 2.144801512360573,
+          "终止时绝对偏航（°）": 1.3330022650188766,
+          "身体晃动（°）": 1.5733660403639078,
+          "左臂与右脚步频范围相关性": 0.68530182428808,
+          "右臂与左脚步频范围相关性": 0.2395705858970842,
+          "同一只脚两次落地前进距离（m）": 0.4898500322213666,
+          "左右相邻触地间隔（s）": 0.3426854573490522,
+          "膝关节幅度（°）": 46.544146955013275,
+          "手臂关节速度RMS（rad/s）": 0.6854913849383593,
+          "左右交替触地比例": 1.0,
+          "双脚腾空帧占比": 0.0
+        },
+        "corrected16700": {
+          "cases": 64,
+          "arrivals": 64,
+          "stable_parks": 64,
+          "failed": 0,
+          "整段过桩平均绝对偏航（°）": 1.624216646887362,
+          "终止时绝对偏航（°）": 1.1140346835309174,
+          "身体晃动（°）": 1.6619902476668358,
+          "左臂与右脚步频范围相关性": 0.6250260927612096,
+          "右臂与左脚步频范围相关性": 0.29292724659696634,
+          "同一只脚两次落地前进距离（m）": 0.4904086196777685,
+          "左右相邻触地间隔（s）": 0.3550524983052873,
+          "膝关节幅度（°）": 45.80727744102478,
+          "手臂关节速度RMS（rad/s）": 0.649444286711514,
+          "左右交替触地比例": 1.0,
+          "双脚腾空帧占比": 0.0
+        }
+      },
+      "fresh": {
+        "14700": {
+          "cases": 128,
+          "arrivals": 128,
+          "stable_parks": 128,
+          "failed": 0,
+          "整段过桩平均绝对偏航（°）": 2.185396869201213,
+          "终止时绝对偏航（°）": 1.3925200308149215,
+          "身体晃动（°）": 1.593307876959443,
+          "左臂与右脚步频范围相关性": 0.6870774472712506,
+          "右臂与左脚步频范围相关性": 0.22865369643451444,
+          "同一只脚两次落地前进距离（m）": 0.489540859181929,
+          "左右相邻触地间隔（s）": 0.342470947137101,
+          "膝关节幅度（°）": 46.553565204143524,
+          "手臂关节速度RMS（rad/s）": 0.6843649498187006,
+          "左右交替触地比例": 1.0,
+          "双脚腾空帧占比": 0.0
+        },
+        "corrected16700": {
+          "cases": 128,
+          "arrivals": 128,
+          "stable_parks": 128,
+          "failed": 0,
+          "整段过桩平均绝对偏航（°）": 1.73667595628649,
+          "终止时绝对偏航（°）": 1.1395169528768747,
+          "身体晃动（°）": 1.6865096436813474,
+          "左臂与右脚步频范围相关性": 0.6361588174409597,
+          "右臂与左脚步频范围相关性": 0.2794071427673978,
+          "同一只脚两次落地前进距离（m）": 0.48989413892268663,
+          "左右相邻触地间隔（s）": 0.35512301220997106,
+          "膝关节幅度（°）": 45.71743646264076,
+          "手臂关节速度RMS（rad/s）": 0.6482678204774857,
+          "左右交替触地比例": 1.0,
+          "双脚腾空帧占比": 0.0
+        }
+      }
+    },
+    "candidate15700": {
+      "saved": {
+        "candidate15700": {
+          "cases": 64,
+          "arrivals": 64,
+          "stable_parks": 64,
+          "failed": 0,
+          "整段过桩平均绝对偏航（°）": 2.5073410775512457,
+          "终止时绝对偏航（°）": 1.8514755315263756,
+          "身体晃动（°）": 1.3476122412830591,
+          "左臂与右脚步频范围相关性": 0.4315634995315848,
+          "右臂与左脚步频范围相关性": 0.2819129317989879,
+          "同一只脚两次落地前进距离（m）": 0.48959944645447134,
+          "左右相邻触地间隔（s）": 0.33945170684703846,
+          "膝关节幅度（°）": 45.94944393634796,
+          "手臂关节速度RMS（rad/s）": 0.6201838422566652,
+          "左右交替触地比例": 1.0,
+          "双脚腾空帧占比": 0.0
+        },
+        "corrected16700": {
+          "cases": 64,
+          "arrivals": 64,
+          "stable_parks": 64,
+          "failed": 0,
+          "整段过桩平均绝对偏航（°）": 1.620384668931365,
+          "终止时绝对偏航（°）": 1.0402272929786704,
+          "身体晃动（°）": 1.6630606837570667,
+          "左臂与右脚步频范围相关性": 0.6246860284722244,
+          "右臂与左脚步频范围相关性": 0.2833242177869555,
+          "同一只脚两次落地前进距离（m）": 0.49024462296641036,
+          "左右相邻触地间隔（s）": 0.3550172147396069,
+          "膝关节幅度（°）": 45.619618237018585,
+          "手臂关节速度RMS（rad/s）": 0.6483755419030786,
+          "左右交替触地比例": 1.0,
+          "双脚腾空帧占比": 0.0
+        }
+      },
+      "fresh": {
+        "candidate15700": {
+          "cases": 128,
+          "arrivals": 128,
+          "stable_parks": 128,
+          "failed": 0,
+          "整段过桩平均绝对偏航（°）": 2.6518922224640846,
+          "终止时绝对偏航（°）": 1.7777696629345883,
+          "身体晃动（°）": 1.360783215612173,
+          "左臂与右脚步频范围相关性": 0.42902257371576835,
+          "右臂与左脚步频范围相关性": 0.27691699770918254,
+          "同一只脚两次落地前进距离（m）": 0.48954062857362474,
+          "左右相邻触地间隔（s）": 0.3405368526013194,
+          "膝关节幅度（°）": 45.92149540781975,
+          "手臂关节速度RMS（rad/s）": 0.6150448783300817,
+          "左右交替触地比例": 1.0,
+          "双脚腾空帧占比": 0.0
+        },
+        "corrected16700": {
+          "cases": 128,
+          "arrivals": 128,
+          "stable_parks": 128,
+          "failed": 0,
+          "整段过桩平均绝对偏航（°）": 1.718234906438738,
+          "终止时绝对偏航（°）": 1.2130553026800044,
+          "身体晃动（°）": 1.6769271092489362,
+          "左臂与右脚步频范围相关性": 0.633732600519318,
+          "右臂与左脚步频范围相关性": 0.28647220923827843,
+          "同一只脚两次落地前进距离（m）": 0.49016089760582426,
+          "左右相邻触地间隔（s）": 0.3550794350172204,
+          "膝关节幅度（°）": 45.65805250406265,
+          "手臂关节速度RMS（rad/s）": 0.6485976516269147,
+          "左右交替触地比例": 1.0,
+          "双脚腾空帧占比": 0.0
+        }
+      }
+    }
+  },
+  "overall_results": {
+    "checkpoint": "/home/ljc/legged_lab_v3/logs/rsl_rl/g1_beamdojo_fullbody_sim6/2026-10-16_17-53-50-777359_support_transition15700_corrective1000/model_16700.pt",
+    "checkpoint_sha256": "b0ee6a9bf3c501d0e231f20a1dab308b10e1010eedc55a891c0b3248bde1b9a0",
+    "comparisons": {
+      "14700": {
+        "scopes": {
+          "saved": {
+            "geometry_seed": 42,
+            "support_raster_sha256": "3916e150389940eb3672c7323ad68b81931dc0623cfb556067a316cb7cc73ff5",
+            "models": {
+              "14700": {
+                "counts": {
+                  "cases": 64,
+                  "arrivals": 64,
+                  "stable_parks": 64,
+                  "failed": 0
+                },
+                "metrics": {
+                  "torso_sway_deg": {
+                    "sum": 100.6954265832901,
+                    "observed_cases": 64
+                  },
+                  "left_arm_right_foot_stride_corr": {
+                    "sum": 43.85931675443711,
+                    "observed_cases": 64
+                  },
+                  "right_arm_left_foot_stride_corr": {
+                    "sum": 15.33251749741339,
+                    "observed_cases": 64
+                  },
+                  "arm_speed_rms_rads": {
+                    "sum": 43.87144863605499,
+                    "observed_cases": 64
+                  },
+                  "flight_fraction": {
+                    "sum": 0.0,
+                    "observed_cases": 64
+                  },
+                  "yaw_momentum_ratio_total_to_nonarm": {
+                    "sum": 47.76213511573247,
+                    "observed_cases": 64
+                  },
+                  "crossing_heading_abs_deg": {
+                    "sum": 137.26729679107666,
+                    "observed_cases": 64
+                  },
+                  "final_heading_abs_deg": {
+                    "sum": 85.3121449612081,
+                    "observed_cases": 64
+                  },
+                  "crossing_lateral_abs_m": {
+                    "sum": 2.0848401384428144,
+                    "observed_cases": 64
+                  },
+                  "same_foot_stride_forward_m": {
+                    "sum": 31.35040206216746,
+                    "observed_cases": 64
+                  },
+                  "touchdown_interval_s": {
+                    "sum": 21.93186927033934,
+                    "observed_cases": 64
+                  },
+                  "knee_excursion_deg": {
+                    "sum": 2978.8254051208496,
+                    "observed_cases": 64
+                  },
+                  "alternation_fraction": {
+                    "sum": 64.0,
+                    "observed_cases": 64
+                  }
+                }
+              },
+              "corrected16700": {
+                "counts": {
+                  "cases": 64,
+                  "arrivals": 64,
+                  "stable_parks": 64,
+                  "failed": 0
+                },
+                "metrics": {
+                  "torso_sway_deg": {
+                    "sum": 106.36737585067749,
+                    "observed_cases": 64
+                  },
+                  "left_arm_right_foot_stride_corr": {
+                    "sum": 40.00166993671741,
+                    "observed_cases": 64
+                  },
+                  "right_arm_left_foot_stride_corr": {
+                    "sum": 18.747343782205846,
+                    "observed_cases": 64
+                  },
+                  "arm_speed_rms_rads": {
+                    "sum": 41.564434349536896,
+                    "observed_cases": 64
+                  },
+                  "flight_fraction": {
+                    "sum": 0.0,
+                    "observed_cases": 64
+                  },
+                  "yaw_momentum_ratio_total_to_nonarm": {
+                    "sum": 48.353468926638115,
+                    "observed_cases": 64
+                  },
+                  "crossing_heading_abs_deg": {
+                    "sum": 103.94986540079117,
+                    "observed_cases": 64
+                  },
+                  "final_heading_abs_deg": {
+                    "sum": 71.29821974597871,
+                    "observed_cases": 64
+                  },
+                  "crossing_lateral_abs_m": {
+                    "sum": 1.948682777583599,
+                    "observed_cases": 64
+                  },
+                  "same_foot_stride_forward_m": {
+                    "sum": 31.386151659377184,
+                    "observed_cases": 64
+                  },
+                  "touchdown_interval_s": {
+                    "sum": 22.72335989153839,
+                    "observed_cases": 64
+                  },
+                  "knee_excursion_deg": {
+                    "sum": 2931.665756225586,
+                    "observed_cases": 64
+                  },
+                  "alternation_fraction": {
+                    "sum": 64.0,
+                    "observed_cases": 64
+                  }
+                }
+              }
+            }
+          },
+          "fresh": {
+            "geometry_seed": 20261016,
+            "support_raster_sha256": "ac4a508387f0b6439318a56d76f7595720fbb23fb4459ec32d44225aaa4c222c",
+            "models": {
+              "14700": {
+                "counts": {
+                  "cases": 128,
+                  "arrivals": 128,
+                  "stable_parks": 128,
+                  "failed": 0
+                },
+                "metrics": {
+                  "torso_sway_deg": {
+                    "sum": 203.94340825080872,
+                    "observed_cases": 128
+                  },
+                  "left_arm_right_foot_stride_corr": {
+                    "sum": 87.94591325072008,
+                    "observed_cases": 128
+                  },
+                  "right_arm_left_foot_stride_corr": {
+                    "sum": 29.267673143617845,
+                    "observed_cases": 128
+                  },
+                  "arm_speed_rms_rads": {
+                    "sum": 87.59871357679367,
+                    "observed_cases": 128
+                  },
+                  "flight_fraction": {
+                    "sum": 0.0,
+                    "observed_cases": 128
+                  },
+                  "yaw_momentum_ratio_total_to_nonarm": {
+                    "sum": 95.67510114551418,
+                    "observed_cases": 128
+                  },
+                  "crossing_heading_abs_deg": {
+                    "sum": 279.7307992577553,
+                    "observed_cases": 128
+                  },
+                  "final_heading_abs_deg": {
+                    "sum": 178.24256394430995,
+                    "observed_cases": 128
+                  },
+                  "crossing_lateral_abs_m": {
+                    "sum": 4.081018123775721,
+                    "observed_cases": 128
+                  },
+                  "same_foot_stride_forward_m": {
+                    "sum": 62.661229975286915,
+                    "observed_cases": 128
+                  },
+                  "touchdown_interval_s": {
+                    "sum": 43.83628123354893,
+                    "observed_cases": 128
+                  },
+                  "knee_excursion_deg": {
+                    "sum": 5958.856346130371,
+                    "observed_cases": 128
+                  },
+                  "alternation_fraction": {
+                    "sum": 128.0,
+                    "observed_cases": 128
+                  }
+                }
+              },
+              "corrected16700": {
+                "counts": {
+                  "cases": 128,
+                  "arrivals": 128,
+                  "stable_parks": 128,
+                  "failed": 0
+                },
+                "metrics": {
+                  "torso_sway_deg": {
+                    "sum": 215.87323439121246,
+                    "observed_cases": 128
+                  },
+                  "left_arm_right_foot_stride_corr": {
+                    "sum": 81.42832863244284,
+                    "observed_cases": 128
+                  },
+                  "right_arm_left_foot_stride_corr": {
+                    "sum": 35.76411427422693,
+                    "observed_cases": 128
+                  },
+                  "arm_speed_rms_rads": {
+                    "sum": 82.97828102111816,
+                    "observed_cases": 128
+                  },
+                  "flight_fraction": {
+                    "sum": 0.0,
+                    "observed_cases": 128
+                  },
+                  "yaw_momentum_ratio_total_to_nonarm": {
+                    "sum": 96.70181529339959,
+                    "observed_cases": 128
+                  },
+                  "crossing_heading_abs_deg": {
+                    "sum": 222.29452240467072,
+                    "observed_cases": 128
+                  },
+                  "final_heading_abs_deg": {
+                    "sum": 145.85816996823996,
+                    "observed_cases": 128
+                  },
+                  "crossing_lateral_abs_m": {
+                    "sum": 3.7857448756694794,
+                    "observed_cases": 128
+                  },
+                  "same_foot_stride_forward_m": {
+                    "sum": 62.706449782103896,
+                    "observed_cases": 128
+                  },
+                  "touchdown_interval_s": {
+                    "sum": 45.4557455628763,
+                    "observed_cases": 128
+                  },
+                  "knee_excursion_deg": {
+                    "sum": 5851.831867218018,
+                    "observed_cases": 128
+                  },
+                  "alternation_fraction": {
+                    "sum": 128.0,
+                    "observed_cases": 128
+                  }
+                }
+              }
+            }
+          }
+        },
+        "aggregate": {
+          "14700": {
+            "counts": {
+              "cases": 192,
+              "arrivals": 192,
+              "stable_parks": 192,
+              "failed": 0
+            },
+            "metrics": {
+              "torso_sway_deg": {
+                "mean": 1.5866605980942647,
+                "observed_cases": 192
+              },
+              "left_arm_right_foot_stride_corr": {
+                "mean": 0.6864855729435271,
+                "observed_cases": 192
+              },
+              "right_arm_left_foot_stride_corr": {
+                "mean": 0.23229265958870435,
+                "observed_cases": 192
+              },
+              "arm_speed_rms_rads": {
+                "mean": 0.6847404281919202,
+                "observed_cases": 192
+              },
+              "flight_fraction": {
+                "mean": 0.0,
+                "observed_cases": 192
+              },
+              "yaw_momentum_ratio_total_to_nonarm": {
+                "mean": 0.7470689388606596,
+                "observed_cases": 192
+              },
+              "crossing_heading_abs_deg": {
+                "mean": 2.1718650835876665,
+                "observed_cases": 192
+              },
+              "final_heading_abs_deg": {
+                "mean": 1.3726807755495731,
+                "observed_cases": 192
+              },
+              "crossing_lateral_abs_m": {
+                "mean": 0.03211384511572154,
+                "observed_cases": 192
+              },
+              "same_foot_stride_forward_m": {
+                "mean": 0.4896439168617415,
+                "observed_cases": 192
+              },
+              "touchdown_interval_s": {
+                "mean": 0.3425424505410848,
+                "observed_cases": 192
+              },
+              "knee_excursion_deg": {
+                "mean": 46.55042578776678,
+                "observed_cases": 192
+              },
+              "alternation_fraction": {
+                "mean": 1.0,
+                "observed_cases": 192
+              }
+            }
+          },
+          "corrected16700": {
+            "counts": {
+              "cases": 192,
+              "arrivals": 192,
+              "stable_parks": 192,
+              "failed": 0
+            },
+            "metrics": {
+              "torso_sway_deg": {
+                "mean": 1.67833651167651,
+                "observed_cases": 192
+              },
+              "left_arm_right_foot_stride_corr": {
+                "mean": 0.6324479092143763,
+                "observed_cases": 192
+              },
+              "right_arm_left_foot_stride_corr": {
+                "mean": 0.28391384404392067,
+                "observed_cases": 192
+              },
+              "arm_speed_rms_rads": {
+                "mean": 0.6486599758888284,
+                "observed_cases": 192
+              },
+              "flight_fraction": {
+                "mean": 0.0,
+                "observed_cases": 192
+              },
+              "yaw_momentum_ratio_total_to_nonarm": {
+                "mean": 0.7554962719793631,
+                "observed_cases": 192
+              },
+              "crossing_heading_abs_deg": {
+                "mean": 1.699189519820114,
+                "observed_cases": 192
+              },
+              "final_heading_abs_deg": {
+                "mean": 1.1310228630948889,
+                "observed_cases": 192
+              },
+              "crossing_lateral_abs_m": {
+                "mean": 0.02986681069402645,
+                "observed_cases": 192
+              },
+              "same_foot_stride_forward_m": {
+                "mean": 0.49006563250771396,
+                "observed_cases": 192
+              },
+              "touchdown_interval_s": {
+                "mean": 0.3550995075750765,
+                "observed_cases": 192
+              },
+              "knee_excursion_deg": {
+                "mean": 45.74738345543543,
+                "observed_cases": 192
+              },
+              "alternation_fraction": {
+                "mean": 1.0,
+                "observed_cases": 192
+              }
+            }
+          }
+        }
+      },
+      "candidate15700": {
+        "scopes": {
+          "saved": {
+            "geometry_seed": 42,
+            "support_raster_sha256": "3916e150389940eb3672c7323ad68b81931dc0623cfb556067a316cb7cc73ff5",
+            "models": {
+              "candidate15700": {
+                "counts": {
+                  "cases": 64,
+                  "arrivals": 64,
+                  "stable_parks": 64,
+                  "failed": 0
+                },
+                "metrics": {
+                  "torso_sway_deg": {
+                    "sum": 86.24718344211578,
+                    "observed_cases": 64
+                  },
+                  "left_arm_right_foot_stride_corr": {
+                    "sum": 27.620063970021427,
+                    "observed_cases": 64
+                  },
+                  "right_arm_left_foot_stride_corr": {
+                    "sum": 18.042427635135226,
+                    "observed_cases": 64
+                  },
+                  "arm_speed_rms_rads": {
+                    "sum": 39.691765904426575,
+                    "observed_cases": 64
+                  },
+                  "flight_fraction": {
+                    "sum": 0.0,
+                    "observed_cases": 64
+                  },
+                  "yaw_momentum_ratio_total_to_nonarm": {
+                    "sum": 53.746714767259526,
+                    "observed_cases": 64
+                  },
+                  "crossing_heading_abs_deg": {
+                    "sum": 160.46982896327972,
+                    "observed_cases": 64
+                  },
+                  "final_heading_abs_deg": {
+                    "sum": 118.49443401768804,
+                    "observed_cases": 64
+                  },
+                  "crossing_lateral_abs_m": {
+                    "sum": 1.852787934243679,
+                    "observed_cases": 64
+                  },
+                  "same_foot_stride_forward_m": {
+                    "sum": 31.334364573086166,
+                    "observed_cases": 64
+                  },
+                  "touchdown_interval_s": {
+                    "sum": 21.72490923821046,
+                    "observed_cases": 64
+                  },
+                  "knee_excursion_deg": {
+                    "sum": 2940.7644119262695,
+                    "observed_cases": 64
+                  },
+                  "alternation_fraction": {
+                    "sum": 64.0,
+                    "observed_cases": 64
+                  }
+                }
+              },
+              "corrected16700": {
+                "counts": {
+                  "cases": 64,
+                  "arrivals": 64,
+                  "stable_parks": 64,
+                  "failed": 0
+                },
+                "metrics": {
+                  "torso_sway_deg": {
+                    "sum": 106.43588376045227,
+                    "observed_cases": 64
+                  },
+                  "left_arm_right_foot_stride_corr": {
+                    "sum": 39.97990582222236,
+                    "observed_cases": 64
+                  },
+                  "right_arm_left_foot_stride_corr": {
+                    "sum": 18.13274993836515,
+                    "observed_cases": 64
+                  },
+                  "arm_speed_rms_rads": {
+                    "sum": 41.49603468179703,
+                    "observed_cases": 64
+                  },
+                  "flight_fraction": {
+                    "sum": 0.0,
+                    "observed_cases": 64
+                  },
+                  "yaw_momentum_ratio_total_to_nonarm": {
+                    "sum": 48.506137627869386,
+                    "observed_cases": 64
+                  },
+                  "crossing_heading_abs_deg": {
+                    "sum": 103.70461881160736,
+                    "observed_cases": 64
+                  },
+                  "final_heading_abs_deg": {
+                    "sum": 66.57454675063491,
+                    "observed_cases": 64
+                  },
+                  "crossing_lateral_abs_m": {
+                    "sum": 1.9344428731128573,
+                    "observed_cases": 64
+                  },
+                  "same_foot_stride_forward_m": {
+                    "sum": 31.375655869850263,
+                    "observed_cases": 64
+                  },
+                  "touchdown_interval_s": {
+                    "sum": 22.72110174333484,
+                    "observed_cases": 64
+                  },
+                  "knee_excursion_deg": {
+                    "sum": 2919.6555671691895,
+                    "observed_cases": 64
+                  },
+                  "alternation_fraction": {
+                    "sum": 64.0,
+                    "observed_cases": 64
+                  }
+                }
+              }
+            }
+          },
+          "fresh": {
+            "geometry_seed": 20261016,
+            "support_raster_sha256": "ac4a508387f0b6439318a56d76f7595720fbb23fb4459ec32d44225aaa4c222c",
+            "models": {
+              "candidate15700": {
+                "counts": {
+                  "cases": 128,
+                  "arrivals": 128,
+                  "stable_parks": 128,
+                  "failed": 0
+                },
+                "metrics": {
+                  "torso_sway_deg": {
+                    "sum": 174.18025159835815,
+                    "observed_cases": 128
+                  },
+                  "left_arm_right_foot_stride_corr": {
+                    "sum": 54.91488943561835,
+                    "observed_cases": 128
+                  },
+                  "right_arm_left_foot_stride_corr": {
+                    "sum": 35.445375706775366,
+                    "observed_cases": 128
+                  },
+                  "arm_speed_rms_rads": {
+                    "sum": 78.72574442625046,
+                    "observed_cases": 128
+                  },
+                  "flight_fraction": {
+                    "sum": 0.0,
+                    "observed_cases": 128
+                  },
+                  "yaw_momentum_ratio_total_to_nonarm": {
+                    "sum": 107.64488617409398,
+                    "observed_cases": 128
+                  },
+                  "crossing_heading_abs_deg": {
+                    "sum": 339.44220447540283,
+                    "observed_cases": 128
+                  },
+                  "final_heading_abs_deg": {
+                    "sum": 227.5545168556273,
+                    "observed_cases": 128
+                  },
+                  "crossing_lateral_abs_m": {
+                    "sum": 3.3630995489656925,
+                    "observed_cases": 128
+                  },
+                  "same_foot_stride_forward_m": {
+                    "sum": 62.661200457423966,
+                    "observed_cases": 128
+                  },
+                  "touchdown_interval_s": {
+                    "sum": 43.588717132968874,
+                    "observed_cases": 128
+                  },
+                  "knee_excursion_deg": {
+                    "sum": 5877.951412200928,
+                    "observed_cases": 128
+                  },
+                  "alternation_fraction": {
+                    "sum": 128.0,
+                    "observed_cases": 128
+                  }
+                }
+              },
+              "corrected16700": {
+                "counts": {
+                  "cases": 128,
+                  "arrivals": 128,
+                  "stable_parks": 128,
+                  "failed": 0
+                },
+                "metrics": {
+                  "torso_sway_deg": {
+                    "sum": 214.64666998386383,
+                    "observed_cases": 128
+                  },
+                  "left_arm_right_foot_stride_corr": {
+                    "sum": 81.1177728664727,
+                    "observed_cases": 128
+                  },
+                  "right_arm_left_foot_stride_corr": {
+                    "sum": 36.668442782499646,
+                    "observed_cases": 128
+                  },
+                  "arm_speed_rms_rads": {
+                    "sum": 83.02049940824509,
+                    "observed_cases": 128
+                  },
+                  "flight_fraction": {
+                    "sum": 0.0,
+                    "observed_cases": 128
+                  },
+                  "yaw_momentum_ratio_total_to_nonarm": {
+                    "sum": 96.77651461777921,
+                    "observed_cases": 128
+                  },
+                  "crossing_heading_abs_deg": {
+                    "sum": 219.93406802415848,
+                    "observed_cases": 128
+                  },
+                  "final_heading_abs_deg": {
+                    "sum": 155.27107874304056,
+                    "observed_cases": 128
+                  },
+                  "crossing_lateral_abs_m": {
+                    "sum": 3.7230269024148583,
+                    "observed_cases": 128
+                  },
+                  "same_foot_stride_forward_m": {
+                    "sum": 62.740594893545506,
+                    "observed_cases": 128
+                  },
+                  "touchdown_interval_s": {
+                    "sum": 45.45016768220421,
+                    "observed_cases": 128
+                  },
+                  "knee_excursion_deg": {
+                    "sum": 5844.2307205200195,
+                    "observed_cases": 128
+                  },
+                  "alternation_fraction": {
+                    "sum": 128.0,
+                    "observed_cases": 128
+                  }
+                }
+              }
+            }
+          }
+        },
+        "aggregate": {
+          "candidate15700": {
+            "counts": {
+              "cases": 192,
+              "arrivals": 192,
+              "stable_parks": 192,
+              "failed": 0
+            },
+            "metrics": {
+              "torso_sway_deg": {
+                "mean": 1.3563928908358018,
+                "observed_cases": 192
+              },
+              "left_arm_right_foot_stride_corr": {
+                "mean": 0.4298695489877072,
+                "observed_cases": 192
+              },
+              "right_arm_left_foot_stride_corr": {
+                "mean": 0.278582309072451,
+                "observed_cases": 192
+              },
+              "arm_speed_rms_rads": {
+                "mean": 0.6167578663056096,
+                "observed_cases": 192
+              },
+              "flight_fraction": {
+                "mean": 0.0,
+                "observed_cases": 192
+              },
+              "yaw_momentum_ratio_total_to_nonarm": {
+                "mean": 0.8405812549028829,
+                "observed_cases": 192
+              },
+              "crossing_heading_abs_deg": {
+                "mean": 2.6037085074931383,
+                "observed_cases": 192
+              },
+              "final_heading_abs_deg": {
+                "mean": 1.8023382857985173,
+                "observed_cases": 192
+              },
+              "crossing_lateral_abs_m": {
+                "mean": 0.027166080641715478,
+                "observed_cases": 192
+              },
+              "same_foot_stride_forward_m": {
+                "mean": 0.48956023453390696,
+                "observed_cases": 192
+              },
+              "touchdown_interval_s": {
+                "mean": 0.3401751373498924,
+                "observed_cases": 192
+              },
+              "knee_excursion_deg": {
+                "mean": 45.93081158399582,
+                "observed_cases": 192
+              },
+              "alternation_fraction": {
+                "mean": 1.0,
+                "observed_cases": 192
+              }
+            }
+          },
+          "corrected16700": {
+            "counts": {
+              "cases": 192,
+              "arrivals": 192,
+              "stable_parks": 192,
+              "failed": 0
+            },
+            "metrics": {
+              "torso_sway_deg": {
+                "mean": 1.672304967418313,
+                "observed_cases": 192
+              },
+              "left_arm_right_foot_stride_corr": {
+                "mean": 0.6307170765036201,
+                "observed_cases": 192
+              },
+              "right_arm_left_foot_stride_corr": {
+                "mean": 0.2854228787545042,
+                "observed_cases": 192
+              },
+              "arm_speed_rms_rads": {
+                "mean": 0.6485236150523027,
+                "observed_cases": 192
+              },
+              "flight_fraction": {
+                "mean": 0.0,
+                "observed_cases": 192
+              },
+              "yaw_momentum_ratio_total_to_nonarm": {
+                "mean": 0.7566804804460864,
+                "observed_cases": 192
+              },
+              "crossing_heading_abs_deg": {
+                "mean": 1.685618160602947,
+                "observed_cases": 192
+              },
+              "final_heading_abs_deg": {
+                "mean": 1.155445966112893,
+                "observed_cases": 192
+              },
+              "crossing_lateral_abs_m": {
+                "mean": 0.02946598841420685,
+                "observed_cases": 192
+              },
+              "same_foot_stride_forward_m": {
+                "mean": 0.49018880605935294,
+                "observed_cases": 192
+              },
+              "touchdown_interval_s": {
+                "mean": 0.35505869492468256,
+                "observed_cases": 192
+              },
+              "knee_excursion_deg": {
+                "mean": 45.64524108171463,
+                "observed_cases": 192
+              },
+              "alternation_fraction": {
+                "mean": 1.0,
+                "observed_cases": 192
+              }
+            }
+          }
+        }
+      }
+    },
+    "scope": "Each comparison has64saved+128fresh stone cases; fresh terrain generator seed20261016. Same candidate rerun for each reference, not384independent maps. Missing metrics excluded with explicit observed-case counts; failure counts retain every episode."
+  }
+}

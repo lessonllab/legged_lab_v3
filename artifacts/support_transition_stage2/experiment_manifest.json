@@ -1,0 +1,95 @@
+{
+  "stage": 2,
+  "starting_iteration": 15700,
+  "ending_iteration": 16700,
+  "updates": 1000,
+  "num_envs": 4096,
+  "flat_fraction": 0.5,
+  "modifications": [
+    "Residual on12leg+3waist joints; original14700 dynamic arm actions protected; yaw authority retained",
+    "Detach prediction/encoder outputs from PPO; supervised predictor training retained",
+    "Additional soft0.02 normalized correction batch-mean penalty; no fixed posture or arm-trajectory target"
+  ],
+  "reward_changes": [],
+  "normal_gait_protection": "frozen14700MLP/normalizer; unchanged11700soft retention with clean teacher; flat rehearsal; bounded leg residual",
+  "risks": [
+    "Leg corrections can still indirectly change arm coordination through closed-loop state.",
+    "Frozen leg_pitch_roll-only intervention worsened yaw2.51deg to5.12deg despite improved coordination; rejected before training.",
+    "Three engineering changes bundled; this is not isolated causal proof."
+  ],
+  "tests": "11 CPU/native-PPO tests passed, including collector inference-probe reset; first startup failure had0 optimizer updates.",
+  "phase": "complete",
+  "source_checkpoint": "/home/ljc/legged_lab_v3/logs/rsl_rl/g1_beamdojo_fullbody_sim6/2026-10-16_14-20-57-510728_support_transition14700_candidate1000/model_15700.pt",
+  "evaluation": "Same saved-map and heldout1729 paired cases as stage1;14700 and15700 controls; visual keyframes and replay",
+  "created_at": "2026-10-16T17:44:31.118776+08:00",
+  "fresh_geometry_seed": 20261016,
+  "fresh_seed_scope": "Not used in pretraining diagnosis or prior stage1; same terrain generator family, not arbitrary terrain.",
+  "startup_incident": {
+    "optimizer_updates": 0,
+    "cause": "Collector rebound normal state buffers to inference tensors; explicit reset outside inference context failed.",
+    "fix": "Preserve initially allocated state buffers with copy_; covered by regression test.",
+    "archive": "startup_attempt1/"
+  },
+  "training_completed": {
+    "checkpoint": "/home/ljc/legged_lab_v3/logs/rsl_rl/g1_beamdojo_fullbody_sim6/2026-10-16_17-53-50-777359_support_transition15700_corrective1000/model_16700.pt",
+    "sha256": "b0ee6a9bf3c501d0e231f20a1dab308b10e1010eedc55a891c0b3248bde1b9a0",
+    "updates": 1000,
+    "iteration": 16700,
+    "frozen14700_base_verified": true,
+    "run_dir": "/home/ljc/legged_lab_v3/logs/rsl_rl/g1_beamdojo_fullbody_sim6/2026-10-16_17-53-50-777359_support_transition15700_corrective1000"
+  },
+  "declared_comparison": "Stage2 compares16700 with original14700 and previous15700. No additional ordinary-control training in this stage; inherited version1 declaration comparison refers to stage1.",
+  "updated_at": "2026-10-16T18:48:46.385411+08:00",
+  "repeat_calibration": {
+    "policy_updates": 0,
+    "same_checkpoint": true,
+    "scope": "One repeat pair of the same14700, saved64stone cases plus32flat; quantify observed reset/internal/numerical variability, not statistical confidence bounds.",
+    "metrics": {
+      "crossing_heading_abs_deg": {
+        "cases": 64,
+        "mean_first": 2.144801512360573,
+        "mean_repeat": 2.2289025224745274,
+        "mean_repeat_minus_first": 0.08410101011395454,
+        "mean_abs_case_difference": 0.3255671411752701,
+        "p95_abs_case_difference": 0.8574329495429988
+      },
+      "torso_sway_deg": {
+        "cases": 64,
+        "mean_first": 1.5733660403639078,
+        "mean_repeat": 1.5894174370914698,
+        "mean_repeat_minus_first": 0.01605139672756195,
+        "mean_abs_case_difference": 0.06425192207098007,
+        "p95_abs_case_difference": 0.18495167493820178
+      },
+      "left_arm_right_foot_stride_corr": {
+        "cases": 64,
+        "mean_first": 0.68530182428808,
+        "mean_repeat": 0.6811340388293391,
+        "mean_repeat_minus_first": -0.0041677854587407435,
+        "mean_abs_case_difference": 0.041503040241718005,
+        "p95_abs_case_difference": 0.11652027912840077
+      },
+      "right_arm_left_foot_stride_corr": {
+        "cases": 64,
+        "mean_first": 0.2395705858970842,
+        "mean_repeat": 0.24275139902711243,
+        "mean_repeat_minus_first": 0.003180813130028227,
+        "mean_abs_case_difference": 0.032233640736247446,
+        "p95_abs_case_difference": 0.08284163489343685
+      }
+    }
+  },
+  "numerical_result_summary": "Both references and corrected candidate passed192/192stone cases. Candidate yaw reduced versus14700 and15700; left coordination recovered versus15700, right nearly unchanged; sway increased, stride retained and cadence slightly slower. Numerical observations pending repeat-calibration interpretation.",
+  "conclusion_zh": "1000轮修正完成。192次过桩与停车全部通过，原模型和第一阶段也全部通过。相对14700平均偏航约2.17°降至1.70°，相对15700约2.60°降至1.69°；左侧臂腿协调从0.43恢复至0.63，右侧基本不变。步幅维持约49cm，步时稍慢，回放未见明显僵硬；身体晃动比14700约增加6%，仍需改进。保留14700为主基线，16700作偏航较好的实验候选，尚非全面胜出或论文方法的因果证明。",
+  "completed_at": "2026-10-16T19:17:44.548208+08:00",
+  "live_play": {
+    "verified": true,
+    "pid": 1934658,
+    "url": "http://127.0.0.1:8095/",
+    "parkings": 4,
+    "arrivals": 4,
+    "failures": 0,
+    "default_mode": "course auto stop; manual controls available",
+    "scope": "Repeated fixed L10V7 scene operational check, not extra independent generalization samples."
+  }
+}

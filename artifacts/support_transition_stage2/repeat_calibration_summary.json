@@ -1,0 +1,39 @@
+{
+  "policy_updates": 0,
+  "same_checkpoint": true,
+  "scope": "One repeat pair of the same14700, saved64stone cases plus32flat; quantify observed reset/internal/numerical variability, not statistical confidence bounds.",
+  "metrics": {
+    "crossing_heading_abs_deg": {
+      "cases": 64,
+      "mean_first": 2.144801512360573,
+      "mean_repeat": 2.2289025224745274,
+      "mean_repeat_minus_first": 0.08410101011395454,
+      "mean_abs_case_difference": 0.3255671411752701,
+      "p95_abs_case_difference": 0.8574329495429988
+    },
+    "torso_sway_deg": {
+      "cases": 64,
+      "mean_first": 1.5733660403639078,
+      "mean_repeat": 1.5894174370914698,
+      "mean_repeat_minus_first": 0.01605139672756195,
+      "mean_abs_case_difference": 0.06425192207098007,
+      "p95_abs_case_difference": 0.18495167493820178
+    },
+    "left_arm_right_foot_stride_corr": {
+      "cases": 64,
+      "mean_first": 0.68530182428808,
+      "mean_repeat": 0.6811340388293391,
+      "mean_repeat_minus_first": -0.0041677854587407435,
+      "mean_abs_case_difference": 0.041503040241718005,
+      "p95_abs_case_difference": 0.11652027912840077
+    },
+    "right_arm_left_foot_stride_corr": {
+      "cases": 64,
+      "mean_first": 0.2395705858970842,
+      "mean_repeat": 0.24275139902711243,
+      "mean_repeat_minus_first": 0.003180813130028227,
+      "mean_abs_case_difference": 0.032233640736247446,
+      "p95_abs_case_difference": 0.08284163489343685
+    }
+  }
+}

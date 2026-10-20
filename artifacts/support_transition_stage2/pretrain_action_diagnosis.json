@@ -1,0 +1,157 @@
+{
+  "source": ".runtime/support_transition14700_stage1/14700_vs_candidate_holdout",
+  "window": "active stone pure0.75mps forward; root-route progress0.9..4m; time>.5s",
+  "samples": 27506,
+  "joint_residual_statistics": {
+    "left_hip_pitch_joint": {
+      "mean_deg": -0.8309621214866638,
+      "rms_deg": 1.0408376455307007,
+      "positive_fraction": 0.11782883734457937
+    },
+    "right_hip_pitch_joint": {
+      "mean_deg": 0.01722160540521145,
+      "rms_deg": 0.337319940328598,
+      "positive_fraction": 0.5121428052061369
+    },
+    "waist_yaw_joint": {
+      "mean_deg": 0.06925386190414429,
+      "rms_deg": 0.27173635363578796,
+      "positive_fraction": 0.5331200465353014
+    },
+    "left_hip_roll_joint": {
+      "mean_deg": -0.562755286693573,
+      "rms_deg": 0.870492696762085,
+      "positive_fraction": 0.22082454737148258
+    },
+    "right_hip_roll_joint": {
+      "mean_deg": 0.34380996227264404,
+      "rms_deg": 0.46895772218704224,
+      "positive_fraction": 0.8507961899221987
+    },
+    "waist_roll_joint": {
+      "mean_deg": -1.0675766468048096,
+      "rms_deg": 1.3941197395324707,
+      "positive_fraction": 0.17639787682687413
+    },
+    "left_hip_yaw_joint": {
+      "mean_deg": 0.2902508080005646,
+      "rms_deg": 0.44320589303970337,
+      "positive_fraction": 0.7718316003780993
+    },
+    "right_hip_yaw_joint": {
+      "mean_deg": 0.3646497428417206,
+      "rms_deg": 0.530533492565155,
+      "positive_fraction": 0.8087326401512397
+    },
+    "waist_pitch_joint": {
+      "mean_deg": 0.05450073629617691,
+      "rms_deg": 0.5934123992919922,
+      "positive_fraction": 0.5707845560968516
+    },
+    "left_knee_joint": {
+      "mean_deg": 0.5569458603858948,
+      "rms_deg": 0.9594811201095581,
+      "positive_fraction": 0.7465643859521559
+    },
+    "right_knee_joint": {
+      "mean_deg": -0.3114652931690216,
+      "rms_deg": 1.232711911201477,
+      "positive_fraction": 0.3820257398385807
+    },
+    "left_shoulder_pitch_joint": {
+      "mean_deg": -0.23224933445453644,
+      "rms_deg": 1.2742156982421875,
+      "positive_fraction": 0.43983130953246563
+    },
+    "right_shoulder_pitch_joint": {
+      "mean_deg": -1.0506303310394287,
+      "rms_deg": 1.145567536354065,
+      "positive_fraction": 0.0
+    },
+    "left_ankle_pitch_joint": {
+      "mean_deg": 0.7186784744262695,
+      "rms_deg": 1.539424180984497,
+      "positive_fraction": 0.6236457500181779
+    },
+    "right_ankle_pitch_joint": {
+      "mean_deg": 0.1979220062494278,
+      "rms_deg": 0.6674314141273499,
+      "positive_fraction": 0.6031411328437432
+    },
+    "left_shoulder_roll_joint": {
+      "mean_deg": 0.47676515579223633,
+      "rms_deg": 0.6439971327781677,
+      "positive_fraction": 0.8354904384497928
+    },
+    "right_shoulder_roll_joint": {
+      "mean_deg": -0.13057057559490204,
+      "rms_deg": 0.23944422602653503,
+      "positive_fraction": 0.2611793790445721
+    },
+    "left_ankle_roll_joint": {
+      "mean_deg": 0.8919983506202698,
+      "rms_deg": 1.2296136617660522,
+      "positive_fraction": 0.8447247873191304
+    },
+    "right_ankle_roll_joint": {
+      "mean_deg": -1.3367228507995605,
+      "rms_deg": 1.7462445497512817,
+      "positive_fraction": 0.1699992728859158
+    },
+    "left_shoulder_yaw_joint": {
+      "mean_deg": 0.3599541485309601,
+      "rms_deg": 0.7115359902381897,
+      "positive_fraction": 0.6544390314840398
+    },
+    "right_shoulder_yaw_joint": {
+      "mean_deg": -0.0752430409193039,
+      "rms_deg": 0.4624623656272888,
+      "positive_fraction": 0.47764124191085583
+    },
+    "left_elbow_joint": {
+      "mean_deg": -0.3645305633544922,
+      "rms_deg": 0.6998773813247681,
+      "positive_fraction": 0.3559223442158075
+    },
+    "right_elbow_joint": {
+      "mean_deg": 0.5176862478256226,
+      "rms_deg": 0.6456894874572754,
+      "positive_fraction": 0.8554133643568675
+    },
+    "left_wrist_roll_joint": {
+      "mean_deg": 0.8615220785140991,
+      "rms_deg": 1.0571585893630981,
+      "positive_fraction": 0.8585763106231368
+    },
+    "right_wrist_roll_joint": {
+      "mean_deg": 1.1462901830673218,
+      "rms_deg": 1.208127737045288,
+      "positive_fraction": 0.9973096778884607
+    },
+    "left_wrist_pitch_joint": {
+      "mean_deg": -0.36081525683403015,
+      "rms_deg": 0.7386354207992554,
+      "positive_fraction": 0.38206209554279064
+    },
+    "right_wrist_pitch_joint": {
+      "mean_deg": -0.18184340000152588,
+      "rms_deg": 0.48471367359161377,
+      "positive_fraction": 0.3860975787100996
+    },
+    "left_wrist_yaw_joint": {
+      "mean_deg": 0.12062875181436539,
+      "rms_deg": 0.34798672795295715,
+      "positive_fraction": 0.7099541918126954
+    },
+    "right_wrist_yaw_joint": {
+      "mean_deg": 0.8191460371017456,
+      "rms_deg": 0.8862321972846985,
+      "positive_fraction": 0.9900385370464626
+    }
+  },
+  "observations": [
+    "Residual has sustained directional offsets, including right shoulder pitch and waist roll; cap alone does not preserve gait phase.",
+    "V1 prediction encoder and prediction heads receive policy and supervised gradients; objective interference is plausible but not isolated as cause."
+  ],
+  "limitations": "Per-joint observational bias is not itself a causal decomposition. Frozen intervention evaluations are recorded separately."
+}

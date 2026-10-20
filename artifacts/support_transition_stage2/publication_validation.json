@@ -1,0 +1,13 @@
+{
+  "publication_date": "2026-10-20",
+  "tests": {
+    "portable_passed": 6,
+    "checkpoint_integration_passed": 11,
+    "total_passed": 17
+  },
+  "syntax": "all published Python sources parsed",
+  "evidence_sha256": "all40 archived evidence/media files verified",
+  "checkpoint_sha256": "14700,15700,16700 matched their recorded digests",
+  "documentation": "all local Markdown links in publication entrypoints verified",
+  "training_updates_during_publication": 0
+}

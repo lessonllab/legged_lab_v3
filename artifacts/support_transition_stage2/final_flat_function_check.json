@@ -1,0 +1,15 @@
+{
+  "source": "/home/ljc/legged_lab_v3/logs/rsl_rl/g1_beamdojo_fullbody_sim6/2026-10-13_17-21-44-385400_gait_preserve11700_3000_4096/model_14700.pt",
+  "candidate": "/home/ljc/legged_lab_v3/logs/rsl_rl/g1_beamdojo_fullbody_sim6/2026-10-16_17-53-50-777359_support_transition15700_corrective1000/model_16700.pt",
+  "flat_max_action_difference": 0.0,
+  "gate_count": 0,
+  "residual_max": 0.0,
+  "exact": true,
+  "native_saved_map_first0p5_to3s": {
+    "flat_frames": 4032,
+    "active_residual_frames": 0,
+    "max_residual_rad": 0.0
+  },
+  "native_flat_all_frames_gate_count": 97,
+  "limitation": "Forward flat-map boundary observations can contain a gap and activate the residual; exact source function is guaranteed only with gate off, not every flat location."
+}

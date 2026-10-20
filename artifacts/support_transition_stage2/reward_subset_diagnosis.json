@@ -1,0 +1,16 @@
+{
+  "scope": "Post-hoc reconstruction of three observable reward-rate components; equal episode weighting on old1729 development traces; excludes all other rewards, returns and advantages. This is a tradeoff illustration, not an identified causal explanation.",
+  "control_dt": 0.02,
+  "models": {
+    "14700": {
+      "orientation_rate": -0.006670537648460595,
+      "heading_rate": -0.0031871710389168584,
+      "yaw_rate": -0.013838938619301189
+    },
+    "candidate15700": {
+      "orientation_rate": -0.004819537378352834,
+      "heading_rate": -0.004405879759360687,
+      "yaw_rate": -0.014794958937272895
+    }
+  }
+}
