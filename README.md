@@ -35,17 +35,21 @@
 <a id="demo"></a>
 ## Demo
 
-最新支撑转换实验：[16700 轮结果与复现](docs/support_transition.md) · [原模型／修正版动作对照](https://lessonllab.github.io/legged_lab_v3/support_transition_stage2/) · [公开评估记录](artifacts/support_transition_stage2/README.md)。以下 MuJoCo 动力学演示使用历史模型，和本次 Isaac 轨迹对照分别标注。
+当前梅花桩视频仅保留 **16700 轮模型**：[模型与实验说明](docs/support_transition.md) · [在线播放](https://lessonllab.github.io/legged_lab_v3/) · [评估数据](artifacts/support_transition_stage2/README.md)。
 
-### MuJoCo 实际策略演示
+### 16700 轮梅花桩演示
 
-[**点击在线播放全部视频**](https://lessonllab.github.io/legged_lab_v3/)：打开页面后直接点击播放，无需下载。
+**正向路线：L10、组合泛化变体 7、前进指令 0.75 m/s。**
 
-**延长梅花桩：8999 轮模型，12 × 12 m 地图，2 m 宽外环，L10 正向、间距扰动 v2。**中央平台保持 1.4 × 1.4 m，正向桩路延长约 1 m。进入终点平台 1 m 后发零速指令，演示最终停在平台内约 1.25 m；绿色与红色点显示策略实际使用的理想高程采样。
+[![G1 16700 轮正向梅花桩](assets/demo/g1_isaac_stones_16700_cardinal.jpg)](https://lessonllab.github.io/legged_lab_v3/#stones)
 
-[![G1 MuJoCo 延长梅花桩演示](assets/demo/g1_mujoco_stones12_8999.png)](https://lessonllab.github.io/legged_lab_v3/#stones)
+**斜向路线：出生面向桩路，L10、组合泛化变体 7、前进指令 0.75 m/s。**
 
-[在线播放梅花桩](https://lessonllab.github.io/legged_lab_v3/#stones) · [原 8 m 地图固定案例评测](artifacts/sim2sim_mujoco_8999/results.json) · [运行与复现说明](docs/sim2sim_mujoco.md)
+[![G1 16700 轮斜向梅花桩](assets/demo/g1_isaac_stones_16700_diagonal.jpg)](https://lessonllab.github.io/legged_lab_v3/#stones-diagonal)
+
+视频为真实 Isaac Sim 6 物理轨迹的单模型重放，MuJoCo 仅渲染姿态，并非 MuJoCo 动力学复验。完整保留过桩、到达终点和停车。使用理想局部高程图，尚未验证真实雷达输入；单条演示不替代统计评测。[来源与校验值](assets/demo/manifest.json)
+
+### 独立视觉楼梯分支
 
 **20 cm 上台阶：62900 轮视觉模型，17 级、踏面 30 cm，总升高 3.4 m。**保留完整 30 秒和到顶停车；与梅花桩模型属于不同训练分支。
 
@@ -53,10 +57,7 @@
 
 [在线播放 20 cm 台阶](https://lessonllab.github.io/legged_lab_v3/#stairs20) · [历史 12 cm 台阶视频](https://lessonllab.github.io/legged_lab_v3/#stairs12) · [视频来源与校验值](assets/demo/manifest.json)
 
-运行梅花桩播放：`bash scripts/run_beamdojo_mujoco.sh --port 8091`。默认使用延长地图；页面可选难度 0–10、正向／斜向地图、出生方向与扰动，并切换高程采样和射线显示。修改后点击“应用设置并重新开始”。原 8 m 地图可加 `--map-size 8 --ring-width 1 --stop-depth .2`。需要自行准备检查点及其归档 `params/`，模型文件不随仓库发布。
-
-视频使用冻结策略控制原生 MuJoCo 动力学。单条演示不能替代统计评测；原 8 m 地图固定测试为 15/16 成功，该结果不适用于延长地图。高程点为理想地形查询，不是原始 MID-360 点云。
-
+16700 的 IsaacLab 交互播放与复现命令见[支撑转换说明](docs/support_transition.md#播放与成对评估)。需要自行准备检查点及其归档 `params/`，模型文件不随仓库发布。
 
 准备好本地检查点后启动交互演示：
 
@@ -78,7 +79,7 @@ bash scripts/play_stairs_control.sh /absolute/path/to/model.pt
 - **步态与代价：**同足步幅约 49 cm，保持交替触地且未出现腾空帧；身体晃动相对原 14700 约增加 6%，尚未全面改善稳定性。
 - **通过范围：**每组 64 个已有地图场景与 128 个新种子、同生成族场景，三种策略均 192/192 到达并停车。基线也全部通过，因此未证明通过率提升。只有一个训练种子，使用理想高程输入。
 
-[实验说明与命令](docs/support_transition.md) · [完整诊断](docs/analysis/support_transition_stage2_20261016.md) · [视频对照](https://lessonllab.github.io/legged_lab_v3/support_transition_stage2/)。本轮视频重放真实 Isaac 物理轨迹，MuJoCo 只负责渲染姿态，并非新的 MuJoCo 动力学验证。
+[实验说明与命令](docs/support_transition.md) · [完整诊断](docs/analysis/support_transition_stage2_20261016.md) · [16700 演示](https://lessonllab.github.io/legged_lab_v3/support_transition_stage2/)。本轮视频重放真实 Isaac 物理轨迹，MuJoCo 只负责渲染姿态，并非新的 MuJoCo 动力学验证。
 
 ### 历史 MuJoCo sim2sim 与楼梯分支
 
@@ -89,7 +90,7 @@ bash scripts/play_stairs_control.sh /absolute/path/to/model.pt
 - **高程可视化：**显示策略实际接收的 15×15 采样点，绿色为支撑面、红色为间隙，可切换射线。这是理想高程输入，尚未验证真实 MID-360 数据接入。
 - **20 cm 楼梯：**独立视觉模型 62900 完成 17 级、踏面 30 cm、总升高 3.4 m 的 30 秒 MuJoCo 演示，并在顶端停车。[轨迹记录](assets/demo/g1_mujoco_stairs20_62900.json)
 
-[历史演示](https://lessonllab.github.io/legged_lab_v3/) · [MuJoCo 运行与验证说明](docs/sim2sim_mujoco.md)。上述 sim2sim 结果仅适用于对应历史模型。
+[当前演示](https://lessonllab.github.io/legged_lab_v3/) · [MuJoCo 运行与验证说明](docs/sim2sim_mujoco.md)。上述 sim2sim 结果仅适用于对应历史模型。
 
 <a id="support-transition-experiment"></a>
 ## Support Transition Experiment
@@ -103,7 +104,8 @@ bash scripts/play_stairs_control.sh /absolute/path/to/model.pt
 <a id="news-updates"></a>
 ## News & Updates
 
-- **2026/10/20**：发布 16700 轮支撑转换修正、训练／评估代码、192 场景配对记录及动作对照视频；更新当前状态与复现命令。偏航下降、主要摆臂损失得到恢复，保留身体晃动约增加 6% 的局限和退步样本。[说明](docs/support_transition.md) · [视频](https://lessonllab.github.io/legged_lab_v3/support_transition_stage2/)
+- **2026/10/22**：梅花桩公开演示仅保留 16700 轮模型的正向和斜向视频，移除旧 8999 演示与包含 14700／15700 的对比视频，统一更新 README 和在线播放页；原始评估数据保留。[播放](https://lessonllab.github.io/legged_lab_v3/#stones)
+- **2026/10/20**：发布 16700 轮支撑转换修正、训练／评估代码、192 场景配对记录及动作对照视频；更新当前状态与复现命令。偏航下降、主要摆臂损失得到恢复，保留身体晃动约增加 6% 的局限和退步样本数据。[说明](docs/support_transition.md) · [视频](https://lessonllab.github.io/legged_lab_v3/support_transition_stage2/)
 - **2026/10/16**：完成 4096 环境、15700→16700 的 1000 轮续训及同模型重复校准；冻结 14700 基础网络并保留主基线。当前均为等高桩与理想高程输入，不代表真实传感器或实机验证。
 - **2026/10/11**：发布冻结 8999 模型的原生 MuJoCo 梅花桩 sim2sim；原 8 m 地图固定测试通过 15/16，保留失败案例及验证范围。
 - **2026/10/11**：播放地图扩展为 12×12 m，外环加宽到 2 m；终点改为进入平台 1 m 后发零速，新增实际高程采样与射线显示。

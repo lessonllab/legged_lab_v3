@@ -1,276 +1,66 @@
 {
-  "publication_date": "2026-10-20",
+  "publication_date": "2026-10-22",
   "experiment_date": "2026-10-16",
   "checkpoint_iteration": 16700,
-  "checkpoint_sha256": "b0ee6a9bf3c501d0e231f20a1dab308b10e1010eedc55a891c0b3248bde1b9a0",
   "weights_included": false,
   "optimizer_updates": 1000,
   "num_envs": 4096,
   "media": [
     {
-      "comparison": "14700_vs_corrected_saved",
-      "replay_group": "replays",
-      "case": {
-        "kind": "flat",
-        "mode": "forward_1.0",
-        "command": [
-          1.0,
-          0.0,
-          0.0
-        ],
-        "family": 0,
-        "route": 0,
-        "level": 0,
-        "variant": 0,
-        "replica": 0,
-        "column": 64,
-        "case_id": 4,
-        "reached": false,
-        "stable_park": false,
-        "failed": false,
-        "timeout": true,
-        "duration_s": 6.399999618530273,
-        "final_route_xy": [
-          5.514614105224609,
-          0.13458251953125
-        ],
-        "metrics_0p5_to_3s": {
-          "observed_seconds": 2.52,
-          "xy_velocity_error_mps": 0.16407029330730438,
-          "mean_forward_velocity_mps": 0.8552350997924805,
-          "yaw_rate_error_rads": 0.0931478813290596,
-          "mean_abs_heading_error_deg": 1.6559585332870483,
-          "final_heading_error_deg": 2.0094354152679443,
-          "mean_abs_lateral_offset_m": 0.0591927170753479,
-          "torso_tilt_rms_deg": 2.288015604019165,
-          "double_support_fraction": 0.2619047619047619,
-          "single_support_fraction": 0.7380952380952381,
-          "flight_fraction": 0.0,
-          "knee_excursion_deg": 40.6357421875,
-          "arm_excursion_deg": 27.706985473632812,
-          "joint_speed_rms_rads": 1.0965032577514648,
-          "root_vertical_std_m": 0.011103655211627483
-        },
-        "heading_at_2m_deg": 0.29832932353019714
-      },
+      "model_iteration": 16700,
+      "checkpoint_sha256": "b0ee6a9bf3c501d0e231f20a1dab308b10e1010eedc55a891c0b3248bde1b9a0",
       "physics": "recorded native Isaac Sim 6 trajectories",
-      "rendering": "MuJoCo pose rendering only; no MuJoCo dynamics test",
-      "video": "artifacts/support_transition_stage2/media/14700_vs_corrected_saved_replays_case_4.mp4",
-      "video_sha256": "a37f0335eb72626d1f3d9f4b5b783ea73b886e2d627c5f9aff7169a15f0a36ba",
-      "preview": "artifacts/support_transition_stage2/media/14700_vs_corrected_saved_replays_case_4.preview.jpg",
-      "preview_sha256": "04d3936669c4eef8560ba2557d7db18586859cd33b8a6ee33fc67abcf0e9b76b"
-    },
-    {
-      "comparison": "14700_vs_corrected_saved",
-      "replay_group": "replays",
-      "case": {
-        "kind": "stone",
-        "mode": "course",
-        "command": [
-          0.75,
-          0.0,
-          0.0
-        ],
-        "family": 0,
-        "route": 0,
+      "rendering": "MuJoCo pose rendering only; not a MuJoCo dynamics test",
+      "terrain": "12m square, L10 cardinal, variant7, seed42",
+      "cruise_command_m_s": 0.75,
+      "ideal_elevation_input": true,
+      "recording_date": "2026-10-16",
+      "publication_date": "2026-10-22",
+      "source_sha256": "482476a4df10b5077085bbfbe4081f830490f91be4663f704d29b39aaa5a977e",
+      "source_transform": "right640x480 panel only; retained16700 elapsed timestamps; removed frozen tail after final episode state",
+      "reached": true,
+      "stable_park": true,
+      "last_active_simulation_time_s": 9.4399995803833,
+      "video": "assets/demo/g1_isaac_stones_16700_cardinal.mp4",
+      "preview": "assets/demo/g1_isaac_stones_16700_cardinal.jpg",
+      "sha256": "d21ba14382abeedf425b8e758ffea0645b26932d1230fa5a098ae05709945258",
+      "preview_sha256": "c994886bec7f294fd5d61285a62991287abe677b8a25838cd523bae830ad5c15",
+      "source_case_id": 38,
+      "geometry": {
+        "seed": 42,
+        "family": "cardinal",
+        "variant": 7,
         "level": 10,
-        "variant": 7,
-        "replica": 0,
-        "column": 28,
-        "case_id": 38,
-        "reached": true,
-        "stable_park": true,
-        "failed": false,
-        "timeout": false,
-        "duration_s": 9.179999351501465,
-        "final_route_xy": [
-          4.979888916015625,
-          0.136810302734375
-        ],
-        "metrics_0p5_to_3s": {
-          "observed_seconds": 2.52,
-          "xy_velocity_error_mps": 0.15454503893852234,
-          "mean_forward_velocity_mps": 0.6252859234809875,
-          "yaw_rate_error_rads": 0.08890438824892044,
-          "mean_abs_heading_error_deg": 1.2114301919937134,
-          "final_heading_error_deg": 3.140272617340088,
-          "mean_abs_lateral_offset_m": 0.0350896455347538,
-          "torso_tilt_rms_deg": 2.1477468013763428,
-          "double_support_fraction": 0.18253968253968253,
-          "single_support_fraction": 0.8174603174603174,
-          "flight_fraction": 0.0,
-          "knee_excursion_deg": 45.378746032714844,
-          "arm_excursion_deg": 17.805084228515625,
-          "joint_speed_rms_rads": 1.0607815980911255,
-          "root_vertical_std_m": 0.008646211586892605
-        },
-        "heading_at_2m_deg": 3.825936794281006
-      },
-      "physics": "recorded native Isaac Sim 6 trajectories",
-      "rendering": "MuJoCo pose rendering only; no MuJoCo dynamics test",
-      "video": "artifacts/support_transition_stage2/media/14700_vs_corrected_saved_replays_case_38.mp4",
-      "video_sha256": "482476a4df10b5077085bbfbe4081f830490f91be4663f704d29b39aaa5a977e",
-      "preview": "artifacts/support_transition_stage2/media/14700_vs_corrected_saved_replays_case_38.preview.jpg",
-      "preview_sha256": "dc72474ce7dd58de1f1f132b55c439f9a3fd3d89d35eaac4bcea00abc2aa1063"
+        "raster_sha256": "e927f345a3aa75cdbabed9748fdbf181841380f8991f26d9d2430dc5fbde60b3"
+      }
     },
     {
-      "comparison": "14700_vs_corrected_saved",
-      "replay_group": "replays",
-      "case": {
-        "kind": "stone",
-        "mode": "course",
-        "command": [
-          0.75,
-          0.0,
-          0.0
-        ],
-        "family": 1,
-        "route": 0,
+      "model_iteration": 16700,
+      "checkpoint_sha256": "b0ee6a9bf3c501d0e231f20a1dab308b10e1010eedc55a891c0b3248bde1b9a0",
+      "physics": "recorded native Isaac Sim 6 trajectories",
+      "rendering": "MuJoCo pose rendering only; not a MuJoCo dynamics test",
+      "terrain": "12m square, L10 diagonal, variant7, seed42",
+      "cruise_command_m_s": 0.75,
+      "ideal_elevation_input": true,
+      "recording_date": "2026-10-16",
+      "publication_date": "2026-10-22",
+      "source_sha256": "46f6d088b94d46094bb1741336d191f13526f31af270b2cbedc678b050820db6",
+      "source_transform": "right640x480 panel only; retained16700 elapsed timestamps; removed frozen tail after final episode state",
+      "reached": true,
+      "stable_park": true,
+      "last_active_simulation_time_s": 10.859999656677246,
+      "video": "assets/demo/g1_isaac_stones_16700_diagonal.mp4",
+      "preview": "assets/demo/g1_isaac_stones_16700_diagonal.jpg",
+      "sha256": "a488d4009dd5047c4ff8fdc0ca5916afd59a41de3d6e98fc445ec84183e17eab",
+      "preview_sha256": "70049a7ab9e8c63135010ff80b54bd46b4e8cf5ab76ec910b3a7c0700baaf1df",
+      "source_case_id": 70,
+      "geometry": {
+        "seed": 42,
+        "family": "diagonal",
+        "variant": 7,
         "level": 10,
-        "variant": 7,
-        "replica": 0,
-        "column": 60,
-        "case_id": 70,
-        "reached": true,
-        "stable_park": true,
-        "failed": false,
-        "timeout": false,
-        "duration_s": 10.539999961853027,
-        "final_route_xy": [
-          6.273333549499512,
-          0.16352152824401855
-        ],
-        "metrics_0p5_to_3s": {
-          "observed_seconds": 2.52,
-          "xy_velocity_error_mps": 0.12732736766338348,
-          "mean_forward_velocity_mps": 0.6984052062034607,
-          "yaw_rate_error_rads": 0.09453170001506805,
-          "mean_abs_heading_error_deg": 1.5891366004943848,
-          "final_heading_error_deg": 3.2587242126464844,
-          "mean_abs_lateral_offset_m": 0.05697281286120415,
-          "torso_tilt_rms_deg": 2.365817070007324,
-          "double_support_fraction": 0.23015873015873015,
-          "single_support_fraction": 0.7698412698412699,
-          "flight_fraction": 0.0,
-          "knee_excursion_deg": 43.15652847290039,
-          "arm_excursion_deg": 26.197778701782227,
-          "joint_speed_rms_rads": 1.0835107564926147,
-          "root_vertical_std_m": 0.015389376319944859
-        },
-        "heading_at_2m_deg": 2.4920969009399414
-      },
-      "physics": "recorded native Isaac Sim 6 trajectories",
-      "rendering": "MuJoCo pose rendering only; no MuJoCo dynamics test",
-      "video": "artifacts/support_transition_stage2/media/14700_vs_corrected_saved_replays_case_70.mp4",
-      "video_sha256": "46f6d088b94d46094bb1741336d191f13526f31af270b2cbedc678b050820db6",
-      "preview": "artifacts/support_transition_stage2/media/14700_vs_corrected_saved_replays_case_70.preview.jpg",
-      "preview_sha256": "0629a531add225451fa1030185188db1c6b9f89b369685aaa8290b0c22a41014"
-    },
-    {
-      "comparison": "14700_vs_corrected_saved",
-      "replay_group": "replays_fullcross_regressions",
-      "case": {
-        "kind": "stone",
-        "mode": "course",
-        "command": [
-          0.75,
-          0.0,
-          0.0
-        ],
-        "family": 1,
-        "route": 1,
-        "level": 8,
-        "variant": 7,
-        "replica": 0,
-        "column": 60,
-        "case_id": 74,
-        "reached": true,
-        "stable_park": true,
-        "failed": false,
-        "timeout": false,
-        "duration_s": 10.739999771118164,
-        "final_route_xy": [
-          6.3015618324279785,
-          0.15438556671142578
-        ],
-        "metrics_0p5_to_3s": {
-          "observed_seconds": 2.52,
-          "xy_velocity_error_mps": 0.1194879338145256,
-          "mean_forward_velocity_mps": 0.7016513347625732,
-          "yaw_rate_error_rads": 0.09129713475704193,
-          "mean_abs_heading_error_deg": 1.7285771369934082,
-          "final_heading_error_deg": 3.9156107902526855,
-          "mean_abs_lateral_offset_m": 0.04951901733875275,
-          "torso_tilt_rms_deg": 2.236088275909424,
-          "double_support_fraction": 0.21428571428571427,
-          "single_support_fraction": 0.7857142857142857,
-          "flight_fraction": 0.0,
-          "knee_excursion_deg": 43.76157760620117,
-          "arm_excursion_deg": 26.205862045288086,
-          "joint_speed_rms_rads": 1.078124761581421,
-          "root_vertical_std_m": 0.01392776146531105
-        },
-        "heading_at_2m_deg": 2.2930994033813477
-      },
-      "physics": "recorded native Isaac Sim 6 trajectories",
-      "rendering": "MuJoCo pose rendering only; no MuJoCo dynamics test",
-      "video": "artifacts/support_transition_stage2/media/14700_vs_corrected_saved_replays_fullcross_regressions_case_74.mp4",
-      "video_sha256": "734092bd29070a417c90e0fb6c15bdfdba6cddd3d92fafef3c9e530e86ada0d0",
-      "preview": "artifacts/support_transition_stage2/media/14700_vs_corrected_saved_replays_fullcross_regressions_case_74.preview.jpg",
-      "preview_sha256": "10a3771b7beb94451d695437dc6dec8d06a7a257e82e6366222ef2b6fb91da8b"
-    },
-    {
-      "comparison": "candidate15700_vs_corrected_fresh",
-      "replay_group": "replays",
-      "case": {
-        "kind": "stone",
-        "mode": "course",
-        "command": [
-          0.75,
-          0.0,
-          0.0
-        ],
-        "family": 1,
-        "route": 0,
-        "level": 10,
-        "variant": 7,
-        "replica": 0,
-        "column": 60,
-        "case_id": 110,
-        "reached": true,
-        "stable_park": true,
-        "failed": false,
-        "timeout": false,
-        "duration_s": 10.779999732971191,
-        "final_route_xy": [
-          6.24024772644043,
-          0.11264348030090332
-        ],
-        "metrics_0p5_to_3s": {
-          "observed_seconds": 2.52,
-          "xy_velocity_error_mps": 0.11848356574773788,
-          "mean_forward_velocity_mps": 0.7048624157905579,
-          "yaw_rate_error_rads": 0.09221313148736954,
-          "mean_abs_heading_error_deg": 1.6151080131530762,
-          "final_heading_error_deg": 4.381583213806152,
-          "mean_abs_lateral_offset_m": 0.05075649544596672,
-          "torso_tilt_rms_deg": 2.087787628173828,
-          "double_support_fraction": 0.20634920634920634,
-          "single_support_fraction": 0.7936507936507936,
-          "flight_fraction": 0.0,
-          "knee_excursion_deg": 43.958953857421875,
-          "arm_excursion_deg": 23.51851463317871,
-          "joint_speed_rms_rads": 1.0671888589859009,
-          "root_vertical_std_m": 0.01246985886245966
-        },
-        "heading_at_2m_deg": 3.8255512714385986
-      },
-      "physics": "recorded native Isaac Sim 6 trajectories",
-      "rendering": "MuJoCo pose rendering only; no MuJoCo dynamics test",
-      "video": "artifacts/support_transition_stage2/media/candidate15700_vs_corrected_fresh_replays_case_110.mp4",
-      "video_sha256": "fa639c832b59cf3b1c83c045a7dbf9eb730ad2037d783c082b1fd7b7f2f7a238",
-      "preview": "artifacts/support_transition_stage2/media/candidate15700_vs_corrected_fresh_replays_case_110.preview.jpg",
-      "preview_sha256": "72a5973c633594d04903c27642e154bd6434973aea7652c0bc84dd108f90cb5c"
+        "raster_sha256": "9bc20450b03f5c486734a174dd784e9792407cbe2691e4ed5efbf74493dff2c0"
+      }
     }
   ],
   "files": [
@@ -385,56 +175,6 @@
       "sha256": "73c94105d70fc735c41416a6ff2e5e07dd482fea25bdf15d049e0d2ed0685ab7"
     },
     {
-      "path": "artifacts/support_transition_stage2/media/14700_vs_corrected_saved_replays_case_38.mp4",
-      "bytes": 4064978,
-      "sha256": "482476a4df10b5077085bbfbe4081f830490f91be4663f704d29b39aaa5a977e"
-    },
-    {
-      "path": "artifacts/support_transition_stage2/media/14700_vs_corrected_saved_replays_case_38.preview.jpg",
-      "bytes": 127254,
-      "sha256": "dc72474ce7dd58de1f1f132b55c439f9a3fd3d89d35eaac4bcea00abc2aa1063"
-    },
-    {
-      "path": "artifacts/support_transition_stage2/media/14700_vs_corrected_saved_replays_case_4.mp4",
-      "bytes": 3801467,
-      "sha256": "a37f0335eb72626d1f3d9f4b5b783ea73b886e2d627c5f9aff7169a15f0a36ba"
-    },
-    {
-      "path": "artifacts/support_transition_stage2/media/14700_vs_corrected_saved_replays_case_4.preview.jpg",
-      "bytes": 166128,
-      "sha256": "04d3936669c4eef8560ba2557d7db18586859cd33b8a6ee33fc67abcf0e9b76b"
-    },
-    {
-      "path": "artifacts/support_transition_stage2/media/14700_vs_corrected_saved_replays_case_70.mp4",
-      "bytes": 4937917,
-      "sha256": "46f6d088b94d46094bb1741336d191f13526f31af270b2cbedc678b050820db6"
-    },
-    {
-      "path": "artifacts/support_transition_stage2/media/14700_vs_corrected_saved_replays_case_70.preview.jpg",
-      "bytes": 123496,
-      "sha256": "0629a531add225451fa1030185188db1c6b9f89b369685aaa8290b0c22a41014"
-    },
-    {
-      "path": "artifacts/support_transition_stage2/media/14700_vs_corrected_saved_replays_fullcross_regressions_case_74.mp4",
-      "bytes": 3604470,
-      "sha256": "734092bd29070a417c90e0fb6c15bdfdba6cddd3d92fafef3c9e530e86ada0d0"
-    },
-    {
-      "path": "artifacts/support_transition_stage2/media/14700_vs_corrected_saved_replays_fullcross_regressions_case_74.preview.jpg",
-      "bytes": 100410,
-      "sha256": "10a3771b7beb94451d695437dc6dec8d06a7a257e82e6366222ef2b6fb91da8b"
-    },
-    {
-      "path": "artifacts/support_transition_stage2/media/candidate15700_vs_corrected_fresh_replays_case_110.mp4",
-      "bytes": 5028262,
-      "sha256": "fa639c832b59cf3b1c83c045a7dbf9eb730ad2037d783c082b1fd7b7f2f7a238"
-    },
-    {
-      "path": "artifacts/support_transition_stage2/media/candidate15700_vs_corrected_fresh_replays_case_110.preview.jpg",
-      "bytes": 127156,
-      "sha256": "72a5973c633594d04903c27642e154bd6434973aea7652c0bc84dd108f90cb5c"
-    },
-    {
       "path": "artifacts/support_transition_stage2/pretrain_action_diagnosis.json",
       "bytes": 5294,
       "sha256": "e96f4862a8c7e7e41f67c10d0094cc440de570f024b2b8fb183e732971372399"
@@ -476,8 +216,8 @@
     }
   ],
   "notes": [
-    "192 unique stone scenarios per paired comparison; corrected model repeats are not additional independent maps.",
-    "A single training seed and ideal simulated elevation input.",
+    "Public stone videos now show only model16700; prior paired and8999 video files were removed from the current branch.",
+    "Paired evaluation records remain unchanged, including sway tradeoffs and regression statistics.",
     "Videos replay recorded native Isaac poses; the renderer is not a second physics evaluation."
   ]
 }

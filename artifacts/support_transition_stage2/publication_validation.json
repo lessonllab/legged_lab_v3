@@ -9,5 +9,25 @@
   "evidence_sha256": "all40 archived evidence/media files verified",
   "checkpoint_sha256": "14700,15700,16700 matched their recorded digests",
   "documentation": "all local Markdown links in publication entrypoints verified",
-  "training_updates_during_publication": 0
+  "training_updates_during_publication": 0,
+  "video_cleanup_20261022": {
+    "public_stone_model_iterations": [
+      16700
+    ],
+    "video_count": 2,
+    "full_decode_passed": true,
+    "source_cases": [
+      38,
+      70
+    ],
+    "dimensions": [
+      640,
+      480
+    ],
+    "fps": 25,
+    "original_evaluation_json_unchanged": true,
+    "entrypoint_file_links_verified": true,
+    "media_sha256_verified": true,
+    "training_updates": 0
+  }
 }

@@ -1,6 +1,6 @@
 # 支撑转换实验：保留正常步态的梅花桩动作修正
 
-2026-10-20 发布；正式实验完成于 2026-10-16。原 14700 模型保留为主基线，16700 为偏航更小的实验候选。本轮没有楼梯训练、真实传感器或实机测试。
+2026-10-20 发布，2026-10-22 将梅花桩视频展示更新为仅16700；正式实验完成于 2026-10-16。原 14700 模型保留为主基线，16700 为偏航更小的实验候选。本轮没有楼梯训练、真实传感器或实机测试。
 
 ## 设计与结果
 
@@ -19,7 +19,7 @@
 
 两组配对各自运行，16700 重复测试不能称为 384 张独立地图。只有一个训练种子；三个修改没有逐项消融。基线通过率已经达到本批测试上限，不能宣称通过率提升。臂腿相关性与角动量分解是轨迹指标，不是摆臂帮助稳定的因果证明。
 
-[交互视频对照](https://lessonllab.github.io/legged_lab_v3/support_transition_stage2/) · [完整诊断与取舍](analysis/support_transition_stage2_20261016.md) · [数据、视频及校验值](../artifacts/support_transition_stage2/README.md)
+[16700 梅花桩演示](https://lessonllab.github.io/legged_lab_v3/support_transition_stage2/) · [完整诊断与取舍](analysis/support_transition_stage2_20261016.md) · [数据、视频及校验值](../artifacts/support_transition_stage2/README.md)
 
 ## 环境与模型准备
 
@@ -67,7 +67,7 @@ bash scripts/run_with_rsl5.sh scripts/tools/audit_support_transition_stage1.py \
   --input .runtime/support_transition_saved
 ```
 
-新种子组将 `--variants 0 7` 改为 `--variants 3 4 6 7`，增加 `--geometry-seed 20261016` 并使用独立输出目录。报告中分别标注了开发地图、新种子同族地图和退步样本。
+新种子组将 `--variants 0 7` 改为 `--variants 3 4 6 7`，增加 `--geometry-seed 20261016` 并使用独立输出目录。报告数据中分别标注了开发地图、新种子同族地图和退步样本；公开录像仅展示16700。
 
 ## 复现本次 1000 轮修正
 

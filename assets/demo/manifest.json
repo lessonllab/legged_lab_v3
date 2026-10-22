@@ -1,14 +1,4 @@
 {
-  "g1_mujoco_stones_8999.mp4": {
-    "model_iteration": 8999,
-    "physics": "native MuJoCo",
-    "terrain": "8m square, L10 cardinal, variant2, seed42",
-    "cruise_command_m_s": 1.0,
-    "ideal_elevation_input": true,
-    "recording_date": "2026-10-11",
-    "sha256": "06fa052345eb69dcbd0a11d47a1248b58472e73cb0e1ee3703c9a6745a289697",
-    "rendering": "Neutral sky, matte gray platforms, warm stone surfaces; shadow acne disabled. Physics/control unchanged."
-  },
   "g1_mujoco_stairs_50100.mp4": {
     "model_iteration": 50100,
     "physics": "native MuJoCo",
@@ -27,15 +17,60 @@
     "fell": false,
     "sha256": "db39cc33c9273b91e8a01e8f84eb11a36cb4015b41aa2e47a322437beb0d44a6"
   },
-  "g1_mujoco_stones12_8999.mp4": {
-    "model_iteration": 8999,
-    "physics": "native MuJoCo",
-    "terrain": "12m square,2m outer ring,L10 cardinal,variant2,seed42",
-    "stop_trigger_depth_m": 1.0,
-    "final_depth_m": 1.249330227379438,
+  "g1_isaac_stones_16700_cardinal.mp4": {
+    "model_iteration": 16700,
+    "checkpoint_sha256": "b0ee6a9bf3c501d0e231f20a1dab308b10e1010eedc55a891c0b3248bde1b9a0",
+    "physics": "recorded native Isaac Sim 6 trajectories",
+    "rendering": "MuJoCo pose rendering only; not a MuJoCo dynamics test",
+    "terrain": "12m square, L10 cardinal, variant7, seed42",
+    "cruise_command_m_s": 0.75,
     "ideal_elevation_input": true,
-    "scan_display": true,
-    "recording_date": "2026-10-11",
-    "sha256": "4e690ada99f5530a6ac9a455041c02c96aaa97c5aac136645105dd62035c7c94"
+    "recording_date": "2026-10-16",
+    "publication_date": "2026-10-22",
+    "source_sha256": "482476a4df10b5077085bbfbe4081f830490f91be4663f704d29b39aaa5a977e",
+    "source_transform": "right640x480 panel only; retained16700 elapsed timestamps; removed frozen tail after final episode state",
+    "reached": true,
+    "stable_park": true,
+    "last_active_simulation_time_s": 9.4399995803833,
+    "video": "assets/demo/g1_isaac_stones_16700_cardinal.mp4",
+    "preview": "assets/demo/g1_isaac_stones_16700_cardinal.jpg",
+    "sha256": "d21ba14382abeedf425b8e758ffea0645b26932d1230fa5a098ae05709945258",
+    "preview_sha256": "c994886bec7f294fd5d61285a62991287abe677b8a25838cd523bae830ad5c15",
+    "source_case_id": 38,
+    "geometry": {
+      "seed": 42,
+      "family": "cardinal",
+      "variant": 7,
+      "level": 10,
+      "raster_sha256": "e927f345a3aa75cdbabed9748fdbf181841380f8991f26d9d2430dc5fbde60b3"
+    }
+  },
+  "g1_isaac_stones_16700_diagonal.mp4": {
+    "model_iteration": 16700,
+    "checkpoint_sha256": "b0ee6a9bf3c501d0e231f20a1dab308b10e1010eedc55a891c0b3248bde1b9a0",
+    "physics": "recorded native Isaac Sim 6 trajectories",
+    "rendering": "MuJoCo pose rendering only; not a MuJoCo dynamics test",
+    "terrain": "12m square, L10 diagonal, variant7, seed42",
+    "cruise_command_m_s": 0.75,
+    "ideal_elevation_input": true,
+    "recording_date": "2026-10-16",
+    "publication_date": "2026-10-22",
+    "source_sha256": "46f6d088b94d46094bb1741336d191f13526f31af270b2cbedc678b050820db6",
+    "source_transform": "right640x480 panel only; retained16700 elapsed timestamps; removed frozen tail after final episode state",
+    "reached": true,
+    "stable_park": true,
+    "last_active_simulation_time_s": 10.859999656677246,
+    "video": "assets/demo/g1_isaac_stones_16700_diagonal.mp4",
+    "preview": "assets/demo/g1_isaac_stones_16700_diagonal.jpg",
+    "sha256": "a488d4009dd5047c4ff8fdc0ca5916afd59a41de3d6e98fc445ec84183e17eab",
+    "preview_sha256": "70049a7ab9e8c63135010ff80b54bd46b4e8cf5ab76ec910b3a7c0700baaf1df",
+    "source_case_id": 70,
+    "geometry": {
+      "seed": 42,
+      "family": "diagonal",
+      "variant": 7,
+      "level": 10,
+      "raster_sha256": "9bc20450b03f5c486734a174dd784e9792407cbe2691e4ed5efbf74493dff2c0"
+    }
   }
 }

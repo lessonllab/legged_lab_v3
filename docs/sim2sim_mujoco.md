@@ -1,3 +1,7 @@
+# 历史 MuJoCo sim2sim 记录
+
+2026-10-22：旧8999梅花桩视频已从当前分支下架；本文保留历史验证与复现命令。当前公开梅花桩演示仅为[16700 Isaac轨迹重放](https://lessonllab.github.io/legged_lab_v3/#stones)，不可将其称为MuJoCo动力学复验。
+
 # G1 视觉策略 MuJoCo sim2sim
 
 入口直接加载本项目 RSL-RL 5.4.1 的检查点，使用 hiking 工程的 MuJoCo 机器人结构，并以训练 USD 校准机器人参数、碰撞和视觉网格。CPU 即可推理与计算深度，无需启动 Isaac Sim、ROS 或 DDS。
